@@ -1,0 +1,1450 @@
+[
+  {
+    "id": 1,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "전통적인 파일 처리 시스템(File Processing System)이 가졌던 가장 치명적인 2대 문제점은?",
+    "options": [
+      "데이터 종속성(Data Dependency)과 데이터 중복성(Data Redundancy)",
+      "파일의 용량 부족과 네트워크 속도 저하",
+      "데이터의 암호화와 압축 불가",
+      "하드웨어 단가 상승과 전력 과다 소비"
+    ],
+    "answer": 0,
+    "explanation": "응용 프로그램이 파일의 물리적 저장 구조에 종속되고(종속성), 파일마다 동일 데이터가 중복 저장되어 불일치와 불일관성이 발생하는 것이 파일 시스템의 핵심 한계였습니다."
+  },
+  {
+    "id": 2,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터 중복성(Data Redundancy)으로 인해 발생하는 2차적 문제점으로 옳지 않은 것은?",
+    "options": [
+      "데이터 수정 시 일부 파일만 갱신되어 데이터 간 불일치(Inconsistency)가 발생한다.",
+      "저장 공간이 불필요하게 낭비된다.",
+      "데이터의 무결성(Integrity)을 유지하기 극히 어려워진다.",
+      "데이터 검색 속도가 항상 100배 빨라진다."
+    ],
+    "answer": 3,
+    "explanation": "데이터 중복은 저장 공간 낭비와 불일관성을 초래하며 데이터 검색 속도를 빠르게 해주지 않습니다."
+  },
+  {
+    "id": 3,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터베이스(Database)의 4대 정의적 요소(통합, 저장, 운영, 공용) 중 '중복을 최소화하여 여러 파일의 데이터를 하나로 모았다'는 의미를 갖는 것은?",
+    "options": [
+      "통합된 데이터 (Integrated Data)",
+      "저장된 데이터 (Stored Data)",
+      "운영 데이터 (Operational Data)",
+      "공용 데이터 (Shared Data)"
+    ],
+    "answer": 0,
+    "explanation": "데이터의 불필요한 중복을 배제하고 최소한의 통제된 중복만을 허용하여 일관성을 확보한 통합 데이터의 정의입니다."
+  },
+  {
+    "id": 4,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터베이스의 4대 기본 특성 중 '질의(Query)에 대해 수초 이내의 빠른 응답 시간을 보장해야 한다'는 특성은?",
+    "options": [
+      "실시간 접근성 (Real-time Accessibility)",
+      "계속적인 변화 (Continuous Evolution)",
+      "동시 공유 (Concurrent Sharing)",
+      "내용에 의한 참조 (Content Reference)"
+    ],
+    "answer": 0,
+    "explanation": "사용자의 요구에 실시간으로 즉각 반응하여 결과를 반환해야 하는 실시간 접근성의 특성입니다."
+  },
+  {
+    "id": 5,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터베이스에서 데이터를 검색할 때 물리적인 저장 주소나 위치가 아니라, '데이터가 가지고 있는 값(내용)'에 기반하여 조건을 검색하는 특성은?",
+    "options": [
+      "내용에 의한 참조 (Content Reference)",
+      "주소에 의한 참조 (Address Reference)",
+      "포인터 체인 참조",
+      "시퀀셜 순차 검색"
+    ],
+    "answer": 0,
+    "explanation": "`WHERE age >= 20`처럼 물리적 디스크 오프셋이 아닌 데이터의 내용(값)을 조건으로 데이터를 식별합니다."
+  },
+  {
+    "id": 6,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "ANSI/SPARC 3단계 데이터베이스 스키마 구조의 3계층으로 올바른 것은?",
+    "options": [
+      "외부 스키마(External), 개념 스키마(Conceptual), 내부 스키마(Internal)",
+      "사용자 스키마, 관리자 스키마, 하드웨어 스키마",
+      "상위 스키마, 중간 스키마, 하위 스키마",
+      "논리 스키마, 물리 스키마, 네트워크 스키마"
+    ],
+    "answer": 0,
+    "explanation": "개별 사용자의 뷰인 외부 스키마, 조직 전체의 논리적 구조인 개념 스키마, 디스크 저장 구조인 내부 스키마로 분리됩니다."
+  },
+  {
+    "id": 7,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "ANSI/SPARC 3단계 구조에서 '개념 스키마(Conceptual Schema)'에 대한 설명으로 옳은 것은?",
+    "options": [
+      "모든 개별 사용자 관점의 다양한 서브스키마(View)의 총칭이다.",
+      "데이터베이스의 전체적인 논리적 구조로서, 모든 응용 프로그램과 사용자들이 필요로 하는 데이터를 통합하여 전체 조직의 관점에서 정의한 단 하나의 스키마이다.",
+      "디스크의 블록 크기, 인덱스 B-Tree 구조, 레코드 저장 방식을 정의한 물리적 스키마이다.",
+      "사용자가 작성한 SQL 쿼리문 자체를 의미한다."
+    ],
+    "answer": 1,
+    "explanation": "개념 스키마는 개체, 관계, 제약조건을 포함하는 기관 전체의 범기관적 논리적 데이터 구조이며 시스템당 하나만 존재합니다."
+  },
+  {
+    "id": 8,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "ANSI/SPARC 구조의 '논리적 데이터 독립성(Logical Data Independence)'이란 무엇인가?",
+    "options": [
+      "내부 스키마를 변경해도 개념 스키마가 영향을 받지 않는 성질",
+      "개념 스키마가 변경(예: 새로운 속성이나 릴레이션 추가)되어도 기존의 외부 스키마(사용자 뷰)와 응용 프로그램은 영향을 받지 않는 성질",
+      "하드디스크를 SSD로 교체해도 데이터가 깨지지 않는 성질",
+      "SQL 문법이 영구적으로 변하지 않는 성질"
+    ],
+    "answer": 1,
+    "explanation": "개념-외부 사상(Mapping)을 조정함으로써 개념 스키마가 확장되더라도 기존 응용 프로그램의 수정 없이 독립성을 보장합니다."
+  },
+  {
+    "id": 9,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "ANSI/SPARC 구조의 '물리적 데이터 독립성(Physical Data Independence)'이란 무엇인가?",
+    "options": [
+      "성능 향상을 위해 내부 스키마(저장 장치 구조, 인덱스 생성/수정 등)를 변경하더라도 개념 스키마나 외부 스키마가 영향을 받지 않는 성질",
+      "외부 스키마를 고치면 내부 스키마가 자동 변경되는 성질",
+      "물리적 서버를 꺼도 데이터베이스가 돌아가는 성질",
+      "테이블의 열 이름을 바꾸어도 쿼리가 실행되는 성질"
+    ],
+    "answer": 0,
+    "explanation": "내부-개념 사상을 통해 인덱스를 재구성하거나 저장 경로를 바꾸어도 논리적 개념 구조나 사용자 프로그램이 전혀 영향받지 않습니다."
+  },
+  {
+    "id": 10,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터 언어(Data Language) 중 테이블 생성, 구조 변경, 삭제를 수행하는 데이터 정의어(DDL)에 해당하는 명령어 세트는?",
+    "options": [
+      "`CREATE`, `ALTER`, `DROP`",
+      "`SELECT`, `INSERT`, `UPDATE`, `DELETE`",
+      "`GRANT`, `REVOKE`",
+      "`COMMIT`, `ROLLBACK`"
+    ],
+    "answer": 0,
+    "explanation": "DDL(Data Definition Language)은 스키마 구조를 정의·수정·삭제하는 명령어로 `CREATE`, `ALTER`, `DROP` 등이 있습니다."
+  },
+  {
+    "id": 11,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터베이스에 저장된 실제 데이터를 검색, 삽입, 수정, 삭제하는 데이터 조작어(DML) 명령어로 옳은 것은?",
+    "options": [
+      "`SELECT`, `INSERT`, `UPDATE`, `DELETE`",
+      "`CREATE`, `ALTER`, `DROP`",
+      "`GRANT`, `REVOKE`",
+      "`SAVEPOINT`, `ROLLBACK`"
+    ],
+    "answer": 0,
+    "explanation": "DML(Data Manipulation Language)은 사용자가 튜플을 질의하고 조작하는 명령어입니다."
+  },
+  {
+    "id": 12,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터 제어어(DCL: Data Control Language)의 주된 역할 두 가지는?",
+    "options": [
+      "데이터의 보안/권한 부여(`GRANT`, `REVOKE`) 및 트랜잭션 병행 제어/무결성 유지(`COMMIT`, `ROLLBACK`)",
+      "HTML 화면 렌더링 및 CSS 스타일 적용",
+      "컴파일 및 바이너리 링크",
+      "데이터베이스 테이블의 인덱스 크기 축소"
+    ],
+    "answer": 0,
+    "explanation": "DCL은 보안, 무결성, 권한 관리, 트랜잭션 제어를 담당합니다."
+  },
+  {
+    "id": 13,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터베이스 관리 시스템(DBMS)이 시스템 카탈로그(System Catalog / Data Dictionary)에 저장하는 '데이터에 관한 데이터'를 무엇이라 부르는가?",
+    "options": [
+      "메타데이터 (Metadata)",
+      "빅데이터 (Big Data)",
+      "원시 데이터 (Raw Data)",
+      "휘발성 데이터"
+    ],
+    "answer": 0,
+    "explanation": "테이블 정의, 속성 타입, 제약조건, 사용자 권한 등 스키마에 관한 정보를 메타데이터라고 합니다."
+  },
+  {
+    "id": 14,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "DBMS 엔진의 주요 컴포넌트 중 사용자가 제출한 고수준의 SQL 쿼리를 파싱하고 검사한 뒤 최적의 실행 계획(Execution Plan)을 세워 바이트코드로 변환하는 모듈은?",
+    "options": [
+      "질의 최적화기 및 처리기 (Query Optimizer / Processor)",
+      "버퍼 관리자",
+      "회복 관리자",
+      "동시성 제어기"
+    ],
+    "answer": 0,
+    "explanation": "옵티마이저는 비용 모델을 바탕으로 다양한 인덱스 및 조인 방식 중 가장 적은 I/O 비용의 최적 실행 계획을 수립합니다."
+  },
+  {
+    "id": 15,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터베이스 관리자(DBA: Database Administrator)의 핵심 직무에 해당하지 않는 것은?",
+    "options": [
+      "데이터베이스의 스키마 정의 및 물리적 저장 구조 설계",
+      "사용자 계정 생성, 접근 권한 부여 및 보안 정책 수립",
+      "시스템 장애에 대비한 주기적 백업 및 회복(복구) 절차 관리",
+      "스마트폰 모바일 화면의 UI 버튼 디자인 및 색상 선정"
+    ],
+    "answer": 3,
+    "explanation": "DBA는 데이터베이스 시스템의 설계, 성능 튜닝, 보안, 백업 및 복구 등 데이터 인프라 전반을 총괄합니다."
+  },
+  {
+    "id": 16,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "ox",
+    "question": "시스템 카탈로그(데이터 사전)는 DBMS 스스로 생성하고 갱신하며, 일반 사용자도 `SELECT` 문을 통해 그 메타데이터 내용을 검색해 볼 수 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "시스템 카탈로그는 일반 테이블과 동일한 형태로 저장되어 질의가 가능하지만 무결성 유지를 위해 사용자가 `UPDATE`/`DELETE`로 직접 수정할 수는 없습니다."
+  },
+  {
+    "id": 17,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "파일 시스템 대비 DBMS를 도입했을 때의 잠재적인 단점(비용)으로 옳은 것은?",
+    "options": [
+      "소프트웨어 구입 비용 및 고성능 하드웨어 요구로 인한 초기 구축 비용의 증가와 시스템 복잡성 증대",
+      "데이터 중복성이 10배 증가하는 문제",
+      "데이터 무결성을 지킬 수 없게 되는 문제",
+      "여러 사용자의 동시 접근이 원천 차단되는 문제"
+    ],
+    "answer": 0,
+    "explanation": "DBMS 라이선스 비용, 고사양 서버 자원 필요, 장애 발생 시 복잡한 회복 절차 등이 단점으로 꼽힙니다."
+  },
+  {
+    "id": 18,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "ox",
+    "question": "외부 스키마(External Schema)는 개별 사용자나 응용 프로그래머가 보는 논리적 데이터 구조이므로, 동일한 데이터베이스에 대해 여러 개의 서로 다른 외부 스키마가 존재할 수 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "부서나 직무에 따라 서로 다른 뷰(View)를 정의할 수 있으므로 외부 스키마는 다수 존재합니다."
+  },
+  {
+    "id": 19,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "ox",
+    "question": "내부 스키마(Internal Schema)는 개념 스키마의 물리적 저장 표현으로, 데이터베이스 시스템 전체에 단 하나만 존재한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "실제 물리적 디스크 저장 장치에 구현된 물리적 구조이므로 시스템당 단 하나만 존재합니다."
+  },
+  {
+    "id": 20,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터베이스의 상태를 한 상태에서 다른 일관된 상태로 변환시키는 논리적 작업의 최소 단위를 무엇이라 부르는가?",
+    "options": [
+      "트랜잭션 (Transaction)",
+      "프로세스",
+      "인덱스",
+      "커서"
+    ],
+    "answer": 0,
+    "explanation": "트랜잭션은 분할할 수 없는 원자적(All-or-Nothing) 연산의 단위입니다."
+  },
+  {
+    "id": 21,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "트랜잭션이 반드시 준수해야 하는 4대 특성(ACID)으로 올바른 것은?",
+    "options": [
+      "원자성(Atomicity), 일관성(Consistency), 격리성/고립성(Isolation), 지속성(Durability)",
+      "접근성, 가용성, 신뢰성, 기밀성",
+      "정확성, 복잡성, 가변성, 독립성",
+      "자동성, 통일성, 안전성, 분산성"
+    ],
+    "answer": 0,
+    "explanation": "ACID는 데이터베이스 트랜잭션의 신뢰성을 보장하는 4대 기본 특성입니다."
+  },
+  {
+    "id": 22,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "ox",
+    "question": "트랜잭션의 원자성(Atomicity)은 트랜잭션 내의 모든 연산이 완벽하게 완료(Commit)되거나, 실패 시 아무것도 실행되지 않은 상태로 취소(Rollback)되어야 함을 보장한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "전부 성공하든지 전부 취소되든지 하는 'All or Nothing' 원칙입니다."
+  },
+  {
+    "id": 23,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "여러 트랜잭션이 동시에 실행될 때 한 트랜잭션의 중간 연산 결과가 다른 트랜잭션에 노출되지 않도록 제어하는 ACID 특성은?",
+    "options": [
+      "격리성 / 고립성 (Isolation)",
+      "원자성",
+      "일관성",
+      "지속성"
+    ],
+    "answer": 0,
+    "explanation": "동시에 실행되는 트랜잭션들이 서로 간섭하지 못하게 하여 마치 혼자 순차적으로 실행된 것 같은 결과를 보장합니다."
+  },
+  {
+    "id": 24,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "ox",
+    "question": "스키마(Schema)가 데이터베이스의 정적인 구조와 제약조건을 정의한 틀(내포, Intension)이라면, 인스턴스(Instance)는 특정 시점에 데이터베이스에 실제로 저장된 데이터 값들의 상태(외연, Extension)를 의미한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "스키마는 거의 변하지 않는 데이터베이스의 구조적 정의이고, 인스턴스는 삽입/삭제로 시시각각 변하는 실제 데이터 값들의 집합입니다."
+  },
+  {
+    "id": 25,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터 조작어(DML) 중 '사용자가 원하는 데이터가 무엇(What)인지만 명시하고 어떻게(How) 찾을지는 시스템에 위임하는' 언어 형태는?",
+    "options": [
+      "비절차적(선언적) DML (Non-procedural / Declarative DML, 예: SQL)",
+      "절차적 DML (Procedural DML)",
+      "기계어 DML",
+      "어셈블리 DML"
+    ],
+    "answer": 0,
+    "explanation": "SQL은 원하는 조건(What)만 지정하면 DBMS 옵티마이저가 최적 경로(How)를 결정하는 비절차적 언어입니다."
+  },
+  {
+    "id": 26,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "ox",
+    "question": "동시 공유(Concurrent Sharing) 특성은 수천 명의 사용자가 동시에 같은 데이터에 접근하더라도 데이터의 일관성이 훼손되지 않도록 병행 제어(Concurrency Control)가 이루어짐을 의미한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "락(Locking)이나 MVCC 등의 기술을 통해 동시 접근 시의 갱신 분실, 모순성 등을 방지합니다."
+  },
+  {
+    "id": 27,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "데이터베이스 설계(Database Design)의 4대 표준 단계 순서로 올바른 것은?",
+    "options": [
+      "요구조건 분석 -> 개념적 설계 -> 논리적 설계 -> 물리적 설계",
+      "물리적 설계 -> 논리적 설계 -> 개념적 설계 -> 요구조건 분석",
+      "개념적 설계 -> 요구조건 분석 -> 물리적 설계 -> 논리적 설계",
+      "논리적 설계 -> 개념적 설계 -> 요구조건 분석 -> 물리적 설계"
+    ],
+    "answer": 0,
+    "explanation": "요구사항 분석을 거쳐 DBMS에 독립적인 ER 다이어그램을 도출(개념적 설계)하고, 이를 관계형 테이블 스키마로 변환(논리적 설계)한 뒤 디스크 저장 구조 및 인덱스를 결정(물리적 설계)합니다."
+  },
+  {
+    "id": 28,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "ox",
+    "question": "개념적 설계(Conceptual Design) 단계의 대표적인 산출물은 특정 상용 DBMS 제품(오라클, MySQL 등)에 전혀 종속되지 않는 고수준의 'ER 다이어그램'이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "개념적 설계는 소프트웨어나 하드웨어 환경과 무관하게 비즈니스 데이터 요구사항을 개념적 모델로 추상화하는 단계입니다."
+  },
+  {
+    "id": 29,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "mcq",
+    "question": "논리적 설계(Logical Design) 단계의 주된 작업 내용은?",
+    "options": [
+      "개념적 ER 모델을 목표 DBMS가 지원하는 데이터 모델(예: 관계형 모델)의 릴레이션 스키마로 사상(Mapping)하고 정규화(Normalization)를 수행하는 것",
+      "하드디스크의 블록 크기와 섹터를 포맷하는 것",
+      "데이터베이스 관리자의 비밀번호를 설정하는 것",
+      "사용자 인터뷰를 진행하여 기능 요구사항을 작성하는 것"
+    ],
+    "answer": 0,
+    "explanation": "ER 다이어그램을 관계형 테이블로 변환하고 이상 현상을 제거하기 위해 정규화를 적용하는 단계입니다."
+  },
+  {
+    "id": 30,
+    "subject": "db",
+    "topic": "Chap 1. DBMS 개요 & 3단계 스키마",
+    "type": "ox",
+    "question": "물리적 설계(Physical Design) 단계에서는 데이터 접근 경로인 인덱스(B-Tree, Hash), 레코드 저장 클러스터링, 파티셔닝, 버퍼 풀 크기 등을 결정하여 성능을 최적화한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "특정 DBMS와 하드웨어 환경의 물리적 특성을 고려하여 트랜잭션 처리 속도와 공간 효율을 극대화하는 설계 단계입니다."
+  },
+  {
+    "id": 31,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "1976년 피터 첸(Peter Chen)이 제안한 ER 모델(개체-관계 모델)의 기본 그래픽 기호 매핑으로 올바른 것은?",
+    "options": [
+      "개체(Entity): 직사각형 / 속성(Attribute): 타원 / 관계(Relationship): 마름모",
+      "개체: 원 / 속성: 삼각형 / 관계: 사각형",
+      "개체: 마름모 / 속성: 직사각형 / 관계: 타원",
+      "개체: 육각형 / 속성: 별표 / 관계: 실선"
+    ],
+    "answer": 0,
+    "explanation": "ER 다이어그램의 기본 3대 요소 기호는 개체(직사각형), 속성(타원), 관계(마름모)입니다."
+  },
+  {
+    "id": 32,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "ER 모델에서 속성(Attribute)의 유형 중 다른 여러 개의 세부 속성으로 더 쪼갤 수 있는 속성(예: '주소' = 시, 구, 동, 번지)은?",
+    "options": [
+      "복합 속성 (Composite Attribute)",
+      "단순 속성 (Simple / Atomic Attribute)",
+      "다중값 속성",
+      "유도 속성"
+    ],
+    "answer": 0,
+    "explanation": "독립적인 의미를 갖는 더 작은 단순 속성들로 분해 가능한 속성을 복합 속성이라고 합니다."
+  },
+  {
+    "id": 33,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "한 개체 인스턴스에 대해 여러 개의 값을 가질 수 있어 ER 다이어그램에서 '이중 타원(Double Oval)'으로 표기하는 속성(예: 학생의 '취미', 교수의 '학위')은?",
+    "options": [
+      "다중값 속성 (Multivalued Attribute)",
+      "복합 속성",
+      "유도 속성",
+      "키 속성"
+    ],
+    "answer": 0,
+    "explanation": "하나의 엔티티가 동일 속성에 대해 0개 이상의 복수 값을 가질 수 있는 속성입니다."
+  },
+  {
+    "id": 34,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "다른 속성의 값으로부터 계산이나 추론이 가능하여 데이터베이스에 물리적으로 저장하지 않고 필요 시 계산하는 속성(예: '생년월일'로부터 계산되는 '나이')과 그 표기법은?",
+    "options": [
+      "유도 속성 (Derived Attribute) / 점선 타원 (Dashed Oval)",
+      "저장 속성 / 이중 타원",
+      "키 속성 / 밑줄 타원",
+      "복합 속성 / 이중 마름모"
+    ],
+    "answer": 0,
+    "explanation": "물리적 중복 저장을 피하고 필요할 때 동적으로 유도 계산되는 속성으로 점선 타원으로 표기합니다."
+  },
+  {
+    "id": 35,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "자체적인 속성들만으로는 고유하게 개체를 식별할 수 없어 반드시 다른 소유 개체(Owner Entity)에 종속되어야만 존재하는 개체는?",
+    "options": [
+      "약한 개체 (Weak Entity)",
+      "강한 개체 (Strong / Regular Entity)",
+      "복합 개체",
+      "슈퍼클래스 개체"
+    ],
+    "answer": 0,
+    "explanation": "약한 개체(예: 직원의 부양가족)는 독자적인 키가 없어 식별 개체(직원)에 종속되며 이중 직사각형으로 표기합니다."
+  },
+  {
+    "id": 36,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "약한 개체(Weak Entity)를 소유 개체와 연결하는 식별 관계(Identifying Relationship)와 약한 개체 내부에서 인스턴스들을 구별해주는 키의 표기법으로 옳은 것은?",
+    "options": [
+      "이중 마름모(식별 관계) / 점선 밑줄(부분키 또는 구별자, Discriminator/Partial Key)",
+      "단일 마름모 / 실선 밑줄",
+      "점선 사각형 / 이중 타원",
+      "삼각형 / 화살표"
+    ],
+    "answer": 0,
+    "explanation": "식별 관계는 이중 마름모로 나타내며, 약한 개체 내부의 구별자(예: 부양가족이름)는 점선 밑줄로 표기합니다."
+  },
+  {
+    "id": 37,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "관계(Relationship)에 참여하는 개체 타입의 개수를 의미하는 관계의 차수(Degree) 중, '사원' 개체가 '관리한다' 관계를 통해 다시 '사원' 개체와 맺는 자기참조 관계의 차수는?",
+    "options": [
+      "단항 관계 (Unary / Recursive Relationship, 1항)",
+      "이항 관계 (Binary Relationship, 2항)",
+      "삼항 관계 (Ternary Relationship, 3항)",
+      "다항 관계 (N-ary Relationship)"
+    ],
+    "answer": 0,
+    "explanation": "동일한 하나의 개체 타입 내에서 인스턴스들 간에 맺어지는 재귀적(순환) 관계를 1항(단항) 관계라고 합니다."
+  },
+  {
+    "id": 38,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "관계의 카디널리티 비율(Cardinality Ratio) 4가지 유형에 해당하지 않는 것은?",
+    "options": [
+      "1:1 (일대일 관계)",
+      "1:N (일대다 관계)",
+      "N:M (다대다 관계)",
+      "0:0 (영대영 관계)"
+    ],
+    "answer": 3,
+    "explanation": "두 개체 집합 간의 사상 비율은 1:1, 1:N, N:1, N:M의 형태로 분류됩니다."
+  },
+  {
+    "id": 39,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "ER 모델에서 참여 제약조건(Participation Constraint) 중 '모든 학과 인스턴스는 반드시 최소 1명의 학과장 교수를 가져야 한다'와 같이 개체 집합의 모든 인스턴스가 관계에 반드시 참여해야 함을 나타내는 제약과 표기법은?",
+    "options": [
+      "전체 참여 (Total Participation / 필수적 참여) / 이중 실선 (Double Line)",
+      "부분 참여 (Partial Participation / 선택적 참여) / 단일 실선",
+      "조건부 참여 / 점선",
+      "배타적 참여 / 빗금선"
+    ],
+    "answer": 0,
+    "explanation": "모든 인스턴스가 관계에 참여해야 하는 필수 참여는 관계선에 이중 실선(Double Line)을 사용하여 표기합니다."
+  },
+  {
+    "id": 40,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "IE(Information Engineering) 표기법(까마귀발 표기법, Crow's Foot)에서 다(Many) 쪽의 관계선 끝에 표시되는 기호는?",
+    "options": [
+      "까마귀발 모양의 세 갈래 선 (<-<)",
+      "단일 수직선 (|)",
+      "동그라미 (O)",
+      "이중 네모"
+    ],
+    "answer": 0,
+    "explanation": "까마귀발 표기법에서 1은 단일 바(|), Many는 까마귀발(세 갈래), 선택적(0)은 작은 동그라미(O)로 표시합니다."
+  },
+  {
+    "id": 41,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "관계(Relationship) 자체도 단순 속성을 가질 수 있다. 예를 들어 학생과 과목 간의 '수강(Enroll)' 관계는 '성적(Grade)'이라는 관계 속성을 가질 수 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "어느 한쪽 개체에 종속되지 않고 두 개체의 결합(수강) 사건에 의해 비로소 발생하는 속성은 관계 자체에 부여됩니다."
+  },
+  {
+    "id": 42,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "두 개체 간에 둘 이상의 서로 다른 관계가 동시에 존재할 수 있는가?",
+    "options": [
+      "존재할 수 있다. 예를 들어 교수와 학과 사이에 '소속된다(N:1)' 관계와 '학과장을 맡는다(1:1)' 관계가 동시에 존재할 수 있다.",
+      "ER 모델 규칙상 두 개체 사이에는 오직 1개의 관계만 허용된다.",
+      "외래키 제약조건 위반이므로 불가능하다.",
+      "오직 1:1 관계일 때만 2개 이상 존재할 수 있다."
+    ],
+    "answer": 0,
+    "explanation": "동일한 개체 쌍이라도 비즈니스 의미가 다르면 여러 개의 독립적인 관계 타입을 정의할 수 있습니다."
+  },
+  {
+    "id": 43,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "약한 개체는 식별 개체에 대해 항상 '전체 참여(Total Participation, 이중 실선)'해야만 존재할 수 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "존재 종속(Existence Dependency)이므로 소유 개체 없이는 약한 개체 인스턴스가 생성되거나 유지될 수 없습니다."
+  },
+  {
+    "id": 44,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "확장된 ER(EER: Enhanced ER) 모델에서 상위 클래스(Superclass)의 속성과 관계를 하위 클래스(Subclass)가 그대로 물려받는 메커니즘을 무엇이라 부르는가?",
+    "options": [
+      "상속 (Inheritance)",
+      "다형성",
+      "캡슐화",
+      "역정규화"
+    ],
+    "answer": 0,
+    "explanation": "IS-A 계층 구조에서 서브클래스는 슈퍼클래스의 모든 속성과 관계를 자동으로 상속받습니다."
+  },
+  {
+    "id": 45,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "EER 모델의 서브클래스 분할 제약조건 중, 한 개체 인스턴스가 여러 서브클래스에 동시에 속할 수 있는지 여부를 나타내는 제약은?",
+    "options": [
+      "디스조인트 제약 (Disjointness Constraint: Disjoint 'd' vs Overlapping 'o')",
+      "완전성 제약 (Completeness: Total vs Partial)",
+      "참여 제약",
+      "외래키 제약"
+    ],
+    "answer": 0,
+    "explanation": "상호 배타적이면 Disjoint(d, 예: 직원은 정규직이거나 계약직 중 하나), 중복 허용이면 Overlapping(o, 예: 부품은 제조품이면서 구매품일 수 있음)입니다."
+  },
+  {
+    "id": 46,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "ER 다이어그램에서 키 속성(Key Attribute)은 타원 안에 속성 이름을 적고 그 아래에 '실선 밑줄'을 그어 표기한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "개체 인스턴스를 유일하게 구별하는 기본키 속성은 실선 밑줄로 명시합니다."
+  },
+  {
+    "id": 47,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "다음 중 복합 속성(Composite Attribute)의 가장 대표적인 사례는?",
+    "options": [
+      "주민등록번호",
+      "성명 (성 + 이름)",
+      "나이",
+      "학번"
+    ],
+    "answer": 1,
+    "explanation": "성명은 '성(Last Name)'과 '이름(First Name)'이라는 세부 속성들로 구성된 복합 속성의 전형적인 예입니다."
+  },
+  {
+    "id": 48,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "단순 속성이면서 단일값 속성인 것은 더 이상 분해할 수 없고 인스턴스당 단 하나의 값만 갖는 속성(예: 학생의 학번, 성별)이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "원자적이며 1개의 값만 가지므로 가장 흔한 속성 형태입니다."
+  },
+  {
+    "id": 49,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "공급자, 부품, 프로젝트 3개의 개체가 '공급한다' 관계에 동시에 참여하는 형태의 관계는?",
+    "options": [
+      "삼항 관계 (Ternary Relationship)",
+      "단항 관계",
+      "이항 관계",
+      "사상 관계"
+    ],
+    "answer": 0,
+    "explanation": "3개의 개체 집합이 결합하여 하나의 관계 인스턴스를 이루는 차수 3의 삼항 관계입니다."
+  },
+  {
+    "id": 50,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "비식별 관계(Non-identifying Relationship)는 부모 개체의 기본키가 자식 개체의 기본키의 일부가 되지 않고 일반 외래키 속성으로만 참조되는 관계이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "자식 개체가 독자적인 기본키를 가지고 부모는 단순 참조만 하는 일반적인 약결합 관계입니다."
+  },
+  {
+    "id": 51,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "개체 집합의 최소 카디널리티와 최대 카디널리티를 명시하기 위해 Chen 표기법에서 사용하는 구조적 표기 방식은?",
+    "options": [
+      "(min, max) 표기법",
+      "(top, bottom) 표기법",
+      "(first, last) 표기법",
+      "[in, out] 표기법"
+    ],
+    "answer": 0,
+    "explanation": "예: 사원-(1, 1)-소속-(0, N)-부서 처럼 최소 및 최대 참여 횟수를 괄호 쌍으로 정확히 명시하는 방법입니다."
+  },
+  {
+    "id": 52,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "(min, max) 표기법에서 min = 0이면 부분 참여(선택적 참여)를 의미하고, min >= 1이면 전체 참여(필수 참여)를 의미한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "최소 참여 수가 0이면 관계를 맺지 않아도 되므로 부분 참여이고, 1 이상이면 무조건 최소 1회 참여해야 하므로 필수 참여입니다."
+  },
+  {
+    "id": 53,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "개념적 모델링 과정에서 현실 세계의 명사(Noun)와 동사(Verb)는 통상적으로 ER 모델의 어떤 요소로 각각 매핑되는가?",
+    "options": [
+      "명사 -> 개체(Entity) 또는 속성(Attribute) / 동사 -> 관계(Relationship)",
+      "명사 -> 관계 / 동사 -> 개체",
+      "명사 -> 키 / 동사 -> 도메인",
+      "명사 -> 데이터 / 동사 -> 트랜잭션"
+    ],
+    "answer": 0,
+    "explanation": "자연어 요구사항 명세에서 주어나 목적어인 명사는 엔티티나 어트리뷰트가 되고, 서술어인 동사는 관계 타입으로 모델링됩니다."
+  },
+  {
+    "id": 54,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "개체 타입(Entity Type)은 개체의 이름과 속성들의 구조를 정의한 스키마이고, 개체 집합(Entity Set)은 특정 시점에 해당 개체 타입에 속하는 인스턴스들의 실제 모임이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "타입(Type)은 정의(틀)이고, 집합(Set)은 인스턴스들의 집단(데이터)입니다."
+  },
+  {
+    "id": 55,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "병원 시스템에서 '환자'와 '의사' 사이의 '진료' 관계가 1:N이 아닌 N:M 관계인 이유는?",
+    "options": [
+      "한 환자는 여러 의사에게 진료받을 수 있고, 한 의사 역시 여러 환자를 진료할 수 있기 때문",
+      "병원에 환자가 1명만 입원할 수 있기 때문",
+      "의사는 한 번에 한 환자만 치료할 수 있기 때문",
+      "진료 기록을 디스크에 저장하지 않기 때문"
+    ],
+    "answer": 0,
+    "explanation": "양방향 모두 복수의 인스턴스와 연계될 수 있으므로 N:M 다대다 관계입니다."
+  },
+  {
+    "id": 56,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "ER 모델에서 속성 값이 아직 알려지지 않았거나(Unknown), 해당 개체에 적용할 수 없는 경우(Inapplicable)에 표현하는 특수한 값을 '널(NULL)' 값이라고 한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "NULL은 공백이나 숫자 0이 아니라 '알 수 없음' 또는 '해당 없음'을 나타내는 특수 표식입니다."
+  },
+  {
+    "id": 57,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "다중값 속성(Multivalued Attribute)을 관계 데이터 모델의 테이블로 직접 변환하지 못하는 근본적인 이유는?",
+    "options": [
+      "관계형 데이터 모델의 제1정규형(1NF) 원칙에 따라 릴레이션의 모든 속성 값은 반드시 더 이상 쪼갤 수 없는 '원자값(Atomic Value)'이어야 하기 때문",
+      "SQL에 다중값을 저장하는 데이터 타입이 전혀 없기 때문",
+      "외래키가 동작하지 않기 때문",
+      "테이블의 행 수가 무한대로 늘어나기 때문"
+    ],
+    "answer": 0,
+    "explanation": "1NF는 속성의 원자성을 요구하므로 하나의 칸에 여러 값을 넣을 수 없어 별도의 테이블로 분리해야 합니다."
+  },
+  {
+    "id": 58,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "식별 관계(Identifying Relationship)에서 부모 개체(Owner)가 삭제되면 이에 종속된 약한 개체(Weak Entity) 인스턴스들도 연쇄 삭제(CASCADE Delete)되어야 한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "약한 개체는 부모의 존재에 종속되므로 부모가 사라지면 존재 의미를 상실하여 함께 삭제됩니다."
+  },
+  {
+    "id": 59,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "mcq",
+    "question": "개체와 속성을 구별할 때, 어떤 개념이 독자적인 여러 세부 속성들을 가지고 독립적으로 관리되어야 한다면 무엇으로 모델링해야 하는가?",
+    "options": [
+      "개체 (Entity)",
+      "단순 속성 (Attribute)",
+      "유도 속성",
+      "외래키"
+    ],
+    "answer": 0,
+    "explanation": "그 자체로 고유한 여러 정보(속성들)를 거느리고 있다면 단순 속성이 아니라 독립적인 '개체(Entity)'로 승격시켜야 합니다."
+  },
+  {
+    "id": 60,
+    "subject": "db",
+    "topic": "Chap 2. ER 모델 & 제약조건",
+    "type": "ox",
+    "question": "ER 모델은 관계형 데이터베이스뿐만 아니라 객체지향 DB나 NoSQL DB 설계를 위한 개념적 모델링 도구로도 범용적으로 활용될 수 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "비즈니스 도메인의 데이터 구조를 개념적으로 추상화하는 모델이므로 특정 DBMS 패러다임에 국한되지 않습니다."
+  },
+  {
+    "id": 61,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "1970년 IBM 연구소의 E.F. Codd가 제안한 관계 데이터 모델(Relational Model)의 기초가 되는 수학적 개념은?",
+    "options": [
+      "수학적 집합론의 관계(Relation) 및 튜플의 카티시안 곱(Cartesian Product) 부분집합",
+      "미적분학의 도함수",
+      "기하학의 유클리드 공간",
+      "추상대수학의 군론"
+    ],
+    "answer": 0,
+    "explanation": "도메인들의 데카르트 곱(Cartesian Product) $D_1 \\times D_2 \\times \\dots \\times D_n$의 부분집합으로 릴레이션을 엄밀하게 수학적으로 정의했습니다."
+  },
+  {
+    "id": 62,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "관계 데이터 모델의 용어와 일반 파일 시스템 용어 간의 매핑으로 올바른 것은?",
+    "options": [
+      "릴레이션(Relation) = 파일/테이블, 튜플(Tuple) = 레코드/행, 속성(Attribute) = 필드/열",
+      "릴레이션 = 필드, 튜플 = 테이블, 속성 = 레코드",
+      "릴레이션 = 데이터, 튜플 = 키, 속성 = 인덱스",
+      "릴레이션 = 뷰, 튜플 = 스키마, 속성 = 도메인"
+    ],
+    "answer": 0,
+    "explanation": "수학적 관계형 모델의 릴레이션, 튜플, 어트리뷰트는 실무의 테이블, 행(Row), 열(Column)에 각각 대응됩니다."
+  },
+  {
+    "id": 63,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "어떤 속성(Attribute)이 가질 수 있는 모든 유효한 원자값(Atomic Value)들의 집합을 무엇이라 부르는가?",
+    "options": [
+      "도메인 (Domain)",
+      "릴레이션",
+      "차수",
+      "카디널리티"
+    ],
+    "answer": 0,
+    "explanation": "도메인은 속성의 유효한 값의 범위(타입, 크기, 제약조건 등)를 규정하는 수학적 집합입니다."
+  },
+  {
+    "id": 64,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "어떤 릴레이션에 5개의 속성(열)과 100개의 튜플(행)이 존재할 때, 이 릴레이션의 차수(Degree)와 카디널리티(Cardinality)는?",
+    "options": [
+      "차수: 5, 카디널리티: 100",
+      "차수: 100, 카디널리티: 5",
+      "차수: 500, 카디널리티: 1",
+      "차수: 20, 카디널리티: 50"
+    ],
+    "answer": 0,
+    "explanation": "차수(Degree)는 속성의 개수(5)이고, 카디널리티(Cardinality)는 튜플의 개수(100)입니다."
+  },
+  {
+    "id": 65,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "릴레이션의 4대 본질적 특성에 해당하지 않는 것은?",
+    "options": [
+      "튜플의 유일성: 릴레이션 내에 완전히 동일한 튜플은 중복되어 존재할 수 없다.",
+      "튜플의 무순서성: 튜플들 간의 순서는 상관없다.",
+      "속성의 무순서성: 속성들 간의 순서는 상관없다.",
+      "속성의 다중값성: 하나의 속성 칸에 여러 개의 값을 배열 형태로 자유롭게 저장할 수 있다."
+    ],
+    "answer": 3,
+    "explanation": "릴레이션의 모든 속성 값은 반드시 분해 불가능한 '단일 원자값(Atomic Value)'이어야 한다는 원자성이 4대 특성 중 하나입니다."
+  },
+  {
+    "id": 66,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "릴레이션에서 키(Key)가 만족해야 하는 2대 기본 조건인 '유일성(Uniqueness)'과 '최소성(Minimality)'의 의미로 옳은 것은?",
+    "options": [
+      "유일성: 하나의 키 값으로 튜플을 유일하게 식별 가능함 / 최소성: 키를 구성하는 속성 중 어느 하나라도 제거하면 유일성이 깨지는 꼭 필요한 최소 속성 집합임",
+      "유일성: 키 값이 1자리 숫자여야 함 / 최소성: 테이블 크기가 작아야 함",
+      "유일성: 테이블에 키가 1개만 있어야 함 / 최소성: NULL 값이 없어야 함",
+      "유일성: 모든 속성이 키여야 함 / 최소성: 중복을 허용함"
+    ],
+    "answer": 0,
+    "explanation": "유일성은 튜플 고유 식별 능력이고, 최소성은 불필요한 군더더기 속성이 없는 가장 콤팩트한 구성임을 의미합니다."
+  },
+  {
+    "id": 67,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "튜플을 유일하게 식별할 수 있는 유일성은 만족하지만, 최소성은 만족하지 않는 속성들의 집합(예: (학번, 이름))은 어떤 키에 해당하는가?",
+    "options": [
+      "슈퍼키 (Super Key)",
+      "후보키 (Candidate Key)",
+      "기본키 (Primary Key)",
+      "외래키 (Foreign Key)"
+    ],
+    "answer": 0,
+    "explanation": "슈퍼키는 유일성은 만족하지만 불필요한 속성이 덧붙여져 있어 최소성을 만족하지 못하는 키입니다."
+  },
+  {
+    "id": 68,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "유일성과 최소성을 모두 만족하는 키들의 집합을 무엇이라 부르는가?",
+    "options": [
+      "후보키 (Candidate Key)",
+      "슈퍼키",
+      "외래키",
+      "인덱스키"
+    ],
+    "answer": 0,
+    "explanation": "기본키가 될 수 있는 자격을 갖춘 유일성과 최소성을 겸비한 모든 키들을 후보키라고 합니다."
+  },
+  {
+    "id": 69,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "후보키들 중에서 릴레이션의 대표 키로 선정된 단 하나의 키를 무엇이라 부르는가?",
+    "options": [
+      "기본키 (Primary Key, PK)",
+      "대체키 (Alternate Key)",
+      "슈퍼키",
+      "외래키"
+    ],
+    "answer": 0,
+    "explanation": "테이블의 주 식별자로 지정된 대표 후보키를 기본키(PK)라고 합니다."
+  },
+  {
+    "id": 70,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "후보키 중에서 기본키(Primary Key)로 선택되지 못하고 남은 나머지 후보키들을 무엇이라 부르는가?",
+    "options": [
+      "대체키 (Alternate Key / 보조키)",
+      "외래키",
+      "인덱스키",
+      "도메인키"
+    ],
+    "answer": 0,
+    "explanation": "기본키 대신 보조적으로 유일성을 식별할 수 있는 나머지 후보키를 대체키라고 합니다."
+  },
+  {
+    "id": 71,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "다른 릴레이션의 기본키(또는 고유키)를 참조하는 속성 또는 속성들의 집합을 무엇이라 부르는가?",
+    "options": [
+      "외래키 (Foreign Key, FK)",
+      "기본키",
+      "대체키",
+      "슈퍼키"
+    ],
+    "answer": 0,
+    "explanation": "두 릴레이션 간의 연결 고리(관계)를 형성하며 피참조 릴레이션의 기본키를 가리키는 속성을 외래키라고 합니다."
+  },
+  {
+    "id": 72,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "개체 무결성 제약조건(Entity Integrity Constraint)의 핵심 규칙은?",
+    "options": [
+      "기본키(Primary Key)를 구성하는 어떤 속성도 널(NULL) 값을 가질 수 없으며, 중복된 값을 가질 수 없다.",
+      "외래키는 항상 0보다 커야 한다.",
+      "테이블에 행이 100개 이상 있어야 한다.",
+      "속성의 이름은 영어 대문자여야 한다."
+    ],
+    "answer": 0,
+    "explanation": "기본키는 튜플을 고유하게 식별해야 하므로 절대로 비어있거나(NOT NULL) 중복(UNIQUE)될 수 없습니다."
+  },
+  {
+    "id": 73,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "참조 무결성 제약조건(Referential Integrity Constraint)의 핵심 규칙은?",
+    "options": [
+      "외래키(FK) 값은 참조하는 릴레이션의 기본키(PK) 값으로 반드시 존재하는 실제 값이거나, 또는 널(NULL) 값이어야 한다.",
+      "외래키 값은 기본키 값보다 항상 커야 한다.",
+      "외래키는 절대로 NULL 값을 가질 수 없다.",
+      "외래키와 기본키는 속성 이름이 100% 철자까지 같아야 한다."
+    ],
+    "answer": 0,
+    "explanation": "존재하지 않는 엉뚱한 부모 키를 참조하는 유령 데이터(Dangling Pointer)가 생기지 않도록 보장하는 핵심 규칙입니다."
+  },
+  {
+    "id": 74,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "도메인 무결성 제약조건(Domain Integrity Constraint)의 의미는?",
+    "options": [
+      "릴레이션의 각 속성 값은 해당 속성에 정의된 도메인의 데이터 타입, 길이, 허용 범위에 속하는 원자값이어야 한다.",
+      "인터넷 도메인 주소(DNS)가 등록되어 있어야 한다.",
+      "기본키가 1개만 존재해야 한다.",
+      "모든 튜플의 개수가 짝수여야 한다."
+    ],
+    "answer": 0,
+    "explanation": "예: 나이 속성에 음수나 문자열이 들어갈 수 없고 정해진 정수 도메인 범위의 값만 허용되는 규칙입니다."
+  },
+  {
+    "id": 75,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "부모 릴레이션의 특정 기본키 튜플이 삭제(DELETE)될 때, 이를 참조하고 있던 자식 릴레이션의 관련 튜플들도 자동으로 함께 연쇄 삭제되도록 하는 외래키 조치 옵션은?",
+    "options": [
+      "`ON DELETE CASCADE`",
+      "`ON DELETE SET NULL`",
+      "`ON DELETE RESTRICT`",
+      "`ON DELETE NO ACTION`"
+    ],
+    "answer": 0,
+    "explanation": "부모 레코드 삭제 시 자식의 관련 레코드들도 함께 일괄 삭제하여 참조 무결성을 유지합니다."
+  },
+  {
+    "id": 76,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "부모 릴레이션의 튜플을 삭제하려 할 때, 해당 튜플을 참조하는 자식 튜플이 단 하나라도 존재하면 부모의 삭제 명령 자체를 아예 거부(차단)하고 오류를 발생시키는 옵션은?",
+    "options": [
+      "`RESTRICT` 또는 `NO ACTION`",
+      "`CASCADE`",
+      "`SET NULL`",
+      "`SET DEFAULT`"
+    ],
+    "answer": 0,
+    "explanation": "자식 데이터가 존재하는 한 부모를 함부로 지우지 못하도록 엄격히 보호하는 옵션입니다."
+  },
+  {
+    "id": 77,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "부모 릴레이션의 기본키가 삭제될 때, 자식 릴레이션의 외래키 값을 자동으로 NULL로 변경하여 연결을 끊는 옵션은?",
+    "options": [
+      "`ON DELETE SET NULL`",
+      "`ON DELETE CASCADE`",
+      "`ON DELETE RESTRICT`",
+      "`ON DELETE DEFAULT`"
+    ],
+    "answer": 0,
+    "explanation": "자식 레코드는 유지하되 참조 링크만 NULL로 비워두는 방식(단, 외래키가 NOT NULL 제약이 없을 때만 가능)입니다."
+  },
+  {
+    "id": 78,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "ox",
+    "question": "외래키(FK)를 구성하는 속성의 이름은 반드시 참조하는 부모 테이블의 기본키(PK) 속성 이름과 철자가 똑같아야만 한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 1,
+    "explanation": "도메인(데이터 타입과 의미)만 일치하면 외래키의 속성 이름은 부모의 기본키 속성 이름과 완전히 달라도 무방합니다."
+  },
+  {
+    "id": 79,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "ox",
+    "question": "외래키는 다른 테이블의 기본키뿐만 아니라 자기 자신의 테이블의 기본키를 참조하는 자기참조 외래키(Self-referencing FK)로 구성될 수도 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "예를 들어 사원 테이블에서 '사번'이 PK이고 '관리자사번'이 동일 테이블의 '사번'을 참조하는 외래키가 될 수 있습니다."
+  },
+  {
+    "id": 80,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "관계 대수(Relational Algebra) 연산자 중 특정 조건을 만족하는 '행(튜플)'들만을 수평적으로 골라내는 연산자와 기호는?",
+    "options": [
+      "셀렉션 (Selection) / $\\sigma$ (시그마)",
+      "프로젝션 (Projection) / $\\pi$ (파이)",
+      "조인 (Join) / $\\bowtie$",
+      "카티시안 곱 / $\\times$"
+    ],
+    "answer": 0,
+    "explanation": "조건식에 맞는 튜플을 필터링하는 연산은 셀렉션($\\sigma$)이며 SQL의 `WHERE` 절에 해당합니다."
+  },
+  {
+    "id": 81,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "관계 대수 연산자 중 릴레이션에서 원하는 특정 '열(속성)'들만을 수직적으로 추출하고 중복을 제거하는 연산자와 기호는?",
+    "options": [
+      "프로젝션 (Projection) / $\\pi$ (파이)",
+      "셀렉션 (Selection) / $\\sigma$",
+      "디비전 (Division) / $\\div$",
+      "합집합 (Union) / $\\cup$"
+    ],
+    "answer": 0,
+    "explanation": "원하는 속성 컬럼만 추출하는 연산은 프로젝션($\\pi$)이며 SQL의 `SELECT 컬럼명`에 해당합니다."
+  },
+  {
+    "id": 82,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "ox",
+    "question": "외래키(Foreign Key) 속성은 참조 무결성을 훼손하지 않는 한 중복된 값을 가질 수 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "1:N 관계에서 N측의 여러 튜플들이 동일한 1측 부모의 기본키를 공유하므로 외래키는 기본적으로 중복을 허용합니다."
+  },
+  {
+    "id": 83,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "두 릴레이션 간에 공통된 속성의 값이 일치하는 튜플들을 결합하고 중복된 공통 속성을 하나로 합쳐주는 조인 연산은?",
+    "options": [
+      "자연 조인 (Natural Join)",
+      "세타 조인 (Theta Join)",
+      "외부 조인 (Outer Join)",
+      "세미 조인 (Semi Join)"
+    ],
+    "answer": 0,
+    "explanation": "동일 이름 속성에 대해 동등 조인(Equi Join)을 수행한 후 중복 속성을 제거하는 표준 결합 연산입니다."
+  },
+  {
+    "id": 84,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "ox",
+    "question": "기본키는 단 하나의 속성으로만 구성되어야 하며, 2개 이상의 속성을 묶어서 기본키로 지정하는 것은 불가능하다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 1,
+    "explanation": "2개 이상의 속성을 묶어 유일성을 식별하는 '복합 기본키(Composite Primary Key)'가 널리 사용됩니다."
+  },
+  {
+    "id": 85,
+    "subject": "db",
+    "topic": "Chap 3. 관계 모델, Key & 무결성",
+    "type": "mcq",
+    "question": "테이블에서 특정 컬럼에 대해 `CHECK (급여 >= 1000)`와 같이 업무 규칙에 맞는 값만 입력되도록 강제하는 제약조건은?",
+    "options": [
+      "사용자 정의 무결성 제약조건 (User-defined Integrity)",
+      "개체 무결성",
+      "참조 무결성",
+      "시스템 무결성"
+    ],
+    "answer": 0,
+    "explanation": "비즈니스 도메인의 특정 논리적 업무 규칙을 강제하기 위한 제약조건입니다."
+  },
+  {
+    "id": 86,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "ER 모델의 '정규(강한) 개체 타입'을 관계 데이터 모델의 테이블로 사상(변환)하는 1단계 규칙으로 올바른 것은?",
+    "options": [
+      "각 정규 개체마다 독립된 릴레이션을 생성하고, 개체의 단순 속성들을 릴레이션의 속성으로 포함시키며, 개체의 키 속성을 릴레이션의 기본키(PK)로 지정한다.",
+      "모든 개체를 단 하나의 통합 테이블로 합친다.",
+      "기본키를 만들지 않고 튜플만 적재한다.",
+      "속성들의 이름을 모두 숫자로 변환한다."
+    ],
+    "answer": 0,
+    "explanation": "강한 엔티티는 그대로 1:1로 릴레이션이 되며 단순 속성들이 컬럼이 되고 식별자가 PK가 됩니다."
+  },
+  {
+    "id": 87,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "ER 모델의 '약한 개체 타입(Weak Entity)'을 관계 모델로 사상하는 2단계 규칙으로 올바른 것은?",
+    "options": [
+      "약한 개체를 위한 릴레이션을 생성하고, 자신의 단순 속성들과 함께 '소유(식별) 개체의 기본키'를 외래키로 가져와 자신의 부분키(구별자)와 결합하여 '복합 기본키'를 구성한다.",
+      "소유 개체의 테이블에 약한 개체의 모든 데이터를 컬럼으로 추가한다.",
+      "약한 개체는 관계 모델에서 영구 삭제한다.",
+      "부분키만으로 단독 기본키를 삼는다."
+    ],
+    "answer": 0,
+    "explanation": "약한 개체 테이블의 기본키는 '식별 개체의 PK(외래키) + 자신의 구별자'의 복합 기본키가 됩니다."
+  },
+  {
+    "id": 88,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "ER 모델의 '1:1 관계'를 사상할 때 가장 널리 권장되는 '외래키 접근 방식'으로 올바른 것은?",
+    "options": [
+      "관계에 '전체 참여(Total Participation, 필수)'하는 개체 측의 릴레이션에 상대방 개체의 기본키를 외래키로 추가한다.",
+      "부분 참여하는 쪽에 외래키를 추가하여 NULL을 대량 발생시킨다.",
+      "반드시 3번째 새로운 교차 테이블을 만들어야만 한다.",
+      "양쪽 테이블을 무조건 하나로 병합해야만 한다."
+    ],
+    "answer": 0,
+    "explanation": "전체 참여 쪽에 외래키를 두어야 외래키 컬럼에 NULL 값이 생기지 않고 완전한 매핑이 이루어집니다."
+  },
+  {
+    "id": 89,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "ER 모델의 '1:N (일대다) 관계'를 관계 데이터 모델로 사상하는 4단계 표준 규칙은?",
+    "options": [
+      "N(다) 측에 해당하는 릴레이션에 1(일) 측 릴레이션의 기본키를 외래키(FK)로 추가한다.",
+      "1(일) 측 릴레이션에 N(다) 측의 기본키들을 배열로 추가한다.",
+      "무조건 새로운 관계 릴레이션을 별도로 생성해야 한다.",
+      "양쪽 테이블의 기본키를 서로 맞바꾼다."
+    ],
+    "answer": 0,
+    "explanation": "N측 튜플은 부모가 1개뿐이므로 N측에 부모(1측)의 기본키를 외래키로 심는 것이 가장 깔끔하며 불필요한 테이블 생성을 방지합니다."
+  },
+  {
+    "id": 90,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "ER 모델의 'N:M (다대다) 관계'를 관계 데이터 모델로 사상하는 5단계 규칙으로 가장 올바른 것은?",
+    "options": [
+      "N:M 관계를 표현하기 위해 '새로운 관계(교차/조인) 릴레이션'을 별도로 생성하고, 참여하는 양측 개체들의 기본키를 외래키로 가져와 이들의 조합을 '복합 기본키'로 설정한다.",
+      "어느 한쪽 테이블에 상대방 키를 콤마로 구분하여 문자열로 저장한다.",
+      "1:N 관계처럼 N측에 외래키를 하나만 추가한다.",
+      "N:M 관계는 관계 데이터 모델로 변환할 수 없다."
+    ],
+    "answer": 0,
+    "explanation": "다대다 관계는 두 테이블 간 직접 외래키 매핑이 불가능하므로, 중간에 연결 테이블(교차 엔티티)을 만들어 두 1:N 관계로 해소합니다."
+  },
+  {
+    "id": 91,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "N:M 관계 자체에 속성(예: 학생과 과목 간의 수강 관계에 붙은 '성적' 속성)이 존재할 때, 이 관계 속성은 사상 후 어디에 위치하는가?",
+    "options": [
+      "새로 생성된 교차(관계) 릴레이션의 일반 속성으로 포함된다.",
+      "학생 릴레이션의 속성으로 추가된다.",
+      "과목 릴레이션의 속성으로 추가된다.",
+      "데이터베이스에서 버려진다."
+    ],
+    "answer": 0,
+    "explanation": "관계 속성은 두 엔티티의 결합 테이블(수강 릴레이션)에 컬럼으로 들어갑니다."
+  },
+  {
+    "id": 92,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "ER 모델의 '다중값 속성(Multivalued Attribute)'(예: 사원의 '취미')을 사상하는 6단계 규칙으로 옳은 것은?",
+    "options": [
+      "다중값 속성을 위한 '별도의 새로운 릴레이션'을 생성하고, 해당 개체의 기본키를 외래키로 가져오며, [개체의 기본키 + 다중값 속성]을 묶어 복합 기본키로 지정한다.",
+      "사원 테이블에 취미1, 취미2, 취미3 컬럼을 무한히 추가한다.",
+      "사원 테이블의 취미 컬럼에 JSON 형태로 몽땅 집어넣는다.",
+      "다중값 속성은 무시하고 삭제한다."
+    ],
+    "answer": 0,
+    "explanation": "원자성(1NF)을 지키기 위해 독립 릴레이션으로 분리하고, 사번과 취미의 쌍을 복합 기본키로 설정합니다."
+  },
+  {
+    "id": 93,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "ox",
+    "question": "복합 속성(Composite Attribute, 예: 주소 = 시, 구, 동)을 관계 모델로 사상할 때는 복합 속성 자체는 생략하고 세부 단순 속성들(시, 구, 동)만을 릴레이션의 컬럼으로 직접 펼쳐서 포함시킨다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "복합 속성의 상위 개념 이름은 제거하고 원자적인 리프(Leaf) 속성들만 실제 테이블 컬럼으로 플랫(Flatten)하게 만듭니다."
+  },
+  {
+    "id": 94,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "사원(1)과 부서(1) 간의 '관리한다(1:1)' 관계에서, 사원은 부서 관리자일 수도 있고 아닐 수도 있지만(부분 참여), 모든 부서는 반드시 관리자 사원을 가져야 할 때(전체 참여), 외래키를 어느 테이블에 추가해야 NULL을 방지하는가?",
+    "options": [
+      "부서(Department) 릴레이션에 관리자 사원번호(FK)를 추가한다.",
+      "사원(Employee) 릴레이션에 부서번호(FK)를 추가한다.",
+      "양쪽 모두에 외래키를 서로 추가한다.",
+      "외래키를 추가하지 않는다."
+    ],
+    "answer": 0,
+    "explanation": "모든 부서는 관리자가 필수(전체 참여)이므로 부서 테이블에 외래키를 두면 해당 컬럼이 결코 NULL이 되지 않습니다."
+  },
+  {
+    "id": 95,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "ox",
+    "question": "1:1 관계에서 양쪽 개체 집합이 모두 '전체 참여(Total Participation)'하는 드문 경우라면, 두 릴레이션을 단 하나의 통합 릴레이션으로 합치는(Merge) 것이 가장 효율적인 사상 대안이 될 수 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "양쪽이 1:1로 항상 100% 대응되므로 두 테이블을 하나로 합쳐도 낭비나 NULL이 생기지 않고 조인 비용을 없앨 수 있습니다."
+  },
+  {
+    "id": 96,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "삼항(Ternary) 이상의 다항 관계 타입을 관계 모델로 사상하는 올바른 방법은?",
+    "options": [
+      "관계를 나타내는 새로운 릴레이션을 생성하고, 참여하는 모든 개체들의 기본키를 외래키로 가져와 결합하여 기본키를 구성한다.",
+      "세 개체 중 가장 데이터가 많은 개체 테이블에 다른 두 개체의 키를 넣는다.",
+      "다항 관계는 무조건 2개씩 쪼개어 이항 관계로 바꾼 뒤 사상한다.",
+      "데이터베이스 트리거로만 처리한다."
+    ],
+    "answer": 0,
+    "explanation": "참여하는 모든 엔티티의 식별자를 외래키로 모아 관계 릴레이션을 정의합니다."
+  },
+  {
+    "id": 97,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "ox",
+    "question": "약한 개체 릴레이션의 기본키는 항상 외래키 속성을 포함하는 '복합 기본키' 형태를 띤다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "약한 개체 단독으로는 유일성을 보장할 수 없으므로 식별 부모의 PK가 반드시 기본키의 일부분으로 결합되어야 합니다."
+  },
+  {
+    "id": 98,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "유도 속성(Derived Attribute, 예: 총점, 평균, 나이)에 대한 관계 모델 사상 원칙으로 옳은 것은?",
+    "options": [
+      "원칙적으로 데이터의 중복성과 불일관성을 방지하기 위해 릴레이션의 물리적 속성으로 포함시키지 않고 쿼리 시 동적 계산(SQL 표현식 또는 View)으로 처리한다.",
+      "항상 물리 테이블의 첫 번째 컬럼으로 무조건 추가해야 한다.",
+      "유도 속성만 모아둔 별도의 테이블을 만든다.",
+      "데이터베이스가 정지할 때까지 계속 계산한다."
+    ],
+    "answer": 0,
+    "explanation": "성능상 반정규화가 필요한 특수 상황을 제외하면 원칙적으로 유도 속성은 저장하지 않는 것이 데이터 무결성에 안전합니다."
+  },
+  {
+    "id": 99,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "ox",
+    "question": "1:N 관계를 사상할 때 1측의 릴레이션에 N측의 기본키를 외래키로 추가할 수 없는 이유는, 1측의 한 행에 N측의 키 값이 여러 개 들어가야 하므로 속성의 원자성(1NF)을 위반하기 때문이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "1측에 넣으려면 키를 여러 개 저장하는 다중값이 되어버리므로 오직 부모가 1개인 N측에 외래키를 심어야 합니다."
+  },
+  {
+    "id": 100,
+    "subject": "db",
+    "topic": "Chap 3-1. ER-to-Relational 사상 규칙",
+    "type": "mcq",
+    "question": "ER 모델에서 관계형 스키마로의 사상 과정을 성공적으로 마친 후 데이터베이스 설계자가 수행해야 하는 다음 논리적 검증 절차는?",
+    "options": [
+      "정규화(Normalization: 1NF -> 2NF -> 3NF -> BCNF)를 통해 데이터 중복 및 갱신/삽입/삭제 이상(Anomaly)을 검증 및 제거하는 단계",
+      "서버의 운영체제를 재설치하는 단계",
+      "모든 외래키 제약조건을 삭제하는 단계",
+      "네트워크 방화벽을 끄는 단계"
+    ],
+    "answer": 0,
+    "explanation": "사상된 릴레이션 스키마들이 함수 종속성에 기반하여 이상 현상 없는 깔끔한 정규형을 만족하는지 정규화 이론으로 최종 정제합니다."
+  }
+]

@@ -1,0 +1,1466 @@
+[
+  {
+    "id": 1,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "단순 선형 회귀(Simple Linear Regression)에서 가설 함수 $h_\\theta(x) = \\theta_0 + \\theta_1 x$의 비용 함수로 주로 사용되는 평균 제곱 오차(MSE)의 설명으로 가장 올바른 것은?",
+    "options": [
+      "실제값과 예측값의 차이의 절댓값을 합산하여 미분이 불가능하다.",
+      "오차를 제곱하므로 큰 오차에 대해 더 큰 패널티를 부여하며, 미분 가능한 2차 볼록 함수 형태를 띤다.",
+      "비용 함수의 값이 0에 도달하면 가중치가 더 이상 학습되지 않고 무한대로 발산한다.",
+      "분류 문제에서 시그모이드와 결합 시 항상 볼록(Convex) 함수를 형성하여 최적해를 보장한다."
+    ],
+    "answer": 1,
+    "explanation": "MSE는 오차를 제곱하여 합산하므로 큰 오차에 민감하게 반응하며, 파라미터 공간에서 아래로 볼록한(Convex) 포물선 곡면을 형성하여 경사하강법으로 최적화하기에 적합합니다."
+  },
+  {
+    "id": 2,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "1958년 프랑크 로젠블랫(Frank Rosenblatt)이 제안한 단층 퍼셉트론(Single-Layer Perceptron)에 대한 설명으로 올바른 것은?",
+    "options": [
+      "활성화 함수로 반드시 시그모이드(Sigmoid)나 ReLU 함수를 사용해야만 수렴한다.",
+      "입력 신호들에 가중치를 곱하고 편향을 더한 선형 결합 결과에 계단 함수(Step Function)를 적용하여 이진 분류를 수행한다.",
+      "단 하나의 퍼셉트론으로 AND, OR, XOR 논리 게이트를 모두 완벽하게 학습 및 구현할 수 있다.",
+      "출력값과 정답이 일치할 때 가중치를 가장 큰 폭으로 갱신하여 학습을 가속화한다."
+    ],
+    "answer": 1,
+    "explanation": "단층 퍼셉트론은 선형 결합 $\\sum w_i x_i + b$가 임계값을 넘는지(0 이상인지) 판단하는 계단 함수(Heaviside Step Function)를 활성화 함수로 사용하여 0 또는 1의 이진 출력을 생성합니다."
+  },
+  {
+    "id": 3,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "민스키와 페퍼트(Minsky & Papert, 1969)가 지적하여 제1차 AI 겨울을 촉발한 '단층 퍼셉트론의 XOR 문제'의 근본적인 원인은 무엇인가?",
+    "options": [
+      "가중치 초기값이 0으로 설정되어 역전파 시 그래디언트가 소실되었기 때문",
+      "XOR의 진리표 데이터는 2차원 평면상에서 단 하나의 직선(초평면)으로 두 클래스를 분리(선형 분리)할 수 없기 때문",
+      "입력 데이터의 차원이 너무 커서 연산량이 지수 함수적으로 폭증했기 때문",
+      "학습률(Learning Rate)이 너무 크게 설정되어 가중치가 진동했기 때문"
+    ],
+    "answer": 1,
+    "explanation": "XOR 문제는 (0,0)->0, (1,1)->0, (0,1)->1, (1,0)->1로 2차원 평면에서 단일 직선으로는 양 클래스를 나눌 수 없는 '비선형 분리(Non-linearly Separable)' 문제입니다."
+  },
+  {
+    "id": 4,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "다층 퍼셉트론(MLP: Multi-Layer Perceptron)이 XOR 문제를 해결할 수 있는 기하학적/수학적 메커니즘은 무엇인가?",
+    "options": [
+      "입력 데이터의 노이즈를 제거하여 1차원 직선으로 투영하기 때문",
+      "은닉층(Hidden Layer)이 입력 공간을 비선형적으로 왜곡/변환하여, 출력층 관점에서 선형 분리가 가능한 새로운 특징 공간으로 매핑하기 때문",
+      "은닉층의 모든 뉴런이 가중치 갱신 없이 무작위 투영만을 수행하기 때문",
+      "출력층에서 확률적 경사하강법 대신 정규방정식(Normal Equation)만을 사용하기 때문"
+    ],
+    "answer": 1,
+    "explanation": "은닉층은 입력 좌표 공간을 뒤틀거나 변환하여, 은닉 노드들의 출력 공간에서는 원래 분리 불가능했던 데이터가 선형 분리 가능(Linearly Separable)하도록 만듭니다."
+  },
+  {
+    "id": 5,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "XOR 문제를 해결하기 위해 구성해야 하는 MLP의 최소 은닉층 뉴런 수는 몇 개인가?",
+    "options": [
+      "1개",
+      "2개",
+      "4개",
+      "8개"
+    ],
+    "answer": 1,
+    "explanation": "XOR은 2개의 결정 경계(예: NAND 게이트와 OR 게이트의 조합)를 은닉층의 2개 뉴런으로 형성하고, 이를 출력 뉴런(AND 연산)에서 결합하면 최소 2개의 은닉 노드로 구현 가능합니다."
+  },
+  {
+    "id": 6,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "단층 퍼셉트론에서 결정 경계(Decision Boundary)의 수학적 형태는 $n$차원 입력 공간에서 어떤 차원의 초평면(Hyperplane)을 이루는가?",
+    "options": [
+      "$n$차원 공간",
+      "$n-1$차원 초평면",
+      "1차원 점",
+      "$2n$차원 곡면"
+    ],
+    "answer": 1,
+    "explanation": "가중치 방정식 $w_1 x_1 + w_2 x_2 + \\dots + w_n x_n + b = 0$은 $n$차원 유클리드 공간에서 $n-1$차원의 초평면(Hyperplane)을 정의합니다. (2차원 평면에서는 1차원 직선)"
+  },
+  {
+    "id": 7,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "퍼셉트론 수식 $y = f(\\mathbf{w}^T \\mathbf{x} + b)$에서 편향(Bias, $b$)의 기하학적 역할로 가장 정확한 것은?",
+    "options": [
+      "결정 초평면의 기울기(방향)만을 결정한다.",
+      "결정 초평면이 원점을 지나지 않고 공간상에서 평행 이동할 수 있도록 위치(절편)를 조절한다.",
+      "입력 벡터 $\\mathbf{x}$의 차원을 동적으로 증가시킨다.",
+      "가중치 벡터의 크기를 1로 정규화(L2 Normalization)한다."
+    ],
+    "answer": 1,
+    "explanation": "가중치 벡터 $\\mathbf{w}$는 초평면의 법선 벡터로서 방향을 결정하고, 편향 $b$는 초평면이 원점으로부터 얼마나 떨어져 있는지를 조절(절편 이동)합니다."
+  },
+  {
+    "id": 8,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "입력층 노드 수가 4개, 은닉층 노드 수가 5개, 출력층 노드 수가 2개인 완전연결(Fully-Connected) MLP에서 학습해야 할 총 파라미터(가중치 + 편향)의 수는?",
+    "options": [
+      "30개",
+      "37개",
+      "40개",
+      "47개"
+    ],
+    "answer": 1,
+    "explanation": "입력->은닉 가중치: $4 \\times 5 = 20$, 은닉 편향: $5$ / 은닉->출력 가중치: $5 \\times 2 = 10$, 출력 편향: $2$ -> 총 파라미터 = $20 + 5 + 10 + 2 = 37$개입니다."
+  },
+  {
+    "id": 9,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "머신러닝의 3대 학습 패러다임에 대한 설명 중 잘못된 것은?",
+    "options": [
+      "지도학습(Supervised Learning): 정답 라벨이 부여된 훈련 데이터를 사용하여 입력과 출력 간의 함수를 학습한다.",
+      "비지도학습(Unsupervised Learning): 정답 라벨 없이 데이터 내의 숨겨진 패턴, 클러스터 또는 데이터 분포를 학습한다.",
+      "강화학습(Reinforcement Learning): 환경과 상호작용하며 상태에 따른 행동을 취하고 보상(Reward)을 최대화하는 정책을 학습한다.",
+      "선형 회귀와 단층 퍼셉트론은 정답 라벨이 필요 없는 대표적인 비지도학습 알고리즘이다."
+    ],
+    "answer": 3,
+    "explanation": "선형 회귀와 퍼셉트론은 정답(타깃값 또는 클래스 라벨)이 주어진 상태에서 오차를 계산하여 학습하므로 '지도학습(Supervised Learning)'입니다."
+  },
+  {
+    "id": 10,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "보편 근사 정리(Universal Approximation Theorem, Hornik et al. 1989)가 말하는 핵심 내용으로 옳은 것은?",
+    "options": [
+      "활성화 함수 없이 선형 변환만으로 구성된 100층 신경망은 모든 다항 함수를 오차 없이 근사한다.",
+      "비선형 활성화 함수를 가진 단 하나의 은닉층을 포함하는 피드포워드 신경망이라도, 은닉 뉴런 수가 충분하다면 임의의 연속 함수를 원하는 정밀도로 근사할 수 있다.",
+      "신경망의 파라미터 수가 데이터 수보다 많으면 항상 전역 최적해(Global Optimum)에 100% 수렴한다.",
+      "합성곱 계층과 풀링 계층이 반드시 포함되어야만 비선형 함수를 근사할 수 있다."
+    ],
+    "answer": 1,
+    "explanation": "보편 근사 정리는 비선형 활성화 함수를 갖춘 단일 은닉층 MLP라도 뉴런 수가 충분하면 컴팩트 집합 위의 어떠한 연속 함수도 임의의 오차 범위 내에서 근사할 수 있음을 수학적으로 보장합니다."
+  },
+  {
+    "id": 11,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "ox",
+    "question": "다층 신경망에서 은닉층에 비선형 활성화 함수를 사용하지 않고 항등 함수(선형 변환)만을 사용한다면, 아무리 많은 은닉층을 쌓아도 단일 선형 변환 계층과 수학적으로 완전히 동일하다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "$W_2(W_1 x + b_1) + b_2 = (W_2 W_1)x + (W_2 b_1 + b_2) = W'x + b'$로 선형 변환의 합성은 단일 선형 변환에 불과하므로 은닉층의 표현력이 증가하지 않습니다."
+  },
+  {
+    "id": 12,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "ox",
+    "question": "단층 퍼셉트론의 가중치 갱신 규칙은 분류 오차가 0일 때도 가중치를 학습률 크기만큼 지속적으로 증가시킨다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 1,
+    "explanation": "퍼셉트론 규칙에서 예측과 실제 타깃이 일치하면 오차 $(y - \\hat{y}) = 0$이므로 가중치는 전혀 변경되지 않습니다."
+  },
+  {
+    "id": 13,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "과적합(Overfitting) 현상에 대한 설명으로 가장 올바른 것은?",
+    "options": [
+      "모델의 복잡도가 너무 낮아 훈련 데이터의 기본 패턴조차 학습하지 못하는 현상",
+      "모델이 훈련 데이터의 노이즈와 세부 사항까지 과도하게 암기하여, 훈련 오차는 매우 낮으나 새로운 테스트 데이터에 대한 일반화 성능이 급격히 떨어지는 현상",
+      "에포크(Epoch)를 1회만 수행했을 때 가중치가 갱신되지 않는 현상",
+      "훈련 데이터와 테스트 데이터의 손실 함수 값이 모두 0에 수렴하는 이상적인 상태"
+    ],
+    "answer": 1,
+    "explanation": "과적합은 모델의 용량(파라미터 수)이 데이터 복잡도에 비해 너무 커서 훈련 셋의 무작위 노이즈까지 과도하게 피팅되어 일반화(Generalization) 능력이 상실된 상태입니다."
+  },
+  {
+    "id": 14,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "L2 규제(Ridge Regularization / Weight Decay)가 신경망의 과적합을 방지하는 원리는?",
+    "options": [
+      "모든 가중치 중 절댓값이 작은 것을 정확히 0으로 만들어 모델을 희소(Sparse)하게 만든다.",
+      "손실 함수에 가중치 제곱합 $\\frac{1}{2}\\lambda \\sum w_i^2$을 페널티 항으로 추가하여, 가중치들이 지나치게 커지지 않도록 억제한다.",
+      "데이터의 차원을 자동으로 2배로 확장시킨다.",
+      "경사하강법의 학습률을 에포크마다 지수적으로 증가시킨다."
+    ],
+    "answer": 1,
+    "explanation": "L2 규제는 큰 가중치에 페널티를 부과하여 가중치 분포를 완만하고 작게 유지함으로써 결정 경계의 급격한 굴곡(과적합)을 방지합니다."
+  },
+  {
+    "id": 15,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "선형 회귀에서 경사하강법 대신 행렬 연산으로 한 번에 최적 파라미터를 구하는 정규 방정식(Normal Equation)의 형태는?",
+    "options": [
+      "$\\theta = (X^T X)^{-1} X^T y$",
+      "$\\theta = X^T (X X^T)^{-1} y$",
+      "$\\theta = X (X^T y)^{-1}$",
+      "$\\theta = (X^T y) X^{-1}$"
+    ],
+    "answer": 0,
+    "explanation": "정규 방정식은 비용함수 $J(\\theta)$의 그래디언트를 0으로 놓았을 때 해석적 해 $\\theta = (X^T X)^{-1} X^T y$로 유도됩니다."
+  },
+  {
+    "id": 16,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "정규 방정식(Normal Equation)을 매우 큰 규모의 빅데이터 학습에 직접 적용하기 어려운 가장 큰 이유는?",
+    "options": [
+      "특징(Feature) 수가 많아지면 $(X^T X)$의 역행렬을 계산하는 시간 복잡도가 대략 $O(n^3)$으로 폭증하기 때문",
+      "학습률을 잘못 설정하면 전역 최소점을 지나쳐 발산하기 때문",
+      "항상 로컬 미니마(Local Minima)에 갇히는 문제가 발생하기 때문",
+      "행렬의 모든 원소가 정수일 때만 역행렬이 존재하기 때문"
+    ],
+    "answer": 0,
+    "explanation": "특징 차원 $n$이 수만 개 이상으로 커지면 $n \\times n$ 행렬의 역행렬 연산 비용이 $O(n^3)$으로 감당할 수 없을 만큼 커지므로, 점진적인 경사하강법이 훨씬 효율적입니다."
+  },
+  {
+    "id": 17,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "ox",
+    "question": "AND 게이트와 OR 게이트는 모두 단 하나의 직선으로 0과 1을 분리할 수 있는 선형 분리 가능(Linearly Separable) 함수이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "AND와 OR의 진리표 점들은 2차원 평면에서 직선 하나로 완벽하게 양분할 수 있습니다."
+  },
+  {
+    "id": 18,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "가중치(Weight)의 초깃값을 모두 0으로 동일하게 설정했을 때 다층 퍼셉트론(MLP)에서 발생하는 치명적인 문제는?",
+    "options": [
+      "경사하강법의 그래디언트가 무한대로 폭발한다.",
+      "같은 층의 모든 은닉 노드가 동일한 그래디언트를 받아 항상 똑같이 갱신되는 대칭성(Symmetry) 문제가 발생하여 노드가 여럿이어도 1개처럼 동작한다.",
+      "비용 함수가 즉시 0이 되어 학습이 종료된다.",
+      "모든 입력 데이터가 자동으로 0으로 정규화된다."
+    ],
+    "answer": 1,
+    "explanation": "대칭성 깨기(Symmetry Breaking)가 실패하여 모든 은닉 노드가 동일한 활성화값과 동일한 그래디언트를 갖게 되므로, Xavier나 He 초기화 등 무작위 난수 초기화가 필수적입니다."
+  },
+  {
+    "id": 19,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "mcq",
+    "question": "경사하강법을 적용하기 전 입력 데이터의 특성(Feature)들을 평균 0, 표준편차 1로 스케일링(Standardization)하는 주요 이유는?",
+    "options": [
+      "손실 함수의 등고선이 왜곡된 타원에서 원형에 가깝게 변하여 경사하강법이 최소점을 향해 진동 없이 빠르게 수렴하기 때문",
+      "비선형 활성화 함수를 선형 함수로 변환하기 때문",
+      "은닉층 뉴런의 개수를 절반으로 줄일 수 있기 때문",
+      "학습 데이터의 크기(메가바이트)를 줄여 디스크 용량을 아끼기 때문"
+    ],
+    "answer": 0,
+    "explanation": "특징 간의 스케일 차이가 크면 손실 곡면이 심하게 찌그러진 타원이 되어 가중치가 지그재그로 요동치며 수렴이 지연됩니다."
+  },
+  {
+    "id": 20,
+    "subject": "algorithms",
+    "topic": "Lec 2. 선형회귀 · 퍼셉트론 · MLP",
+    "type": "ox",
+    "question": "단층 퍼셉트론은 데이터가 선형 분리 가능한 경우에 한하여 유한한 반복 내에 반드시 수렴한다는 '퍼셉트론 수렴 정리'가 증명되어 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "노비코프(Novikoff, 1962)의 퍼셉트론 수렴 정리에 따르면 선형 분리 가능한 데이터셋에 대해 퍼셉트론 알고리즘은 유한 횟수 안에 오차 0인 경계를 찾아냅니다."
+  },
+  {
+    "id": 21,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "시그모이드(Sigmoid) 함수 $\\sigma(x) = \\frac{1}{1 + e^{-x}}$의 도함수 $\\sigma'(x)$를 수식으로 올바르게 표현한 것은?",
+    "options": [
+      "$\\sigma'(x) = 1 - \\sigma(x)$",
+      "$\\sigma'(x) = \\sigma(x)(1 - \\sigma(x))$",
+      "$\\sigma'(x) = \\sigma(x)^2$",
+      "$\\sigma'(x) = \\frac{1}{(1 + e^{-x})^2}$"
+    ],
+    "answer": 1,
+    "explanation": "$\\sigma'(x) = \\frac{e^{-x}}{(1+e^{-x})^2} = \\frac{1}{1+e^{-x}} \\cdot \\frac{e^{-x}}{1+e^{-x}} = \\sigma(x)(1 - \\sigma(x))$로 자기 자신을 이용해 매우 간단히 계산됩니다."
+  },
+  {
+    "id": 22,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "시그모이드 도함수 $\\sigma'(x) = \\sigma(x)(1 - \\sigma(x))$의 최댓값과 그 위치($x$)는?",
+    "options": [
+      "최댓값 1.0 ($x = 0$)",
+      "최댓값 0.5 ($x = 1$)",
+      "최댓값 0.25 ($x = 0$)",
+      "최댓값 0.75 ($x = -1$)"
+    ],
+    "answer": 2,
+    "explanation": "$x = 0$일 때 $\\sigma(0) = 0.5$이며, 도함수 최댓값은 $0.5 \\times (1 - 0.5) = 0.25$입니다."
+  },
+  {
+    "id": 23,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "시그모이드 함수를 깊은 신경망의 은닉층에 사용할 때 발생하는 '기울기 소실(Vanishing Gradient)'의 주된 메커니즘은?",
+    "options": [
+      "역전파 과정에서 각 층을 거칠 때마다 최대 0.25에 불과한 미분값이 연속으로 곱해지면서 입력층 쪽으로 갈수록 그래디언트가 지수적으로 0에 수렴하기 때문",
+      "가중치들이 층을 거칠 때마다 4배씩 커지기 때문",
+      "손실 함수가 음수 영역으로 발산하기 때문",
+      "은닉 노드의 출력이 항상 1보다 커지기 때문"
+    ],
+    "answer": 0,
+    "explanation": "연쇄 법칙에 의해 층을 거슬러 올라가며 미분값이 연쇄 곱셈되는데, 각 미분값이 최대 0.25이므로 10개 층만 거쳐도 $0.25^{10} \\approx 10^{-6}$으로 기울기가 사실상 소멸합니다."
+  },
+  {
+    "id": 24,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "시그모이드 함수의 또 다른 단점인 'Not Zero-centered(원점 비대칭)'로 인해 발생하는 역전파 시의 문제점은?",
+    "options": [
+      "모든 은닉 노드가 0으로 강제 초기화된다.",
+      "입력값이 항상 양수($\\sigma(x) > 0$)이므로 가중치들의 그래디언트 부호가 모두 동일하게 결정되어, 가중치 업데이트가 비효율적인 '지그재그(Zig-zag)' 경로를 따르게 된다.",
+      "학습률이 자동으로 음수로 전환된다.",
+      "손실 함수의 최솟값이 0에서 1로 이동한다."
+    ],
+    "answer": 1,
+    "explanation": "국소 기울기 $\\frac{\\partial L}{\\partial w_i} = \\frac{\\partial L}{\\partial z} x_i$에서 $x_i$가 항상 양수이면 모든 $w_i$에 대한 그래디언트가 전부 양수이거나 전부 음수가 되어 파라미터 갱신이 대각선 지그재그 방향으로 비효율적으로 진행됩니다."
+  },
+  {
+    "id": 25,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "쌍곡탄젠트($\\tanh$) 함수가 시그모이드 함수에 비해 갖는 장점과 여전히 남아있는 한계의 조합으로 가장 적절한 것은?",
+    "options": [
+      "장점: 출력 범위가 (-1, 1)로 Zero-centered이다. / 한계: $|x|$가 클 때 여전히 포화(Saturation)되어 기울기 소실이 발생한다.",
+      "장점: 도함수의 최댓값이 10 이상이다. / 한계: 원점 비대칭이다.",
+      "장점: 연산 속도가 계단 함수보다 빠르다. / 한계: 비선형성이 전혀 없다.",
+      "장점: 기울기 소실이 100% 영구 해결된다. / 한계: 출력이 음수가 될 수 없다."
+    ],
+    "answer": 0,
+    "explanation": "$\\tanh$는 출력이 0을 중심으로 대칭(Zero-centered)이라 시그모이드보다 학습이 안정적이지만, $|x|$가 커지면 미분값이 0에 가까워지는 포화 특성 때문에 기울기 소실은 여전히 존재합니다."
+  },
+  {
+    "id": 26,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "ReLU(Rectified Linear Unit, $f(x) = \\max(0, x)$)가 딥러닝에서 시그모이드를 제치고 표준 활성화 함수로 채택된 가장 결정적인 이유는?",
+    "options": [
+      "모든 실수 영역에서 미분이 완벽하게 가능하기 때문",
+      "양수 영역($x > 0$)에서 도함수가 항상 1이므로 깊은 층에서도 기울기 소실을 극적으로 완화하며, 단순 임계값 연산으로 계산 속도가 매우 빠르기 때문",
+      "출력값이 항상 -1과 1 사이로 정규화되기 때문",
+      "파라미터 초기화가 전혀 필요 없기 때문"
+    ],
+    "answer": 1,
+    "explanation": "ReLU는 $x > 0$일 때 기울기가 1로 유지되어 층이 아무리 깊어도 기울기가 약화되지 않고 보존되며, 지수 연산($e^x$)이 없어 연산 비용이 획기적으로 낮습니다."
+  },
+  {
+    "id": 27,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "ReLU 활성화 함수에서 발생하는 'Dying ReLU' 현상이란 무엇인가?",
+    "options": [
+      "가중치가 너무 커져서 컴퓨터의 부동소수점 오버플로우가 발생하는 현상",
+      "음수 입력($x < 0$)에 대해 출력이 0이고 기울기도 0이 되어, 큰 음수 그래디언트를 받아 가중치가 비활성화된 뉴런이 다시는 회생하지 못하는 현상",
+      "양수 입력에서 미분값이 0이 되는 현상",
+      "출력층의 소프트맥스 확률이 0이 되는 현상"
+    ],
+    "answer": 1,
+    "explanation": "뉴런의 입력이 음수가 되면 기울기가 정확히 0이 되므로 가중치가 더 이상 업데이트되지 않고 영구히 잠드는 현상을 Dying ReLU라고 합니다."
+  },
+  {
+    "id": 28,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "Dying ReLU 문제를 해결하기 위해 $x < 0$ 구간에서도 아주 작은 기울기(예: $\\alpha = 0.01$)를 유지하도록 변형한 함수는?",
+    "options": [
+      "Sigmoid",
+      "Step Function",
+      "Leaky ReLU",
+      "Softmax"
+    ],
+    "answer": 2,
+    "explanation": "Leaky ReLU는 $f(x) = \\max(\\alpha x, x)$로 정의되어 음수 영역에서도 미세한 기울기 $\\alpha$를 흘려보내 뉴런이 완전히 죽는 것을 방지합니다."
+  },
+  {
+    "id": 29,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "경사하강법(Gradient Descent)의 파라미터 갱신 공식 $w \\leftarrow w - \\alpha \\nabla J(w)$에서 그래디언트 $\\nabla J(w)$ 앞에 음의 부호(-)가 붙는 수학적 이유는?",
+    "options": [
+      "손실 함수가 음수 값을 가질 수 없도록 방지하기 위해",
+      "그래디언트 벡터는 함수값이 가장 가파르게 '증가'하는 방향을 가리키므로, 손실을 '최소화'하려면 그 반대 방향으로 이동해야 하기 때문",
+      "학습률 $\\alpha$가 항상 음수이기 때문",
+      "가중치 행렬의 역행렬을 대신하기 위해"
+    ],
+    "answer": 1,
+    "explanation": "다변수 함수의 그래디언트 $\\nabla f$는 가장 가파른 증가 방향이므로, 최솟값을 찾는 경사하강법에서는 반대 방향인 $-\\nabla f$로 파라미터를 이동해야 합니다."
+  },
+  {
+    "id": 30,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "경사하강법에서 학습률(Learning Rate, $\\alpha$)이 너무 크게 설정되었을 때 발생하는 전형적인 현상은?",
+    "options": [
+      "학습이 극도로 느려져 최소점에 도달하는 데 수백만 에포크가 걸린다.",
+      "최소점을 지나쳐 건너뛰는 오버슈팅(Overshooting)이 발생하며 손실 함수 값이 진동하거나 무한대로 발산한다.",
+      "가중치가 모두 0으로 수렴한다.",
+      "모든 활성화 함수가 선형 함수로 축퇴된다."
+    ],
+    "answer": 1,
+    "explanation": "학습률이 너무 크면 스텝 크기가 지나치게 커서 최적점을 지나쳐 반대편 경사면으로 튕겨 나가 결국 발산(Divergence)하게 됩니다."
+  },
+  {
+    "id": 31,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "경사하강법에서 학습률(Learning Rate, $\\alpha$)이 너무 작게 설정되었을 때의 문제점으로 옳은 것은?",
+    "options": [
+      "손실 함수가 즉시 발산한다.",
+      "수렴 속도가 지나치게 느려지고 국소 최소점(Local Minima)이나 안장점(Saddle Point)에 조기에 갇혀 빠져나오지 못할 위험이 크다.",
+      "기울기가 폭발하여 오버플로우가 일어난다.",
+      "가중치가 음수로만 업데이트된다."
+    ],
+    "answer": 1,
+    "explanation": "너무 작은 학습률은 수렴에 막대한 시간이 소요되며, 경사가 완만한 고원이나 얕은 로컬 미니마를 탈출할 동력을 얻지 못합니다."
+  },
+  {
+    "id": 32,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "안장점(Saddle Point)에 대한 정의로 가장 올바른 것은?",
+    "options": [
+      "함수의 모든 2차 편미분값이 양수인 전역 최솟값 지점",
+      "모든 방향의 1차 도함수(그래디언트)가 0이지만, 어떤 방향으로는 극대이고 다른 방향으로는 극소여서 극값이 아닌 지점",
+      "함수값이 정의되지 않는 불연속 지점",
+      "모든 파라미터가 0인 원점 좌표"
+    ],
+    "answer": 1,
+    "explanation": "말안장 모양처럼 한 축으로는 최솟값이고 다른 축으로는 최댓값인 지점으로, 그래디언트가 0이므로 경사하강법이 정지해버리는 주요 난점입니다."
+  },
+  {
+    "id": 33,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "ox",
+    "question": "고차원 딥러닝 파라미터 공간에서는 고립된 로컬 미니마(Local Minima)보다 안장점(Saddle Point)과 평탄한 고원(Plateau)이 훨씬 더 빈번하게 발생한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "수천~수백만 차원 공간에서 모든 방향이 동시에 아래로 볼록할(로컬 미니마일) 확률은 극히 희박하며, 대다수의 그래디언트 0 지점은 안장점입니다."
+  },
+  {
+    "id": 34,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "볼록 최적화(Convex Optimization) 문제의 가장 큰 장점은 무엇인가?",
+    "options": [
+      "데이터의 크기와 상관없이 연산 복잡도가 항상 $O(1)$이다.",
+      "어떤 국소 최적점(Local Optimum)도 곧 전역 최적점(Global Optimum)과 일치한다.",
+      "활성화 함수로 비선형 함수를 전혀 쓸 수 없다.",
+      "학습률을 무한대로 주어도 항상 0에 수렴한다."
+    ],
+    "answer": 1,
+    "explanation": "볼록 함수는 그릇 모양으로 아래로 볼록하므로 로컬 미니마가 곧 유일한 전역 최적해가 되어 어디서 시작해도 최적해에 도달합니다."
+  },
+  {
+    "id": 35,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "ox",
+    "question": "다층 신경망(MLP)의 비용 함수 곡면은 볼록(Convex) 함수가 아닌 복잡한 비볼록(Non-convex) 함수 형태를 띤다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "다층 신경망은 파라미터의 대칭성과 비선형 활성화 함수의 결합으로 인해 수많은 로컬 미니마, 안장점, 편평한 평원을 가진 비볼록 함수입니다."
+  },
+  {
+    "id": 36,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "경사하강법에서 지수 이동 평균(EMA)을 사용하여 학습률을 점진적으로 감소시키는 기법을 무엇이라 부르는가?",
+    "options": [
+      "학습률 스케줄링 (Learning Rate Scheduling / Decay)",
+      "가중치 감쇠 (Weight Decay)",
+      "드롭아웃 (Dropout)",
+      "배치 정규화 (Batch Normalization)"
+    ],
+    "answer": 0,
+    "explanation": "학습 초기에는 큰 학습률로 빠르게 탐색하고, 최소점에 가까워질수록 학습률을 줄여 미세 조정하는 기법을 학습률 감쇠(Learning Rate Decay/Scheduling)라고 합니다."
+  },
+  {
+    "id": 37,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "ELU(Exponential Linear Unit) 함수가 Leaky ReLU와 구별되는 주요 특징은?",
+    "options": [
+      "음수 영역에서 지수 함수 $f(x) = \\alpha(e^x - 1)$를 사용하여 부드러운 곡선을 형성하고 평균 출력을 0에 가깝게 만든다.",
+      "양수 영역에서 기울기가 0이다.",
+      "모든 영역에서 미분값이 정확히 1이다.",
+      "파라미터 $\\alpha$가 항상 0으로 고정된다."
+    ],
+    "answer": 0,
+    "explanation": "ELU는 음수 영역에서 지수 함수적으로 포화되어 노이즈에 강건하며, 0 근처에서 매끄럽게 연결되어 평균 활성화값을 0에 가깝게 유지합니다."
+  },
+  {
+    "id": 38,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "ox",
+    "question": "경사하강법의 갱신 크기(보폭)는 학습률 $\\alpha$뿐만 아니라 현재 위치에서의 그래디언트 크기 $\\|\\nabla J(w)\\|$에도 비례한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "갱신량 $\\Delta w = -\\alpha \\nabla J(w)$이므로 경사가 가파르면 보폭이 커지고 경사가 완만해지면 보폭이 자연스럽게 줄어듭니다."
+  },
+  {
+    "id": 39,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "mcq",
+    "question": "다음 중 활성화 함수의 출력 범위(Range)가 올바르게 짝지어진 것은?",
+    "options": [
+      "Sigmoid: [-1, 1], ReLU: [0, 1]",
+      "Sigmoid: (0, 1), Tanh: (-1, 1), ReLU: [0, $\\infty$)",
+      "Tanh: [0, $\\infty$), Leaky ReLU: (-1, 1)",
+      "Sigmoid: [-\\infty, \\infty], Tanh: [0, 1]"
+    ],
+    "answer": 1,
+    "explanation": "시그모이드는 (0, 1), $\\tanh$는 (-1, 1), ReLU는 [0, $\\infty$)의 치역을 가집니다."
+  },
+  {
+    "id": 40,
+    "subject": "algorithms",
+    "topic": "Lec 3. 활성화함수 · 경사하강법",
+    "type": "ox",
+    "question": "ReLU 함수는 수학적으로 $x=0$에서 미분이 불가능하지만, 실제 구현에서는 서브그래디언트(Subgradient) 개념을 사용하여 0에서의 미분값을 0(또는 1)으로 정의하여 문제없이 학습한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "$x=0$에서 좌미분계수 0, 우미분계수 1로 뾰족점이지만 수치 연산에서는 통상 0 또는 임의의 서브그래디언트를 할당하여 역전파를 수행합니다."
+  },
+  {
+    "id": 41,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "역전파(Backpropagation) 알고리즘의 수학적 기초를 이루는 미적분학의 핵심 원리는?",
+    "options": [
+      "평균값 정리 (Mean Value Theorem)",
+      "연쇄 법칙 (Chain Rule)",
+      "치환 적분법 (Integration by Substitution)",
+      "그린 정리 (Green's Theorem)"
+    ],
+    "answer": 1,
+    "explanation": "합성 함수의 미분을 각 단계 국소 미분의 곱으로 분해하는 연쇄 법칙(Chain Rule) $\\frac{\\partial z}{\\partial x} = \\frac{\\partial z}{\\partial y} \\frac{\\partial y}{\\partial x}$이 역전파의 핵심 원리입니다."
+  },
+  {
+    "id": 42,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "계산 그래프(Computational Graph)에서 덧셈 노드($z = x + y$)의 역전파 동작으로 올바른 것은?",
+    "options": [
+      "상류(Upstream)에서 전달된 그래디언트에 입력값 $x$와 $y$를 곱해서 하류로 전달한다.",
+      "상류에서 전달된 그래디언트를 하류로 아무런 변경 없이 그대로 복사하여 흘려보낸다.",
+      "상류 그래디언트를 항상 0으로 만든다.",
+      "상류 그래디언트의 부호를 반전시킨다."
+    ],
+    "answer": 1,
+    "explanation": "$\\frac{\\partial z}{\\partial x} = 1, \\frac{\\partial z}{\\partial y} = 1$이므로 상류 기울기 $\\frac{\\partial L}{\\partial z}$에 1을 곱해 그대로 양 갈래로 전달합니다."
+  },
+  {
+    "id": 43,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "계산 그래프에서 곱셈 노드($z = x \\times y$)의 역전파 동작으로 올바른 것은?",
+    "options": [
+      "상류 그래디언트를 그대로 전달한다.",
+      "상류 그래디언트에 순전파 때의 서로 상대방 입력값을 바꾸어 곱해서 전달한다.",
+      "상류 그래디언트의 역수를 취해 전달한다.",
+      "상류 그래디언트를 제곱하여 전달한다."
+    ],
+    "answer": 1,
+    "explanation": "$\\frac{\\partial z}{\\partial x} = y, \\frac{\\partial z}{\\partial y} = x$이므로 $\\frac{\\partial L}{\\partial x} = \\frac{\\partial L}{\\partial z} y$, $\\frac{\\partial L}{\\partial y} = \\frac{\\partial L}{\\partial z} x$로 순전파 입력값을 서로 맞바꿔 곱합니다."
+  },
+  {
+    "id": 44,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "신경망의 완전연결(Affine) 계층 $Y = XW + B$에서 가중치 $W$에 대한 손실함수 $L$의 그래디언트 $\\frac{\\partial L}{\\partial W}$의 올바른 행렬 표현은? (단, $X$는 입력 배치 행렬)",
+    "options": [
+      "$\\frac{\\partial L}{\\partial W} = X^T \\frac{\\partial L}{\\partial Y}$",
+      "$\\frac{\\partial L}{\\partial W} = \\frac{\\partial L}{\\partial Y} X^T$",
+      "$\\frac{\\partial L}{\\partial W} = W^T \\frac{\\partial L}{\\partial Y}$",
+      "$\\frac{\\partial L}{\\partial W} = X \\frac{\\partial L}{\\partial Y}^T$"
+    ],
+    "answer": 0,
+    "explanation": "행렬 차원의 일치성과 연쇄 법칙에 따라 $W$와 크기가 같은 가중치 기울기는 $X^T \\frac{\\partial L}{\\partial Y}$로 계산됩니다."
+  },
+  {
+    "id": 45,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "고해상도 이미지(예: $1000 \\times 1000$ 픽셀)를 다층 퍼셉트론(MLP)의 1차원 벡터로 평탄화하여 학습시킬 때 나타나는 가장 심각한 두 가지 문제점은?",
+    "options": [
+      "픽셀의 2차원 공간적 위상(인접성) 정보 파괴 및 첫 번째 은닉층과의 연결로 인한 파라미터 수의 기하급수적 폭증",
+      "이미지의 채널 수가 자동으로 1개로 줄어들고 역전파 연산이 불가능해지는 문제",
+      "모든 활성화 함수가 시그모이드로 강제 변경되고 비용 함수가 정의되지 않는 문제",
+      "라벨 데이터의 손실 및 손실 함수의 오버플로우 문제"
+    ],
+    "answer": 0,
+    "explanation": "MLP는 2D 공간 구조(거리, 형태, 질감)를 무시한 채 1D 벡터로 펼치며, 뉴런 하나당 수백만 개의 가중치가 필요하여 파라미터 폭증과 극심한 과적합을 유발합니다."
+  },
+  {
+    "id": 46,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "1989년 얀 르쿤(Yann LeCun)이 제안한 합성곱 신경망(CNN)의 핵심 메커니즘 두 가지는?",
+    "options": [
+      "전역 완전 연결과 순환 피드백",
+      "국소 수용 영역(Local Receptive Field)과 가중치 공유(Weight Sharing)",
+      "동적 학습률과 배치 정규화",
+      "소프트맥스 활성화와 드롭아웃"
+    ],
+    "answer": 1,
+    "explanation": "CNN은 이미지의 국소 영역에만 연결되는 작은 필터를 사용하며, 해당 필터를 전체 이미지에 걸쳐 슬라이딩하면서 동일한 가중치를 공유(Weight Sharing)하여 파라미터를 극적으로 줄입니다."
+  },
+  {
+    "id": 47,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "CNN의 가중치 공유(Weight Sharing)가 제공하는 가장 중요한 이점은?",
+    "options": [
+      "파라미터 수를 획기적으로 줄여 과적합을 방지하고, 이미지 내의 특정 패턴이 위치와 상관없이 검출되는 이동 불변성(Translation Invariance)을 부여한다.",
+      "역전파 과정에서 체인룰 연산이 전혀 필요 없어진다.",
+      "입력 이미지의 해상도를 2배로 자동 업샘플링한다.",
+      "모든 픽셀 값을 0과 1 사이로 정규화한다."
+    ],
+    "answer": 0,
+    "explanation": "동일한 필터가 전체 이미지를 훑으므로 특징이 어느 위치에 나타나도 검출할 수 있는 이동 불변성을 가지며 학습할 파라미터 수가 극소화됩니다."
+  },
+  {
+    "id": 48,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "입력 크기 $I = 32$, 커널(필터) 크기 $K = 5$, 패딩 $P = 2$, 스트라이드 $S = 1$일 때 합성곱 연산 후의 출력 크기 $O$는 얼마인가? (공식: $O = \\lfloor\\frac{I - K + 2P}{S}\\rfloor + 1$)",
+    "options": [
+      "28",
+      "30",
+      "32",
+      "36"
+    ],
+    "answer": 2,
+    "explanation": "$O = \\lfloor\\frac{32 - 5 + 2(2)}{1}\\rfloor + 1 = \\lfloor\\frac{31}{1}\\rfloor + 1 = 32$입니다. (입력과 출력이 같은 Same Padding)"
+  },
+  {
+    "id": 49,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "합성곱 연산에서 '스트라이드(Stride)'의 역할에 대한 설명으로 옳은 것은?",
+    "options": [
+      "필터에 더해지는 편향(Bias)의 크기를 의미한다.",
+      "필터를 입력 데이터 위에서 한 번에 몇 칸씩 이동시킬지를 결정하는 보폭을 의미한다.",
+      "역전파 시 그래디언트를 몇 배 증폭할지를 결정하는 배율이다.",
+      "이미지 가장자리에 0을 채워 넣는 폭을 의미한다."
+    ],
+    "answer": 1,
+    "explanation": "스트라이드는 필터가 다음 윈도우로 이동할 때 건너뛰는 간격(픽셀 수)이며, 스트라이드가 커질수록 출력 특성맵의 크기는 작아집니다."
+  },
+  {
+    "id": 50,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "합성곱 계층에서 입력 테두리에 0을 둘러싸는 패딩(Zero-Padding)의 두 가지 주요 목적은?",
+    "options": [
+      "가중치의 크기를 줄이고 활성화 함수를 생략하기 위함",
+      "합성곱을 거치면서 특성맵 크기가 지속적으로 줄어드는 것을 방지하고, 가장자리 픽셀 정보의 과도한 유실을 방지하기 위함",
+      "이미지의 색상 밝기를 조절하고 채널 수를 1로 만들기 위함",
+      "역전파 연산 속도를 10배 빠르게 하기 위함"
+    ],
+    "answer": 1,
+    "explanation": "패딩이 없으면 합성곱을 거칠 때마다 크기가 줄어들어 깊은 층을 쌓지 못하며 모서리 픽셀이 내부 픽셀에 비해 적게 연산되는 왜곡이 생깁니다."
+  },
+  {
+    "id": 51,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "입력 이미지 크기가 $28 \\times 28 \\times 3$(가로 $\\times$ 세로 $\\times$ 채널)이고, $5 \\times 5$ 크기의 필터를 16개 적용할 때 이 합성곱 계층의 총 학습 파라미터 수(편향 포함)는?",
+    "options": [
+      "1,216개",
+      "400개",
+      "1,200개",
+      "2,416개"
+    ],
+    "answer": 0,
+    "explanation": "필터 1개의 가중치 수: $5 \\times 5 \\times 3 = 75$개, 편향 1개 -> 필터 1개당 파라미터 76개. 필터가 16개이므로 $76 \\times 16 = 1,216$개입니다."
+  },
+  {
+    "id": 52,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "풀링(Pooling, 서브샘플링) 계층에 대한 설명 중 잘못된 것은?",
+    "options": [
+      "특성맵의 공간적 크기를 축소하여 연산량을 줄이고 과적합을 억제한다.",
+      "최대 풀링(Max Pooling)과 평균 풀링(Average Pooling) 등이 널리 쓰인다.",
+      "풀링 계층은 역전파를 통해 업데이트해야 하는 학습 파라미터(가중치)를 대량으로 포함한다.",
+      "미세한 위치 변화나 노이즈에 대한 불변성(Invariance)을 모델에 부여한다."
+    ],
+    "answer": 2,
+    "explanation": "풀링 계층은 정해진 규칙(최댓값 또는 평균 계산)에 따라 단순히 픽셀을 축소하므로 학습해야 할 가중치 파라미터가 0개입니다."
+  },
+  {
+    "id": 53,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "최대 풀링(Max Pooling)의 역전파 동작에 대한 설명으로 옳은 것은?",
+    "options": [
+      "순전파 때 최댓값을 가졌던 원소의 위치로만 상류 그래디언트를 전달하고, 나머지 위치에는 0을 할당한다.",
+      "상류 그래디언트를 풀링 윈도우 내의 모든 위치에 균등하게 $1/N$로 나누어 전달한다.",
+      "모든 위치에 상류 그래디언트를 그대로 복사하여 전달한다.",
+      "역전파 연산 자체가 불가능하므로 순전파에서만 사용된다."
+    ],
+    "answer": 0,
+    "explanation": "최대 풀링은 최댓값만이 출력에 기여했으므로, 순전파 시 최댓값이었던 인덱스 위치(마스크)로만 기울기가 그대로 전달되고 나머지는 0이 됩니다."
+  },
+  {
+    "id": 54,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "CNN의 전체적인 표준 구조 흐름으로 올바른 것은?",
+    "options": [
+      "입력 -> 완전연결층 -> 풀링층 -> 합성곱층 -> 출력",
+      "입력 -> [합성곱 + 활성화 + 풀링] 반복 -> 평탄화(Flatten) -> 완전연결층(FC) -> 소프트맥스 출력",
+      "입력 -> 평탄화 -> [풀링 + 완전연결층] 반복 -> 합성곱 -> 출력",
+      "입력 -> 소프트맥스 -> 합성곱 -> 풀링 -> 출력"
+    ],
+    "answer": 1,
+    "explanation": "CNN은 특징을 추출하는 Conv-Act-Pool 블록을 반복적으로 거친 후, Flatten을 통해 1차원 벡터로 변환하여 완전연결층(FC)에서 최종 분류를 수행합니다."
+  },
+  {
+    "id": 55,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "CNN에서 얕은 층(입력에 가까운 층)과 깊은 층(출력에 가까운 층)이 추출하는 특징의 성격으로 옳은 것은?",
+    "options": [
+      "얕은 층: 사물의 전체적인 추상적 개념 / 깊은 층: 단순한 선, 에지, 점",
+      "얕은 층: 에지, 텍스처, 색상 등 저수준(Low-level) 국소 특징 / 깊은 층: 사물의 부품, 형태, 전체 의미 등 고수준(High-level) 추상 특징",
+      "얕은 층과 깊은 층 모두 완전히 동일한 빈도의 에지만 검출",
+      "얕은 층: 텍스트 정보 / 깊은 층: 오디오 신호"
+    ],
+    "answer": 1,
+    "explanation": "계층적 표현 학습(Hierarchical Representation)에 따라 앞단에서는 단순 에지와 모서리를 찾고, 층이 깊어질수록 이들이 조합되어 눈, 코, 자동차 바퀴 같은 고차원 특징을 형성합니다."
+  },
+  {
+    "id": 56,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "ox",
+    "question": "합성곱 연산 시 입력 데이터의 채널 수가 $C$개라면, 하나의 커널(필터) 역시 반드시 동일하게 $C$개의 채널을 가져야 한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "필터의 채널 수는 입력 데이터의 채널 수와 반드시 일치해야 각 채널별로 2D 합성곱을 수행한 뒤 합산할 수 있습니다."
+  },
+  {
+    "id": 57,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "ox",
+    "question": "평균 풀링(Average Pooling)의 역전파 시에는 상류 그래디언트가 풀링 윈도우 크기 $N$으로 균등하게 나뉘어($\\frac{1}{N}$) 모든 원소로 전파된다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "평균 연산은 $z = \\frac{1}{N} \\sum x_i$이므로 $\\frac{\\partial z}{\\partial x_i} = \\frac{1}{N}$이 되어 그래디언트가 $1/N$씩 균등 분배됩니다."
+  },
+  {
+    "id": 58,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "입력 크기가 $4 \\times 4$이고 $2 \\times 2$ 윈도우, 스트라이드 2로 최대 풀링(Max Pooling)을 수행하면 출력의 크기는?",
+    "options": [
+      "$1 \\times 1$",
+      "$2 \\times 2$",
+      "$3 \\times 3$",
+      "$4 \\times 4$"
+    ],
+    "answer": 1,
+    "explanation": "가로/세로가 각각 절반으로 다운샘플링되므로 $2 \\times 2$가 됩니다."
+  },
+  {
+    "id": 59,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "mcq",
+    "question": "$1 \\times 1$ 합성곱(Pointwise Convolution)의 핵심적인 기능 두 가지는?",
+    "options": [
+      "공간적 해상도를 2배 확대하고 이미지 테두리를 지우는 기능",
+      "공간 해상도(가로, 세로)를 유지하면서 채널 수를 줄이거나 늘려 차원 축소/확대를 수행하고, 비선형성을 추가하는 기능",
+      "역전파 학습을 완전히 건너뛰는 기능",
+      "풀링 계층을 완전히 대체하여 파라미터를 0으로 만드는 기능"
+    ],
+    "answer": 1,
+    "explanation": "$1 \\times 1$ Conv는 각 픽셀 위치에서 채널 간의 선형 결합을 수행하므로 연산량 절감을 위한 채널 차원 축소 및 비선형 활성화 추가에 핵심적으로 쓰입니다."
+  },
+  {
+    "id": 60,
+    "subject": "algorithms",
+    "topic": "Lec 4. 역전파 · CNN",
+    "type": "ox",
+    "question": "역전파 수행 시 분기 노드(하나의 출력이 두 개 이상의 노드로 갈라지는 경우)에서는 상류에서 오는 그래디언트들을 단순히 합산(Sum)하여 역전파한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "다변수 연쇄 법칙에 따라 $z = f(x, y)$이고 $w$가 $x$와 $y$ 모두에 영향을 준다면 $\\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial x}\\frac{\\partial x}{\\partial w} + \\frac{\\partial L}{\\partial y}\\frac{\\partial y}{\\partial w}$로 갈래별 기울기를 합산합니다."
+  },
+  {
+    "id": 61,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "클로드 섀넌(Claude Shannon)의 정보 이론에서 어떤 사건 $x$의 발생 확률이 $P(x)$일 때 자기 정보량(Self-Information, $I(x)$)의 수식은?",
+    "options": [
+      "$I(x) = P(x) \\log_2 P(x)$",
+      "$I(x) = -\\log_2 P(x)$",
+      "$I(x) = 1 - P(x)$",
+      "$I(x) = \\frac{1}{P(x)^2}$"
+    ],
+    "answer": 1,
+    "explanation": "정보량은 사건이 발생했을 때 느끼는 '놀람의 정도'로 확률에 반비례하며, 독립 사건의 정보량 덧셈성을 만족하기 위해 $I(x) = -\\log_2 P(x)$로 정의됩니다."
+  },
+  {
+    "id": 62,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "정보 이론에서 정보량(Information)의 성질에 대한 설명으로 올바른 것은?",
+    "options": [
+      "발생 확률이 1에 가까운 확실한 사건일수록 정보량이 무한대로 커진다.",
+      "발생 확률이 매우 희박한 희귀한 사건일수록 그 사건이 발생했을 때 얻는 정보량이 크다.",
+      "항상 음의 실수 값을 가진다.",
+      "독립적인 두 사건이 동시에 일어날 때의 정보량은 각 사건 정보량의 곱과 같다."
+    ],
+    "answer": 1,
+    "explanation": "예를 들어 '내일 해가 동쪽에서 뜬다'는 정보량이 0에 가깝고, '내일 서울에 운석이 떨어진다'는 엄청난 양의 정보량을 가집니다."
+  },
+  {
+    "id": 63,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "확률 분포 $P$에 대한 섀넌 엔트로피(Entropy, $H(P)$)의 수학적 의미로 가장 올바른 것은?",
+    "options": [
+      "특정 데이터 포인트의 가중치 제곱합",
+      "해당 확률 분포에서 얻을 수 있는 정보량의 기댓값(평균 불확실성)",
+      "신경망의 최종 예측 확률의 최댓값",
+      "모든 사건이 일어날 확률의 단순 합"
+    ],
+    "answer": 1,
+    "explanation": "엔트로피 $H(P) = -\\sum P(x) \\log P(x) = \\mathbb{E}[I(x)]$는 시스템이 갖는 불확실성(Uncertainty)의 평균 크기를 나타냅니다."
+  },
+  {
+    "id": 64,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "동전을 던질 때 앞면이 나올 확률 $p$에 대한 엔트로피가 최대가 되는 $p$의 값은?",
+    "options": [
+      "$p = 0.0$ (앞면이 절대 안 나옴)",
+      "$p = 0.5$ (공평한 동전)",
+      "$p = 1.0$ (앞면만 무조건 나옴)",
+      "$p = 0.25$"
+    ],
+    "answer": 1,
+    "explanation": "결과를 전혀 예측할 수 없는 가장 불확실한 상태(균등 분포, $p = 0.5$)일 때 엔트로피가 1 bit로 최대가 됩니다. ($p=0$이나 $p=1$이면 결과가 확실하므로 엔트로피는 0)"
+  },
+  {
+    "id": 65,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "실제 정답 분포 $P$와 모델의 예측 분포 $Q$ 사이의 교차 엔트로피(Cross-Entropy) 수식은?",
+    "options": [
+      "$H(P, Q) = -\\sum_x P(x) \\log Q(x)$",
+      "$H(P, Q) = -\\sum_x Q(x) \\log P(x)$",
+      "$H(P, Q) = \\sum_x (P(x) - Q(x))^2$",
+      "$H(P, Q) = \\frac{\\sum P(x)}{\\sum Q(x)}$"
+    ],
+    "answer": 0,
+    "explanation": "실제 분포 $P$를 기준으로 모델의 예측 분포 $Q$를 인코딩할 때 필요한 평균 비트 수로 $H(P, Q) = -\\sum P(x) \\log Q(x)$입니다."
+  },
+  {
+    "id": 66,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "다중 클래스 분류 문제에서 평균 제곱 오차(MSE) 대신 크로스 엔트로피 손실 함수(Cross-Entropy Loss)를 사용하는 결정적인 이유는?",
+    "options": [
+      "MSE는 시그모이드/소프트맥스와 결합 시 오차가 매우 큰 지점에서도 그래디언트가 0에 가까워지는 포화 현상(학습 정체)이 생기지만, 크로스 엔트로피는 오차가 클수록 그래디언트가 비례하여 커져 빠르게 학습되기 때문",
+      "크로스 엔트로피는 역전파 계산 시 미분이 전혀 필요 없기 때문",
+      "MSE는 정답 라벨이 원-핫 인코딩 형태일 때 연산이 불가능하기 때문",
+      "크로스 엔트로피는 가중치 파라미터 수를 자동으로 줄여주기 때문"
+    ],
+    "answer": 0,
+    "explanation": "MSE와 시그모이드 결합 시 도함수에 $\\sigma'(z)$가 곱해져 오차가 커도 학습이 멈추지만, 크로스 엔트로피는 미분 시 도함수가 상쇄되어 $(\\hat{y} - y)$ 형태의 단순하고 정직한 그래디언트를 산출합니다."
+  },
+  {
+    "id": 67,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "다중 클래스 분류의 출력층에 사용되는 소프트맥스(Softmax) 함수의 출력 성질로 올바른 것은?",
+    "options": [
+      "모든 출력 노드의 값이 0 또는 1로만 이진화된다.",
+      "모든 출력 노드의 값이 0보다 크며, 전체 출력값들의 합이 항상 정확히 1이 되어 확률 분포로 해석할 수 있다.",
+      "출력값들의 합이 항상 0이다.",
+      "음수 입력을 그대로 보존하여 출력한다."
+    ],
+    "answer": 1,
+    "explanation": "$\\text{Softmax}(z_i) = \\frac{e^{z_i}}{\\sum_j e^{z_j}}$로 각 클래스에 속할 사후 확률(Posterior Probability)을 나타냅니다."
+  },
+  {
+    "id": 68,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "정답 레이블이 클래스 2인 원-핫 벡터 $y = [0, 1, 0]$이고 모델의 소프트맥스 예측 확률이 $\\hat{y} = [0.1, 0.7, 0.2]$일 때 교차 엔트로피 손실 값은?",
+    "options": [
+      "$-\\log(0.1)$",
+      "$-\\log(0.7)$",
+      "$-\\log(0.2)$",
+      "$0.7^2$"
+    ],
+    "answer": 1,
+    "explanation": "원-핫 인코딩에서 정답 인덱스 이외의 $P(x)$는 0이므로 실제 손실은 정답 클래스의 예측 확률에 대한 음의 로그값인 $-\\log(\\hat{y}_{\\text{target}}) = -\\log(0.7)$이 됩니다."
+  },
+  {
+    "id": 69,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "기본 순환 신경망(Vanilla RNN)의 시점 $t$에서의 은닉 상태(Hidden State, $h_t$) 갱신 수식으로 올바른 것은?",
+    "options": [
+      "$h_t = \\tanh(W_{hh} h_{t-1} + W_{xh} x_t + b_h)$",
+      "$h_t = \\text{ReLU}(W_{hh} h_{t+1} + W_{xh} x_t)$",
+      "$h_t = W_{hh} h_{t-1} \\times W_{xh} x_t$",
+      "$h_t = \\frac{h_{t-1} + x_t}{2}$"
+    ],
+    "answer": 0,
+    "explanation": "이전 시점의 은닉 상태 $h_{t-1}$과 현재 입력 $x_t$를 각각의 가중치 행렬과 곱해 더한 후 $\\tanh$ 활성화 함수를 통과시켜 현재 은닉 상태를 갱신합니다."
+  },
+  {
+    "id": 70,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "RNN에서 시간 축을 따라 펼친(Unrolled) 구조에서 가중치 행렬($W_{hh}, W_{xh}, W_{hy}$)에 대한 설명으로 옳은 것은?",
+    "options": [
+      "각 시점($t=1, 2, \\dots, T$)마다 완전히 서로 다른 새로운 가중치 행렬을 독립적으로 학습한다.",
+      "모든 시점 $t$에서 동일한 단일 가중치 행렬 세트를 공유(Weight Sharing)하여 사용한다.",
+      "시점이 지날 때마다 가중치 행렬의 크기가 2배씩 확장된다.",
+      "가중치는 짝수 시점에서만 갱신된다."
+    ],
+    "answer": 1,
+    "explanation": "RNN은 시퀀스의 길이에 관계없이 모든 시간 단계에서 동일한 파라미터($W_{hh}, W_{xh}, W_{hy}$)를 공유하므로 가변 길이 시퀀스를 처리할 수 있습니다."
+  },
+  {
+    "id": 71,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "RNN 학습을 위한 역전파 알고리즘의 공식 명칭은?",
+    "options": [
+      "BPTT (Backpropagation Through Time)",
+      "Forward-Backward Propagation",
+      "Temporal Difference Learning",
+      "Spatial Backpropagation"
+    ],
+    "answer": 0,
+    "explanation": "시간 순서대로 펼쳐진 계산 그래프를 따라 미래 시점에서 과거 시점으로 오차 그래디언트를 역전파하는 알고리즘을 BPTT라고 합니다."
+  },
+  {
+    "id": 72,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "기본 RNN에서 시퀀스 길이가 길어질 때 BPTT 수행 시 발생하는 치명적인 한계는?",
+    "options": [
+      "입력 데이터의 어휘 수가 자동으로 0으로 줄어드는 문제",
+      "과거 시점으로 거슬러 올라가며 가중치 $W_{hh}^T$가 반복적으로 곱해져 그래디언트가 지수적으로 소실(Vanishing)되거나 폭발(Exploding)하는 장기의존성(Long-Term Dependency) 문제",
+      "소프트맥스 출력이 음수로 역전되는 문제",
+      "모든 시점의 은닉 상태가 1로 고정되는 문제"
+    ],
+    "answer": 1,
+    "explanation": "시간 단계 $T$가 길어지면 연쇄 법칙에 의해 $\\prod W_{hh}^T$가 누적 곱해지며, 특잇값이 1보다 작으면 0으로 소실되고 1보다 크면 폭발하여 먼 과거의 정보를 기억하지 못합니다."
+  },
+  {
+    "id": 73,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "BPTT 도중 그래디언트 폭발(Exploding Gradient)로 인해 가중치가 NaN(Not a Number)으로 발산하는 것을 방지하기 위해 널리 사용되는 기법은?",
+    "options": [
+      "드롭아웃 (Dropout)",
+      "그래디언트 클리핑 (Gradient Clipping)",
+      "라벨 스무딩 (Label Smoothing)",
+      "원-핫 인코딩 (One-Hot Encoding)"
+    ],
+    "answer": 1,
+    "explanation": "그래디언트 벡터의 L2 노름 $\\|g\\|$이 임계값(Threshold)을 초과할 경우 $g \\leftarrow \\frac{\\text{threshold}}{\\|g\\|} g$로 스케일을 강제 축소시키는 기법입니다."
+  },
+  {
+    "id": 74,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "RNN의 은닉 상태(Hidden State)를 비유적으로 표현할 때 가장 적합한 설명은?",
+    "options": [
+      "과거 시점들로부터 전달받은 정보의 맥락을 압축하여 담고 있는 '네트워크의 메모리(기억 장치)'",
+      "이미지의 RGB 채널을 저장하는 임시 캐시",
+      "학습률을 동적으로 보관하는 스택 메모리",
+      "출력 라벨의 정답을 미리 저장해둔 정답지"
+    ],
+    "answer": 0,
+    "explanation": "은닉 상태 $h_t$는 시점 1부터 시점 $t$까지 들어온 모든 이전 입력들의 문맥 정보를 압축하여 보관하는 상태 벡터입니다."
+  },
+  {
+    "id": 75,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "ox",
+    "question": "소프트맥스 함수와 교차 엔트로피 손실 함수를 결합하여 역전파를 수행할 때, 소프트맥스 이전 로짓(Logit) $z_i$에 대한 손실함수 기울기는 $(\\hat{y}_i - y_i)$로 매우 깔끔하게 정리된다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "수학적으로 유도하면 소프트맥스의 복잡한 미분과 로그의 미분이 서로 상쇄되어 '예측 확률 - 실제 정답 확률'이라는 직관적인 수식이 유도됩니다."
+  },
+  {
+    "id": 76,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "ox",
+    "question": "기본 RNN은 과거의 정보가 현재에 영향을 줄 수는 있지만, 양방향(Bidirectional) 처리를 하지 않는 한 미래 시점의 정보는 현재 시점에 반영할 수 없다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "단방향 RNN은 시간의 인과율($t-1 \\rightarrow t$)에 따라 순방향으로만 흐르므로 미래 문맥을 보려면 역방향 은닉층을 결합한 Bi-RNN이 필요합니다."
+  },
+  {
+    "id": 77,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "쿨백-라이블러 발산(Kullback-Leibler Divergence, $D_{KL}(P \\parallel Q)$)과 크로스 엔트로피 $H(P, Q)$의 관계식으로 올바른 것은? (단, $H(P)$는 실제 분포의 엔트로피)",
+    "options": [
+      "$H(P, Q) = H(P) + D_{KL}(P \\parallel Q)$",
+      "$H(P, Q) = H(P) - D_{KL}(P \\parallel Q)$",
+      "$H(P, Q) = H(P) \\times D_{KL}(P \\parallel Q)$",
+      "$H(P, Q) = D_{KL}(P \\parallel Q) / H(P)$"
+    ],
+    "answer": 0,
+    "explanation": "크로스 엔트로피는 타깃의 엔트로피와 두 분포 간의 KL 발산의 합으로 구성됩니다. $P$가 고정되어 있을 때 크로스 엔트로피 최소화는 두 분포 간 KL 발산 최소화와 동치입니다."
+  },
+  {
+    "id": 78,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "ox",
+    "question": "KL 발산 $D_{KL}(P \\parallel Q)$은 항상 0 이상($\\ge 0$)이며, 두 분포 $P$와 $Q$가 완전히 일치할 때만 정확히 0이 된다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "깁스의 부등식(Gibbs' inequality)에 의해 KL 발산은 항상 비음수($\\ge 0$)이며, 정보의 손실이 없을 때(두 분포가 동일할 때) 0이 됩니다."
+  },
+  {
+    "id": 79,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "mcq",
+    "question": "긴 문장에서 'The clouds are in the ...' 뒤에 'sky'를 예측하는 것과 'I grew up in France ... I speak fluent ...' 뒤에 'French'를 예측하는 것을 비교할 때 기본 RNN의 동작 설명으로 옳은 것은?",
+    "options": [
+      "두 경우 모두 완벽하게 예측한다.",
+      "가까운 위치의 'sky'는 잘 맞추지만, 수십 단어 전의 'France' 문맥을 기억해야 하는 장기 의존성(French 예측)에서는 기울기 소실로 인해 학습하지 못한다.",
+      "오히려 먼 거리의 문맥을 더 잘 기억한다.",
+      "단어의 길이가 긴 단어만 기억한다."
+    ],
+    "answer": 1,
+    "explanation": "기본 RNN은 갭(Gap)이 큰 장거리 문맥(Long-term context)을 보존하지 못하고 직전 몇 단어의 단기 문맥만 기억하는 치명적 한계가 있습니다."
+  },
+  {
+    "id": 80,
+    "subject": "algorithms",
+    "topic": "Lec 5. RNN · 크로스 엔트로피",
+    "type": "ox",
+    "question": "순환 신경망(RNN)은 기계 번역, 음성 인식, 주가 예측, 텍스트 생성 등 데이터의 순서가 중요한 시계열/시퀀스 모델링에 적합하다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "가변적인 길이의 시퀀스를 순차적으로 처리할 수 있어 자연어 처리 및 시계열 분석의 기초 모델로 활용됩니다."
+  },
+  {
+    "id": 81,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "1997년 호크라이터와 슈미트후버(Hochreiter & Schmidhuber)가 제안한 LSTM(Long Short-Term Memory)의 가장 핵심적인 혁신 요소는?",
+    "options": [
+      "은닉층을 모두 제거하고 출력층만 유지한 것",
+      "기울기가 감쇄 없이 흐를 수 있는 전용 컨베이어 벨트 역할을 하는 셀 상태(Cell State)와 정보를 선택적으로 제어하는 게이트(Gate) 메커니즘을 도입한 것",
+      "역전파 대신 유전 알고리즘(Genetic Algorithm)만을 사용한 것",
+      "모든 활성화 함수를 선형 함수로 통일한 것"
+    ],
+    "answer": 1,
+    "explanation": "LSTM은 덧셈 연산 기반으로 시점을 거슬러 올라가도 그래디언트가 보존되는 고속도로인 Cell State와 이를 제어하는 3대 게이트를 통해 장기의존성 문제를 해결했습니다."
+  },
+  {
+    "id": 82,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "LSTM의 3대 게이트(Gate)에 해당하지 않는 것은?",
+    "options": [
+      "삭제 게이트 (Forget Gate)",
+      "입력 게이트 (Input Gate)",
+      "출력 게이트 (Output Gate)",
+      "회귀 게이트 (Regression Gate)"
+    ],
+    "answer": 3,
+    "explanation": "LSTM은 과거 정보 삭제를 결정하는 Forget Gate, 새 정보 저장을 결정하는 Input Gate, 출력으로 내보낼 정보를 결정하는 Output Gate로 구성됩니다."
+  },
+  {
+    "id": 83,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "LSTM의 삭제 게이트(Forget Gate) 수식 $f_t = \\sigma(W_f [h_{t-1}, x_t] + b_f)$에서 활성화 함수로 시그모이드($\\sigma$)를 사용하는 목적은?",
+    "options": [
+      "출력값을 0과 1 사이로 만들어 이전 셀 상태 $C_{t-1}$의 각 정보를 몇 % 비율로 보존할지(0: 전면 삭제, 1: 완전 유지) 결정하기 위해",
+      "음수 그래디언트를 증폭하기 위해",
+      "출력값을 정확히 정수 0과 1로만 양자화하기 위해",
+      "연산 속도를 100배 빠르게 하기 위해"
+    ],
+    "answer": 0,
+    "explanation": "시그모이드의 출력 범위는 (0, 1)이므로 이전 기억을 얼마나 망각(0)하거나 통과(1)시킬지 비율 스위치 역할을 합니다."
+  },
+  {
+    "id": 84,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "LSTM에서 새로운 셀 상태 $C_t$가 갱신되는 수식으로 올바른 것은? (단, $\\odot$은 원소별 곱/Hadamard product)",
+    "options": [
+      "$C_t = f_t \\odot C_{t-1} + i_t \\odot \\tilde{C}_t$",
+      "$C_t = f_t \\times C_{t-1} \\times i_t$",
+      "$C_t = \\tanh(C_{t-1} + x_t)$",
+      "$C_t = \\sigma(W_c C_{t-1} + b_c)$"
+    ],
+    "answer": 0,
+    "explanation": "이전 기억을 삭제 게이트 비율로 줄인 $f_t \\odot C_{t-1}$에, 새로운 기억 후보를 입력 게이트 비율로 취한 $i_t \\odot \\tilde{C}_t$를 '더해서' 갱신합니다."
+  },
+  {
+    "id": 85,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "LSTM에서 셀 상태 갱신 시 곱셈 연산 대신 덧셈 연산($+$)이 사용됨으로써 얻는 치명적인 수학적 이점은?",
+    "options": [
+      "가중치 행렬의 크기가 $1 \\times 1$로 줄어든다.",
+      "BPTT 역전파 시 셀 상태에 대한 그래디언트가 행렬 곱의 반복 없이 단순 덧셈 분기를 거쳐 흐르므로 기울기 소실(Vanishing Gradient)이 극적으로 방지된다.",
+      "입력 데이터의 노이즈가 100% 제거된다.",
+      "소프트맥스 함수를 거치지 않고도 정답을 바로 알 수 있다."
+    ],
+    "answer": 1,
+    "explanation": "$\\frac{\\partial C_t}{\\partial C_{t-1}} = f_t$로 가중치 행렬의 거듭제곱이 곱해지지 않고 게이트 값의 직접 전달로 이루어져 먼 과거 시점까지 그래디언트가 온전하게 보존됩니다."
+  },
+  {
+    "id": 86,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "LSTM의 후보 셀 상태 $\\tilde{C}_t = \\tanh(W_c [h_{t-1}, x_t] + b_c)$에서 시그모이드 대신 $\\tanh$ 활성화 함수를 사용하는 이유는?",
+    "options": [
+      "새롭게 추가할 정보의 방향성과 크기(-1에서 1 사이)를 생성하여 셀 상태를 증가시키거나 감소시킬 수 있도록 하기 위해",
+      "음수 값을 완전히 제거하기 위해",
+      "기울기를 무조건 0으로 만들기 위해",
+      "모든 값을 0으로 정규화하기 위해"
+    ],
+    "answer": 0,
+    "explanation": "게이트는 통과율(0~1)을 제어하므로 시그모이드를 쓰고, 실제 상태에 더해질 새로운 정보 벡터는 양수/음수를 모두 가질 수 있는 [-1, 1] 범위의 $\\tanh$를 씁니다."
+  },
+  {
+    "id": 87,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "조경현 교수 등이 2014년 제안한 GRU(Gated Recurrent Unit)가 LSTM과 다른 구조적 특징은?",
+    "options": [
+      "셀 상태(Cell State)와 은닉 상태(Hidden State)를 하나로 통합하고, 게이트를 리셋(Reset)과 업데이트(Update) 2개로 간소화하여 연산 속도를 높였다.",
+      "게이트를 5개로 늘려 정확도를 높였다.",
+      "활성화 함수로 스텝 함수만 사용한다.",
+      "시계열 데이터를 역순으로만 처리할 수 있다."
+    ],
+    "answer": 0,
+    "explanation": "GRU는 Cell State를 별도로 두지 않고 Hidden State로 단일화하며, Reset Gate와 Update Gate의 2개 게이트만 사용하여 파라미터 수를 줄이고 학습 속도를 향상시켰습니다."
+  },
+  {
+    "id": 88,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "경사하강법의 세 가지 변형 중 '배치 경사하강법(BGD: Batch Gradient Descent)'의 특징으로 옳은 것은?",
+    "options": [
+      "한 번의 가중치 업데이트마다 전체(Total) 훈련 데이터셋 전체의 그래디언트 평균을 계산한다.",
+      "데이터 1개마다 즉시 가중치를 갱신한다.",
+      "학습 과정에서 무작위 노이즈가 매우 심하다.",
+      "GPU 메모리를 전혀 사용하지 않는다."
+    ],
+    "answer": 0,
+    "explanation": "BGD는 전체 데이터셋의 손실 평균을 계산하므로 그래디언트 방향이 매우 정확하고 안정적이지만, 데이터셋이 크면 1회 갱신에 엄청난 시간과 메모리가 소요됩니다."
+  },
+  {
+    "id": 89,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "'순수 확률적 경사하강법(Pure SGD)'의 특징과 장점으로 옳은 것은?",
+    "options": [
+      "전체 데이터를 한꺼번에 계산하여 곡면이 매우 매끄럽다.",
+      "매 훈련 샘플(1개 데이터)마다 그래디언트를 구해 즉시 가중치를 갱신하므로 매우 빠르고, 목적 함수 곡면의 요동(진동) 덕분에 얕은 로컬 미니마나 안장점을 쉽게 탈출할 수 있다.",
+      "항상 전역 최적점에 한 번의 오차 없이 수렴한다.",
+      "GPU의 대규모 병렬 행렬 연산 기능을 최대로 활용한다."
+    ],
+    "answer": 1,
+    "explanation": "SGD는 샘플 1개씩 계산하므로 속도가 빠르고 확률적 노이즈가 심하게 발생하는데, 이 요동치는 특성이 로컬 미니마 탈출에 도움을 줍니다."
+  },
+  {
+    "id": 90,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "현대 딥러닝에서 실질적인 표준으로 사용되는 '미니배치 경사하강법(Mini-batch SGD)'의 장점은?",
+    "options": [
+      "데이터를 1개씩만 처리하여 캐시 적중률을 극대화한다.",
+      "데이터를 적절한 크기(예: 32, 64, 128, 256개)의 묶음으로 나누어 처리함으로써 GPU의 벡터화 병렬 연산을 최대한 활용하고 수렴 안정성과 로컬 미니마 탈출 능력의 균형을 이룬다.",
+      "학습률을 설정할 필요가 전혀 없다.",
+      "에포크 수가 무조건 1회로 고정된다."
+    ],
+    "answer": 1,
+    "explanation": "BGD의 안정성과 하드웨어 가속 이점, SGD의 빠른 속도와 노이즈 이점을 결합한 최적의 절충안입니다."
+  },
+  {
+    "id": 91,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "모멘텀(Momentum) 옵티마이저가 경사하강법의 진동을 억제하고 학습을 가속하는 물리적 원리는?",
+    "options": [
+      "매 스텝마다 이전 가중치를 0으로 리셋한다.",
+      "과거 그래디언트의 이동 방향을 속도 벡터 $v$로 누적하여 마치 공이 언덕을 굴러내려갈 때의 관성(Inertia)을 모사함으로써, 진동 방향은 상쇄하고 진행 방향은 가속한다.",
+      "경사가 가파를수록 브레이크를 걸어 멈춘다.",
+      "데이터셋을 무작위로 삭제한다."
+    ],
+    "answer": 1,
+    "explanation": "$v_t = \\gamma v_{t-1} + \\alpha \\nabla J(\\theta)$로 이전 속도를 관성 계수 $\\gamma$(보통 0.9)만큼 누적하여 계곡 모양의 협곡에서 지그재그 진동을 상쇄하고 빠른 수렴을 돕습니다."
+  },
+  {
+    "id": 92,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "AdaGrad(Adaptive Gradient) 옵티마이저의 원리와 치명적인 한계는?",
+    "options": [
+      "원리: 자주 등장한 가중치는 학습률을 낮추고 드물게 등장한 가중치는 학습률을 높인다. / 한계: 그래디언트 제곱합이 지속적으로 누적되어 학습이 진행될수록 유효 학습률이 0에 수렴하여 조기에 학습이 완전히 멈춘다.",
+      "원리: 학습률을 에포크마다 2배씩 늘린다. / 한계: 항상 발산한다.",
+      "원리: 가중치를 항상 음수로 유지한다. / 한계: 양수 분류가 불가능하다.",
+      "원리: 모멘텀만 사용한다. / 한계: 2차 미분이 필요하다."
+    ],
+    "answer": 0,
+    "explanation": "AdaGrad는 $G_t = G_{t-1} + g_t^2$로 과거 모든 기울기 제곱을 계속 더하므로 $G_t$가 무한히 커져 분모가 커지면서 결국 학습이 정체되는 조기 정체 현상이 있습니다."
+  },
+  {
+    "id": 93,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "RMSProp이 AdaGrad의 학습 정체 문제를 해결한 방법은?",
+    "options": [
+      "모든 과거 그래디언트를 완전히 버리고 현재 그래디언트만 사용한다.",
+      "지수 이동 평균(Exponential Moving Average)을 적용하여 먼 과거의 그래디언트는 서서히 잊고 최근 그래디언트 제곱의 가중 평균만을 반영한다.",
+      "학습률을 고정 상수 1.0으로 고정한다.",
+      "가중치 초기화를 0으로 재설정한다."
+    ],
+    "answer": 1,
+    "explanation": "$G_t = \\beta G_{t-1} + (1-\\beta)g_t^2$의 지수 이동 평균 감쇠 계수 $\\beta$(보통 0.9)를 사용하여 분모가 무한히 커지는 것을 방지합니다."
+  },
+  {
+    "id": 94,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "현재 딥러닝에서 가장 널리 사용되는 Adam(Adaptive Moment Estimation) 옵티마이저의 핵심 설계는?",
+    "options": [
+      "모멘텀(방향성/1차 모멘트의 관성)과 RMSProp(보폭/2차 모멘트의 적응적 학습률)의 장점을 결합하고, 학습 초기 0 편향(Bias)을 수학적으로 보정한 알고리즘이다.",
+      "오직 역전파 없이 순전파로만 가중치를 추정하는 알고리즘이다.",
+      "모든 파라미터에 완전히 동일한 학습률을 적용하는 단순 SGD이다.",
+      "경사하강법 대신 2차 도함수 행렬(Hessian)을 매번 역행렬 연산하는 알고리즘이다."
+    ],
+    "answer": 0,
+    "explanation": "Adam은 $m_t$(1차 모멘트, 평균)와 $v_t$(2차 모멘트, 분산)를 동시에 추적하며 초기 편향 보정($\\hat{m}_t, \\hat{v}_t$)을 수행하여 가장 견고하고 뛰어난 성능을 보입니다."
+  },
+  {
+    "id": 95,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "딥러닝에서 로컬 미니마(Local Minima) 문제를 극복하기 위한 대표적인 3대 전략으로 올바른 것은?",
+    "options": [
+      "1) 모멘텀을 통한 관성 부여, 2) 학습률 스케줄링(Warmup 및 Cosine Annealing), 3) 미니배치 SGD의 확률적 노이즈 활용",
+      "1) 가중치를 0으로 고정, 2) 활성화 함수 제거, 3) 1개 레이어만 사용",
+      "1) 배치 크기를 무한대로 설정, 2) 에포크 1회 종료, 3) 시그모이드만 사용",
+      "1) 데이터셋 크기 축소, 2) 정규방정식 사용, 3) 경사하강법 비활성화"
+    ],
+    "answer": 0,
+    "explanation": "모멘텀의 운동에너지, 확률적 미니배치의 경로 요동, 학습률을 조절하며 탐색 공간을 탈출하는 스케줄링이 복합적으로 로컬 미니마 탈출을 가능케 합니다."
+  },
+  {
+    "id": 96,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "ox",
+    "question": "배치 크기(Batch Size)가 너무 크면(예: 수만 개) 손실 곡면의 뾰족한 최적점(Sharp Minima)에 수렴하여 테스트 데이터에 대한 일반화 성능이 오히려 떨어질 수 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "적절히 작은 미니배치(예: 32~256)는 적절한 확률적 노이즈를 제공하여 더 넓고 평평한 최적점(Flat Minima)을 찾게 해 일반화 성능이 향상됩니다."
+  },
+  {
+    "id": 97,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "ox",
+    "question": "LSTM의 은닉 상태 $h_t$는 출력 게이트 $o_t$와 셀 상태에 $\\tanh$를 씌운 값의 원소별 곱($h_t = o_t \\odot \\tanh(C_t)$)으로 계산된다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "셀 상태 $C_t$의 값을 $\\tanh$를 통해 -1~1로 조절한 뒤 출력 게이트의 비율 $o_t$만큼만 외부로 노출합니다."
+  },
+  {
+    "id": 98,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "경사하강법 최적화 알고리즘들의 발전 계보로 시간 순서상 올바른 것은?",
+    "options": [
+      "Adam -> RMSProp -> Momentum -> SGD",
+      "SGD -> Momentum -> AdaGrad -> RMSProp -> Adam",
+      "AdaGrad -> SGD -> Adam -> Momentum",
+      "RMSProp -> Adam -> SGD -> AdaGrad"
+    ],
+    "answer": 1,
+    "explanation": "기본 SGD에서 모멘텀(관성)이 더해지고, 파라미터별 적응형 학습률(AdaGrad)의 한계를 개선한 RMSProp이 나온 뒤, 둘을 합친 Adam이 확립되었습니다."
+  },
+  {
+    "id": 99,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "ox",
+    "question": "Adam 옵티마이저의 초기 학습 단계에서 $m_0 = 0, v_0 = 0$으로 초기화되어 모멘트 추정치가 0으로 편향되는 것을 막기 위해 $\\hat{m}_t = \\frac{m_t}{1 - \\beta_1^t}$와 같이 편향 보정(Bias Correction)을 거친다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "초기에 $\\beta_1^t, \\beta_2^t$가 1에 가까워 분모가 0에 가까워지며 작은 $m_t, v_t$를 증폭시켜 초기 0 편향을 상쇄합니다."
+  },
+  {
+    "id": 100,
+    "subject": "algorithms",
+    "topic": "Lec 6. LSTM · 확률적 경사하강법(SGD)",
+    "type": "mcq",
+    "question": "LSTM이 RNN보다 우수한 성능을 보이는 시퀀스 처리 영역에 대한 결론으로 가장 올바른 것은?",
+    "options": [
+      "데이터의 길이가 2개 이하인 극도로 짧은 시퀀스에만 유리하다.",
+      "기울기 소실 없이 수십~수백 스텝 이전의 핵심 정보를 셀 상태에 보존할 수 있어 긴 문장의 기계 번역, 음성 인식, 장기 시계열 예측 등에서 압도적 우위를 보인다.",
+      "연산량이 기본 RNN의 10%에 불과하여 모바일 CPU에서만 사용된다.",
+      "오직 이미지 분류 작업에만 특화되어 있다."
+    ],
+    "answer": 1,
+    "explanation": "LSTM은 게이트와 셀 상태 덕분에 긴 시간 지연(Long time lags)이 존재하는 시퀀스 데이터에서도 장기 기억을 유지하여 시퀀스 모델링의 새로운 장을 열었습니다."
+  }
+]

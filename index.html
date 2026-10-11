@@ -7,6 +7,7 @@
   <!-- KaTeX for math rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="data/quiz_bank.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
   <style>
     :root {
@@ -502,6 +503,301 @@
       display: block;
     }
 
+  
+    /* === QUIZ BANK & HISTORY STYLES === */
+    .quiz-bank-header {
+      background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .quiz-bank-info h3 {
+      font-size: 1.15rem;
+      color: #1e3a8a;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .quiz-bank-info p {
+      font-size: 0.88rem;
+      color: #475569;
+    }
+    .quiz-bank-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .count-pill {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1.5px solid #cbd5e1;
+      background: white;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .count-pill:hover {
+      border-color: #3b82f6;
+      color: #1d4ed8;
+    }
+    .count-pill.active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+    }
+    .btn-dice {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-dice:hover {
+      background: #059669;
+    }
+
+    /* History Dashboard Styles */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: #cbd5e1;
+    }
+    .stat-card.primary::before { background: #3b82f6; }
+    .stat-card.success::before { background: #10b981; }
+    .stat-card.danger::before { background: #ef4444; }
+    .stat-card.amber::before { background: #f59e0b; }
+    .stat-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.1;
+      margin: 8px 0 4px;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .stat-sub {
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .subject-breakdown-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .progress-label {
+      width: 140px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .progress-bar-bg {
+      flex: 1;
+      height: 12px;
+      background: #f1f5f9;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.5s ease;
+    }
+    .progress-stat {
+      width: 100px;
+      text-align: right;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .history-toolbar {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    }
+    .filter-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-btn {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      border-color: #3b82f6;
+      color: #1d4ed8;
+    }
+    .filter-btn.active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+    .history-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: border-color 0.2s;
+    }
+    .history-card.is-wrong {
+      border-left: 5px solid #ef4444;
+    }
+    .history-card.is-correct {
+      border-left: 5px solid #10b981;
+    }
+    .history-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .history-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge-sub {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+    .badge-time {
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+    .badge-status {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .badge-status.correct {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+    }
+    .badge-status.wrong {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fca5a5;
+    }
+    .history-options-list {
+      margin: 12px 0;
+      display: grid;
+      gap: 6px;
+    }
+    .history-opt-item {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      font-size: 0.88rem;
+      background: #f8fafc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .history-opt-item.user-wrong {
+      background: #fef2f2;
+      border-color: #fca5a5;
+      color: #991b1b;
+      font-weight: 600;
+    }
+    .history-opt-item.target-correct {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
+      font-weight: 600;
+    }
+    .history-explanation {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.86rem;
+      color: #1e40af;
+      margin-top: 10px;
+    }
+
   </style>
 </head>
 <body>
@@ -521,6 +817,9 @@
         </button>
         <button class="subject-tab-btn" onclick="switchSubject('db')">
           <span>🗄️</span> 데이터베이스 (Chap 1~3)
+        </button>
+        <button class="subject-tab-btn" onclick="switchSubject('history')" id="btn-tab-history" style="background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.5); color: #d97706; font-weight: 700;">
+          <span>📜</span> 풀이 히스토리 & 오답노트
         </button>
       </div>
       <div style="font-size: 0.82rem; color: #94a3b8; font-weight: 500;">
@@ -548,7 +847,7 @@
       <!-- Main Tabs -->
       <nav class="nav-tabs">
         <button class="tab-btn active" onclick="switchMainTab('concepts')">📖 핵심 개념 & 필기장</button>
-        <button class="tab-btn" onclick="switchMainTab('quiz-choice')">📝 객관식 20문항 (실전)</button>
+        <button class="tab-btn" onclick="switchMainTab('quiz-choice')">🎲 실전 퀴즈 뱅크 (100제 랜덤)</button>
         <button class="tab-btn" onclick="switchMainTab('quiz-blank')">✍️ 주관식 빈칸 20제 (실전)</button>
         <button class="tab-btn" onclick="switchMainTab('notes')">📋 내 필기 전체 모아보기</button>
       </nav>
@@ -994,32 +1293,36 @@
     <!-- ========================================== -->
     <!-- 2. 객관식 20문항 VIEW (실전 모의고사)       -->
     <!-- ========================================== -->
-    <section id="view-quiz-choice" class="view-section">
-      <div class="quiz-controls">
-        <div>
-          <h2 style="font-size:1.15rem; font-weight:700;">실전 객관식 모의고사 20문항</h2>
-          <p style="font-size:0.85rem; color:var(--text-muted);">중간고사 규정: 문항당 4점 (총 80점). 오답 시 감점 4점 규정 적용 여부를 선택할 수 있습니다.</p>
+    <!-- Tab 2: Algorithms Quiz Bank (100 Questions Random Mode) -->
+      <section id="view-quiz-choice" style="display:none;">
+        <div class="quiz-bank-header">
+          <div class="quiz-bank-info">
+            <h3><span>📘</span> 알고리즘 분석 실전 퀴즈 뱅크 (총 100문항 수록)</h3>
+            <p>Lec 2~6 강의자료 전 범위에서 <strong>랜덤으로 문제를 추출</strong>하여 실전처럼 시험을 치릅니다. 채점 결과는 오답노트 및 풀이 히스토리에 자동 누적됩니다.</p>
+          </div>
+          <div class="quiz-bank-controls">
+            <span style="font-size:0.82rem; font-weight:600; color:#475569;">문제 수:</span>
+            <button class="count-pill" onclick="setQuizCount('algorithms', 10, this)">10문항</button>
+            <button class="count-pill active" onclick="setQuizCount('algorithms', 20, this)">20문항</button>
+            <button class="count-pill" onclick="setQuizCount('algorithms', 50, this)">50문항</button>
+            <button class="count-pill" onclick="setQuizCount('algorithms', 100, this)">100문항 전체</button>
+            <button class="btn-dice" onclick="startNewRandomQuiz('algorithms')">🎲 새 랜덤 문제 뽑기</button>
+          </div>
         </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <label style="font-size:0.85rem; cursor:pointer;">
-            <input type="checkbox" id="penalty-mode" checked> 오답 감점(-4점) 적용
-          </label>
-          <button class="btn btn-primary" onclick="gradeChoiceQuiz()">정답 제출 & 채점</button>
-          <button class="btn btn-secondary" onclick="resetChoiceQuiz()">다시 풀기</button>
+
+        <div id="algo-score-banner" class="score-banner" style="display:none;">
+          <div class="score-num" id="algo-score-text">0 / 0 점</div>
+          <div class="score-detail" id="algo-score-detail">정답률 0%</div>
+          <p style="margin-top:6px; font-size:0.85rem; color:#15803d; font-weight:600;">💡 채점 결과가 [📜 풀이 히스토리 & 오답노트]에 저장되었습니다.</p>
         </div>
-      </div>
 
-      <!-- Choice Score Banner -->
-      <div id="choice-score-banner" class="score-banner">
-        <div>객관식 점수 결과</div>
-        <div class="score-num" id="choice-score-display">0 / 80점</div>
-        <div class="score-detail" id="choice-score-detail"></div>
-      </div>
+        <div id="choice-quiz-list"></div>
 
-      <div id="choice-quiz-list">
-        <!-- Rendered by JavaScript -->
-      </div>
-    </section>
+        <div style="margin-top: 32px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" style="padding: 12px 28px; font-size: 1rem;" onclick="gradeDynamicQuiz('algorithms')">정답 제출 & 자동 채점</button>
+          <button class="btn btn-secondary" style="padding: 12px 28px; font-size: 1rem;" onclick="startNewRandomQuiz('algorithms')">다시 풀기 (새 랜덤 문제)</button>
+        </div>
+      </section>
 
     <!-- ========================================== -->
     <!-- 3. 주관식 빈칸 20제 VIEW (실전 2문항)       -->
@@ -1123,7 +1426,7 @@
         <!-- IT Main Tabs -->
         <nav class="nav-tabs">
           <button class="tab-btn active" onclick="switchItMainTab('concepts')">📖 핵심 개념 & 필기장</button>
-          <button class="tab-btn" onclick="switchItMainTab('quiz-subjective')">✍️ 실전 주관식 10문항 (채점)</button>
+          <button class="tab-btn" onclick="switchItMainTab('quiz-subjective')">🎲 실전 퀴즈 뱅크 (100제 랜덤)</button>
           <button class="tab-btn" onclick="switchItMainTab('notes')">📋 정보처리기술 필기 모아보기</button>
         </nav>
       </div>
@@ -1555,152 +1858,34 @@
       </section>
 
       <!-- IT Subjective Quiz View (주관식 10문항) -->
-      <section id="it-view-quiz-subjective" class="view-section">
-        <div class="quiz-controls">
-          <div>
-            <h2 style="font-size:1.15rem; font-weight:700;">정보처리기술 실전 주관식 10문항</h2>
-            <p style="font-size:0.85rem; color:var(--text-muted);">중간고사 핵심 출제 포인트 10문항입니다. 정확한 용어를 입력하고 채점하세요 (문항당 10점, 총 100점).</p>
+      <!-- IT Quiz Bank (100 Questions Random Mode) -->
+      <section id="it-view-quiz-subjective" style="display:none;">
+        <div class="quiz-bank-header">
+          <div class="quiz-bank-info">
+            <h3><span>💾</span> 정보처리기술 실전 퀴즈 뱅크 (총 100문항 수록)</h3>
+            <p>1·5·6·7·8장 강의자료 전 범위에서 <strong>랜덤으로 문제를 추출</strong>하여 실전 모의고사를 진행합니다. 채점 결과는 오답노트에 자동 기록됩니다.</p>
           </div>
-          <div>
-            <button class="btn btn-primary" onclick="gradeItSubjectiveQuiz()">주관식 정답 제출 & 채점</button>
-            <button class="btn btn-secondary" onclick="resetItSubjectiveQuiz()">다시 풀기</button>
-          </div>
-        </div>
-
-        <div id="it-subjective-score-banner" class="score-banner">
-          <div>주관식 시험 결과</div>
-          <div class="score-num" id="it-subjective-score-display">0 / 100점</div>
-          <div class="score-detail" id="it-subjective-score-detail"></div>
-        </div>
-
-        <!-- Question 1 (1장) -->
-        <div class="quiz-card" id="it-qcard-1">
-          <span class="quiz-num">1장 | 주관식 1번 (10점)</span>
-          <div class="quiz-question">미래학자 엘빈 토플러(Alvin Toffler)가 제1의 물결(농업혁명), 제2의 물결(산업혁명)에 이어 컴퓨터와 통신의 결합으로 정보와 지식이 부의 원천이 되는 새로운 사회 대변혁을 지칭한 용어는 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="정보혁명" data-alt="제3의물결,제3의 물결,정보 혁명">
-          </div>
-          <div class="explanation" id="it-explain-1">
-            <strong>정답: 정보혁명 (또는 제3의 물결)</strong><br>
-            해설: 엘빈 토플러는 저서 '제3의 물결'에서 농업혁명, 산업혁명에 이은 제3의 물결로서 컴퓨터와 IT 기술에 의한 '정보혁명'을 제시하였습니다.
+          <div class="quiz-bank-controls">
+            <span style="font-size:0.82rem; font-weight:600; color:#475569;">문제 수:</span>
+            <button class="count-pill" onclick="setQuizCount('it', 10, this)">10문항</button>
+            <button class="count-pill active" onclick="setQuizCount('it', 20, this)">20문항</button>
+            <button class="count-pill" onclick="setQuizCount('it', 50, this)">50문항</button>
+            <button class="count-pill" onclick="setQuizCount('it', 100, this)">100문항 전체</button>
+            <button class="btn-dice" onclick="startNewRandomQuiz('it')">🎲 새 랜덤 문제 뽑기</button>
           </div>
         </div>
 
-        <!-- Question 2 (5장) -->
-        <div class="quiz-card" id="it-qcard-2">
-          <span class="quiz-num">5장 | 주관식 2번 (10점)</span>
-          <div class="quiz-question">네트워크 상호연결 장비 중, 프로토콜 구조가 서로 전혀 다른 이종 통신망 간에 데이터를 주고받을 수 있도록 프로토콜 변환을 수행하는 관문 장비는 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="게이트웨이" data-alt="gateway,게이트 웨이">
-          </div>
-          <div class="explanation" id="it-explain-2">
-            <strong>정답: 게이트웨이 (Gateway)</strong><br>
-            해설: 라우터가 서로 다른 IP 네트워크 간의 최적 경로를 설정한다면, 게이트웨이는 프로토콜 체계 자체가 다른 통신망 간의 프로토콜 변환을 담당합니다.
-          </div>
+        <div id="it-score-banner" class="score-banner" style="display:none;">
+          <div class="score-num" id="it-score-text">0 / 0 점</div>
+          <div class="score-detail" id="it-score-detail">정답률 0%</div>
+          <p style="margin-top:6px; font-size:0.85rem; color:#15803d; font-weight:600;">💡 채점 결과가 [📜 풀이 히스토리 & 오답노트]에 저장되었습니다.</p>
         </div>
 
-        <!-- Question 3 (5장) -->
-        <div class="quiz-card" id="it-qcard-3">
-          <span class="quiz-num">5장 | 주관식 3번 (10점)</span>
-          <div class="quiz-question">정보보안의 3대 핵심 요소(CIA) 중, 인가(승인)된 정당한 사용자나 권한을 가진 주체만이 정보에 접근할 수 있도록 보장하는 보안 특성은 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="기밀성" data-alt="confidentiality">
-          </div>
-          <div class="explanation" id="it-explain-3">
-            <strong>정답: 기밀성 (Confidentiality)</strong><br>
-            해설: 정보보안의 3대 요소는 기밀성(인가된 자만 접근), 무결성(비인가자의 변조 방지), 가용성(필요 시 정상 사용 보장)입니다.
-          </div>
-        </div>
+        <div id="it-quiz-list"></div>
 
-        <!-- Question 4 (6장) -->
-        <div class="quiz-card" id="it-qcard-4">
-          <span class="quiz-num">6장 | 주관식 4번 (10점)</span>
-          <div class="quiz-question">1969년 미 국방성 고등연구계획국에서 핵공격에도 통신망이 마비되지 않도록 분산 패킷 교환 방식으로 구축한 오늘날 인터넷의 시초가 된 통신망의 명칭은 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="ARPANET" data-alt="arpanet,아르파넷">
-          </div>
-          <div class="explanation" id="it-explain-4">
-            <strong>정답: ARPANET (아르파넷)</strong><br>
-            해설: 1969년 4개 대학 컴퓨터를 연결하여 패킷 교환 방식으로 최초 구축된 통신망으로, 현대 전 세계 인터넷의 기원이 되었습니다.
-          </div>
-        </div>
-
-        <!-- Question 5 (6장) -->
-        <div class="quiz-card" id="it-qcard-5">
-          <span class="quiz-num">6장 | 주관식 5번 (10점)</span>
-          <div class="quiz-question">사람이 기억하고 이해하기 쉬운 문자 형태의 도메인 이름(예: www.naver.com)을 컴퓨터가 인식하는 숫자로 된 IP 주소로 상호 변환해주는 시스템의 명칭(영문 약칭)은 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="DNS" data-alt="dns,도메인네임시스템,domain name system">
-          </div>
-          <div class="explanation" id="it-explain-5">
-            <strong>정답: DNS (Domain Name System)</strong><br>
-            해설: DNS는 전 세계의 도메인 이름과 매핑되는 IP 주소 정보를 계층적으로 관리하고 변환해주는 분산 데이터베이스 서비스입니다.
-          </div>
-        </div>
-
-        <!-- Question 6 (6장) -->
-        <div class="quiz-card" id="it-qcard-6">
-          <span class="quiz-num">6장 | 주관식 6번 (10점)</span>
-          <div class="quiz-question">클라우드 컴퓨팅 서비스 모델(IaaS, PaaS, SaaS) 중, 이용자가 별도의 소프트웨어를 설치하지 않고 웹 브라우저를 통해 클라우드 서버의 완성된 응용 소프트웨어를 빌려 쓰는 모델(예: 구글 닥스, 웹 메일)은 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="SaaS" data-alt="saas,software as a service">
-          </div>
-          <div class="explanation" id="it-explain-6">
-            <strong>정답: SaaS (Software as a Service)</strong><br>
-            해설: IaaS는 하드웨어 인프라, PaaS는 소프트웨어 개발 플랫폼, SaaS는 최종 사용자용 소프트웨어 자체를 웹을 통해 서비스로 제공하는 모델입니다.
-          </div>
-        </div>
-
-        <!-- Question 7 (7장) -->
-        <div class="quiz-card" id="it-qcard-7">
-          <span class="quiz-num">7장 | 주관식 7번 (10점)</span>
-          <div class="quiz-question">멀티미디어 데이터 압축 기법 중, 압축을 해제했을 때 원본 데이터가 100% 온전하게 복원되며, X-레이나 CT와 같은 의료용 영상에 필수적으로 적용되는 압축 방식은 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="무손실 압축" data-alt="무손실압축,lossless,무손실">
-          </div>
-          <div class="explanation" id="it-explain-7">
-            <strong>정답: 무손실 압축 (Lossless Compression)</strong><br>
-            해설: 원본 데이터의 미세한 왜곡도 오진을 부를 수 있는 의료 영상이나 실행 파일, 문서 등에는 원본 손실이 전혀 없는 무손실 압축이 사용됩니다.
-          </div>
-        </div>
-
-        <!-- Question 8 (7장) -->
-        <div class="quiz-card" id="it-qcard-8">
-          <span class="quiz-num">7장 | 주관식 8번 (10점)</span>
-          <div class="quiz-question">동영상 압축의 국제표준인 MPEG 시리즈 중, 디지털 TV 방송, 위성방송 및 DVD 수준의 고화질 비디오를 목적으로 1995년에 제정된 표준 규격은 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="MPEG-2" data-alt="mpeg2,mpeg-2,엠펙2,엠펙-2">
-          </div>
-          <div class="explanation" id="it-explain-8">
-            <strong>정답: MPEG-2</strong><br>
-            해설: MPEG-1은 CD-ROM/VHS 화질, MPEG-2는 디지털 TV 방송 및 DVD용 고화질 규격, MPEG-4는 인터넷 및 이동통신 스트리밍용 규격입니다.
-          </div>
-        </div>
-
-        <!-- Question 9 (8장) -->
-        <div class="quiz-card" id="it-qcard-9">
-          <span class="quiz-num">8장 | 주관식 9번 (10점)</span>
-          <div class="quiz-question">HTML5, CSS, 자바스크립트 등 웹 기술로 화면을 개발한 뒤 네이티브 컨테이너로 감싸서, 웹의 배포 편의성과 네이티브 앱의 단말기 하드웨어 제어 기능을 모두 통합한 모바일 앱 개발 방식은 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="하이브리드 앱" data-alt="하이브리드앱,hybrid app,하이브리드">
-          </div>
-          <div class="explanation" id="it-explain-9">
-            <strong>정답: 하이브리드 앱 (Hybrid App)</strong><br>
-            해설: 하이브리드 앱은 웹 기술의 생산성과 네이티브 앱의 앱스토어 배포 및 하드웨어 연동 장점을 결합한 방식입니다.
-          </div>
-        </div>
-
-        <!-- Question 10 (8장) -->
-        <div class="quiz-card" id="it-qcard-10">
-          <span class="quiz-num">8장 | 주관식 10번 (10점)</span>
-          <div class="quiz-question">사용자가 눈으로 바라보는 실제 현실 세계의 배경에 컴퓨터 그래픽 등 가상의 정보나 사물을 실시간으로 겹쳐서 보여주는 기술의 명칭(또는 영문 약칭)은 무엇인가?</div>
-          <div style="margin-top:10px;">
-            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="증강현실" data-alt="AR,ar,augmented reality,증강 현실">
-          </div>
-          <div class="explanation" id="it-explain-10">
-            <strong>정답: 증강현실 (AR: Augmented Reality)</strong><br>
-            해설: 현실 세계를 완전히 차단하고 가상 공간만 보여주는 가상현실(VR)과 달리, 증강현실(AR)은 현실 배경 위에 가상의 정보를 중첩하여 표시합니다.
-          </div>
+        <div style="margin-top: 32px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" style="padding: 12px 28px; font-size: 1rem;" onclick="gradeDynamicQuiz('it')">정답 제출 & 자동 채점</button>
+          <button class="btn btn-secondary" style="padding: 12px 28px; font-size: 1rem;" onclick="startNewRandomQuiz('it')">다시 풀기 (새 랜덤 문제)</button>
         </div>
       </section>
 
@@ -1738,7 +1923,7 @@
         </div>
         <nav class="nav-tabs">
           <button class="tab-btn active" onclick="switchOsMainTab('concepts')">📖 핵심 개념 & 필기장</button>
-          <button class="tab-btn" onclick="switchOsMainTab('quiz')">✍️ 실전 모의 퀴즈 (10문항)</button>
+          <button class="tab-btn" onclick="switchOsMainTab('quiz')">🎲 실전 퀴즈 뱅크 (100제 랜덤)</button>
           <button class="tab-btn" onclick="switchOsMainTab('notes')">📋 운영체제 필기 모아보기</button>
         </nav>
       </div>
@@ -2006,92 +2191,34 @@
       </section>
 
       <!-- OS Quiz View (10문항) -->
-      <section id="os-view-quiz" class="view-section">
-        <div class="quiz-controls">
-          <div>
-            <h2 style="font-size:1.15rem; font-weight:700;">운영체제론 실전 모의 퀴즈 (10문항)</h2>
-            <p style="font-size:0.85rem; color:var(--text-muted);">중간고사 핵심 키워드 주관식/단답식 10문항입니다 (문항당 10점, 100점 만점).</p>
+      <!-- OS Quiz Bank (100 Questions Random Mode) -->
+      <section id="os-view-quiz" style="display:none;">
+        <div class="quiz-bank-header">
+          <div class="quiz-bank-info">
+            <h3><span>⚙️</span> 운영체제론 실전 퀴즈 뱅크 (총 100문항 수록)</h3>
+            <p>Week 1 ~ Week 4 강의자료 전 범위에서 <strong>랜덤으로 문제를 추출</strong>하여 실전 모의고사를 진행합니다. 채점 결과는 오답노트에 자동 기록됩니다.</p>
           </div>
-          <div>
-            <button class="btn btn-primary" onclick="gradeOsQuiz()">정답 제출 & 채점</button>
-            <button class="btn btn-secondary" onclick="resetOsQuiz()">다시 풀기</button>
+          <div class="quiz-bank-controls">
+            <span style="font-size:0.82rem; font-weight:600; color:#475569;">문제 수:</span>
+            <button class="count-pill" onclick="setQuizCount('os', 10, this)">10문항</button>
+            <button class="count-pill active" onclick="setQuizCount('os', 20, this)">20문항</button>
+            <button class="count-pill" onclick="setQuizCount('os', 50, this)">50문항</button>
+            <button class="count-pill" onclick="setQuizCount('os', 100, this)">100문항 전체</button>
+            <button class="btn-dice" onclick="startNewRandomQuiz('os')">🎲 새 랜덤 문제 뽑기</button>
           </div>
         </div>
 
-        <div id="os-score-banner" class="score-banner">
-          <div>운영체제론 시험 결과</div>
-          <div class="score-num" id="os-score-display">0 / 100점</div>
-          <div class="score-detail" id="os-score-detail"></div>
+        <div id="os-score-banner" class="score-banner" style="display:none;">
+          <div class="score-num" id="os-score-text">0 / 0 점</div>
+          <div class="score-detail" id="os-score-detail">정답률 0%</div>
+          <p style="margin-top:6px; font-size:0.85rem; color:#15803d; font-weight:600;">💡 채점 결과가 [📜 풀이 히스토리 & 오답노트]에 저장되었습니다.</p>
         </div>
 
-        <div class="quiz-card" id="os-qcard-1">
-          <span class="quiz-num">W2 | 1번 (10점)</span>
-          <div class="quiz-question">CPU가 입출력 장치의 상태를 주기적으로 계속 확인하는 비효율적인 방식인 '폴링'과 달리, 하드웨어 장치가 작업 완료를 CPU에 직접 신호로 알려 처리하는 방식을 무엇이라 하는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="인터럽트" data-alt="interrupt,인터럽트 방식"></div>
-          <div class="explanation" id="os-explain-1"><strong>정답: 인터럽트 (Interrupt)</strong><br>해설: 인터럽트는 비동기적으로 CPU에 신호를 전달하여 폴링의 자원 낭비를 방지하는 필수 하드웨어 메커니즘입니다.</div>
-        </div>
+        <div id="os-quiz-list"></div>
 
-        <div class="quiz-card" id="os-qcard-2">
-          <span class="quiz-num">W2 | 2번 (10점)</span>
-          <div class="quiz-question">입출력 장치 제어, 메모리 보호 테이블 수정 등 컴퓨터 시스템에 치명적인 영향을 줄 수 있어 오직 '커널 모드'에서만 실행이 허용되는 기계어 명령어를 무엇이라 부르는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="특권 명령" data-alt="특권명령,privileged instruction,특권명령어"></div>
-          <div class="explanation" id="os-explain-2"><strong>정답: 특권 명령 (Privileged Instruction)</strong><br>해설: 사용자 모드에서 특권 명령을 실행하려고 시도하면 하드웨어가 트랩(예외)을 발생시켜 명령 실행을 차단합니다.</div>
-        </div>
-
-        <div class="quiz-card" id="os-qcard-3">
-          <span class="quiz-num">W2 | 3번 (10점)</span>
-          <div class="quiz-question">사용자 모드에서 실행 중인 응용 프로그램이 운영체제의 하드웨어 접근이나 커널 서비스를 요청하기 위해 소프트웨어 인터럽트(트랩)를 발생시켜 커널 모드로 진입하는 공식 통로를 무엇이라 하는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="시스템 호출" data-alt="시스템 콜,system call,시스템호출,시스템콜"></div>
-          <div class="explanation" id="os-explain-3"><strong>정답: 시스템 호출 (System Call)</strong><br>해설: 일반 함수 호출과 달리 시스템 호출은 사용자 모드에서 커널 모드로의 안전한 모드 전환(Mode Switch)을 수반합니다.</div>
-        </div>
-
-        <div class="quiz-card" id="os-qcard-4">
-          <span class="quiz-num">W3 | 4번 (10점)</span>
-          <div class="quiz-question">CPU가 실행 중에 바라보는 '논리/가상 주소'를 메인 메모리의 실제 '물리 주소'로 실시간 변환해주는 하드웨어 장치의 영문 약칭은 무엇인가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="MMU" data-alt="mmu,Memory Management Unit,메모리관리장치"></div>
-          <div class="explanation" id="os-explain-4"><strong>정답: MMU (Memory Management Unit)</strong><br>해설: MMU는 베이스 레지스터, 페이지 테이블 등을 참조하여 논리 주소를 물리 주소로 고속 변환합니다.</div>
-        </div>
-
-        <div class="quiz-card" id="os-qcard-5">
-          <span class="quiz-num">W3 | 5번 (10점)</span>
-          <div class="quiz-question">메모리 할당 기법 중, 할당된 고정 블록 크기보다 프로세스가 실제로 요구한 크기가 작아서 블록 내부의 남는 공간이 낭비되는 현상을 무엇이라 하는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="내부 단편화" data-alt="내부단편화,internal fragmentation,내부 단편화 현상"></div>
-          <div class="explanation" id="os-explain-5"><strong>정답: 내부 단편화 (Internal Fragmentation)</strong><br>해설: 페이징 기법에서는 외부 단편화는 완전히 사라지지만, 프로세스의 마지막 페이지 등에서 내부 단편화가 발생할 수 있습니다.</div>
-        </div>
-
-        <div class="quiz-card" id="os-qcard-6">
-          <span class="quiz-num">W3 | 6번 (10점)</span>
-          <div class="quiz-question">페이징(Paging) 기법에서 프로세스의 논리 주소 공간을 나눈 고정 크기 블록을 '페이지(Page)'라고 할 때, 메인 메모리(물리 메모리)를 동일한 크기로 나눈 블록을 무엇이라 하는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="프레임" data-alt="frame,페이지 프레임,페이지프레임"></div>
-          <div class="explanation" id="os-explain-6"><strong>정답: 프레임 (Frame / Page Frame)</strong><br>해설: 페이지는 논리적 단위, 프레임은 물리적 단위이며 둘의 크기는 완전히 동일합니다.</div>
-        </div>
-
-        <div class="quiz-card" id="os-qcard-7">
-          <span class="quiz-num">W4 | 7번 (10점)</span>
-          <div class="quiz-question">프로세스 메모리 주소 공간에서 C언어의 malloc()이나 C++의 new 연산자처럼 프로그램 실행 중에 동적으로 메모리를 할당받는 영역의 명칭은 무엇인가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="힙" data-alt="heap,힙 영역,힙영역"></div>
-          <div class="explanation" id="os-explain-7"><strong>정답: 힙 (Heap)</strong><br>해설: 동적 할당 공간인 힙은 낮은 주소에서 높은 주소 방향으로 자라나며, 함수 지역 변수를 담는 스택(Stack)과 반대 방향으로 확장됩니다.</div>
-        </div>
-
-        <div class="quiz-card" id="os-qcard-8">
-          <span class="quiz-num">W4 | 8번 (10점)</span>
-          <div class="quiz-question">프로세스가 참조하려는 페이지가 현재 물리 메모리에 적재되어 있지 않을 때(무효 비트), 하드웨어가 운영체제에 발생시키는 트랩(예외) 현상을 무엇이라 하는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="페이지 폴트" data-alt="페이지 부재,page fault,페이지폴트,페이지부재"></div>
-          <div class="explanation" id="os-explain-8"><strong>정답: 페이지 폴트 (Page Fault, 페이지 부재)</strong><br>해설: 페이지 폴트가 발생하면 운영체제는 해당 페이지를 보조기억장치에서 메모리로 읽어와 적재한 뒤 명령을 재개합니다.</div>
-        </div>
-
-        <div class="quiz-card" id="os-qcard-9">
-          <span class="quiz-num">W4 | 9번 (10점)</span>
-          <div class="quiz-question">가상 메모리 시스템에서 페이지 부재율이 너무 높아져 프로세스들이 CPU 실행보다 페이지 교체(디스크 I/O)에 대부분의 시간을 쓰게 됨으로써 시스템 성능이 급격히 저하되는 현상은?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="스래싱" data-alt="thrashing,쓰레싱"></div>
-          <div class="explanation" id="os-explain-9"><strong>정답: 스래싱 (Thrashing)</strong><br>해설: 다중 프로그래밍 정도가 너무 높아 각 프로세스에 할당된 프레임 수가 부족할 때 스래싱이 발생합니다.</div>
-        </div>
-
-        <div class="quiz-card" id="os-qcard-10">
-          <span class="quiz-num">W4 | 10번 (10점)</span>
-          <div class="quiz-question">리눅스 및 유닉스 계열 운영체제에서 컴파일된 실행 파일 및 오브젝트 파일의 표준 파일 포맷을 일컫는 영문 약칭(4글자)은 무엇인가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="ELF" data-alt="elf,Executable and Linkable Format"></div>
-          <div class="explanation" id="os-explain-10"><strong>정답: ELF (Executable and Linkable Format)</strong><br>해설: ELF는 코드(.text), 데이터(.data), 심볼 테이블, 섹션 헤더 등을 체계적으로 정의한 실행 파일 형식입니다.</div>
+        <div style="margin-top: 32px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" style="padding: 12px 28px; font-size: 1rem;" onclick="gradeDynamicQuiz('os')">정답 제출 & 자동 채점</button>
+          <button class="btn btn-secondary" style="padding: 12px 28px; font-size: 1rem;" onclick="startNewRandomQuiz('os')">다시 풀기 (새 랜덤 문제)</button>
         </div>
       </section>
 
@@ -2130,7 +2257,7 @@
         </div>
         <nav class="nav-tabs">
           <button class="tab-btn active" onclick="switchDbMainTab('concepts')">📖 핵심 개념 & 필기장</button>
-          <button class="tab-btn" onclick="switchDbMainTab('quiz')">✍️ 실전 모의 퀴즈 (10문항)</button>
+          <button class="tab-btn" onclick="switchDbMainTab('quiz')">🎲 실전 퀴즈 뱅크 (100제 랜덤)</button>
           <button class="tab-btn" onclick="switchDbMainTab('notes')">📋 데이터베이스 필기 모아보기</button>
         </nav>
       </div>
@@ -2460,92 +2587,34 @@
       </section>
 
       <!-- DB Quiz View (10문항) -->
-      <section id="db-view-quiz" class="view-section">
-        <div class="quiz-controls">
-          <div>
-            <h2 style="font-size:1.15rem; font-weight:700;">데이터베이스 실전 모의 퀴즈 (10문항)</h2>
-            <p style="font-size:0.85rem; color:var(--text-muted);">중간고사 핵심 키워드 주관식/단답식 10문항입니다 (문항당 10점, 100점 만점).</p>
+      <!-- DB Quiz Bank (100 Questions Random Mode) -->
+      <section id="db-view-quiz" style="display:none;">
+        <div class="quiz-bank-header">
+          <div class="quiz-bank-info">
+            <h3><span>🗄️</span> 데이터베이스 실전 퀴즈 뱅크 (총 100문항 수록)</h3>
+            <p>Chapter 1~3 및 ER 사상 전 범위에서 <strong>랜덤으로 문제를 추출</strong>하여 실전 모의고사를 진행합니다. 채점 결과는 오답노트에 자동 기록됩니다.</p>
           </div>
-          <div>
-            <button class="btn btn-primary" onclick="gradeDbQuiz()">정답 제출 & 채점</button>
-            <button class="btn btn-secondary" onclick="resetDbQuiz()">다시 풀기</button>
+          <div class="quiz-bank-controls">
+            <span style="font-size:0.82rem; font-weight:600; color:#475569;">문제 수:</span>
+            <button class="count-pill" onclick="setQuizCount('db', 10, this)">10문항</button>
+            <button class="count-pill active" onclick="setQuizCount('db', 20, this)">20문항</button>
+            <button class="count-pill" onclick="setQuizCount('db', 50, this)">50문항</button>
+            <button class="count-pill" onclick="setQuizCount('db', 100, this)">100문항 전체</button>
+            <button class="btn-dice" onclick="startNewRandomQuiz('db')">🎲 새 랜덤 문제 뽑기</button>
           </div>
         </div>
 
-        <div id="db-score-banner" class="score-banner">
-          <div>데이터베이스 시험 결과</div>
-          <div class="score-num" id="db-score-display">0 / 100점</div>
-          <div class="score-detail" id="db-score-detail"></div>
+        <div id="db-score-banner" class="score-banner" style="display:none;">
+          <div class="score-num" id="db-score-text">0 / 0 점</div>
+          <div class="score-detail" id="db-score-detail">정답률 0%</div>
+          <p style="margin-top:6px; font-size:0.85rem; color:#15803d; font-weight:600;">💡 채점 결과가 [📜 풀이 히스토리 & 오답노트]에 저장되었습니다.</p>
         </div>
 
-        <div class="quiz-card" id="db-qcard-1">
-          <span class="quiz-num">Chap 1 | 1번 (10점)</span>
-          <div class="quiz-question">3단계 데이터베이스 스키마 구조 중, 개별 사용자나 응용 프로그램의 관점에서 데이터베이스의 필요한 부분만을 정의한 '사용자 뷰' 스키마는 무엇인가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="외부 스키마" data-alt="외부스키마,external schema"></div>
-          <div class="explanation" id="db-explain-1"><strong>정답: 외부 스키마 (External Schema)</strong><br>해설: 3단계 스키마는 사용자 관점의 '외부 스키마', 조직 전체 통합 관점의 '개념 스키마', 물리적 저장 관점의 '내부 스키마'로 구성됩니다.</div>
-        </div>
+        <div id="db-quiz-list"></div>
 
-        <div class="quiz-card" id="db-qcard-2">
-          <span class="quiz-num">Chap 2 | 2번 (10점)</span>
-          <div class="quiz-question">E-R 모델에서 전화번호나 위치처럼 하나의 엔티티에 대해 둘 이상의 속성값을 가질 수 있어 ERD에서 이중 타원으로 표현하는 속성의 명칭은 무엇인가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="다중값 속성" data-alt="다중값속성,multivalued attribute,다치 속성,다치속성"></div>
-          <div class="explanation" id="db-explain-2"><strong>정답: 다중값 속성 (Multivalued Attribute)</strong><br>해설: 관계 데이터 모델은 다중값 속성을 허용하지 않으므로 사상(Mapping) 시 별도의 독립 릴레이션으로 분리해야 합니다.</div>
-        </div>
-
-        <div class="quiz-card" id="db-qcard-3">
-          <span class="quiz-num">Chap 2 | 3번 (10점)</span>
-          <div class="quiz-question">자신의 속성만으로는 독자적인 키를 형성할 수 없어 상위 소유자 엔티티의 기본키와 자신의 부분키를 결합해야만 식별되는 엔티티 타입을 무엇이라 부르는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="약한 엔티티" data-alt="약한 엔티티 타입,약한엔티티,weak entity,약한 개체"></div>
-          <div class="explanation" id="db-explain-3"><strong>정답: 약한 엔티티 타입 (Weak Entity Type)</strong><br>해설: ERD에서 이중 사각형으로 표기하며, 소유자와의 관계는 이중 마름모(식별 관계)로 표현됩니다. (예: 사원-부양가족).</div>
-        </div>
-
-        <div class="quiz-card" id="db-qcard-4">
-          <span class="quiz-num">Chap 3 | 4번 (10점)</span>
-          <div class="quiz-question">관계 데이터 모델에서 릴레이션이 포함하고 있는 튜플(행, Row)들의 총 개수를 일컫는 데이터베이스 용어는 무엇인가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="카디널리티" data-alt="cardinality,카디낼리티"></div>
-          <div class="explanation" id="db-explain-4"><strong>정답: 카디널리티 (Cardinality)</strong><br>해설: 튜플의 총 개수는 '카디널리티'이고, 애트리뷰트(열, Column)의 총 개수는 '차수(Degree)'라고 부릅니다.</div>
-        </div>
-
-        <div class="quiz-card" id="db-qcard-5">
-          <span class="quiz-num">Chap 3-2 | 5번 (10점)</span>
-          <div class="quiz-question">릴레이션의 튜플들을 고유하게 구별할 수 있는 키 중에서 '유일성(Uniqueness)'과 '최소성(Minimality)'을 모두 만족하는 키를 무엇이라 부르는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="후보키" data-alt="candidate key,후보 키"></div>
-          <div class="explanation" id="db-explain-5"><strong>정답: 후보키 (Candidate Key)</strong><br>해설: 슈퍼키는 유일성만 만족하면 되지만, 후보키는 유일성과 최소성을 모두 만족해야 하며 후보키 중 하나가 기본키(PK)로 선정됩니다.</div>
-        </div>
-
-        <div class="quiz-card" id="db-qcard-6">
-          <span class="quiz-num">Chap 3-2 | 6번 (10점)</span>
-          <div class="quiz-question">한 릴레이션의 애트리뷰트 중에서 다른 릴레이션의 기본키(Primary Key)를 참조하는 속성을 무엇이라 하는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="외래키" data-alt="foreign key,외래 키,FK"></div>
-          <div class="explanation" id="db-explain-6"><strong>정답: 외래키 (Foreign Key)</strong><br>해설: 외래키는 릴레이션 간의 연관 관계를 맺어주고 참조 무결성을 유지하는 데 사용됩니다.</div>
-        </div>
-
-        <div class="quiz-card" id="db-qcard-7">
-          <span class="quiz-num">Chap 3-3 | 7번 (10점)</span>
-          <div class="quiz-question">기본키(Primary Key)를 구성하는 어떠한 애트리뷰트도 NULL 값을 가질 수 없으며 중복되어서는 안 된다는 무결성 제약조건의 명칭은 무엇인가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="개체 무결성" data-alt="개체 무결성 제약조건,개체무결성,entity integrity"></div>
-          <div class="explanation" id="db-explain-7"><strong>정답: 개체 무결성 제약조건 (Entity Integrity Constraint)</strong><br>해설: 기본키는 튜플을 고유하게 식별하는 유일한 기준이므로 어떠한 경우에도 NULL이 될 수 없습니다.</div>
-        </div>
-
-        <div class="quiz-card" id="db-qcard-8">
-          <span class="quiz-num">Chap 3-3 | 8번 (10점)</span>
-          <div class="quiz-question">외래키(Foreign Key) 값은 반드시 참조하는 대상 릴레이션의 기본키 값과 일치하거나, 또는 NULL 값이어야 한다는 무결성 제약조건은 무엇인가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="참조 무결성" data-alt="참조 무결성 제약조건,참조무결성,referential integrity"></div>
-          <div class="explanation" id="db-explain-8"><strong>정답: 참조 무결성 제약조건 (Referential Integrity Constraint)</strong><br>해설: 참조할 수 없는 엉뚱한 값을 외래키로 저장하여 데이터 관계가 깨지는 것을 방지합니다.</div>
-        </div>
-
-        <div class="quiz-card" id="db-qcard-9">
-          <span class="quiz-num">Chap 3-1 | 9번 (10점)</span>
-          <div class="quiz-question">ERD에서 '1 : N' 이진 관계를 관계형 모델로 사상(Mapping)할 때, 일반적으로 1-side와 n-side 중 어느 쪽 릴레이션에 상대방의 기본키를 외래키(FK)로 내장(Embed)시키는가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="N" data-alt="n,N-side,n-side,N쪽,n쪽"></div>
-          <div class="explanation" id="db-explain-9"><strong>정답: N (또는 N-side)</strong><br>해설: 1쪽에 외래키를 넣으면 다중값(Multivalued) 속성이 되거나 중복이 발생하므로, 항상 'N' 쪽 릴레이션에 1쪽의 PK를 외래키로 추가해야 합니다.</div>
-        </div>
-
-        <div class="quiz-card" id="db-qcard-10">
-          <span class="quiz-num">Chap 3-1 | 10번 (10점)</span>
-          <div class="quiz-question">ERD에서 'M : N' 다대다 관계를 관계형 모델로 사상할 때, 기존 두 엔티티 릴레이션 외에 추가로 관계 자체를 나타내기 위해 생성해야 하는 것은 무엇인가?</div>
-          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="새로운 릴레이션" data-alt="새로운 relation,별도 릴레이션,교차 릴레이션,연결 릴레이션,새로운 테이블"></div>
-          <div class="explanation" id="db-explain-10"><strong>정답: 새로운 릴레이션 (별도 테이블/교차 릴레이션)</strong><br>해설: M:N 관계는 어느 한쪽에 외래키를 넣을 수 없으므로, 관계를 위한 독립된 새로운 릴레이션을 생성하여 양쪽의 PK를 외래키이자 복합 기본키로 구성합니다.</div>
+        <div style="margin-top: 32px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" style="padding: 12px 28px; font-size: 1rem;" onclick="gradeDynamicQuiz('db')">정답 제출 & 자동 채점</button>
+          <button class="btn btn-secondary" style="padding: 12px 28px; font-size: 1rem;" onclick="startNewRandomQuiz('db')">다시 풀기 (새 랜덤 문제)</button>
         </div>
       </section>
 
@@ -2565,6 +2634,108 @@
       </section>
     </main>
   </div><!-- end #subject-db -->
+
+  <!-- ========================================================
+       5. 풀이 히스토리 & 실전 오답노트 (SUBJECT: HISTORY)
+       ======================================================== -->
+  <div id="subject-history" class="subject-panel" style="display:none;">
+    <header style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: white; padding: 24px 0; border-bottom: 3px solid #f59e0b;">
+      <div class="container">
+        <div class="header-top">
+          <div class="title-group">
+            <h1 style="color:#f8fafc; display:flex; align-items:center; gap:10px;">📜 풀이 히스토리 & 실전 오답노트</h1>
+            <p style="color:#cbd5e1;">과목별 랜덤 퀴즈에서 풀었던 모든 문제의 기록을 확인하고, 오답만 모아 재시험을 치를 수 있습니다.</p>
+          </div>
+          <div class="exam-badge" style="background:rgba(245, 158, 11, 0.2); border-color:#f59e0b; color:#fbbf24;">
+            <span>⭐ 로컬 저장소(localStorage) 자동 동기화</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container" style="padding-top: 24px;">
+      <!-- Stats Dashboard -->
+      <div class="stat-grid">
+        <div class="stat-card primary">
+          <div class="stat-label">총 푼 문제 수</div>
+          <div class="stat-num" id="hist-stat-total">0</div>
+          <div class="stat-sub">누적 채점 문항</div>
+        </div>
+        <div class="stat-card amber">
+          <div class="stat-label">전체 정답률</div>
+          <div class="stat-num" id="hist-stat-rate">0.0%</div>
+          <div class="stat-sub">종합 정확도</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">맞은 문제</div>
+          <div class="stat-num" id="hist-stat-correct" style="color:#10b981;">0</div>
+          <div class="stat-sub">정답 문항</div>
+        </div>
+        <div class="stat-card danger">
+          <div class="stat-label">틀린 문제 (오답)</div>
+          <div class="stat-num" id="hist-stat-wrong" style="color:#ef4444;">0</div>
+          <div class="stat-sub">집중 복습 대상</div>
+        </div>
+      </div>
+
+      <!-- Subject Accuracy Breakdown -->
+      <div class="subject-breakdown-card">
+        <div style="font-size:0.95rem; font-weight:700; color:#1e293b; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
+          <span>📊 과목별 성취도 현황</span>
+          <span style="font-size:0.8rem; color:#64748b; font-weight:normal;">과목별 맞은 개수 / 푼 개수 (정답률)</span>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>📘</span> 알고리즘 분석</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-algo" style="width:0%; background:#2563eb;"></div></div>
+          <div class="progress-stat" id="stat-algo">0 / 0 (0%)</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>💾</span> 정보처리기술</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-it" style="width:0%; background:#06b6d4;"></div></div>
+          <div class="progress-stat" id="stat-it">0 / 0 (0%)</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>⚙️</span> 운영체제론</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-os" style="width:0%; background:#8b5cf6;"></div></div>
+          <div class="progress-stat" id="stat-os">0 / 0 (0%)</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>🗄️</span> 데이터베이스</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-db" style="width:0%; background:#f59e0b;"></div></div>
+          <div class="progress-stat" id="stat-db">0 / 0 (0%)</div>
+        </div>
+      </div>
+
+      <!-- Filter & Action Toolbar -->
+      <div class="history-toolbar">
+        <div class="filter-group">
+          <span style="font-size:0.82rem; font-weight:700; color:#475569;">과목 필터:</span>
+          <button class="filter-btn active" onclick="setHistFilter('subject', 'all', this)">전체 과목</button>
+          <button class="filter-btn" onclick="setHistFilter('subject', 'algorithms', this)">알고리즘</button>
+          <button class="filter-btn" onclick="setHistFilter('subject', 'it', this)">정보처리</button>
+          <button class="filter-btn" onclick="setHistFilter('subject', 'os', this)">운영체제</button>
+          <button class="filter-btn" onclick="setHistFilter('subject', 'db', this)">데이터베이스</button>
+        </div>
+
+        <div class="filter-group">
+          <span style="font-size:0.82rem; font-weight:700; color:#475569;">상태 필터:</span>
+          <button class="filter-btn active" onclick="setHistFilter('status', 'all', this)">전체</button>
+          <button class="filter-btn" onclick="setHistFilter('status', 'wrong', this)" style="color:#b91c1c;">❌ 오답만 보기</button>
+          <button class="filter-btn" onclick="setHistFilter('status', 'correct', this)" style="color:#15803d;">⭕ 정답만 보기</button>
+        </div>
+
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-primary" style="padding:7px 14px; font-size:0.82rem;" onclick="retryWrongQuestions()">🔄 오답들로 재시험 치기</button>
+          <button class="btn btn-secondary" style="padding:7px 14px; font-size:0.82rem;" onclick="window.print()">🖨️ 인쇄 / PDF</button>
+          <button class="btn" style="padding:7px 14px; font-size:0.82rem; background:#fee2e2; color:#b91c1c; border:1px solid #fca5a5;" onclick="clearAllHistory()">🗑️ 기록 비우기</button>
+        </div>
+      </div>
+
+      <!-- History Items List Container -->
+      <div id="history-items-container"></div>
+    </main>
+  </div><!-- end #subject-history -->
+
 
 
 
@@ -3087,11 +3258,19 @@
 
       if (event && event.currentTarget) {
         event.currentTarget.classList.add('active');
+      } else {
+        const btn = document.querySelector(`.subject-tab-btn[onclick*="${subjectId}"]`);
+        if (btn) btn.classList.add('active');
       }
+
       const targetPanel = document.getElementById('subject-' + subjectId);
       if (targetPanel) {
         targetPanel.classList.add('active');
         targetPanel.style.display = 'block';
+      }
+
+      if (subjectId === 'history') {
+        renderHistoryView();
       }
 
       if (window.renderMathInElement) {
@@ -3493,6 +3672,466 @@
     }
 
     // Init
+
+    
+    /* ========================================================
+       QUIZ BANK ENGINE & HISTORY MANAGER (400 QUESTIONS)
+       ======================================================== */
+    const QUIZ_SETTINGS = {
+      algorithms: 20,
+      it: 20,
+      os: 20,
+      db: 20
+    };
+
+    const CURRENT_ACTIVE_QUIZ = {
+      algorithms: [],
+      it: [],
+      os: [],
+      db: []
+    };
+
+    let historyFilterSubject = 'all';
+    let historyFilterStatus = 'all';
+
+    function getSubjectName(subject) {
+      switch(subject) {
+        case 'algorithms': return '알고리즘 분석';
+        case 'it': return '정보처리기술';
+        case 'os': return '운영체제론';
+        case 'db': return '데이터베이스';
+        default: return subject;
+      }
+    }
+
+    function setQuizCount(subject, count, btnEl) {
+      QUIZ_SETTINGS[subject] = count;
+      if (btnEl && btnEl.parentElement) {
+        btnEl.parentElement.querySelectorAll('.count-pill').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+      startNewRandomQuiz(subject);
+    }
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function startNewRandomQuiz(subject) {
+      if (!window.QUIZ_BANK || !window.QUIZ_BANK[subject]) {
+        console.warn('QUIZ_BANK not ready for subject:', subject);
+        return;
+      }
+      const pool = window.QUIZ_BANK[subject];
+      const count = Math.min(QUIZ_SETTINGS[subject] || 20, pool.length);
+      const shuffled = shuffleArray(pool).slice(0, count);
+      CURRENT_ACTIVE_QUIZ[subject] = shuffled;
+
+      renderDynamicQuiz(subject);
+
+      // Hide score banner
+      const bannerId = subject === 'algorithms' ? 'algo-score-banner' : `${subject}-score-banner`;
+      const banner = document.getElementById(bannerId);
+      if (banner) banner.style.display = 'none';
+    }
+
+    function renderDynamicQuiz(subject) {
+      const listContainerId = subject === 'algorithms' ? 'choice-quiz-list' : `${subject}-quiz-list`;
+      const container = document.getElementById(listContainerId);
+      if (!container) return;
+
+      const questions = CURRENT_ACTIVE_QUIZ[subject];
+      if (!questions || questions.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:40px; color:#94a3b8;">문제를 불러오는 중입니다...</div>';
+        return;
+      }
+
+      let html = '';
+      questions.forEach((q, idx) => {
+        const qNum = idx + 1;
+        html += `
+          <div class="quiz-card" id="${subject}-qcard-${idx}">
+            <div class="quiz-question">
+              <span class="quiz-num">Q${qNum}</span>
+              <span class="badge" style="background:#f1f5f9; color:#475569; border:1px solid #cbd5e1; margin-right:8px; font-size:0.78rem;">${q.topic}</span>
+              <span style="font-weight:600;">${q.question}</span>
+            </div>
+            <div class="quiz-options">
+        `;
+
+        q.options.forEach((opt, optIdx) => {
+          html += `
+            <label class="quiz-option" id="${subject}-q-${idx}-opt-${optIdx}">
+              <input type="radio" name="${subject}_q_${idx}" value="${optIdx}">
+              <span>${opt}</span>
+            </label>
+          `;
+        });
+
+        html += `
+            </div>
+            <div class="explanation" id="${subject}-explain-${idx}" style="display:none;">
+              <strong>💡 정답 및 해설:</strong><br>
+              <span id="${subject}-explain-text-${idx}">${q.explanation}</span>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+
+      // Trigger KaTeX math rendering
+      if (window.renderMathInElement) {
+        renderMathInElement(container, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    function gradeDynamicQuiz(subject) {
+      const questions = CURRENT_ACTIVE_QUIZ[subject];
+      if (!questions || questions.length === 0) return;
+
+      let correctCount = 0;
+      let unansweredCount = 0;
+      const solvedRecords = [];
+      const nowStr = new Date().toLocaleString('ko-KR', {
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit'
+      });
+
+      questions.forEach((q, idx) => {
+        const card = document.getElementById(`${subject}-qcard-${idx}`);
+        const checkedInput = document.querySelector(`input[name="${subject}_q_${idx}"]:checked`);
+        const userChoice = checkedInput ? parseInt(checkedInput.value, 10) : null;
+        const correctChoice = q.answer;
+        const isCorrect = (userChoice === correctChoice);
+
+        // Reset classes
+        if (card) {
+          card.classList.remove('correct', 'wrong');
+          q.options.forEach((_, optIdx) => {
+            const optLabel = document.getElementById(`${subject}-q-${idx}-opt-${optIdx}`);
+            if (optLabel) {
+              optLabel.classList.remove('correct', 'wrong');
+              optLabel.style.borderColor = '';
+              optLabel.style.background = '';
+            }
+          });
+        }
+
+        if (userChoice === null) {
+          unansweredCount++;
+        }
+
+        if (isCorrect) {
+          correctCount++;
+          if (card) {
+            card.classList.add('correct');
+            const targetOpt = document.getElementById(`${subject}-q-${idx}-opt-${correctChoice}`);
+            if (targetOpt) {
+              targetOpt.style.background = '#dcfce7';
+              targetOpt.style.borderColor = '#16a34a';
+              targetOpt.style.fontWeight = 'bold';
+            }
+          }
+        } else {
+          if (card) {
+            card.classList.add('wrong');
+            if (userChoice !== null) {
+              const wrongOpt = document.getElementById(`${subject}-q-${idx}-opt-${userChoice}`);
+              if (wrongOpt) {
+                wrongOpt.style.background = '#fee2e2';
+                wrongOpt.style.borderColor = '#dc2626';
+              }
+            }
+            const targetOpt = document.getElementById(`${subject}-q-${idx}-opt-${correctChoice}`);
+            if (targetOpt) {
+              targetOpt.style.background = '#dcfce7';
+              targetOpt.style.borderColor = '#16a34a';
+              targetOpt.style.fontWeight = 'bold';
+            }
+          }
+        }
+
+        // Show explanation
+        const explainBox = document.getElementById(`${subject}-explain-${idx}`);
+        if (explainBox) {
+          explainBox.style.display = 'block';
+        }
+
+        // Record for history
+        solvedRecords.push({
+          id: Date.now() + '_' + idx + '_' + Math.random().toString(36).substr(2, 4),
+          timestamp: nowStr,
+          subject: subject,
+          subjectName: getSubjectName(subject),
+          topic: q.topic,
+          question: q.question,
+          options: q.options,
+          userAnswer: userChoice !== null ? userChoice : -1,
+          correctAnswer: correctChoice,
+          isCorrect: isCorrect,
+          explanation: q.explanation
+        });
+      });
+
+      // Save to history storage
+      saveHistoryBatch(solvedRecords);
+
+      // Score calculation
+      const total = questions.length;
+      const scorePct = Math.round((correctCount / total) * 100);
+
+      const bannerId = subject === 'algorithms' ? 'algo-score-banner' : `${subject}-score-banner`;
+      const textId = subject === 'algorithms' ? 'algo-score-text' : `${subject}-score-text`;
+      const detailId = subject === 'algorithms' ? 'algo-score-detail' : `${subject}-score-detail`;
+
+      const banner = document.getElementById(bannerId);
+      const textEl = document.getElementById(textId);
+      const detailEl = document.getElementById(detailId);
+
+      if (banner && textEl && detailEl) {
+        banner.style.display = 'block';
+        textEl.textContent = `${correctCount} / ${total} 정답 (${scorePct}점)`;
+        detailEl.textContent = `정답: ${correctCount}개 | 오답: ${total - correctCount}개 (미응시: ${unansweredCount}개) | 정답률: ${scorePct}%`;
+        banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    /* History LocalStorage Handlers */
+    const HISTORY_STORAGE_KEY = 'exam_quiz_history';
+
+    function getHistory() {
+      try {
+        const raw = localStorage.getItem(HISTORY_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch(e) {
+        console.error(e);
+        return [];
+      }
+    }
+
+    function saveHistoryBatch(newRecords) {
+      const history = getHistory();
+      // Prepend new records to top
+      const merged = [...newRecords, ...history];
+      // Limit to max 2000 items to avoid localStorage overflow
+      const trimmed = merged.slice(0, 2000);
+      try {
+        localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(trimmed));
+      } catch(e) {
+        console.error('Failed to save history to localStorage', e);
+      }
+    }
+
+    function clearAllHistory() {
+      if (confirm('지금까지 저장된 모든 퀴즈 풀이 기록과 오답노트를 삭제하시겠습니까?')) {
+        localStorage.removeItem(HISTORY_STORAGE_KEY);
+        renderHistoryView();
+        alert('풀이 히스토리가 초기화되었습니다.');
+      }
+    }
+
+    function deleteHistoryItem(id) {
+      const history = getHistory();
+      const updated = history.filter(item => item.id !== id);
+      localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(updated));
+      renderHistoryView();
+    }
+
+    function setHistFilter(type, value, btnEl) {
+      if (type === 'subject') historyFilterSubject = value;
+      if (type === 'status') historyFilterStatus = value;
+
+      if (btnEl && btnEl.parentElement) {
+        btnEl.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+      renderHistoryView();
+    }
+
+    function renderHistoryView() {
+      const history = getHistory();
+
+      // Calculate Stats
+      const total = history.length;
+      const correctCount = history.filter(h => h.isCorrect).length;
+      const wrongCount = total - correctCount;
+      const rate = total > 0 ? ((correctCount / total) * 100).toFixed(1) : '0.0';
+
+      document.getElementById('hist-stat-total').textContent = total;
+      document.getElementById('hist-stat-rate').textContent = rate + '%';
+      document.getElementById('hist-stat-correct').textContent = correctCount;
+      document.getElementById('hist-stat-wrong').textContent = wrongCount;
+
+      // Subject breakdown
+      const subjects = ['algorithms', 'it', 'os', 'db'];
+      subjects.forEach(sub => {
+        const subItems = history.filter(h => h.subject === sub);
+        const subTotal = subItems.length;
+        const subCorrect = subItems.filter(h => h.isCorrect).length;
+        const subPct = subTotal > 0 ? Math.round((subCorrect / subTotal) * 100) : 0;
+
+        const barEl = document.getElementById(`bar-${sub}`);
+        const statEl = document.getElementById(`stat-${sub}`);
+        if (barEl) barEl.style.width = subPct + '%';
+        if (statEl) statEl.textContent = `${subCorrect} / ${subTotal} (${subPct}%)`;
+      });
+
+      // Filter
+      let filtered = [...history];
+      if (historyFilterSubject !== 'all') {
+        filtered = filtered.filter(h => h.subject === historyFilterSubject);
+      }
+      if (historyFilterStatus === 'wrong') {
+        filtered = filtered.filter(h => !h.isCorrect);
+      } else if (historyFilterStatus === 'correct') {
+        filtered = filtered.filter(h => h.isCorrect);
+      }
+
+      const container = document.getElementById('history-items-container');
+      if (!container) return;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:60px 20px; background:white; border-radius:12px; border:1px solid #e2e8f0; color:#64748b;">
+            <div style="font-size:3rem; margin-bottom:12px;">📭</div>
+            <div style="font-size:1.1rem; font-weight:700; color:#1e293b; margin-bottom:6px;">풀이 기록이 없습니다</div>
+            <p style="font-size:0.9rem;">각 과목의 [실전 퀴즈 뱅크] 탭에서 문제를 풀고 채점을 완료하면 여기에 자동으로 누적됩니다.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      filtered.forEach((item, idx) => {
+        const isCorrect = item.isCorrect;
+        const cardClass = isCorrect ? 'is-correct' : 'is-wrong';
+        const statusBadge = isCorrect 
+          ? '<span class="badge-status correct">⭕ 정답 (+1)</span>' 
+          : '<span class="badge-status wrong">❌ 오답</span>';
+
+        html += `
+          <div class="history-card ${cardClass}">
+            <div class="history-card-header">
+              <div class="history-badges">
+                <span class="badge" style="background:#2563eb; color:white; font-size:0.78rem;">${item.subjectName}</span>
+                <span class="badge-sub">${item.topic}</span>
+                <span class="badge-time">⏱️ ${item.timestamp}</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                ${statusBadge}
+                <button onclick="deleteHistoryItem('${item.id}')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size:0.9rem;" title="이 기록 삭제">🗑️</button>
+              </div>
+            </div>
+
+            <div style="font-size:0.98rem; font-weight:600; color:#1e293b; margin-bottom:12px; line-height:1.5;">
+              ${item.question}
+            </div>
+
+            <div class="history-options-list">
+        `;
+
+        item.options.forEach((opt, optIdx) => {
+          let optClass = '';
+          let tag = '';
+          if (optIdx === item.correctAnswer) {
+            optClass = 'target-correct';
+            tag = '<span style="font-size:0.78rem; font-weight:700;">✅ 실제 정답</span>';
+          }
+          if (optIdx === item.userAnswer && !isCorrect) {
+            optClass = 'user-wrong';
+            tag = '<span style="font-size:0.78rem; font-weight:700;">❌ 내가 고른 오답</span>';
+          } else if (optIdx === item.userAnswer && isCorrect) {
+            tag = '<span style="font-size:0.78rem; font-weight:700;">⭕ 내가 선택함</span>';
+          }
+
+          html += `
+            <div class="history-opt-item ${optClass}">
+              <span>${opt}</span>
+              ${tag}
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+            <div class="history-explanation">
+              <strong>💡 문제 해설:</strong> ${item.explanation}
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+
+      // KaTeX formatting
+      if (window.renderMathInElement) {
+        renderMathInElement(container, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    function retryWrongQuestions() {
+      const history = getHistory();
+      const wrongItems = history.filter(h => !h.isCorrect);
+
+      if (wrongItems.length === 0) {
+        alert('🎉 축하합니다! 현재 풀이 히스토리에 틀린 문제가 없습니다.');
+        return;
+      }
+
+      // Deduplicate by question text
+      const uniqueMap = new Map();
+      wrongItems.forEach(item => {
+        if (!uniqueMap.has(item.question)) {
+          uniqueMap.set(item.question, item);
+        }
+      });
+      const uniqueWrongs = Array.from(uniqueMap.values());
+
+      const targetSubject = uniqueWrongs[0].subject || 'algorithms';
+      alert(`총 ${uniqueWrongs.length}개의 고유 오답 문제를 발견했습니다. [${getSubjectName(targetSubject)}] 탭으로 이동하여 오답 탈출 세트를 시작합니다!`);
+
+      // Set to current active quiz
+      CURRENT_ACTIVE_QUIZ[targetSubject] = uniqueWrongs.map(w => ({
+        id: w.id,
+        subject: w.subject,
+        topic: w.topic,
+        type: 'mcq',
+        question: w.question,
+        options: w.options,
+        answer: w.correctAnswer,
+        explanation: w.explanation
+      }));
+
+      // Switch to that subject view
+      switchSubject(targetSubject);
+
+      // Switch to quiz tab in that subject
+      if (targetSubject === 'algorithms') switchMainTab('quiz-choice');
+      else if (targetSubject === 'it') switchItMainTab('quiz-subjective');
+      else if (targetSubject === 'os') switchOsMainTab('quiz');
+      else if (targetSubject === 'db') switchDbMainTab('quiz');
+
+      renderDynamicQuiz(targetSubject);
+    }
+
 
     window.addEventListener('DOMContentLoaded', () => {
       renderChoiceQuiz();

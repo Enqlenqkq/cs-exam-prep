@@ -1,0 +1,1448 @@
+[
+  {
+    "id": 1,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "컴퓨터의 세대별 주요 논리 회로 소자의 발전 순서로 올바른 것은?",
+    "options": [
+      "진공관 -> 트랜지스터 -> 집적회로(IC) -> 고밀도/초고밀도 집적회로(LSI/VLSI)",
+      "트랜지스터 -> 진공관 -> 집적회로 -> 자기코어",
+      "집적회로 -> 진공관 -> 트랜지스터 -> 양자칩",
+      "진공관 -> 집적회로 -> 트랜지스터 -> 마이크로프로세서"
+    ],
+    "answer": 0,
+    "explanation": "1세대: 진공관(Vacuum Tube), 2세대: 트랜지스터(Transistor), 3세대: 집적회로(IC), 4세대 이후: LSI/VLSI로 발전했습니다."
+  },
+  {
+    "id": 2,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "폰 노이만(John von Neumann) 구조의 가장 핵심적인 특징은?",
+    "options": [
+      "프로그램 명령어를 외부 플러그보드 결선으로만 입력하는 방식",
+      "프로그램(명령어)과 데이터를 모두 동일한 메모리(기억장치)에 저장하고 순차적으로 읽어와 실행하는 '프로그램 내장 방식(Stored-Program Concept)'",
+      "중앙처리장치(CPU) 없이 메모리 단독으로 연산을 처리하는 방식",
+      "아날로그 전압의 연속적인 크기를 이용해 병렬 연산을 수행하는 구조"
+    ],
+    "answer": 1,
+    "explanation": "폰 노이만 구조는 명령어와 데이터를 주기억장치에 함께 적재하고 프로그램 카운터(PC)를 통해 순차적으로 인출-해석-실행하는 프로그램 내장 방식입니다."
+  },
+  {
+    "id": 3,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "폰 노이만 아키텍처에서 발생하는 전형적인 성능 한계인 '폰 노이만 병목현상(Von Neumann Bottleneck)'의 원인은?",
+    "options": [
+      "고속의 CPU와 상대적으로 저속인 메모리 간에 공유 버스(Bus)를 통해 명령어와 데이터를 주고받으면서 발생하는 전송 대역폭의 한계",
+      "하드디스크의 회전 속도가 너무 빨라서 헤드가 손상되는 문제",
+      "모니터와 그래픽 카드의 해상도 불일치",
+      "트랜지스터의 발열로 인해 CPU의 전원이 차단되는 현상"
+    ],
+    "answer": 0,
+    "explanation": "CPU 처리 속도에 비해 시스템 버스와 메모리의 대역폭이 따라가지 못해 CPU가 유휴(Idle) 상태로 메모리 응답을 기다리는 현상입니다."
+  },
+  {
+    "id": 4,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "데이터(Data)와 정보(Information)의 개념적 차이로 가장 적절한 것은?",
+    "options": [
+      "데이터는 가공된 최종 지식이고, 정보는 가공되지 않은 순수 숫자이다.",
+      "데이터는 현실 세계에서 수집된 가공되지 않은 순수한 사실(Raw Facts)이나 측정값이며, 정보는 이를 특정 목적에 맞게 처리·가공하여 유의미한 가치를 부여한 결과물이다.",
+      "데이터와 정보는 완전히 동일한 동의어이다.",
+      "정보가 모여서 데이터가 되고, 데이터가 모여 하드웨어가 된다."
+    ],
+    "answer": 1,
+    "explanation": "데이터는 단순 사실의 나열(예: 기온 35도)이며, 정보는 의사결정에 도움이 되도록 가공된 유용한 형태(예: 폭염 주의보 발령)입니다."
+  },
+  {
+    "id": 5,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "물리적 세계의 사물, 공간, 프로세스를 디지털 가상 공간에 1:1로 실시간 쌍둥이처럼 복제·동기화하여 시뮬레이션 및 최적화를 수행하는 기술은?",
+    "options": [
+      "디지털 트윈 (Digital Twin)",
+      "클라우드 스토리지 (Cloud Storage)",
+      "데이터 웨어하우스 (Data Warehouse)",
+      "가상 머신 (Virtual Machine)"
+    ],
+    "answer": 0,
+    "explanation": "디지털 트윈은 센서와 IoT 데이터를 바탕으로 물리적 실체를 가상 세계에 실시간 반영하고 양방향으로 제어하는 4차 산업혁명의 핵심 기술입니다."
+  },
+  {
+    "id": 6,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "디지털 트윈(Digital Twin)의 5대 발전(성숙도) 레벨의 올바른 발전 순서는?",
+    "options": [
+      "묘사(Descriptive) -> 진단(Diagnostic) -> 예측(Predictive) -> 처방(Prescriptive) -> 자율(Autonomous)",
+      "자율 -> 예측 -> 진단 -> 묘사 -> 처방",
+      "진단 -> 묘사 -> 자율 -> 처방 -> 예측",
+      "처방 -> 진단 -> 묘사 -> 자율 -> 예측"
+    ],
+    "answer": 0,
+    "explanation": "단순 형상 복제(묘사) -> 원인 파악(진단) -> 미래 시뮬레이션(예측) -> 최적 의사결정 제시(처방) -> 사람 개입 없는 자율 운용(자율) 순으로 진화합니다."
+  },
+  {
+    "id": 7,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "사이버 물리 시스템(CPS: Cyber-Physical Systems)에 대한 설명으로 옳은 것은?",
+    "options": [
+      "인터넷 연결이 차단된 순수 폐쇄망 시스템",
+      "연산, 통신, 제어가 물리적 세계의 프로세스와 긴밀하게 결합되어 센서 감지와 액추에이터 제어가 실시간 피드백 루프로 작동하는 시스템",
+      "오직 스마트폰 게임만을 구동하기 위한 모바일 플랫폼",
+      "텍스트 문서를 PDF로 변환하는 오피스 소프트웨어"
+    ],
+    "answer": 1,
+    "explanation": "CPS는 스마트 그리드, 자율주행, 스마트 팩토리처럼 가상 세계의 컴퓨팅 연산과 물리 세계의 기계적 작동이 유기적으로 통합된 시스템입니다."
+  },
+  {
+    "id": 8,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "ox",
+    "question": "양자 컴퓨터(Quantum Computer)는 0과 1의 비트 대신, 양자 중첩(Superposition)과 양자 얽힘(Entanglement)을 활용하는 큐비트(Qubit) 단위를 사용한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "큐비트는 0과 1의 상태를 동시에 가질 수 있어 $2^n$개의 상태를 한 번에 계산할 수 있는 초병렬 처리 능력을 제공합니다."
+  },
+  {
+    "id": 9,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "초기 전자식 디지털 컴퓨터 중 하나로 1946년 펜실베이니아 대학에서 탄도 계산을 목적으로 개발된 18,000여 개의 진공관을 사용한 컴퓨터는?",
+    "options": [
+      "ENIAC (에니악)",
+      "EDVAC (에드박)",
+      "UNIVAC-I (유니박)",
+      "애플 I"
+    ],
+    "answer": 0,
+    "explanation": "ENIAC(Electronic Numerical Integrator and Computer)은 프로그램 내장 방식 이전의 외부 배선 결선 방식 전자식 컴퓨터입니다."
+  },
+  {
+    "id": 10,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "에츠허르 데이크스트라(Dijkstra)의 격언이자 컴퓨터 과학의 본질을 설명하는 말로 가장 적절한 것은?",
+    "options": [
+      "컴퓨터 과학은 컴퓨터에 관한 학문이 아니라, 마치 천문학이 망원경에 관한 학문이 아닌 것과 같다.",
+      "컴퓨터는 인간의 뇌보다 모든 면에서 항상 지능이 뛰어나다.",
+      "소프트웨어는 하드웨어 없이는 단 1비트도 존재할 수 없다.",
+      "인터넷의 속도는 18개월마다 2배씩 빨라진다."
+    ],
+    "answer": 0,
+    "explanation": "컴퓨터 과학의 본질은 기계 장치(컴퓨터) 그 자체가 아니라 정보, 계산, 알고리즘, 문제 해결의 수학적 원리에 있음을 비유한 유명한 격언입니다."
+  },
+  {
+    "id": 11,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "ox",
+    "question": "하버드 구조(Harvard Architecture)는 폰 노이만 구조와 달리 명령어 메모리와 데이터 메모리의 물리적 버스를 분리하여 동시 접근을 가능하게 한 구조이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "하버드 구조는 별도의 버스를 사용하여 명령어 인출과 데이터 읽기/쓰기가 동시에 일어나므로 폰 노이만 병목을 상당 부분 완화합니다."
+  },
+  {
+    "id": 12,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "디지털 전환(Digital Transformation, DX)의 정의로 가장 올바른 것은?",
+    "options": [
+      "종이 서류를 단순히 스캔하여 컴퓨터 하드디스크에 저장하는 작업",
+      "디지털 기술(클라우드, AI, 빅데이터, 모바일 등)을 기업의 모든 영역에 통합하여 비즈니스 프로세스, 문화, 고객 경험을 근본적으로 혁신하는 과정",
+      "모든 직원에게 최신형 데스크톱 PC를 지급하는 것",
+      "기업의 모든 데이터베이스를 엑셀 파일로 통일하는 것"
+    ],
+    "answer": 1,
+    "explanation": "DX는 단순한 전산화(Digitization)를 넘어 기술을 매개로 비즈니스 모델과 운영 전반의 패러다임을 혁신하는 전략적 변화입니다."
+  },
+  {
+    "id": 13,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "무어의 법칙(Moore's Law)이 의미하는 바는?",
+    "options": [
+      "마이크로칩의 트랜지스터 집적도가 약 18~24개월마다 2배씩 증가한다는 경험적 관찰",
+      "소프트웨어의 오류 수는 코드 길이에 비례해 제곱으로 증가한다.",
+      "네트워크의 가치는 사용자 수의 제곱에 비례한다.",
+      "인터넷 사용 요금은 매년 절반으로 줄어든다."
+    ],
+    "answer": 0,
+    "explanation": "인텔 공동 창립자 고든 무어가 제시한 법칙으로 반도체 성능의 기하급수적 발전을 설명하는 지표입니다."
+  },
+  {
+    "id": 14,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "ox",
+    "question": "프로그램 내장 방식을 최초로 도입하여 완성된 영국의 컴퓨터는 1949년 케임브리지 대학의 EDSAC(에드삭)이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "EDSAC은 모리스 윌크스 등이 개발한 세계 최초의 실용적 프로그램 내장 방식 컴퓨터입니다."
+  },
+  {
+    "id": 15,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "컴퓨터의 5대 주요 구성 장치로 올바른 것은?",
+    "options": [
+      "입력장치, 출력장치, 제어장치, 연산장치(ALU), 기억장치",
+      "키보드, 마우스, 모니터, 프린터, 스피커",
+      "CPU, 메인보드, 그래픽카드, 파워서플라이, 쿨러",
+      "운영체제, 컴파일러, 데이터베이스, 웹브라우저, 게임"
+    ],
+    "answer": 0,
+    "explanation": "하드웨어 5대 장치는 입력, 출력, 제어(CU), 연산(ALU), 기억(주/보조기억장치)으로 분류됩니다."
+  },
+  {
+    "id": 16,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "ox",
+    "question": "DIKW 피라미드 계층 구조는 Data(데이터) -> Information(정보) -> Knowledge(지식) -> Wisdom(지혜) 순으로 상위 가치로 발전한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "원시 데이터가 의미 있는 정보가 되고, 체계화된 지식으로 정립되며, 올바른 판단을 내리는 지혜로 발전합니다."
+  },
+  {
+    "id": 17,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "4차 산업혁명의 주요 특징으로 세계경제포럼(WEF)에서 제시한 3대 키워드는?",
+    "options": [
+      "초연결성(Hyper-connectivity), 초지능성(Super-intelligence), 초융합성(Hyper-convergence)",
+      "기계화, 전기화, 자동화",
+      "중앙집권화, 규제화, 폐쇄화",
+      "아날로그화, 저속화, 단일화"
+    ],
+    "answer": 0,
+    "explanation": "모든 사물이 네트워크로 연결되고(초연결), 인공지능으로 지능화되며(초지능), 기술 간 경계가 허물어지는(초융합) 것이 핵심입니다."
+  },
+  {
+    "id": 18,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "ox",
+    "question": "디지털 트윈의 최고 단계인 '레벨 5(자율 단계)'에서는 인간 관리자의 실시간 개입 없이 시스템 스스로 이상을 감지하고 제어 명령을 내려 최적화를 달성한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "자율 단계는 AI와 CPS의 완전 결합으로 기계 스스로 피드백 루프를 완결하는 최상위 단계입니다."
+  },
+  {
+    "id": 19,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "mcq",
+    "question": "현대 반도체 공정이 3나노미터(nm) 이하 미세 공정으로 진입하면서 겪는 물리적 한계 현상은?",
+    "options": [
+      "양자 터널링(Quantum Tunneling) 현상으로 인한 누설 전류 증가 및 발열 문제",
+      "웨이퍼의 무게가 너무 무거워지는 문제",
+      "트랜지스터의 저항이 0으로 떨어지는 초전도 문제",
+      "구리 배선이 공기 중에 증발하는 현상"
+    ],
+    "answer": 0,
+    "explanation": "소자가 원자 몇 개 크기로 작아지면 전자가 절연막을 뚫고 지나가는 양자 터널링으로 누설 전류와 열 문제가 극대화됩니다."
+  },
+  {
+    "id": 20,
+    "subject": "it",
+    "topic": "1장. 컴퓨터의 발전과 정보화사회",
+    "type": "ox",
+    "question": "초전도 큐비트 기반 양자 컴퓨터는 큐비트의 결맞음(Coherence) 유지를 위해 절대영도(-273.15℃)에 가까운 극저온 환경을 필요로 한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "외부 열 노이즈에 의한 결어긋남(Decoherence)을 막기 위해 희석 냉동기를 사용해 mK 단위의 극저온을 유지합니다."
+  },
+  {
+    "id": 21,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "ISO에서 제정한 OSI 7계층 참조 모델의 계층 순서가 하위 계층(1계층)부터 상위 계층(7계층)까지 올바르게 나열된 것은?",
+    "options": [
+      "물리 -> 데이터링크 -> 네트워크 -> 전송 -> 세션 -> 표현 -> 응용",
+      "데이터링크 -> 물리 -> 전송 -> 네트워크 -> 세션 -> 표현 -> 응용",
+      "물리 -> 네트워크 -> 데이터링크 -> 전송 -> 표현 -> 세션 -> 응용",
+      "응용 -> 표현 -> 세션 -> 전송 -> 네트워크 -> 데이터링크 -> 물리"
+    ],
+    "answer": 0,
+    "explanation": "1계층(Physical)부터 7계층(Application)까지: 물리-데이터링크-네트워크-전송-세션-표현-응용 순입니다."
+  },
+  {
+    "id": 22,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "OSI 7계층의 계층별 프로토콜 데이터 단위(PDU: Protocol Data Unit)가 올바르게 짝지어진 것은?",
+    "options": [
+      "1계층: 비트(Bit), 2계층: 프레임(Frame), 3계층: 패킷(Packet), 4계층: 세그먼트(Segment)",
+      "1계층: 프레임, 2계층: 패킷, 3계층: 세그먼트, 4계층: 비트",
+      "1계층: 세그먼트, 2계층: 비트, 3계층: 메시지, 4계층: 블록",
+      "1계층: 패킷, 2계층: 세그먼트, 3계층: 프레임, 4계층: 데이터"
+    ],
+    "answer": 0,
+    "explanation": "물리: 비트, 데이터링크: 프레임, 네트워크: 패킷/데이터그램, 전송: 세그먼트/데이터그램, 응용: 메시지/데이터입니다."
+  },
+  {
+    "id": 23,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "OSI 모델의 제3계층(네트워크 계층)의 주된 역할과 대표적인 장비는?",
+    "options": [
+      "물리적 신호의 증폭 / 리피터",
+      "논리적 IP 주소를 기반으로 출발지에서 목적지까지 최적의 경로를 결정하는 라우팅(Routing) / 라우터(Router)",
+      "동일 네트워크 내에서 MAC 주소를 이용한 프레임 전송 / L2 스위치",
+      "데이터의 암호화 및 압축 변환 / 게이트웨이"
+    ],
+    "answer": 1,
+    "explanation": "3계층은 논리적 주소(IP) 체계와 라우팅 프로토콜(OSPF, BGP)을 이용해 패킷의 종단 간 경로를 결정하며 라우터가 핵심 장비입니다."
+  },
+  {
+    "id": 24,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "전송 계층(Transport Layer)의 TCP(Transmission Control Protocol)가 제공하는 핵심 기능이 아닌 것은?",
+    "options": [
+      "3-Way Handshake를 통한 신뢰성 있는 연결 지향적 통신",
+      "흐름 제어(Flow Control - 슬라이딩 윈도우) 및 혼잡 제어(Congestion Control)",
+      "패킷의 손실 시 재전송 및 순서 번호(Sequence Number)를 통한 순서 보장",
+      "광케이블의 빛 신호를 전기 신호로 물리적 변환"
+    ],
+    "answer": 3,
+    "explanation": "광신호와 전기신호 변환은 1계층(물리 계층)의 역할이며, TCP는 4계층에서 종단 간 신뢰성 있는 데이터 스트림 전달을 책임집니다."
+  },
+  {
+    "id": 25,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "UDP(User Datagram Protocol)가 TCP와 구별되는 특징으로 옳은 것은?",
+    "options": [
+      "연결 설정(Handshake)이 없고 확인 응답(ACK)을 기다리지 않아 오버헤드가 적고 전송 속도가 빠르며, 실시간 스트리밍이나 DNS에 적합하다.",
+      "데이터 손실 시 100% 무조건 재전송을 보장한다.",
+      "항상 패킷의 수신 순서를 엄격하게 재조립한다.",
+      "TCP보다 헤더의 크기가 5배 더 크다."
+    ],
+    "answer": 0,
+    "explanation": "UDP는 비연결형, 비신뢰성, 체크섬 기반 최소 제어 프로토콜로 지연에 민감한 실시간 멀티미디어, 음성 통화(VoIP), DNS 등에 쓰입니다."
+  },
+  {
+    "id": 26,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "네트워크 토폴로지 중 중앙 집중형 노드(스위치/허브)에 모든 단말 노드가 1:1로 연결되는 구조로, 단말 하나가 고장 나도 전체 네트워크에 영향이 없지만 중앙 노드 고장 시 전체가 마비되는 형태는?",
+    "options": [
+      "스타(성형, Star) 토폴로지",
+      "버스(Bus) 토폴로지",
+      "링(Ring) 토폴로지",
+      "메시(그물형, Mesh) 토폴로지"
+    ],
+    "answer": 0,
+    "explanation": "스타형은 오늘날 LAN 환경의 지배적인 구조로, 관리가 쉽고 장애 격리가 우수하지만 중앙 스위치가 단일 장애점(SPOF)이 될 수 있습니다."
+  },
+  {
+    "id": 27,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "모든 노드가 서로 1:1로 직접 연결되는 완전 메시(Full Mesh) 토폴로지에서 노드의 수가 $n$개일 때 필요한 총 링크(선로)의 수는?",
+    "options": [
+      "$n$",
+      "$n - 1$",
+      "$\\frac{n(n - 1)}{2}$",
+      "$n^2$"
+    ],
+    "answer": 2,
+    "explanation": "$n$개의 노드 중 2개를 고르는 조합의 수인 $_nC_2 = \\frac{n(n-1)}{2}$개의 회선이 필요하여 신뢰성은 최고지만 비용이 매우 큽니다."
+  },
+  {
+    "id": 28,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "유선 이더넷(IEEE 802.3)에서 공유 매체 충돌을 방지하고 제어하기 위해 전통적으로 사용된 매체 접근 제어 방식은?",
+    "options": [
+      "CSMA/CD (Carrier Sense Multiple Access with Collision Detection)",
+      "CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)",
+      "토큰 링 (Token Ring)",
+      "시분할 다중화 (TDM)"
+    ],
+    "answer": 0,
+    "explanation": "CSMA/CD는 통신망에 신호가 있는지 감지(Carrier Sense)하고, 누구나 전송(Multiple Access)하며, 충돌이 감지되면(Collision Detection) 즉시 잼 신호를 보내고 무작위 시간(Backoff) 대기 후 재전송합니다."
+  },
+  {
+    "id": 29,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "무선 LAN(Wi-Fi, IEEE 802.11)에서 유선과 달리 충돌 감지(CD)가 어렵기 때문에 '충돌 회피' 방식을 사용하는 매체 접근 제어 프로토콜은?",
+    "options": [
+      "CSMA/CA",
+      "ALOHA",
+      "CDMA",
+      "FDDI"
+    ],
+    "answer": 0,
+    "explanation": "무선 환경에서는 송신 중 자신의 신호가 너무 강해 충돌을 감지하기 어려우므로(Hidden Node 문제 등), 사전에 RTS/CTS 프레임과 임의 백오프를 이용하는 충돌 회피(CSMA/CA)를 씁니다."
+  },
+  {
+    "id": 30,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "패킷 교환(Packet Switching) 방식이 기존의 회선 교환(Circuit Switching) 방식보다 인터넷에 적합한 가장 큰 이유는?",
+    "options": [
+      "통신 전에 물리적 전용 경로를 독점적으로 설정하여 100% 대역폭을 예약하기 때문",
+      "데이터를 패킷 단위로 쪼개어 망의 회선들을 여러 사용자가 시분할 다중화하여 공유하므로 대역폭 이용 효율이 극대화되기 때문",
+      "패킷의 크기가 무제한으로 크기 때문",
+      "라우터가 전혀 필요 없기 때문"
+    ],
+    "answer": 1,
+    "explanation": "회선 교환은 통화 중이 아니어도 회선을 독점하지만, 패킷 교환은 트래픽이 있을 때만 패킷을 전송하여 망 자원을 통계적 다중화로 극대화합니다."
+  },
+  {
+    "id": 31,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "ox",
+    "question": "2계층 스위치(L2 Switch)는 수신한 프레임의 목적지 MAC 주소를 보고 특정 포트로만 포워딩하므로 허브(Hub)와 달리 충돌 도메인(Collision Domain)을 포트별로 분리한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "허브는 모든 포트로 브로드캐스트하지만 스위치는 MAC 주소 학습(MAC Address Table)을 통해 포트별로 충돌 도메인을 격리합니다."
+  },
+  {
+    "id": 32,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "TCP의 연결 수립(Connection Establishment) 과정인 3-Way Handshake의 순서로 올바른 것은?",
+    "options": [
+      "SYN -> SYN + ACK -> ACK",
+      "ACK -> SYN -> FIN",
+      "SYN -> FIN -> ACK",
+      "DATA -> ACK -> RST"
+    ],
+    "answer": 0,
+    "explanation": "클라이언트가 SYN 송신 -> 서버가 수신 확인(ACK)과 자신의 SYN을 묶어 송신 -> 클라이언트가 ACK 송신 순으로 3단계 연결이 수립됩니다."
+  },
+  {
+    "id": 33,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "TCP의 정상적인 연결 해제(Connection Teardown) 과정에서 교환되는 메시지 단계(4-Way Handshake)는?",
+    "options": [
+      "FIN -> ACK -> FIN -> ACK",
+      "SYN -> ACK -> SYN -> ACK",
+      "RST -> RST -> RST -> RST",
+      "FIN -> SYN -> FIN -> SYN"
+    ],
+    "answer": 0,
+    "explanation": "송신측 FIN -> 수신측 ACK -> (수신측 잔여 데이터 전송 후) 수신측 FIN -> 송신측 ACK 및 TIME_WAIT 순으로 종료됩니다."
+  },
+  {
+    "id": 34,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "ox",
+    "question": "ARP(Address Resolution Protocol)는 논리적인 3계층 IP 주소를 바탕으로 물리적인 2계층 MAC(하드웨어) 주소를 알아내는 프로토콜이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "동일 서브넷 내에서 IP를 가진 목적지의 물리적 MAC 주소를 찾기 위해 브로드캐스트 질의를 수행합니다."
+  },
+  {
+    "id": 35,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "네트워크 계층의 패킷이 라우터를 거치며 무한 루프를 도는 것을 방지하기 위해 IPv4 헤더에 포함된 카운터 필드는?",
+    "options": [
+      "TTL (Time to Live)",
+      "Checksum",
+      "TOS (Type of Service)",
+      "Identification"
+    ],
+    "answer": 0,
+    "explanation": "TTL은 라우터를 하나(1 홉) 통과할 때마다 1씩 감소하며, 0이 되면 라우터가 패킷을 폐기하고 송신자에게 ICMP Time Exceeded를 전송합니다."
+  },
+  {
+    "id": 36,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "ox",
+    "question": "OSI 7계층에서 6계층인 표현 계층(Presentation Layer)의 주요 역할은 데이터의 구문 변환, 암호화/복호화, 압축이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "표현 계층은 상위 응용 계층이 이해할 수 있도록 데이터 형식(ASCII, UTF-8, 인코딩, SSL/TLS 암호화 등)을 표준화합니다."
+  },
+  {
+    "id": 37,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "전송 계층(4계층)에서 송신측의 전송 속도가 수신측의 버퍼 처리 속도보다 빨라 버퍼 오버플로우가 일어나는 것을 방지하는 기법은?",
+    "options": [
+      "흐름 제어 (Flow Control)",
+      "라우팅 제어 (Routing Control)",
+      "암호화 제어 (Cipher Control)",
+      "도메인 제어 (Domain Control)"
+    ],
+    "answer": 0,
+    "explanation": "수신측이 자신의 수신 윈도우 크기(rwnd)를 송신측에 알려 전송량을 조절하는 메커니즘을 흐름 제어라고 합니다."
+  },
+  {
+    "id": 38,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "ox",
+    "question": "라우터(Router)는 브로드캐스트 도메인(Broadcast Domain)을 물리적·논리적으로 분리하는 장비이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "스위치는 브로드캐스트 패킷을 모든 포트로 전달하지만, 라우터는 브로드캐스트 패킷을 차단하여 서브넷 간 브로드캐스트 폭풍을 방지합니다."
+  },
+  {
+    "id": 39,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "mcq",
+    "question": "네트워크 전송 매체 중 외부 전자기 노이즈(EMI)의 간섭을 전혀 받지 않고 가장 높은 대역폭과 장거리 전송을 제공하는 매체는?",
+    "options": [
+      "UTP 케이블 (Unshielded Twisted Pair)",
+      "동축 케이블 (Coaxial Cable)",
+      "광케이블 (Optical Fiber Cable)",
+      "전력선 (PLC)"
+    ],
+    "answer": 2,
+    "explanation": "광케이블은 전자기파가 아닌 전반사 원리의 빛 신호를 코어 속으로 통과시키므로 전자기 유도 노이즈가 전혀 없습니다."
+  },
+  {
+    "id": 40,
+    "subject": "it",
+    "topic": "5장. 정보통신과 컴퓨터 네트워크",
+    "type": "ox",
+    "question": "TCP/IP 4계층 모델은 OSI 7계층의 5(세션), 6(표현), 7(응용) 계층을 하나의 '응용 계층(Application Layer)'으로 통합하여 구성한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "TCP/IP는 네트워크 인터페이스 - 인터넷 - 전송 - 응용의 실용적인 4계층 구조를 가집니다."
+  },
+  {
+    "id": 41,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "IPv4와 IPv6 주소 체계의 비트 수 비교로 올바른 것은?",
+    "options": [
+      "IPv4: 16비트, IPv6: 32비트",
+      "IPv4: 32비트 (약 43억 개), IPv6: 128비트 (사실상 무제한)",
+      "IPv4: 64비트, IPv6: 256비트",
+      "IPv4: 128비트, IPv6: 512비트"
+    ],
+    "answer": 1,
+    "explanation": "IPv4는 32비트 주소로 주소 고갈 문제가 발생하여, 이를 근본적으로 해결하기 위해 128비트의 방대한 주소 공간을 갖는 IPv6가 제정되었습니다."
+  },
+  {
+    "id": 42,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "도메인 네임(예: www.example.com)을 컴퓨터가 이해할 수 있는 IP 주소로 상호 변환해주는 분산 계층 데이터베이스 시스템은?",
+    "options": [
+      "DHCP",
+      "DNS (Domain Name System)",
+      "SNMP",
+      "FTP"
+    ],
+    "answer": 1,
+    "explanation": "DNS는 루트 네임서버, TLD 네임서버, 권한 네임서버로 이어지는 계층적 구조를 통해 호스트 이름을 IP 주소로 해석(Resolution)합니다."
+  },
+  {
+    "id": 43,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "HTTP 1.1 프로토콜에서 매 요청마다 TCP 연결을 새로 맺지 않고 동일한 연결을 유지하여 재사용하는 기능은?",
+    "options": [
+      "Persistent Connection (Keep-Alive)",
+      "Stateless Connection",
+      "Three-way Handshake",
+      "UDP Tunneling"
+    ],
+    "answer": 0,
+    "explanation": "HTTP 1.0의 매 요청마다 연결 수립/해제 오버헤드를 개선하기 위해 HTTP 1.1에서는 Keep-Alive 헤더를 기본으로 지속 연결을 지원합니다."
+  },
+  {
+    "id": 44,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "HTTP/2 프로토콜이 HTTP 1.1의 HOL(Head-of-Line) 블로킹 문제를 해결하기 위해 도입한 핵심 기술은?",
+    "options": [
+      "단일 TCP 연결 위에서 여러 개의 독립적인 양방향 프레임을 섞어서 전송하는 멀티플렉싱(Multiplexing)",
+      "모든 통신을 TCP 대신 UDP로 완전 전환",
+      "이미지와 텍스트 전송을 완전히 금지",
+      "쿠키와 세션을 영구 삭제"
+    ],
+    "answer": 0,
+    "explanation": "HTTP/2는 바이너리 프레이밍 계층과 멀티플렉싱을 통해 하나의 TCP 스트림 안에서 여러 요청과 응답을 병렬로 섞어서 주고받습니다."
+  },
+  {
+    "id": 45,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "HTTP/3 프로토콜이 TCP 대신 UDP 기반의 구글 QUIC(Quick UDP Internet Connections) 전송 프로토콜을 사용하는 결정적인 이유는?",
+    "options": [
+      "TCP 레벨에서 발생하는 패킷 손실 시의 전송 계층 HOL 블로킹을 근본적으로 제거하고, 연결 수립 지연(0-RTT)을 달성하기 위해",
+      "보안 암호화 기능을 완전히 제거하여 속도를 올리기 위해",
+      "웹 브라우저의 메모리 사용량을 줄이기 위해",
+      "모든 웹사이트를 텍스트 전용으로 변환하기 위해"
+    ],
+    "answer": 0,
+    "explanation": "TCP는 패킷 하나가 유실되면 스트림 전체가 멈추지만, QUIC은 UDP 위에서 독립 스트림을 관리하여 다른 스트림이 영향받지 않고 첫 연결부터 암호화 핸드셰이크를 1단계로 단축합니다."
+  },
+  {
+    "id": 46,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "클라우드 컴퓨팅의 3대 서비스 모델(SPI) 중 사용자가 운영체제(OS), 런타임 등을 직접 관리할 필요 없이 애플리케이션 개발 및 배포 환경만을 제공받는 모델은?",
+    "options": [
+      "IaaS (Infrastructure as a Service)",
+      "PaaS (Platform as a Service)",
+      "SaaS (Software as a Service)",
+      "DaaS (Desktop as a Service)"
+    ],
+    "answer": 1,
+    "explanation": "IaaS는 가상 서버/스토리지 제공, PaaS는 개발 플랫폼(OS, DB, 런타임 환경) 제공, SaaS는 완성된 완제품 소프트웨어를 클라우드로 제공합니다."
+  },
+  {
+    "id": 47,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "다음 클라우드 서비스 중 SaaS(Software as a Service)의 대표적인 사례는?",
+    "options": [
+      "Google Workspace (Gmail, 구글 독스) 및 Microsoft 365",
+      "AWS EC2 가상 머신",
+      "AWS S3 원시 스토리지",
+      "물리적 IDC 서버 랙"
+    ],
+    "answer": 0,
+    "explanation": "웹 브라우저만으로 즉시 사용할 수 있는 완성형 소프트웨어 서비스가 SaaS입니다."
+  },
+  {
+    "id": 48,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "마이크로서비스 아키텍처(MSA: Microservices Architecture)의 특징과 장점으로 옳은 것은?",
+    "options": [
+      "단일 거대한 코드베이스로 작성되어 모든 기능이 동일한 프로세스 안에서 실행된다.",
+      "애플리케이션을 작고 독립적으로 배포 가능한 서비스 단위로 분할하여, 특정 서비스 장애의 전체 확산을 막고 서비스별 독립적 스케일아웃 및 기술 스택 선정이 가능하다.",
+      "네트워크 통신 비용이 전혀 발생하지 않는다.",
+      "데이터베이스를 모든 서비스가 무조건 단 1개로 단일화하여 공유한다."
+    ],
+    "answer": 1,
+    "explanation": "MSA는 비즈니스 도메인 단위로 서비스를 격리하여 개발 민첩성, 독립적 배포, 장애 격리(Fault Tolerance)를 극대화합니다."
+  },
+  {
+    "id": 49,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "MSA 환경에서 동적으로 생성·삭제되는 수많은 마이크로서비스 인스턴스의 IP와 포트 번호를 등록하고 검색할 수 있게 해주는 컴포넌트는?",
+    "options": [
+      "서비스 디스커버리 (Service Discovery, 예: Netflix Eureka)",
+      "컴파일러",
+      "방화벽",
+      "웹 크롤러"
+    ],
+    "answer": 0,
+    "explanation": "클라우드 환경에서 오토스케일링 등으로 인스턴스 IP가 동적으로 바뀔 때 서비스 디스커버리가 서비스 레지스트리 역할을 합니다."
+  },
+  {
+    "id": 50,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "MSA 구조에서 외부 클라이언트의 모든 요청을 단일 진입점에서 받아 인증, 인가, 라우팅, 속도 제한, 로깅을 일괄 처리하는 패턴은?",
+    "options": [
+      "API Gateway 패턴",
+      "싱글톤 패턴",
+      "팩토리 메서드 패턴",
+      "옵저버 패턴"
+    ],
+    "answer": 0,
+    "explanation": "API Gateway는 내부 마이크로서비스의 복잡성을 외부로부터 숨기고 보안, 모니터링, 라우팅을 중앙에서 통합 처리하는 단일 접점입니다."
+  },
+  {
+    "id": 51,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "REST(Representational State Transfer) 아키텍처에서 자원(Resource)에 대한 생성(Create) 요청 시 표준적으로 권장되는 HTTP 메서드는?",
+    "options": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+    ],
+    "answer": 1,
+    "explanation": "REST CRUD 매핑: Create -> POST, Read -> GET, Update -> PUT/PATCH, Delete -> DELETE입니다."
+  },
+  {
+    "id": 52,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "ox",
+    "question": "RESTful API의 핵심 원칙 중 'Stateless(무상태성)'는 서버가 클라이언트의 이전 상태(세션 등)를 저장하지 않고, 모든 요청이 그 자체로 처리에 필요한 모든 정보를 포함해야 함을 의미한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "서버가 클라이언트의 상태를 보관하지 않으므로 서버의 확장성(Scalability)과 로드밸런싱이 매우 용이해집니다."
+  },
+  {
+    "id": 53,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "서브넷 마스크 `255.255.255.0` (CIDR 표기 `/24`) 환경에서 호스트에 할당 가능한 최대 IP 주소의 개수는?",
+    "options": [
+      "256개",
+      "254개",
+      "255개",
+      "128개"
+    ],
+    "answer": 1,
+    "explanation": "호스트 비트가 8비트이므로 $2^8 = 256$개이나, 네트워크 주소(모두 0)와 브로드캐스트 주소(모두 1)의 2개를 제외하므로 실제 할당 가능 주소는 254개입니다."
+  },
+  {
+    "id": 54,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "ox",
+    "question": "DHCP(Dynamic Host Configuration Protocol)는 호스트가 부팅될 때 IP 주소, 서브넷 마스크, 기본 게이트웨이, DNS 서버 정보를 자동으로 할당해주는 프로토콜이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "네트워크 관리자가 일일이 수동 설정하지 않고 임대(Lease) 방식으로 IP 환경을 자동 구성합니다."
+  },
+  {
+    "id": 55,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "사설 IP(Private IP) 대역을 공인 IP(Public IP)로 변환하여 인터넷 접속을 가능하게 하고 IPv4 주소 부족을 완화하는 핵심 기술은?",
+    "options": [
+      "NAT / NAPT (Network Address Translation)",
+      "DNS",
+      "VLAN",
+      "BGP"
+    ],
+    "answer": 0,
+    "explanation": "NAT(공유기 등)는 내부 네트워크의 사설 IP들을 소수의 공인 IP와 포트 번호 조합으로 변환하여 통신합니다."
+  },
+  {
+    "id": 56,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "ox",
+    "question": "HTTPS는 기본 HTTP 통신에 SSL/TLS 암호화 계층을 추가하여 데이터의 기밀성, 무결성, 서버 인증을 보장하는 보안 프로토콜이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "기본 포트 443을 사용하며 대칭키와 비대칭키의 하이브리드 암호화를 통해 통신을 보호합니다."
+  },
+  {
+    "id": 57,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "넷플릭스 유레카(Eureka)와 결합하여 클라이언트 측에서 서비스 인스턴스들의 부하를 분산(Load Balancing)해주는 라이브러리는?",
+    "options": [
+      "Netflix Ribbon",
+      "Apache Tomcat",
+      "Docker Swarm",
+      "Kubernetes Kubelet"
+    ],
+    "answer": 0,
+    "explanation": "Ribbon은 클라이언트 측 로드밸런서(Client-side Load Balancer)로 레지스트리에서 인스턴스 목록을 받아 라운드로빈 등으로 분산 호출합니다."
+  },
+  {
+    "id": 58,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "ox",
+    "question": "모놀리식(Monolithic) 아키텍처는 초기 개발과 테스트가 단순하고 배포가 한 번에 이루어지는 장점이 있지만, 시스템이 비대해지면 작은 수정에도 전체를 재배포해야 하는 단점이 있다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "단일 아티팩트로 묶여 있어 부분적 확장이 어렵고 빌드 및 배포 시간이 기하급수적으로 늘어납니다."
+  },
+  {
+    "id": 59,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "mcq",
+    "question": "HTTP 상태 코드(Status Code) 404가 의미하는 표준 응답은?",
+    "options": [
+      "요청이 성공적으로 처리됨 (OK)",
+      "클라이언트가 요청한 리소스를 서버에서 찾을 수 없음 (Not Found)",
+      "서버 내부 오류 (Internal Server Error)",
+      "접근 권한이 없음 (Forbidden)"
+    ],
+    "answer": 1,
+    "explanation": "200: 성공, 400: 잘못된 요청, 401: 인증 필요, 403: 권한 없음, 404: 리소스 없음, 500: 서버 내부 에러입니다."
+  },
+  {
+    "id": 60,
+    "subject": "it",
+    "topic": "6장. 인터넷과 웹 / 클라우드",
+    "type": "ox",
+    "question": "컨테이너 기술인 도커(Docker)는 게스트 OS를 포함하는 가상 머신(VM)과 달리 호스트의 OS 커널을 공유하므로 훨씬 가볍고 부팅 속도가 빠르다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "프로세스 격리 기술(네임스페이스, cgroups)을 활용하여 OS 수준의 중복을 배제하므로 오버헤드가 극히 적습니다."
+  },
+  {
+    "id": 61,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "멀티미디어(Multimedia)의 4대 기본 구성 특성으로 올바른 것은?",
+    "options": [
+      "디지털화(Digitalization), 쌍방향성(Interactivity), 비선형성(Non-linearity), 통합성(Integration)",
+      "아날로그화, 일방향성, 선형성, 분리성",
+      "고비용성, 폐쇄성, 단일성, 보안성",
+      "하드웨어 종속성, 불변성, 저용량성, 텍스트 전용"
+    ],
+    "answer": 0,
+    "explanation": "모든 정보가 0과 1로 변환되고(디지털화), 사용자와 상호작용하며(쌍방향), 하이퍼링크처럼 비순차적 탐색이 가능하고(비선형), 다양한 매체가 결합(통합성)됩니다."
+  },
+  {
+    "id": 62,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "아날로그 오디오 신호를 디지털 신호로 변환하는 3단계 과정의 순서로 올바른 것은?",
+    "options": [
+      "표본화(Sampling) -> 양자화(Quantization) -> 부호화(Encoding)",
+      "부호화 -> 양자화 -> 표본화",
+      "양자화 -> 표본화 -> 복호화",
+      "압축 -> 복원 -> 출력"
+    ],
+    "answer": 0,
+    "explanation": "연속 신호를 일정 시간 간격으로 추출(표본화)하고, 추출된 진폭을 이산적인 대표값으로 근사(양자화)한 뒤, 0과 1의 이진수로 변환(부호화)합니다."
+  },
+  {
+    "id": 63,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "나이퀴스트-섀넌 표본화 정리(Nyquist Sampling Theorem)의 핵심 내용은?",
+    "options": [
+      "신호의 최대 주파수 성분이 $f_{max}$일 때, 원 신호를 왜곡 없이 완벽히 복원하기 위해서는 최소 $2 f_{max}$ 이상의 빈도로 표본화(Sampling Rate)해야 한다.",
+      "표본화율은 주파수의 절반 이하로 줄여야 한다.",
+      "오디오 데이터는 압축하지 않고 전송해야만 손실이 없다.",
+      "인간의 청각은 20kHz 이상의 초음파만 들을 수 있다."
+    ],
+    "answer": 0,
+    "explanation": "가청 주파수 상한이 약 20kHz이므로, 표준 오디오 CD의 샘플링 레이트는 20kHz의 2배를 상회하는 44.1kHz로 설정되어 있습니다."
+  },
+  {
+    "id": 64,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "무손실 압축(Lossless Compression)과 손실 압축(Lossy Compression)에 대한 설명으로 옳은 것은?",
+    "options": [
+      "무손실 압축은 압축률이 극도로 높지만 원본 복원이 영구히 불가능하다.",
+      "무손실 압축은 압축 해제 시 원본 데이터와 100% 비트 단위로 동일하게 복원(ZIP, PNG 등)되며, 손실 압축은 인간의 감각이 눈치채지 못하는 세부 정보를 일부 버려 압축률을 극대화(JPEG, MP3 등)한다.",
+      "텍스트 파일과 실행 프로그램(.exe)은 반드시 손실 압축을 사용해야 한다.",
+      "손실 압축은 압축을 반복할수록 화질이 점진적으로 향상된다."
+    ],
+    "answer": 1,
+    "explanation": "프로그램이나 문서는 비트 오류가 치명적이므로 무손실 압축을 써야 하고, 영상/음향은 고압축을 위해 심리음향/시각 모델 기반 손실 압축을 씁니다."
+  },
+  {
+    "id": 65,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "출현 빈도가 높은 문자에는 짧은 비트 코드를, 빈도가 낮은 문자에는 긴 비트 코드를 할당하는 가변 길이 무손실 압축 알고리즘은?",
+    "options": [
+      "허프만 코딩 (Huffman Coding)",
+      "이산 코사인 변환 (DCT)",
+      "양자화 (Quantization)",
+      "프레임 간 예측"
+    ],
+    "answer": 0,
+    "explanation": "엔트로피 기반 접두어 부호(Prefix Code)를 생성하는 대표적인 탐욕 알고리즘 기반 무손실 압축 기법입니다."
+  },
+  {
+    "id": 66,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "정지 영상 압축 표준인 JPEG 알고리즘에서 공간 도메인의 픽셀 블록($8 \\times 8$)을 주파수 도메인으로 변환하는 데 사용되는 핵심 수학적 변환은?",
+    "options": [
+      "이산 코사인 변환 (DCT: Discrete Cosine Transform)",
+      "고속 푸리에 역변환",
+      "라플라스 변환",
+      "가우시안 필터링"
+    ],
+    "answer": 0,
+    "explanation": "DCT를 통해 인간의 눈이 민감한 저주파 성분은 좌상단에 모으고, 둔감한 고주파 성분은 우하단에 모은 뒤 고주파 성분을 강하게 양자화하여 압축합니다."
+  },
+  {
+    "id": 67,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "컴퓨터 그래픽스의 두 가지 이미지 표현 방식인 비트맵(Bitmap)과 벡터(Vector)에 대한 설명으로 옳은 것은?",
+    "options": [
+      "비트맵은 점(픽셀)들의 2차원 배열로 정밀한 사진 표현에 적합하나 확대 시 계단 현상(깨짐)이 생기고, 벡터는 수학적 함수(선, 곡선)로 표현되어 아무리 확대해도 깨지지 않는다.",
+      "벡터는 확대할수록 픽셀이 크게 깨지는 단점이 있다.",
+      "비트맵의 대표 포맷은 SVG이고, 벡터의 대표 포맷은 JPG이다.",
+      "비트맵은 수식으로만 이미지를 렌더링한다."
+    ],
+    "answer": 0,
+    "explanation": "비트맵(Raster)은 픽셀 격자 기반(JPEG, PNG), 벡터는 수학적 기하 오브젝트 기반(SVG, AI)입니다."
+  },
+  {
+    "id": 68,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "동영상 압축(MPEG, H.264 등)에서 연속된 프레임 간의 시간적 중복성(Temporal Redundancy)을 제거하기 위해 사용하는 기술은?",
+    "options": [
+      "모션 추정 및 움직임 보상 (Motion Estimation & Compensation)",
+      "허프만 트리 생성",
+      "오디오 샘플링",
+      "알파 채널 블렌딩"
+    ],
+    "answer": 0,
+    "explanation": "이전 프레임과 현재 프레임 사이에서 물체가 이동한 벡터(모션 벡터)만을 찾아내어 그 차이(Residual)만을 전송함으로써 용량을 대폭 줄입니다."
+  },
+  {
+    "id": 69,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "가상현실(VR), 증강현실(AR), 혼합현실(MR)의 개념 구분이 올바르게 된 것은?",
+    "options": [
+      "VR은 현실을 100% 차단한 완전한 컴퓨터 가상 환경, AR은 실제 현실 배경 위에 가상 객체를 덧씌우는 환경, MR은 현실과 가상이 물리 법칙에 따라 상호작용하도록 융합된 환경이다.",
+      "VR은 안경 없이 스마트폰으로만 보는 환경이다.",
+      "AR은 인간의 뇌파를 직접 조작하는 기술이다.",
+      "MR은 오직 오디오 신호만을 증폭하는 기술이다."
+    ],
+    "answer": 0,
+    "explanation": "VR(Virtual Reality)은 몰입형 가상 공간, AR(Augmented Reality)은 현실 위의 디지털 오버레이, MR(Mixed Reality)은 현실과 가상의 실시간 상호작용 융합입니다."
+  },
+  {
+    "id": 70,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "미국 가속화연구재단(ASF)이 분류한 메타버스(Metaverse)의 4대 영역으로 올바른 것은?",
+    "options": [
+      "증강현실(Augmented Reality), 라이프로깅(Lifelogging), 거울세계(Mirror Worlds), 가상세계(Virtual Worlds)",
+      "게임, 소설, 영화, 음악",
+      "인터넷, 인트라넷, 엑스트라넷, 다크웹",
+      "클라우드, 엣지, 포그, 센서"
+    ],
+    "answer": 0,
+    "explanation": "현실-가상 축과 내적-외적 축의 교차로 증강현실, 라이프로깅(SNS), 거울세계(구글어스), 가상세계(로블록스)로 분류됩니다."
+  },
+  {
+    "id": 71,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "ox",
+    "question": "H.265(HEVC) 동영상 압축 코덱은 이전 표준인 H.264(AVC)에 비해 대략 동일 화질 기준 약 50% 수준의 비트레이트(용량 절감)를 달성한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "가변 크기 코딩 트리 유닛(CTU)과 고도화된 인트라/인터 예측을 통해 4K/8K 초고화질 영상 전송의 표준으로 자리잡았습니다."
+  },
+  {
+    "id": 72,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "오디오 데이터에서 16비트 양자화(Quantization)를 적용할 때 표현할 수 있는 진폭의 단계 수는?",
+    "options": [
+      "256단계",
+      "1,024단계",
+      "65,536단계 ($2^{16}$)",
+      "16단계"
+    ],
+    "answer": 2,
+    "explanation": "$2^{16} = 65,536$개의 세밀한 전압 레벨로 양자화하여 약 96dB의 다이내믹 레인지(S/N 비)를 제공합니다."
+  },
+  {
+    "id": 73,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "ox",
+    "question": "빛의 3원색을 이용하는 가산 혼합 모델은 RGB(Red, Green, Blue) 모델이고, 인쇄 및 잉크의 감산 혼합 모델은 CMYK(Cyan, Magenta, Yellow, Black) 모델이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "모니터 등 발광체는 빛을 더할수록 밝아지는 RGB 가산 혼합을, 인쇄물은 빛을 흡수하는 CMYK 감산 혼합을 씁니다."
+  },
+  {
+    "id": 74,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "동영상 프레임의 3대 유형(I, P, B 프레임) 중 다른 프레임의 참조 없이 자체 화면의 정보만으로 독립적으로 압축·복원되는 프레임은?",
+    "options": [
+      "I-프레임 (Intra-coded frame)",
+      "P-프레임 (Predictive frame)",
+      "B-프레임 (Bi-directional frame)",
+      "D-프레임"
+    ],
+    "answer": 0,
+    "explanation": "I-프레임은 정지 영상(JPEG 유사)처럼 단독 압축되어 임의 접근(Seek)의 기준점(Keyframe)이 됩니다."
+  },
+  {
+    "id": 75,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "ox",
+    "question": "B-프레임(양방향 예측 프레임)은 시간상 이전 프레임과 이후(미래) 프레임의 정보를 양방향으로 모두 참조하여 압축률이 가장 높다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "과거와 미래 프레임을 모두 참조하므로 디코딩 순서가 재생 순서와 달라지지만 최고의 압축 효율을 냅니다."
+  },
+  {
+    "id": 76,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "반복되는 데이터의 길이를 세어서 압축하는 방식으로, 예를 들어 `AAAAABBBCC`를 `A5B3C2`로 줄이는 무손실 압축 기법은?",
+    "options": [
+      "런렝스 부호화 (RLE: Run-Length Encoding)",
+      "허프만 코딩",
+      "산술 부호화",
+      "Lempel-Ziv"
+    ],
+    "answer": 0,
+    "explanation": "연속된 동일 심볼의 반복 횟수(Run-length)를 기록하는 가장 직관적인 기초 무손실 압축 기법입니다."
+  },
+  {
+    "id": 77,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "ox",
+    "question": "MP3 오디오 압축은 인간의 귀가 감지하지 못하는 주파수나 큰 소리에 묻혀 들리지 않는 소리를 제거하는 '청각 심리음향 모델(Psychoacoustic Model)'을 활용한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "동시 마스킹(Simultaneous Masking)과 시간 마스킹을 활용해 들리지 않는 신호를 과감히 버려 용량을 1/10 수준으로 압축합니다."
+  },
+  {
+    "id": 78,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "초당 30프레임, 가로 1920, 세로 1080 픽셀, 24비트(3바이트) 트루컬러의 비압축 1초 분량 동영상의 원시 데이터 용량은 약 얼마인가?",
+    "options": [
+      "약 1.8 MB",
+      "약 186 MB",
+      "약 1.8 GB",
+      "약 18 GB"
+    ],
+    "answer": 1,
+    "explanation": "$1920 \\times 1080 \\approx 2.07 \\times 10^6$ 픽셀 $\\times 3$ 바이트 $\\approx 6.22$ MB/프레임. 초당 30프레임이므로 $6.22 \\times 30 \\approx 186.6$ MB/초입니다."
+  },
+  {
+    "id": 79,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "ox",
+    "question": "확장현실(XR: Extended Reality)은 VR, AR, MR 및 미래에 등장할 모든 몰입형 가상 융합 기술을 포괄하는 총칭 용어이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "시공간의 제약을 초월하는 모든 실감 미디어 기술 스펙트럼을 아우르는 상위 개념입니다."
+  },
+  {
+    "id": 80,
+    "subject": "it",
+    "topic": "7장. 멀티미디어 기술과 활용",
+    "type": "mcq",
+    "question": "가상현실(VR) 기기를 착용했을 때 사용자의 머리 움직임과 화면 렌더링 간의 지연 시간(MTP: Motion-to-Photon Latency)이 길어지면 발생하는 부작용은?",
+    "options": [
+      "기기의 배터리가 방전된다.",
+      "시각 정보와 전정기관 감각의 불일치로 인한 어지럼증 및 멀미(VR Sickness)",
+      "디스플레이 색상이 흑백으로 반전된다.",
+      "오디오 소리가 반대로 들린다."
+    ],
+    "answer": 1,
+    "explanation": "MTP 지연이 통상 20ms 이상으로 커지면 시각과 균형 감각의 뇌 내 신호 불일치로 심한 멀미를 유발하므로 초저지연 기술이 필수입니다."
+  },
+  {
+    "id": 81,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "모바일 컴퓨팅(Mobile Computing) 환경의 2대 근본적인 고유 특성은?",
+    "options": [
+      "이동성(Mobility)과 무선성(Wireless Connectivity)",
+      "고정성과 유선성",
+      "대용량성과 고전력성",
+      "폐쇄성과 단일성"
+    ],
+    "answer": 0,
+    "explanation": "사용자가 장소를 이동하면서도(이동성) 케이블 연결 없이 무선 링크(무선성)를 통해 지속적으로 컴퓨팅 자원에 접근할 수 있는 환경입니다."
+  },
+  {
+    "id": 82,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "국제전기통신연합(ITU)에서 정의한 5G 이동통신의 3대 핵심 사용 시나리오(서비스 축)가 아닌 것은?",
+    "options": [
+      "eMBB (초광대역 이동통신 - Enhanced Mobile Broadband)",
+      "URLLC (초고신뢰 저지연 통신 - Ultra-Reliable and Low Latency Communications)",
+      "mMTC (대규모 사물통신 - Massive Machine Type Communications)",
+      "uSDC (초저속 단말 제어 - Ultra Slow Device Control)"
+    ],
+    "answer": 3,
+    "explanation": "5G의 3대 축은 초고속(최대 20Gbps eMBB), 초저지연(1ms 지연율 URLLC), 초연결($10^6$개/km² mMTC)입니다."
+  },
+  {
+    "id": 83,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "중앙 클라우드 데이터센터로 모든 데이터를 전송하지 않고, 데이터가 생성되는 물리적 장치 근처(기지국, 게이트웨이 등)에서 분산 처리하여 초저지연과 네트워크 대역폭 절감을 달성하는 컴퓨팅 아키텍처는?",
+    "options": [
+      "엣지 컴퓨팅 (Edge Computing)",
+      "메인프레임 컴퓨팅",
+      "배치(일괄) 컴퓨팅",
+      "터미널 컴퓨팅"
+    ],
+    "answer": 0,
+    "explanation": "자율주행, 스마트 팩토리, 원격 수술 등 실시간 초저지연 처리가 필요한 응용을 위해 현장 말단(Edge)에서 즉시 연산하는 패러다임입니다."
+  },
+  {
+    "id": 84,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "사물인터넷(IoT: Internet of Things)의 일반적인 3계층 아키텍처 구성으로 올바른 것은?",
+    "options": [
+      "디바이스/인식 계층(Sensing) -> 네트워크 계층(Transmission) -> 응용/서비스 계층(Application)",
+      "운영체제 계층 -> 하드웨어 계층 -> 컴파일러 계층",
+      "웹 계층 -> 브라우저 계층 -> 스크립트 계층",
+      "배터리 계층 -> 케이블 계층 -> 전원 계층"
+    ],
+    "answer": 0,
+    "explanation": "센서/액추에이터로 데이터를 감지하고(인식), 무선 통신망을 통해 전달하며(네트워크), 클라우드/플랫폼에서 분석·서비스를 제공합니다."
+  },
+  {
+    "id": 85,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "OAuth 2.0 인가(Authorization) 프레임워크에 대한 설명으로 가장 올바른 것은?",
+    "options": [
+      "사용자의 패스워드를 서드파티 앱에 직접 제공하여 로그인시키는 프로토콜이다.",
+      "사용자의 비밀번호를 제3자 애플리케이션에 노출하지 않고, 리소스 소유자의 동의를 바탕으로 특정 자원에 접근할 수 있는 제한된 권한 토큰(Access Token)을 발급해주는 표준 인가 프로토콜이다.",
+      "오직 블루투스 기기 페어링에만 사용되는 프로토콜이다.",
+      "데이터베이스의 테이블을 암호화하는 DDL 명령어이다."
+    ],
+    "answer": 1,
+    "explanation": "구글/카카오 소셜 로그인처럼 내 ID/PW를 앱에 주지 않고 접근 토큰(Access Token)만 인가하여 안전한 연동을 보장합니다."
+  },
+  {
+    "id": 86,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "OAuth 2.0의 4가지 인가 방식 중 웹 서버 기반 애플리케이션에서 가장 널리 쓰이며 가장 보안성이 높은 권장 방식은?",
+    "options": [
+      "권한 부여 코드 승인 방식 (Authorization Code Grant)",
+      "암묵적 승인 방식 (Implicit Grant)",
+      "자원 소유자 패스워드 자격증명 방식 (Resource Owner Password Credentials)",
+      "클라이언트 자격증명 방식 (Client Credentials Grant)"
+    ],
+    "answer": 0,
+    "explanation": "브라우저를 통해 일회용 Authorization Code를 먼저 발급받고, 백엔드 서버 간 통신으로 Client Secret과 함께 안전하게 Access Token을 교환하는 방식입니다."
+  },
+  {
+    "id": 87,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "공개키 암호화 기반구조(PKI)에서 사용되는 X.509 공개키 인증서의 핵심 역할은?",
+    "options": [
+      "신뢰할 수 있는 공인 인증기관(CA: Certificate Authority)의 디지털 전자서명을 통해, 특정 공개키가 해당 소유자의 것임을 공적으로 보증하는 것",
+      "인터넷 케이블의 전송 속도를 2배로 가속하는 것",
+      "스마트폰의 화면 잠금 패턴을 저장하는 것",
+      "DNS 서버의 IP 주소를 무작위로 변경하는 것"
+    ],
+    "answer": 0,
+    "explanation": "X.509 인증서는 소유자 정보, 소유자의 공개키, 유효기간 등을 담고 CA의 개인키로 전자서명되어 중간자 공격(MITM)을 방어합니다."
+  },
+  {
+    "id": 88,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "현대 보안 아키텍처의 패러다임인 '제로 트러스트(Zero Trust)'의 3대 기본 원칙에 해당하지 않는 것은?",
+    "options": [
+      "명시적 검증 (Never Trust, Always Verify - 항상 모든 접근을 검증하라)",
+      "최소 권한 원칙 (Least Privilege Access - 필요한 최소한의 권한만 부여하라)",
+      "침해 가정 (Assume Breach - 이미 내부망이 침해당했다고 전제하라)",
+      "내부망 무조건 신뢰 (Trust Internal Network - 사내망 접속자는 검증을 생략하라)"
+    ],
+    "answer": 3,
+    "explanation": "제로 트러스트는 '경계 기반 방어(사내망은 안전하다)'를 완전히 부정하며, 내부망 접속자라도 절대 신뢰하지 않고 지속적으로 인증·인가를 검증합니다."
+  },
+  {
+    "id": 89,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "FIDO(Fast Identity Online) 얼라이언스가 표준화한 차세대 사용자 인증 기술의 핵심 개념은?",
+    "options": [
+      "비밀번호를 외워서 입력하는 대신, 지문·홍채·얼굴인식 등 생체인증을 단말기(로컬)에서 처리하고 서버와는 비대칭 공개키 암호학으로 검증하여 패스워드 탈취를 원천 차단하는 기술",
+      "사용자의 주민등록번호를 모든 사이트에 공개하는 기술",
+      "매번 100자리의 특수문자 암호를 강제 변경하는 기술",
+      "서버의 데이터베이스에 사용자의 생체 정보를 원본 사진 그대로 저장하는 기술"
+    ],
+    "answer": 0,
+    "explanation": "생체 정보는 사용자 단말의 보안 영역(SE/TEE) 밖으로 절대 전송되지 않으며, 서버와는 전자서명 검증만 수행하는 패스워드리스(Passwordless) 기술입니다."
+  },
+  {
+    "id": 90,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "ox",
+    "question": "JWT(JSON Web Token)는 Header, Payload, Signature 세 부분이 마침표(.)로 구분된 base64url 인코딩 문자열 형태의 자가 수용적(Self-contained) 토큰이다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "토큰 자체에 사용자 정보와 만료일이 담겨 있고 전자서명(Signature)으로 위변조를 검증하므로 서버가 별도 세션 DB를 조회하지 않아도 됩니다."
+  },
+  {
+    "id": 91,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "스마트폰 등 모바일 기기의 핵심 반도체로, CPU, GPU, NPU, 모뎀, 메모리 컨트롤러 등을 단 하나의 칩에 모두 집적한 반도체를 무엇이라 부르는가?",
+    "options": [
+      "AP (Application Processor) / SoC (System on Chip)",
+      "하드디스크 드라이브",
+      "바이오스 롬",
+      "사운드 카드"
+    ],
+    "answer": 0,
+    "explanation": "모바일 기기의 초소형·저전력 특성을 달성하기 위해 모든 핵심 시스템 부품을 단일 실리콘 다이에 통합한 SoC 형태입니다."
+  },
+  {
+    "id": 92,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "ox",
+    "question": "근거리 무선 통신 기술 중 저전력 블루투스(BLE: Bluetooth Low Energy)는 배터리 소모를 극도로 줄여 스마트워치, 비콘, 헬스케어 센서 기기에 널리 활용된다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "클래식 블루투스와 달리 데이터 전송 시에만 순간적으로 깨어나 통신하고 수면 상태를 유지하여 코인 배터리로 수년간 동작 가능합니다."
+  },
+  {
+    "id": 93,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "NFC(Near Field Communication) 기술의 통신 거리와 주파수 대역으로 옳은 것은?",
+    "options": [
+      "약 10cm 이내의 초근거리 / 13.56 MHz 대역",
+      "약 100m / 2.4 GHz 대역",
+      "약 10km / 5 GHz 대역",
+      "약 1m / 900 MHz 대역"
+    ],
+    "answer": 0,
+    "explanation": "13.56MHz 주파수를 이용해 10cm 이내의 접촉식 초근거리에서만 동작하므로 모바일 결제(애플페이, 교통카드 등)에 높은 보안성을 제공합니다."
+  },
+  {
+    "id": 94,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "ox",
+    "question": "자율주행 차량에서 다른 차량(V2V), 도로 인프라(V2I), 보행자(V2P) 등 모든 사물과 초저지연으로 통신하는 무선 기술을 V2X(Vehicle-to-Everything)라고 한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "5G C-V2X 기술을 기반으로 사각지대 위험 경고, 군집 주행 등 협력형 지능형 교통체계(C-ITS)를 구축합니다."
+  },
+  {
+    "id": 95,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "스마트폰의 온디바이스 AI(On-device AI)가 클라우드 AI에 비해 갖는 결정적인 장점 두 가지는?",
+    "options": [
+      "네트워크 연결 없이 즉각 반응하는 초저지연성과 민감한 개인정보(사진, 대화)가 외부 서버로 유출되지 않는 높은 프라이버시 보호",
+      "무제한의 메모리와 초거대 파라미터 연산 능력",
+      "전력 소모가 0이 되는 무한 배터리 수명",
+      "하드웨어 칩이 전혀 필요 없는 순수 소프트웨어 동작"
+    ],
+    "answer": 0,
+    "explanation": "단말 내 NPU에서 직접 추론을 수행하므로 비행기 모드에서도 작동하며 민감 데이터의 클라우드 전송이 불필요합니다."
+  },
+  {
+    "id": 96,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "ox",
+    "question": "OAuth 2.0의 Refresh Token은 유효기간이 짧은 Access Token이 만료되었을 때, 사용자의 재로그인 없이 새로운 Access Token을 안전하게 재발급받기 위해 사용된다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "Access Token은 탈취 위험에 대비해 수명(예: 30분)을 짧게 유지하고, 안전한 저장소에 보관된 Refresh Token으로 갱신합니다."
+  },
+  {
+    "id": 97,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "기존 SIM 카드와 달리 스마트폰 메인보드에 칩 형태로 내장되어 있어 통신사 프로파일을 원격 소프트웨어 다운로드로 변경할 수 있는 기술은?",
+    "options": [
+      "eSIM (Embedded SIM)",
+      "마이크로 SD 카드",
+      "USB 동글",
+      "마그네틱 스트라이프"
+    ],
+    "answer": 0,
+    "explanation": "물리적 칩 교체 없이 소프트웨어로 개통과 번호 이동이 가능한 차세대 임베디드 가입자 식별 모듈입니다."
+  },
+  {
+    "id": 98,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "ox",
+    "question": "블루투스 기반 비콘(Beacon)은 실내에서 GPS 수신이 불가능할 때 정확한 위치 측위 및 맞춤형 쿠폰 안내 서비스를 제공하는 데 활용된다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "BLE 신호의 수신 감도(RSSI)를 측정하여 실내 오차 수 미터 이내의 정밀 위치 정보를 삼각측량합니다."
+  },
+  {
+    "id": 99,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "mcq",
+    "question": "스마트 시티(Smart City)의 핵심 목적과 거버넌스로 가장 올바른 것은?",
+    "options": [
+      "도시의 모든 건물을 철거하고 전산실만 건축하는 것",
+      "IoT, 빅데이터, AI 기술을 도시 인프라에 접목하여 교통, 에너지, 환경, 방범 문제를 효율적으로 해결하고 시민의 삶의 질을 높이는 것",
+      "시민들의 인터넷 사용 시간을 하루 1시간으로 제한하는 것",
+      "모든 대중교통을 폐지하고 도보 이동만 허용하는 것"
+    ],
+    "answer": 1,
+    "explanation": "도시 데이터 허브를 기반으로 실시간 교통 흐름 제어, 스마트 가로등, 지능형 방범 등을 유기적으로 연계하는 지능형 도시입니다."
+  },
+  {
+    "id": 100,
+    "subject": "it",
+    "topic": "8장. 모바일 컴퓨팅과 스마트 혁명",
+    "type": "ox",
+    "question": "차세대 6G 이동통신은 테라헤르츠(THz) 대역 주파수와 저궤도 위성 통신망(LEO)을 결합하여 지상뿐만 아니라 공중과 해상을 아우르는 3차원 공간 초공간 통신을 목표로 한다.",
+    "options": [
+      "⭕ 그렇다 (O)",
+      "❌ 아니다 (X)"
+    ],
+    "answer": 0,
+    "explanation": "최대 1Tbps의 전송 속도와 0.1ms의 지연율, 지구상 음영 지역 없는 위성 연계 3차원 통신을 실현하는 차세대 통신 규격입니다."
+  }
+]
