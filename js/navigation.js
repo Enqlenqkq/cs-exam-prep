@@ -295,3 +295,4 @@ function switchDbChapter(chKey) {
     renderMathInElement(target || document.body);
   }
 }
+

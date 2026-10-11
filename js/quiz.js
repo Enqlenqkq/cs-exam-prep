@@ -329,3 +329,4 @@ function resetBlankQuiz() {
   document.getElementById("blank-explain-2").style.display = "none";
   document.getElementById("blank-score-banner").classList.remove("show");
 }
+
