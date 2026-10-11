@@ -1757,17 +1757,36 @@
         <div id="os-content-w1w2" class="os-chapter-block">
           <div class="concept-card">
             <div class="card-title">
-              <span>1. 컴퓨터 시스템 구조와 인터럽트(Interrupt)</span>
-              <span class="badge">W1 · W2 요약</span>
+              <span>1. 컴퓨터 하드웨어 구조 & 인터럽트(Interrupt) 메커니즘</span>
+              <span class="badge">W1 · W2 심층 요약</span>
             </div>
             <div class="concept-content">
-              <p><strong>운영체제의 핵심 역할:</strong> 하드웨어(CPU, 메모리, I/O) 자원을 공정하고 효율적으로 관리하고, 응용 프로그램과 사용자에게 안전하고 편리한 추상화 인터페이스를 제공하는 소프트웨어.</p>
+              <h4>운영체제(OS)의 이중 역할과 은행 창구 비유</h4>
               <ul>
-                <li><strong>시스템 버스 (System Bus):</strong> 제어 버스, 주소 버스, 데이터 버스로 구성되어 CPU, 메모리, 입출력 장치 간의 데이터와 신호를 전송.</li>
-                <li><strong>인터럽트 (Interrupt) vs 폴링 (Polling):</strong>
-                  <br>• <em>폴링:</em> CPU가 입출력 장치의 상태를 주기적으로 직접 확인하는 방식 (CPU 낭비 심함).
-                  <br>• <em>인터럽트:</em> 장치가 작업을 마치거나 예외가 발생했을 때 CPU에 신호를 보내 알려주는 하드웨어적 통지 방식 (CPU 효율 극대화).
+                <li><strong>자원 관리자 (Resource Manager):</strong> CPU, 메모리, I/O 장치 등 한정된 하드웨어 자원을 여러 프로세스에 효율적이고 공정하게 분배.</li>
+                <li><strong>추상화 인터페이스 (Virtual Machine):</strong> 하드웨어의 복잡한 물리적 제어를 숨기고 파일, 프로세스, 소켓 등의 단순한 추상화 모델을 제공.</li>
+                <li><strong>은행 창구 비유 (교수님 강의 핵심):</strong>
+                  <br>• <em>직원이 없는 은행 (도서관식):</em> 초기 컴퓨터처럼 사용자가 금고(하드웨어)에 직접 들어가 마음대로 조작 &rarr; 다른 사람의 돈을 훔치거나 금고를 부술 위험.
+                  <br>• <em>직원이 있는 은행:</em> 고객(사용자 프로그램)은 창구 밖에서 전표(시스템 호출)를 제출하고, <strong>은행 직원(운영체제 커널)만이 직접 금고(하드웨어)에 접근</strong>하여 업무를 대행 &rarr; 완벽한 보안과 자원 보호 달성!
                 </li>
+              </ul>
+
+              <h4>하드웨어 구성요소 & CPU 레지스터</h4>
+              <ul>
+                <li><strong>시스템 버스:</strong> 데이터 버스(데이터 전달), 주소 버스(메모리 위치 지정), 제어 버스(읽기/쓰기 신호).</li>
+                <li><strong>핵심 CPU 레지스터:</strong>
+                  <br>• <strong>PC (Program Counter):</strong> 다음에 실행할 명령어의 메모리 주소를 가리킴.
+                  <br>• <strong>IR (Instruction Register):</strong> 현재 실행 중인 명령어를 임시 저장.
+                  <br>• <strong>SP (Stack Pointer):</strong> 현재 프로세스 스택의 최상단(Top) 주소를 가리킴.
+                </li>
+              </ul>
+
+              <h4>인터럽트 (Interrupt) vs 폴링 (Polling)</h4>
+              <p>인터럽트는 하드웨어 장치가 I/O 작업을 마쳤거나 오류가 발생했을 때 CPU에 전기적 신호를 보내 즉각적인 처리를 요청하는 메커니즘.</p>
+              <ul>
+                <li><strong>폴링의 한계:</strong> CPU가 루프를 돌며 장치의 완료 여부를 계속 체크하므로 CPU 연산 시간이 막대하게 낭비됨.</li>
+                <li><strong>인터럽트의 위력:</strong> I/O 대기 시간 동안 CPU는 다른 프로세스를 실행하다가, 장치가 신호를 보낼 때만 잠시 중단하고 처리하므로 <strong>다중프로그래밍(Multiprogramming)의 핵심 원동력</strong>이 됨.</li>
+                <li><strong>처리 흐름:</strong> 인터럽트 발생 &rarr; CPU가 현재 실행 중인 프로세스의 레지스터 상태(PC 등)를 PCB/스택에 백업 &rarr; <strong>인터럽트 벡터(Interrupt Vector)</strong>를 참조하여 해당 <strong>인터럽트 서비스 루틴(ISR)</strong> 실행 &rarr; 복귀.</li>
               </ul>
             </div>
             <div class="note-container">
@@ -1775,37 +1794,42 @@
                 <span class="note-label">📝 나만의 필기 (OS - 시스템 구조 & 인터럽트)</span>
                 <span class="note-status" id="status-os-w2-p1">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-os-w2-p1" placeholder="인터럽트 처리 과정, 시스템 버스 특징 필기..."></textarea>
+              <textarea class="note-textarea" id="note-os-w2-p1" placeholder="은행 창구 비유, CPU 레지스터, 인터럽트와 폴링 차이 필기..."></textarea>
             </div>
           </div>
 
           <div class="concept-card">
             <div class="card-title">
-              <span>2. 이중 모드(Dual-mode) & 시스템 호출(System Call)</span>
-              <span class="badge">W2 핵심</span>
+              <span>2. 이중 모드(Dual-mode), 특권 명령 & 시스템 호출(fread vs read)</span>
+              <span class="badge">W2 심층 핵심</span>
             </div>
             <div class="concept-content">
               <h4>이중 모드 (Dual-mode Operation)</h4>
-              <p>시스템을 악의적이거나 결함이 있는 사용자 프로그램으로부터 보호하기 위해 CPU 하드웨어가 지원하는 작동 모드 분리.</p>
+              <p>오작동하는 프로그램이나 악성 코드가 전체 시스템을 다운시키는 것을 방지하기 위해 CPU 하드웨어가 <strong>모드 비트(Mode Bit)</strong>를 두어 동작 모드를 분리.</p>
               <ul>
-                <li><strong>사용자 모드 (User Mode):</strong> 일반 응용 프로그램이 실행되는 모드. 특권 명령 실행 불가, 접근 가능한 메모리 공간 제한.</li>
-                <li><strong>커널 모드 (Kernel / Supervisor Mode):</strong> 운영체제 커널 코드가 실행되는 모드. 모든 기계어 명령어와 전체 메모리/하드웨어에 접근 가능.</li>
-                <li><strong>특권 명령 (Privileged Instructions):</strong> I/O 장치 접근, 인터럽트 비활성화, 메모리 보호 테이블 수정 등 치명적인 명령어로, <strong>오직 커널 모드에서만 실행 가능</strong>함.</li>
+                <li><strong>사용자 모드 (User Mode, 모드 비트 1):</strong> 일반 응용 프로그램이 실행되는 모드. 메모리 접근이 제한되며 특권 명령 실행 불가.</li>
+                <li><strong>커널 모드 (Kernel / Supervisor Mode, 모드 비트 0):</strong> 운영체제 커널 코드가 실행되는 모드. 모든 기계어 명령어와 메모리/장치에 무제한 접근 가능.</li>
+                <li><strong>특권 명령 (Privileged Instructions):</strong> I/O 장치 접근(in/out 명령어), 인터럽트 켜기/끄기, 타이머 설정, 메모리 관리 레지스터(MMU) 수정 등. 사용자 모드에서 실행 시 하드웨어 트랩(예외) 발생.</li>
               </ul>
 
               <h4>시스템 호출 (System Call) vs 함수 호출 (Function Call)</h4>
+              <ul>
+                <li><strong>일반 함수 호출:</strong> 사용자 주소 공간 내에서 함수 점프. CPU 모드 비트 변경 없음, 오버헤드 매우 적음.</li>
+                <li><strong>시스템 호출:</strong> 사용자 프로그램이 트랩(Trap, 소프트웨어 인터럽트)을 유발하여 <strong>CPU 모드를 사용자 모드 &rarr; 커널 모드로 전환</strong>하고 커널 함수를 실행한 뒤 다시 사용자 모드로 복귀. 문맥 백업과 검증으로 인해 상당한 오버헤드 수반.</li>
+              </ul>
+
+              <h4>강의 슬라이드 핵심 예제: C 라이브러리 fread() vs 시스템 호출 read()</h4>
               <div class="highlight-tip">
-                • <strong>일반 함수 호출:</strong> 사용자 공간 내에서 다른 함수로 분기 (모드 전환 없음).<br>
-                • <strong>시스템 호출 (System Call):</strong> 사용자 공간 프로그램이 하드웨어 I/O나 커널 서비스를 받기 위해 <strong>소프트웨어 인터럽트(트랩, Trap)</strong>를 발생시켜 CPU 모드를 <strong>사용자 모드 $
-ightarrow$ 커널 모드로 전환</strong>하여 커널 함수를 호출하는 공식 통로.
+                • <code>read()</code> 시스템 호출: 1바이트씩 1000번 읽으면, <strong>1000번의 사용자 모드 &harr; 커널 모드 전환(System Call Overhead)</strong>이 발생하여 실행 속도가 극도로 느려짐!<br>
+                • <code>fread()</code> C 표준 라이브러리 함수: 내부적으로 <strong>사용자 공간 버퍼(보통 4KB~8KB)</strong>를 두어, 커널에서 큰 블록을 한 번에 읽어온 뒤 메모리에서 1바이트씩 꺼내주므로 <strong>시스템 호출 횟수를 수천 분의 1로 줄여 압도적으로 빠름</strong>!
               </div>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (OS - 이중모드, 특권명령, 시스템콜)</span>
+                <span class="note-label">📝 나만의 필기 (OS - 이중모드, 특권명령, fread vs read)</span>
                 <span class="note-status" id="status-os-w2-p2">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-os-w2-p2" placeholder="사용자 모드 vs 커널 모드 차이, 트랩(Trap)과 시스템콜 흐름 필기..."></textarea>
+              <textarea class="note-textarea" id="note-os-w2-p2" placeholder="모드 비트 전환, 특권 명령, fread()와 read() 성능 차이 원인 필기..."></textarea>
             </div>
           </div>
         </div>
@@ -1814,69 +1838,85 @@ ightarrow$ 커널 모드로 전환</strong>하여 커널 함수를 호출하는 
         <div id="os-content-w3" class="os-chapter-block" style="display:none;">
           <div class="concept-card">
             <div class="card-title">
-              <span>1. 메모리 계층 구조와 주소 변환(MMU)</span>
-              <span class="badge">W3 요약</span>
+              <span>1. 메모리 계층 구조 & 참조 지역성(Locality) 및 MMU</span>
+              <span class="badge">W3 심층 요약</span>
             </div>
             <div class="concept-content">
-              <h4>메모리 계층 구조 (Memory Hierarchy)</h4>
-              <p><strong>속도/비용 vs 용량 트레이드오프:</strong> 레지스터 (최고속, 최소용량, 최고비용) $
-ightarrow$ 캐시 메모리 (L1/L2/L3) $
-ightarrow$ 메인 메모리 (DRAM) $
-ightarrow$ 보조기억장치 (SSD/HDD, 대용량, 최저비용).</p>
-              
-              <h4>논리 주소 vs 물리 주소</h4>
+              <h4>메모리 계층 구조 (Memory Hierarchy) & 참조 지역성의 원리</h4>
+              <p>속도와 비용(비쌈/빠름)과 용량(대용량/저렴)의 불일치를 극복하기 위한 계층적 구성:<br>
+              <strong>레지스터 &rarr; L1/L2/L3 캐시 &rarr; 메인 메모리(DRAM) &rarr; 보조기억장치(SSD/HDD)</strong></p>
               <ul>
-                <li><strong>논리/가상 주소 (Logical / Virtual Address):</strong> CPU가 프로그램을 실행하며 생성하고 바라보는 주소.</li>
-                <li><strong>물리 주소 (Physical Address):</strong> 실제 메인 메모리(DRAM) 하드웨어 칩에 위치한 주소.</li>
-                <li><strong>MMU (Memory Management Unit):</strong> CPU와 메모리 사이에 위치하여 논리 주소를 물리 주소로 실시간 하드웨어 변환을 수행하는 장치 (베이스 레지스터, 리미트 레지스터 등 활용).</li>
+                <li><strong>왜 캐시 메모리가 효과적으로 작동하는가? &rarr; 참조 지역성 (Locality of Reference)</strong>
+                  <br>• <strong>시간 지역성 (Temporal Locality):</strong> 최근에 한 번 참조된 메모리 주소는 가까운 미래에 다시 참조될 확률이 매우 높음 (예: 반복문 loop 변수).
+                  <br>• <strong>공간 지역성 (Spatial Locality):</strong> 한 번 참조된 메모리 주소의 인접한 이웃 주소들이 연이어 참조될 확률이 매우 높음 (예: 1차원 배열 순차 탐색).
+                </li>
+              </ul>
+
+              <h4>논리 주소 vs 물리 주소 & 하드웨어 메모리 보호</h4>
+              <ul>
+                <li><strong>논리/가상 주소 (Logical Address):</strong> CPU가 생성하는 주소. 프로그램마다 0번지부터 시작하는 독립된 주소 공간.</li>
+                <li><strong>물리 주소 (Physical Address):</strong> 실제 메인 메모리(DRAM) 하드웨어에 위치한 주소.</li>
+                <li><strong>MMU (Memory Management Unit):</strong> 하드웨어 장치로, <code>물리 주소 = 논리 주소 + 베이스 레지스터 값</code>으로 실시간 변환.</li>
+                <li><strong>메모리 보호 메커니즘:</strong> CPU가 발생시킨 논리 주소가 <strong>리미트 레지스터(Limit Register, 프로세스 크기)</strong>보다 크거나 같으면, 남의 메모리를 침범한 것으로 간주하여 즉시 <strong>트랩(Segmentation Fault 예외)</strong>을 발생시켜 강제 종료.</li>
               </ul>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (OS - 메모리 계층 & MMU)</span>
+                <span class="note-label">📝 나만의 필기 (OS - 메모리 계층, 지역성, MMU)</span>
                 <span class="note-status" id="status-os-w3-p1">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-os-w3-p1" placeholder="메모리 계층 구조, MMU의 역할과 주소 바인딩 필기..."></textarea>
+              <textarea class="note-textarea" id="note-os-w3-p1" placeholder="시간 지역성 vs 공간 지역성, 베이스/리미트 레지스터 메모리 보호 필기..."></textarea>
             </div>
           </div>
 
           <div class="concept-card">
             <div class="card-title">
-              <span>2. 메모리 단편화 & 페이징(Paging) 기법</span>
-              <span class="badge">W3 핵심</span>
+              <span>2. 연속 메모리 할당 (3대 알고리즘) & 페이징 vs 세그멘테이션</span>
+              <span class="badge">W3 심층 핵심</span>
             </div>
             <div class="concept-content">
-              <h4>메모리 단편화 (Fragmentation)</h4>
+              <h4>연속 메모리 동적 할당의 3가지 홀(Hole, 빈 공간) 선택 알고리즘</h4>
               <table>
-                <thead><tr><th>구분</th><th>발생 원인</th><th>특징 및 결과</th></tr></thead>
+                <thead><tr><th>알고리즘</th><th>선택 기준</th><th>장점 및 단점</th></tr></thead>
                 <tbody>
                   <tr>
-                    <td><strong>내부 단편화 (Internal)</strong></td>
-                    <td>고정 분할 또는 페이징에서 할당된 블록 크기가 프로세스가 요구한 크기보다 클 때 발생</td>
-                    <td>블록 내부의 남는 공간이 낭비됨</td>
+                    <td><strong>최초 적합<br>(First-fit)</strong></td>
+                    <td>메모리 첫 주소부터 검색하여 프로세스가 들어갈 수 있는 <strong>가장 첫 번째 빈 공간</strong>에 바로 할당</td>
+                    <td>검색 속도가 가장 빠름. 앞부분에 작은 조각들이 몰릴 수 있음.</td>
                   </tr>
                   <tr>
-                    <td><strong>외부 단편화 (External)</strong></td>
-                    <td>가변 분할에서 프로세스들의 생성/소멸로 메모리 사이사이에 작은 빈 공간 조각들이 흩어져 발생</td>
-                    <td>총 빈 공간의 합은 충분하지만 연속되지 않아 프로세스를 적재하지 못함</td>
+                    <td><strong>최적 적합<br>(Best-fit)</strong></td>
+                    <td>가용 공간 전체를 탐색하여 프로세스 크기보다 크거나 같으면서 <strong>크기 차이가 가장 작은(딱 맞는) 빈 공간</strong>에 할당</td>
+                    <td>전체 리스트를 검색해야 하므로 느림. 할당 후 아주 작은 자투리 빈 공간들이 대량 생성되어 공간 낭비 발생.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>최악 적합<br>(Worst-fit)</strong></td>
+                    <td>가용 공간 전체를 탐색하여 <strong>가장 크기가 큰 빈 공간</strong>에 할당</td>
+                    <td>전체 검색 필요. 할당 후 남은 자투리 공간이 비교적 커서 다른 프로세스가 들어갈 가능성이 있음. 성능상 불리.</td>
                   </tr>
                 </tbody>
               </table>
 
-              <h4>페이징 (Paging) 시스템</h4>
+              <h4>메모리 단편화 & 페이징(Paging) vs 세그멘테이션(Segmentation)</h4>
               <ul>
-                <li><strong>페이지 (Page):</strong> 프로세스의 논리 주소 공간을 일정한 고정 크기로 나눈 블록.</li>
-                <li><strong>프레임 (Frame):</strong> 물리 메모리를 페이지와 동일한 고정 크기로 나눈 블록.</li>
-                <li><strong>장점:</strong> 물리 메모리의 비연속적인 프레임에 페이지들을 적재할 수 있으므로 <strong>외부 단편화가 완전히 해결</strong>됨.</li>
-                <li><strong>단점:</strong> 마지막 페이지에서 크기가 딱 맞지 않아 <strong>내부 단편화</strong>가 발생할 수 있음, 페이지 테이블 저장 오버헤드.</li>
+                <li><strong>내부 단편화 (Internal Fragmentation):</strong> 할당된 블록 크기가 요구 크기보다 커서 블록 내부의 남는 공간이 낭비됨. (페이징의 마지막 페이지에서 발생).</li>
+                <li><strong>외부 단편화 (External Fragmentation):</strong> 메모리 사이사이에 작은 자투리 공간들이 조각나 흩어져 있어, 총 빈 공간의 합은 프로세스 크기보다 큼에도 불구하고 연속되지 않아 프로세스를 적재할 수 없는 현상. (가변 분할, 세그멘테이션에서 발생).</li>
               </ul>
+              <table>
+                <thead><tr><th>구분</th><th>페이징 (Paging)</th><th>세그멘테이션 (Segmentation)</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>분할 단위</strong></td><td>하드웨어 관점의 <strong>고정 크기 (Page, Frame)</strong></td><td>사용자/프로그래머 관점의 <strong>가변 크기 논리 단위 (Code, Data, Stack)</strong></td></tr>
+                  <tr><td><strong>단편화 문제</strong></td><td><strong>외부 단편화 완전 해결!</strong> (단, 내부 단편화 일부 발생)</td><td><strong>내부 단편화 없음!</strong> (단, 외부 단편화 발생 &rarr; 압축 compaction 필요)</td></tr>
+                  <tr><td><strong>주소 변환</strong></td><td>페이지 번호($p$)와 오프셋($d$) &rarr; 페이지 테이블</td><td>세그먼트 번호($s$)와 변위($d$) &rarr; 세그먼트 테이블 (Base, Limit)</td></tr>
+                </tbody>
+              </table>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (OS - 단편화 & 페이징)</span>
+                <span class="note-label">📝 나만의 필기 (OS - 동적할당 3종 & 페이징/세그멘테이션)</span>
                 <span class="note-status" id="status-os-w3-p2">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-os-w3-p2" placeholder="내부 단편화 vs 외부 단편화, 페이징 테이블 주소 변환 필기..."></textarea>
+              <textarea class="note-textarea" id="note-os-w3-p2" placeholder="First-fit/Best-fit/Worst-fit 비교, 내부/외부 단편화, 페이징 vs 세그멘테이션 필기..."></textarea>
             </div>
           </div>
         </div>
@@ -1885,57 +1925,81 @@ ightarrow$ 보조기억장치 (SSD/HDD, 대용량, 최저비용).</p>
         <div id="os-content-w4" class="os-chapter-block" style="display:none;">
           <div class="concept-card">
             <div class="card-title">
-              <span>1. 컴파일과 ELF 파일 메모리 구조</span>
-              <span class="badge">W4 요약</span>
+              <span>1. ELF 파일 구조 & 프로세스 상태 전이와 프로세스 관리</span>
+              <span class="badge">W4 심층 요약</span>
             </div>
             <div class="concept-content">
-              <p><strong>ELF (Executable and Linkable Format):</strong> 리눅스/유닉스 계열 운영체제의 표준 실행 및 링크 파일 형식.</p>
-              <h4>프로세스 메모리 주소 공간의 4대 영역</h4>
+              <h4>ELF 파일과 프로세스 가상 메모리 4대 영역</h4>
               <ul>
-                <li><strong>텍스트/코드 영역 (.text):</strong> 실행할 기계어 명령어가 저장되는 읽기 전용(Read-Only) 영역.</li>
-                <li><strong>데이터 영역 (.data / .bss):</strong> 전역 변수(Global)와 정적 변수(Static)가 저장되는 영역.
-                  <br>• <code>.data</code>: 초기화된 전역 변수
-                  <br>• <code>.bss</code>: 초기화되지 않은 전역 변수 (메모리 절약을 위해 실행 시 0으로 초기화)
+                <li><strong>텍스트/코드 영역 (.text):</strong> 컴파일된 실행 기계어 명령어가 위치하는 읽기 전용(Read-Only) 영역. 여러 프로세스가 동일 프로그램을 실행할 때 코드 공유 가능.</li>
+                <li><strong>데이터 영역:</strong>
+                  <br>• <code>.data</code>: 소스코드에서 값이 초기화된 전역 변수 및 static 변수.
+                  <br>• <code>.bss</code>: 초기화되지 않은 전역 변수 및 static 변수. (파일 크기를 줄이기 위해 실행 파일에는 크기 정보만 두고 메모리 적재 시 0으로 초기화).
                 </li>
-                <li><strong>힙 영역 (Heap):</strong> 프로그램 실행 중 동적으로 할당되는 메모리 영역 (예: C언어의 <code>malloc()</code>/<code>free()</code>, C++의 <code>new</code>/<code>delete</code>). 낮은 주소에서 높은 주소 방향으로 증가.</li>
-                <li><strong>스택 영역 (Stack):</strong> 함수 호출 시의 지역 변수, 매개변수, 반환 주소가 임시 저장되는 영역. 높은 주소에서 낮은 주소 방향으로 증가.</li>
+                <li><strong>힙 영역 (Heap):</strong> 런타임에 <code>malloc()</code> 등에 의해 동적 할당되는 영역. <strong>낮은 주소 &rarr; 높은 주소(상향)</strong> 방향으로 자라남.</li>
+                <li><strong>스택 영역 (Stack):</strong> 함수 호출 시의 매개변수, 지역 변수, 복귀 주소 프레임이 저장되는 영역. <strong>높은 주소 &rarr; 낮은 주소(하향)</strong> 방향으로 자라남.</li>
+              </ul>
+
+              <h4>프로세스의 5대 상태 (5-State Model) 와 전이</h4>
+              <ul>
+                <li><strong>New (생성):</strong> 프로세스가 생성되었으나 아직 메모리에 적재 승인되지 않은 상태.</li>
+                <li><strong>Ready (준비):</strong> 메모리에 적재되어 CPU 할당(스케줄링)을 기다리는 상태.</li>
+                <li><strong>Running (실행):</strong> CPU를 할당받아 실제 명령어를 실행 중인 상태.</li>
+                <li><strong>Waiting / Blocked (대기/차단):</strong> I/O 완료나 이벤트 신호를 기다리느라 CPU를 줘도 실행할 수 없는 상태.</li>
+                <li><strong>Terminated (종료):</strong> 프로세스 실행이 끝나 자원을 반납하는 상태.</li>
+                <li><strong>문맥 교환 (Context Switching):</strong> CPU가 실행 프로세스를 변경할 때, 기존 프로세스의 상태(레지스터, PC 등)를 해당 프로세스의 <strong>PCB(Process Control Block)</strong>에 저장하고 새 프로세스의 PCB에서 상태를 복원하는 과정. (순수 오버헤드).</li>
+              </ul>
+
+              <h4>프로세스 생성과 종료 (좀비 프로세스 vs 고아 프로세스)</h4>
+              <ul>
+                <li><code>fork()</code>: 부모 프로세스를 똑같이 복제하여 새 자식 프로세스를 생성.</li>
+                <li><code>exec()</code>: 새로운 실행 파일로 메모리 이미지를 완전히 교체하여 실행.</li>
+                <li><code>wait()</code>: 부모 프로세스가 자식 프로세스의 종료를 기다리며 종료 상태 코드를 회수.</li>
+                <li><strong>좀비 프로세스 (Zombie Process):</strong> 자식 프로세스가 종료되었으나, 부모 프로세스가 <code>wait()</code>를 호출하지 않아 프로세스 테이블 엔트리(메타데이터)가 시스템에 남아있는 상태.</li>
+                <li><strong>고아 프로세스 (Orphan Process):</strong> 부모 프로세스가 자식보다 먼저 종료되어 부모를 잃은 자식 프로세스. 운영체제의 최상위 프로세스(리눅스의 <code>init</code> / <code>systemd</code>)가 새 부모로 입양하여 종료 시 정상 회수함.</li>
               </ul>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (OS - ELF 파일 & 메모리 4대 영역)</span>
+                <span class="note-label">📝 나만의 필기 (OS - 프로세스 상태 전이 & 좀비/고아)</span>
                 <span class="note-status" id="status-os-w4-p1">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-os-w4-p1" placeholder="Code, Data, BSS, Heap, Stack의 증가 방향 및 특징 필기..."></textarea>
+              <textarea class="note-textarea" id="note-os-w4-p1" placeholder="ELF 4대 영역 증가 방향, 5대 상태 전이, 좀비 프로세스 vs 고아 프로세스 필기..."></textarea>
             </div>
           </div>
 
           <div class="concept-card">
             <div class="card-title">
-              <span>2. 가상 메모리(Virtual Memory)와 요구 페이징</span>
-              <span class="badge">W4 핵심</span>
+              <span>2. 가상 메모리, 요구 페이징(Page Fault 6단계) & 스래싱</span>
+              <span class="badge">W4 심층 핵심</span>
             </div>
             <div class="concept-content">
-              <h4>요구 페이징 (Demand Paging) & 페이지 폴트 (Page Fault)</h4>
+              <h4>요구 페이징 (Demand Paging)</h4>
+              <p>프로그램 전체를 물리 메모리에 한 번에 올리지 않고, 실행 중에 <strong>실제로 필요한 페이지만을 요구가 있을 때 메모리에 적재</strong>하는 방식. (유효-무효 비트 Valid-Invalid bit 사용).</p>
+
+              <h4>페이지 폴트 (Page Fault) 처리의 6단계 상세 시퀀스 (강의 슬라이드 핵심)</h4>
+              <ol>
+                <li>CPU가 논리 주소를 참조할 때 페이지 테이블의 해당 엔트리가 <strong>무효(Invalid)</strong> 상태임을 감지.</li>
+                <li>하드웨어가 운영체제 커널로 <strong>페이지 폴트 트랩 (Page Fault Trap, 예외)</strong>을 발생시킴.</li>
+                <li>운영체제는 주소의 적법성을 검증하고, 보조기억장치(디스크 스왑 영역)에서 해당 페이지의 물리적 위치를 탐색.</li>
+                <li>물리 메모리의 <strong>빈 프레임(Free Frame)</strong>을 찾아 디스크에서 페이지를 읽어 적재함. (만약 빈 프레임이 없으면 페이지 교체 알고리즘(LRU 등)을 실행하여 희생 페이지 victim page를 골라 디스크에 기록하고 교체).</li>
+                <li>페이지 테이블 엔트리를 해당 물리 프레임 번호로 채우고 <strong>유효(Valid) 비트로 갱신</strong>.</li>
+                <li>페이지 폴트로 인해 일시 중단되었던 CPU 명령어를 <strong>처음부터 다시 재실행 (Restart Instruction)</strong>.</li>
+              </ol>
+
+              <h4>스래싱 (Thrashing) 과 워킹 셋 (Working Set)</h4>
               <ul>
-                <li><strong>요구 페이징:</strong> 프로세스 실행에 필요한 페이지만을 실제로 참조될 때 물리 메모리에 올리는 기법 (메모리 절약, 다중 프로그래밍 정도 향상).</li>
-                <li><strong>유효/무효 비트 (Valid-Invalid Bit):</strong> 페이지 테이블에 해당 페이지가 현재 물리 메모리에 적재되어 있는지(Valid) 여부를 표시.</li>
-                <li><strong>페이지 폴트 (Page Fault):</strong> CPU가 참조하려는 페이지가 현재 물리 메모리에 없는 경우(Invalid) 발생하는 <strong>하드웨어 트랩(예외)</strong>.
-                  <br><em>처리 순서:</em> OS가 CPU 제어권 획득 $
-ightarrow$ 보조기억장치에서 해당 페이지 검색 $
-ightarrow$ 빈 프레임에 적재(빈 프레임 없으면 페이지 교체 알고리즘 수행) $
-ightarrow$ 페이지 테이블 Valid로 갱신 $
-ightarrow$ 중단되었던 명령어 재실행.
-                </li>
-                <li><strong>스래싱 (Thrashing):</strong> 페이지 교체(I/O) 시간이 실제 프로세스 실행 시간보다 많아져 시스템의 CPU 이용률이 급격히 곤두박질치는 심각한 성능 저하 현상.</li>
+                <li><strong>스래싱의 정의:</strong> 페이지 부재가 비정상적으로 빈번하게 발생하여, 프로세스가 CPU를 실행하는 시간보다 <strong>페이지를 디스크에서 읽어오고 교체하는 I/O 시간이 훨씬 더 많아져 CPU 이용률이 급락</strong>하는 심각한 병목 현상.</li>
+                <li><strong>발생 원인:</strong> 다중 프로그래밍 정도(Degree of Multiprogramming)가 지나치게 높아져, 각 프로세스가 원활히 실행되는 데 필요한 최소 프레임 수조차 확보하지 못하기 때문.</li>
+                <li><strong>해결책 (워킹 셋 Working Set 모델):</strong> 프로세스가 일정 시간 동안 집중적으로 참조하는 페이지들의 집합(Working Set)을 파악하여, 그 크기만큼의 프레임을 프로세스에 온전히 할당할 수 없을 때는 아예 프로세스 실행을 잠시 보류(스왑 아웃)시킴.</li>
               </ul>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (OS - 요구페이징, 페이지폴트, 스래싱)</span>
+                <span class="note-label">📝 나만의 필기 (OS - 페이지 폴트 6단계 & 스래싱)</span>
                 <span class="note-status" id="status-os-w4-p2">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-os-w4-p2" placeholder="Page Fault 발생 시 단계별 처리 과정, Thrashing 원인 필기..."></textarea>
+              <textarea class="note-textarea" id="note-os-w4-p2" placeholder="Page Fault 발생 시 단계별 6단계 처리 순서, 스래싱 발생 원인과 해결책 필기..."></textarea>
             </div>
           </div>
         </div>
@@ -2086,32 +2150,69 @@ ightarrow$ 중단되었던 명령어 재실행.
         <div id="db-content-ch1" class="db-chapter-block">
           <div class="concept-card">
             <div class="card-title">
-              <span>1. DBMS의 필요성과 3단계 데이터베이스 스키마</span>
-              <span class="badge">Chap 1 요약</span>
+              <span>1. DBMS의 필요성과 파일 시스템의 한계</span>
+              <span class="badge">Chap 1 심층 요약</span>
             </div>
             <div class="concept-content">
-              <h4>파일 처리 시스템(File System)의 한계와 DBMS 등장 이유</h4>
+              <h4>전통적 파일 처리 시스템(File Processing System)의 3대 근본 한계</h4>
               <ul>
-                <li><strong>데이터 중복성 (Data Redundancy):</strong> 동일한 데이터가 여러 파일에 중복 저장되어 저장 공간 낭비.</li>
-                <li><strong>데이터 불일치성 (Inconsistency):</strong> 중복된 데이터 중 일부만 수정되어 데이터 간 모순 발생.</li>
-                <li><strong>데이터 종속성 (Dependency):</strong> 데이터 파일의 구조가 바뀌면 응용 프로그램도 함께 수정해야 함.</li>
+                <li><strong>1) 데이터 중복성 (Data Redundancy):</strong> 동일한 데이터가 업무별, 부서별 파일에 각기 중복 저장되어 저장 공간이 낭비됨.</li>
+                <li><strong>2) 데이터 불일치성 (Data Inconsistency):</strong> 한 파일의 데이터는 수정되었으나 다른 파일의 동일 데이터가 수정되지 않아 데이터 간 모순과 불일치가 발생.</li>
+                <li><strong>3) 데이터 종속성 (Data Dependency):</strong> 파일의 물리적 저장 구조나 포맷이 변경되면 이를 읽는 모든 응용 프로그램의 소스코드를 함께 수정해야 하는 유지보수 지옥.</li>
               </ul>
 
-              <h4>3단계 데이터베이스 구조 (3-Level Architecture) & 데이터 독립성</h4>
-              <ul>
-                <li><strong>1) 외부 스키마 (External Schema):</strong> 각 사용자 또는 응용 프로그램 관점에서의 데이터베이스 정의 (사용자 뷰).</li>
-                <li><strong>2) 개념 스키마 (Conceptual Schema):</strong> 조직 전체 관점에서의 데이터베이스 전체 논리적 구조 정의 (통합 뷰, 엔티티, 관계, 제약조건).</li>
-                <li><strong>3) 내부 스키마 (Internal Schema):</strong> 물리적 저장 장치 관점에서의 데이터 저장 구조 및 접근 경로(인덱스) 정의 (물리 뷰).</li>
-                <li><strong>논리적 데이터 독립성:</strong> 개념 스키마가 변경되어도 외부 스키마가 영향을 받지 않음.</li>
-                <li><strong>물리적 데이터 독립성:</strong> 내부 스키마(저장 장치)가 변경되어도 개념 스키마가 영향을 받지 않음.</li>
-              </ul>
+              <h4>DBMS 도입의 핵심 이점</h4>
+              <p>데이터의 중앙 집중 관리, 중복 최소화, 무결성 제약조건 강제, 동시성 제어(Concurrency Control: 여러 사용자가 동시 접근해도 일관성 유지), 장애 발생 시 자동 복구(Crash Recovery), 정교한 접근 권한 보안 제어.</p>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (DB - DBMS 개요 & 3단계 스키마)</span>
+                <span class="note-label">📝 나만의 필기 (DB - 파일 시스템의 3대 문제 & DBMS)</span>
                 <span class="note-status" id="status-db-ch1-p1">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-db-ch1-p1" placeholder="파일 시스템의 문제점, 외부/개념/내부 스키마와 데이터 독립성 필기..."></textarea>
+              <textarea class="note-textarea" id="note-db-ch1-p1" placeholder="데이터 중복성, 불일치성, 종속성 개념과 DBMS 도입 장점 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. ANSI/SPARC 3단계 스키마 구조 & 2단계 데이터 독립성</span>
+              <span class="badge">Chap 1 심층 핵심</span>
+            </div>
+            <div class="concept-content">
+              <h4>3단계 데이터베이스 스키마 구조 (3-Level Schema Architecture)</h4>
+              <table>
+                <thead><tr><th>계층</th><th>명칭</th><th>관점 및 정의 내용</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><strong>외부 계층<br>(External)</strong></td>
+                    <td><strong>외부 스키마 (External Schema)<br>= 사용자 뷰 (User View)</strong></td>
+                    <td>개별 사용자나 응용 프로그램 개발자의 관점에서 필요한 데이터 구조를 정의. 하나의 데이터베이스에 여러 개의 외부 스키마가 존재할 수 있음.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>개념 계층<br>(Conceptual)</strong></td>
+                    <td><strong>개념 스키마 (Conceptual Schema)<br>= 전체 통합 뷰</strong></td>
+                    <td>조직 전체의 관점에서 모든 데이터베이스 엔티티, 관계, 데이터 타입, 무결성 제약조건을 통합적으로 정의한 전체 논리적 구조 (단 하나만 존재).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>내부 계층<br>(Internal)</strong></td>
+                    <td><strong>내부 스키마 (Internal Schema)<br>= 물리적 저장 뷰</strong></td>
+                    <td>실제 물리적 저장 장치(디스크)에 데이터가 파일, 블록, B-트리 인덱스 등으로 어떻게 저장되고 배치되는지 정의.</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>2단계 데이터 독립성 (Data Independence)</h4>
+              <div class="highlight-tip">
+                • <strong>논리적 데이터 독립성 (Logical Data Independence):</strong> 개념 스키마가 변경(새로운 속성 추가, 엔티티 수정 등)되어도, 기존의 외부 스키마(응용 프로그램)가 영향을 받지 않고 그대로 유지됨.<br>
+                • <strong>물리적 데이터 독립성 (Physical Data Independence):</strong> 내부 스키마가 변경(디스크 교체, 인덱스 재구성, 저장 경로 변경 등)되어도, 개념 스키마(논리적 구조)가 전혀 영향을 받지 않음.
+              </div>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (DB - 3단계 스키마 & 데이터 독립성)</span>
+                <span class="note-status" id="status-db-ch1-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-db-ch1-p2" placeholder="외부/개념/내부 스키마 정의, 논리적 vs 물리적 데이터 독립성 필기..."></textarea>
             </div>
           </div>
         </div>
@@ -2120,33 +2221,61 @@ ightarrow$ 중단되었던 명령어 재실행.
         <div id="db-content-ch2" class="db-chapter-block" style="display:none;">
           <div class="concept-card">
             <div class="card-title">
-              <span>1. 개체-관계 (E-R) 모델의 핵심 요소</span>
-              <span class="badge">Chap 2 요약</span>
+              <span>1. 개체-관계 (E-R) 모델의 구성 요소 (엔티티, 속성, 관계)</span>
+              <span class="badge">Chap 2 심층 요약</span>
             </div>
             <div class="concept-content">
+              <h4>1) 엔티티 (Entity) & 엔티티 타입</h4>
+              <p>실세계에서 다른 객체들과 독립적으로 식별 가능한 사물이나 개념 (학생, 교수, 부서 등). ERD에서 <strong>사각형(Rectangle)</strong>으로 표기.</p>
+
+              <h4>2) 애트리뷰트 (Attribute, 속성) 의 다양한 유형</h4>
               <ul>
-                <li><strong>엔티티 (Entity):</strong> 실세계에서 독립적으로 식별 가능한 객체나 개념 (사각형으로 표기).</li>
-                <li><strong>애트리뷰트 (Attribute, 속성):</strong> 엔티티의 특성이나 성질 (타원으로 표기).
-                  <br>• <em>단일값 vs 다중값 속성:</em> 다중값 속성은 여러 개의 값을 가질 수 있음 (이중 타원, 예: {전화번호}, {위치}).
-                  <br>• <em>복합 속성:</em> 독립적인 의미를 갖는 더 작은 속성으로 분해 가능 (예: 주소 $
-ightarrow$ 시, 구, 동).
-                  <br>• <em>유도 속성:</em> 다른 속성으로부터 계산되어 결정되는 속성 (점선 타원, 예: 나이).
+                <li><strong>키 속성 (Key Attribute):</strong> 엔티티들을 고유하게 식별하는 속성. 타원 안에 <strong>실선 밑줄(Solid Underline)</strong>로 표기.</li>
+                <li><strong>단일값 속성 vs 다중값 속성 (Multivalued Attribute):</strong> 엔티티당 여러 개의 값을 가질 수 있는 속성 (예: 사원의 {취미}, 부서의 {위치}). ERD에서 <strong>이중 타원(Double Oval)</strong>으로 표기.</li>
+                <li><strong>복합 속성 (Composite Attribute):</strong> 더 작은 하위 속성들로 분해 가능한 속성 (예: 주소 &rarr; 시, 구, 동, 번지).</li>
+                <li><strong>유도 속성 (Derived Attribute):</strong> 다른 속성의 값으로부터 계산되어 도출되는 속성 (예: 생년월일로부터 계산되는 '나이'). ERD에서 <strong>점선 타원(Dashed Oval)</strong>으로 표기.</li>
+              </ul>
+
+              <h4>3) 관계 (Relationship) & 카디널리티 / 참여 제약조건</h4>
+              <ul>
+                <li><strong>관계 (Relationship):</strong> 둘 이상의 엔티티들 사이의 연관성. ERD에서 <strong>마름모(Diamond)</strong>로 표기.</li>
+                <li><strong>카디널리티 비율 (Cardinality Ratio):</strong> 한 엔티티가 관계를 통해 다른 엔티티와 맺을 수 있는 최대 연결 수. <strong>1:1, 1:N, N:M</strong></li>
+                <li><strong>참여 제약조건 (Participation Constraints):</strong>
+                  <br>• <strong>전체 참여 (Total Participation, 존재 종속):</strong> 엔티티 집합의 모든 엔티티가 반드시 관계에 참여해야 함. ERD에서 <strong>이중선(Double Line)</strong>으로 표기.
+                  <br>• <strong>부분 참여 (Partial Participation):</strong> 엔티티 집합 중 일부 엔티티만 관계에 참여해도 됨. ERD에서 <strong>단일선(Single Line)</strong>으로 표기.
                 </li>
-                <li><strong>관계 (Relationship):</strong> 둘 이상의 엔티티들 간의 연관성 (마름모로 표기).
-                  <br>• <em>카디널리티 비율 (Cardinality Ratio):</em> 1:1, 1:N, N:M
-                  <br>• <em>참여 제약조건 (Participation Constraints):</em> 
-                  <strong>전체 참여(Total, 이중선)</strong>는 모든 엔티티가 관계에 반드시 참여해야 함, <strong>부분 참여(Partial, 단일선)</strong>는 일부 엔티티만 참여.
-                </li>
-                <li><strong>약한 엔티티 타입 (Weak Entity Type):</strong> 자신의 키 애트리뷰트가 없어 독자적으로 식별할 수 없는 엔티티 (이중 사각형). 
-                  <br>소유자 엔티티(Owner Entity)의 기본키와 자신의 <strong>부분키(Partial Key, 점선 밑줄)</strong>를 결합하여 식별됨 (식별 관계는 이중 마름모).</li>
               </ul>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (DB - ERD 구성 요소 & 약한 엔티티)</span>
+                <span class="note-label">📝 나만의 필기 (DB - ERD 심볼 & 속성 분류)</span>
                 <span class="note-status" id="status-db-ch2-p1">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-db-ch2-p1" placeholder="ERD 심볼, Total/Partial 참여 제약, 약한 엔티티와 식별관계 필기..."></textarea>
+              <textarea class="note-textarea" id="note-db-ch2-p1" placeholder="이중타원(다중값), 점선타원(유도), Total(이중선) vs Partial(단일선) 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. 약한 엔티티 타입 (Weak Entity Type) & 식별 관계</span>
+              <span class="badge">Chap 2 심층 핵심</span>
+            </div>
+            <div class="concept-content">
+              <p><strong>약한 엔티티 타입 (Weak Entity Type):</strong> 자신의 애트리뷰트들만으로는 튜플을 독자적으로 식별할 수 있는 키(Key)를 갖지 못하는 종속적 엔티티 타입.</p>
+              <ul>
+                <li><strong>소유자 엔티티 (Owner / Identifying Entity):</strong> 약한 엔티티의 존재를 보장해주는 상위 엔티티 타입.</li>
+                <li><strong>식별 관계 (Identifying Relationship):</strong> 소유자 엔티티와 약한 엔티티를 연결하는 관계. ERD에서 <strong>이중 마름모(Double Diamond)</strong>로 표기.</li>
+                <li><strong>부분키 (Partial Key / Discriminator):</strong> 동일한 소유자 엔티티에 속한 약한 엔티티들 사이를 구별해주는 속성. ERD에서 <strong>점선 밑줄(Dashed Underline)</strong>로 표기.</li>
+                <li><strong>식별 공식:</strong> 약한 엔티티의 완전한 식별 = <code>[소유자 엔티티의 기본키] + [약한 엔티티의 부분키]</code></li>
+                <li><strong>대표 예시:</strong> 사원(사번-PK) 엔티티와 부양가족([피부양자이름]-부분키) 엔티티 간의 '부양' 관계.</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (DB - 약한 엔티티 & 부분키)</span>
+                <span class="note-status" id="status-db-ch2-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-db-ch2-p2" placeholder="이중 사각형, 이중 마름모, 점선 밑줄, 식별 원리 필기..."></textarea>
             </div>
           </div>
         </div>
@@ -2155,64 +2284,100 @@ ightarrow$ 시, 구, 동).
         <div id="db-content-ch3" class="db-chapter-block" style="display:none;">
           <div class="concept-card">
             <div class="card-title">
-              <span>1. 관계 모델의 구조와 Key의 종류</span>
-              <span class="badge">Chap 3 · 3-2 핵심</span>
+              <span>1. 관계 모델의 구조와 Key의 5가지 종류 완벽 비교</span>
+              <span class="badge">Chap 3 · 3-2 심층 요약</span>
             </div>
             <div class="concept-content">
-              <h4>관계 모델 용어 정리</h4>
+              <h4>관계 데이터 모델의 기본 용어</h4>
               <ul>
-                <li><strong>릴레이션 (Relation):</strong> 2차원의 테이블 구조.</li>
-                <li><strong>튜플 (Tuple):</strong> 테이블의 각 행(Row). 튜플의 총 개수를 **카디널리티(Cardinality)**라 함.</li>
-                <li><strong>애트리뷰트 (Attribute):</strong> 테이블의 열(Column). 애트리뷰트의 총 개수를 **차수(Degree)**라 함.</li>
-                <li><strong>도메인 (Domain):</strong> 하나의 애트리뷰트가 가질 수 있는 원자값들의 집합.</li>
+                <li><strong>릴레이션 (Relation):</strong> 데이터를 2차원 표(Table) 형태로 표현한 구조. 스키마(틀)와 인스턴스(실제 데이터 튜플들의 집합)로 구성.</li>
+                <li><strong>튜플 (Tuple):</strong> 릴레이션의 각 행(Row). 튜플들의 총 개수를 <strong>카디널리티 (Cardinality)</strong>라 부름.</li>
+                <li><strong>애트리뷰트 (Attribute):</strong> 릴레이션의 각 열(Column). 애트리뷰트의 총 개수를 <strong>차수 (Degree)</strong>라 부름.</li>
+                <li><strong>도메인 (Domain):</strong> 각 애트리뷰트가 가질 수 있는 유효한 원자값(Atomic Value)들의 집합.</li>
               </ul>
 
-              <h4>Key의 5가지 종류 (완벽 비교)</h4>
+              <h4>Key의 5가지 종류 상세 비교 (보충 교재 완벽 반영)</h4>
               <table>
-                <thead><tr><th>키의 종류</th><th>유일성 (Uniqueness)</th><th>최소성 (Minimality)</th><th>특징 및 설명</th></tr></thead>
+                <thead><tr><th>키의 종류</th><th>유일성 (Uniqueness)</th><th>최소성 (Minimality)</th><th>정의 및 핵심 특징</th></tr></thead>
                 <tbody>
-                  <tr><td><strong>슈퍼키 (Super Key)</strong></td><td>O (만족)</td><td>X (불필요)</td><td>튜플을 고유하게 식별할 수 있는 애트리뷰트(들의 집합)</td></tr>
-                  <tr><td><strong>후보키 (Candidate Key)</strong></td><td><strong>O (만족)</strong></td><td><strong>O (만족)</strong></td><td>유일성과 최소성을 모두 만족하는 키</td></tr>
-                  <tr><td><strong>기본키 (Primary Key, PK)</strong></td><td><strong>O (만족)</strong></td><td><strong>O (만족)</strong></td><td>후보키 중 릴레이션의 대표 식별자로 선택된 키 (NULL 불가)</td></tr>
-                  <tr><td><strong>대체키 (Alternate Key)</strong></td><td>O (만족)</td><td>O (만족)</td><td>후보키 중 기본키로 선택되지 않은 나머지 키</td></tr>
-                  <tr><td><strong>외래키 (Foreign Key, FK)</strong></td><td>-</td><td>-</td><td>다른 릴레이션의 기본키(PK)를 참조하는 애트리뷰트</td></tr>
+                  <tr>
+                    <td><strong>슈퍼키<br>(Super Key)</strong></td>
+                    <td><strong>O (만족)</strong></td>
+                    <td>X (불필요)</td>
+                    <td>릴레이션 내의 모든 튜플을 유일하게 식별할 수 있는 하나 이상의 속성 집합. (불필요한 속성이 더해져도 유일성만 있으면 슈퍼키).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>후보키<br>(Candidate Key)</strong></td>
+                    <td><strong>O (만족)</strong></td>
+                    <td><strong>O (만족)</strong></td>
+                    <td>튜플을 유일하게 식별하면서, 속성 중 어느 하나라도 제거하면 유일성이 깨지는 <strong>최소한의 속성으로만 구성된 키</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>기본키<br>(Primary Key, PK)</strong></td>
+                    <td><strong>O (만족)</strong></td>
+                    <td><strong>O (만족)</strong></td>
+                    <td>여러 후보키들 중에서 릴레이션의 대표 식별자로 데이터베이스 설계자가 선정한 주키. <strong>어떠한 경우에도 NULL 값을 가질 수 없음</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>대체키<br>(Alternate Key)</strong></td>
+                    <td><strong>O (만족)</strong></td>
+                    <td><strong>O (만족)</strong></td>
+                    <td>후보키 중에서 기본키(PK)로 선택되지 못하고 남은 보조 후보키들.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>외래키<br>(Foreign Key, FK)</strong></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>어떤 릴레이션의 속성이 다른 릴레이션의 <strong>기본키(PK)를 참조</strong>하는 속성. 릴레이션 간의 연결 관계를 표현함.</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (DB - Key의 종류 완벽 정리)</span>
+                <span class="note-label">📝 나만의 필기 (DB - 5대 Key 완벽 비교)</span>
                 <span class="note-status" id="status-db-ch3-p1">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-db-ch3-p1" placeholder="슈퍼키, 후보키(유일성+최소성), 기본키, 외래키 차이점 필기..."></textarea>
+              <textarea class="note-textarea" id="note-db-ch3-p1" placeholder="슈퍼키 vs 후보키(최소성 차이), 기본키 vs 대체키, 외래키 역할 필기..."></textarea>
             </div>
           </div>
 
           <div class="concept-card">
             <div class="card-title">
-              <span>2. 무결성 제약조건 (Integrity Constraints: IC)</span>
-              <span class="badge">Chap 3-3 핵심</span>
+              <span>2. 무결성 제약조건 (Integrity Constraints: IC) & 위배 시 처리</span>
+              <span class="badge">Chap 3-3 심층 핵심</span>
             </div>
             <div class="concept-content">
-              <p><strong>무결성 제약조건:</strong> 데이터베이스에 저장된 데이터의 정확성과 유효성을 보장하기 위해 정의하는 규칙.</p>
+              <h4>무결성 제약조건 (IC) 의 3대 원칙</h4>
               <ul>
-                <li><strong>1) 개체 무결성 제약조건 (Entity Integrity):</strong>
-                  <br>기본키(Primary Key)를 구성하는 어떤 애트리뷰트도 <strong>NULL 값을 가질 수 없으며, 중복될 수 없다</strong>.
+                <li><strong>1) 개체 무결성 제약조건 (Entity Integrity Constraint):</strong>
+                  <br>기본키(Primary Key)를 구성하는 어떤 애트리뷰트도 <strong>NULL 값을 가질 수 없으며(NOT NULL)</strong>, 릴레이션 내에서 중복된 값을 가질 수 없다.
                 </li>
-                <li><strong>2) 참조 무결성 제약조건 (Referential Integrity):</strong>
-                  <br>외래키(Foreign Key) 값은 반드시 참조하는 릴레이션의 <strong>기본키(PK) 값과 일치하거나, 또는 NULL 값</strong>이어야 한다.
+                <li><strong>2) 참조 무결성 제약조건 (Referential Integrity Constraint):</strong>
+                  <br>외래키(Foreign Key) 값은 반드시 참조하는 대상 릴레이션의 <strong>기본키(PK) 값과 동일하거나, 또는 NULL 값</strong>이어야 한다. (존재하지 않는 엉뚱한 값을 참조할 수 없음).
                 </li>
-                <li><strong>3) 도메인 무결성 제약조건 (Domain Integrity):</strong>
-                  <br>모든 애트리뷰트의 값은 정의된 도메인에 속한 원자값(Atomic Value)이어야 한다.
+                <li><strong>3) 도메인 무결성 제약조건 (Domain Integrity Constraint):</strong>
+                  <br>모든 속성값은 해당 속성에 정의된 도메인의 데이터 타입, 길이, 허용 범위에 속한 원자값(Atomic Value)이어야 한다.
                 </li>
               </ul>
+
+              <h4>참조 무결성 위배 시 DBMS의 처리 옵션 (외래키 제약조건)</h4>
+              <table>
+                <thead><tr><th>옵션</th><th>부모 릴레이션의 튜플 삭제/수정 시 동작</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>RESTRICT (제한)</strong></td><td>자식 릴레이션에서 해당 PK를 참조하고 있는 외래키가 존재하면 부모 튜플의 삭제/수정을 <strong>즉시 거부(에러 발생)</strong>. (기본값).</td></tr>
+                  <tr><td><strong>CASCADE (연쇄)</strong></td><td>부모 릴레이션의 튜플이 삭제/수정되면, 이를 참조하고 있는 자식 릴레이션의 관련 튜플들도 <strong>자동으로 함께 연쇄 삭제/수정</strong>.</td></tr>
+                  <tr><td><strong>SET NULL</strong></td><td>부모 릴레이션의 튜플이 삭제/수정되면, 이를 참조하고 있던 자식 릴레이션의 외래키 값을 <strong>NULL로 자동 변경</strong>.</td></tr>
+                  <tr><td><strong>SET DEFAULT</strong></td><td>부모 릴레이션의 튜플이 삭제/수정되면, 자식 외래키 값을 미리 지정된 <strong>기본값(Default)으로 자동 변경</strong>.</td></tr>
+                </tbody>
+              </table>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (DB - 무결성 제약조건 IC)</span>
+                <span class="note-label">📝 나만의 필기 (DB - 무결성 IC & CASCADE 옵션)</span>
                 <span class="note-status" id="status-db-ch3-p2">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-db-ch3-p2" placeholder="개체 무결성(PK Not Null)과 참조 무결성(FK 규칙) 필기..."></textarea>
+              <textarea class="note-textarea" id="note-db-ch3-p2" placeholder="개체 무결성(PK), 참조 무결성(FK), CASCADE/RESTRICT/SET NULL 옵션 필기..."></textarea>
             </div>
           </div>
         </div>
@@ -2221,40 +2386,74 @@ ightarrow$ 시, 구, 동).
         <div id="db-content-ch3mapping" class="db-chapter-block" style="display:none;">
           <div class="concept-card">
             <div class="card-title">
-              <span>1. ERD에서 관계형 모델로의 사상 (ER Mapping 규칙)</span>
-              <span class="badge">Chap 3-1 핵심</span>
+              <span>1. ERD에서 관계형 모델로의 사상 (ER Mapping 8대 케이스 전수 정리)</span>
+              <span class="badge">Chap 3-1 보충 전수 정리</span>
             </div>
             <div class="concept-content">
-              <h4>관계의 사상 (Mapping) 원칙</h4>
+              <p>강의 보충 교재 'Chap 3-1 보충 ER Mapping.pdf'에 수록된 모든 사상 원칙 총정리:</p>
+
+              <h4>1) 1 : N 이진 관계의 Mapping</h4>
               <ul>
-                <li><strong>1 : N 관계 사상:</strong>
-                  <br>• 원칙: <strong>'N' 쪽의 릴레이션</strong>에 '1' 쪽 릴레이션의 <strong>기본키(PK)를 외래키(FK)로 내장(Embed)</strong>시킨다.
-                  <br>• (예: 부서 1 : 사원 N $
-ightarrow$ 사원 릴레이션에 <code>부서명(FK)</code> 추가).
+                <li><strong>원칙:</strong> '1' 쪽 릴레이션의 기본키(PK)를 <strong>'N' 쪽 릴레이션에 외래키(FK)로 내장(Embed)</strong>시킨다.
+                  <br>• <em>왜 부서(1) 쪽에 사번(N)을 FK로 넣지 못하는가?</em>
+                  <br>1. 관계 모델은 다중값 속성(Multi-valued attribute)을 허용하지 않음.
+                  <br>2. 부서 테이블에 중복 튜플이 발생하여 기본키 제약조건을 위반하기 때문.
                 </li>
-                <li><strong>M : N 관계 사상:</strong>
-                  <br>• 원칙: 관계 자체를 위한 <strong>별도의 새로운 릴레이션(교차 릴레이션)을 생성</strong>한다.
-                  <br>• 양쪽 릴레이션의 PK를 가져와 외래키(FK)로 내장하고, 이들을 묶어 복합 기본키(PK)로 설정한다. (관계의 자체 속성도 포함).
-                  <br>• (예: 사원 M : 프로젝트 N 수행 관계 $
-ightarrow$ <code>수행(사원번호(FK), 프로젝트번호(FK), 시간수)</code>).
+                <li><strong>양쪽 모두 Partial인 경우 (대안):</strong> 외래키 내장 시 NULL 값이 대량 발생할 수 있으므로, 관계 자체를 위한 별도 릴레이션을 생성하여 양쪽 PK를 내장시키는 방법(대출 관계 테이블)도 가능. (단, 조인 비용 증가와 트레이드오프).</li>
+              </ul>
+
+              <h4>2) M : N 이진 관계의 Mapping</h4>
+              <ul>
+                <li><strong>원칙:</strong> 반드시 관계 자체를 나타내는 <strong>새로운 릴레이션(교차 릴레이션)을 생성</strong>한다.
+                  <br>양쪽 엔티티의 기본키들을 가져와 외래키(FK)로 내장하고, 이들을 묶어 <strong>복합 기본키(Composite PK)</strong>로 설정한다. 관계가 가진 자체 속성(예: 근무시간)도 이 릴레이션에 포함.
+                  <br>• 예: 사원 M : 프로젝트 N 수행 관계 &rarr; <code>수행(사원번호(FK), 프로젝트번호(FK), 시간수)</code>, PK는 <code>{사원번호, 프로젝트번호}</code>.
                 </li>
-                <li><strong>1 : 1 관계 사상:</strong>
-                  <br>• 한쪽 릴레이션의 PK를 다른 쪽에 FK로 내장 (보통 전체 참여하는 쪽에 내장하여 NULL 방지).
+              </ul>
+
+              <h4>3) 1 : 1 이진 관계의 Mapping</h4>
+              <ul>
+                <li>한쪽 릴레이션의 PK를 다른 쪽에 FK로 내장시킴.
+                <li><strong>선택 기준:</strong> 전체 참여(Total)하는 쪽의 릴레이션에 외래키를 내장시켜야 <strong>외래키의 NULL 값 발생을 원천 방지</strong>할 수 있음.</li>
+              </ul>
+
+              <h4>4) Unary (재귀적, 순환) 관계의 Mapping</h4>
+              <ul>
+                <li><strong>1 : 1 결혼 관계:</strong> <code>결혼(남편-주민번호(PK/FK), 아내-주민번호(FK), 결혼일)</code></li>
+                <li><strong>1 : N 상관-부하 관계:</strong> 동일 엔티티 내에서 사원의 PK 외에 상관의 사번을 외래키로 내장 &rarr; <code>군인(군번(PK), 이름, 상관-군번(FK))</code>. 자기 자신과의 셀프 조인(Self-Join) 가능.</li>
+              </ul>
+
+              <h4>5) 3진 관계 (Ternary Relationship) 의 Mapping</h4>
+              <ul>
+                <li>공급자, 부품, 프로젝트 간의 공급 관계 &rarr; 관계 자체를 위한 <strong>새로운 릴레이션을 생성</strong>하고 세 엔티티의 PK를 모두 외래키로 내장하여 복합 기본키로 지정: <code>공급(공급자#(FK), 부품#(FK), 프로젝트#(FK), 물량)</code></li>
+              </ul>
+
+              <h4>6) 다중값 속성 (Multivalued Attribute) 의 Mapping</h4>
+              <ul>
+                <li>관계 모델은 원자값만 허용하므로, <strong>다중값 속성을 위한 별도의 릴레이션을 분리 생성</strong>하고 [원래 엔티티의 PK + 다중값 속성]을 묶어 복합 기본키로 구성:
+                  <br>• <code>부서(부서번호(PK), 부서명, 매니저)</code>
+                  <br>• <code>부서위치(부서번호(FK), 위치)</code>, PK는 <code>{부서번호, 위치}</code>.
                 </li>
-                <li><strong>다중값 속성 사상:</strong>
-                  <br>• 관계 모델은 원자값만 허용하므로, <strong>다중값 속성을 위한 별도의 릴레이션을 생성</strong>하고 [원래 릴레이션의 PK + 해당 속성]을 묶어 PK로 설정.
+              </ul>
+
+              <h4>7) 약한 엔티티 타입 (Weak Entity) 의 Mapping</h4>
+              <ul>
+                <li>약한 엔티티를 위한 릴레이션을 생성할 때, <strong>소유자(Owner) 엔티티의 기본키를 외래키로 반드시 포함</strong>하고, <code>[소유자 PK + 자신의 부분키]</code>를 묶어 복합 기본키로 지정:
+                  <br>• <code>부양가족(사원번호(FK), 피부양자이름, 나이, 성별)</code>, PK는 <code>{사원번호, 피부양자이름}</code>.
                 </li>
-                <li><strong>약한 엔티티 사상:</strong>
-                  <br>• 약한 엔티티 릴레이션에 <strong>소유자(Owner)의 PK를 FK로 내장</strong>시키고, [소유자 PK + 부분키]를 묶어 복합 기본키로 지정.
-                </li>
+              </ul>
+
+              <h4>8) IS-A (상속 계층) Mapping의 2가지 방법</h4>
+              <ul>
+                <li><strong>방법 1 (Super + Sub 모두 테이블 생성):</strong> 직원, 시간제_직원, 계약제_직원 모두 생성. Sub 릴레이션의 PK는 Super 릴레이션의 PK(ssn)를 상속받아 PK이자 FK로 사용. (단점: 공통 속성 조회를 위해 Join 연산 비용 발생).</li>
+                <li><strong>방법 2 (Subclass들만 테이블 생성):</strong> Super 속성을 모두 상속하여 시간제_직원과 계약제_직원 2개만 생성. (단점: 양쪽 모두에 속하지 않거나 양쪽 모두에 속할 때 중복 및 포괄 제약조건 위배 발생).</li>
               </ul>
             </div>
             <div class="note-container">
               <div class="note-header">
-                <span class="note-label">📝 나만의 필기 (DB - ER Mapping 규칙)</span>
+                <span class="note-label">📝 나만의 필기 (DB - ER Mapping 8대 케이스 총정리)</span>
                 <span class="note-status" id="status-db-ch3-p3">자동 저장됨</span>
               </div>
-              <textarea class="note-textarea" id="note-db-ch3-p3" placeholder="1:N 사상(N쪽에 FK), M:N 사상(새 테이블 생성), 다중값/약한엔티티 사상 필기..."></textarea>
+              <textarea class="note-textarea" id="note-db-ch3-p3" placeholder="1:N(N쪽에 FK), M:N(새 테이블), 1:1, Unary, 3진 관계, 다중값, 약한엔티티, IS-A 상속 사상 필기..."></textarea>
             </div>
           </div>
         </div>
