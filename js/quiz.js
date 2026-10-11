@@ -236,14 +236,30 @@ function gradeDynamicQuiz(subject) {
     });
   });
 
-  // Save to history storage
-  if (typeof saveHistoryBatch === "function") {
+  // Score calculation
+  const total = questions.length;
+  const scorePct = Math.round((correctCount / total) * 100);
+
+  // Save complete session to history
+  const sessionRecord = {
+    id: "session_" + Date.now() + "_" + Math.random().toString(36).substr(2, 5),
+    timestamp: nowStr,
+    subject: subject,
+    subjectName: getSubjectName(subject),
+    totalCount: total,
+    correctCount: correctCount,
+    wrongCount: total - correctCount,
+    unansweredCount: unansweredCount,
+    scorePct: scorePct,
+    questions: solvedRecords,
+  };
+
+  if (typeof saveQuizSession === "function") {
+    saveQuizSession(sessionRecord);
+  } else if (typeof saveHistoryBatch === "function") {
     saveHistoryBatch(solvedRecords);
   }
 
-  // Score display
-  const total = questions.length;
-  const scorePct = Math.round((correctCount / total) * 100);
 
   const bannerId =
     subject === "algorithms"

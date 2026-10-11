@@ -821,3 +821,152 @@
         color: #1e40af;
         margin-top: 10px;
       }
+
+      /* === Session-based Quiz History Styles === */
+      .session-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+        transition: all 0.2s ease;
+      }
+      .session-card:hover {
+        border-color: #cbd5e1;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+      .session-card-header {
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        background: #ffffff;
+        user-select: none;
+        transition: background 0.15s;
+      }
+      .session-card-header:hover {
+        background: #f8fafc;
+      }
+      .session-main-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .session-score-tag {
+        font-size: 1.02rem;
+        font-weight: 800;
+        color: #0f172a;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .session-score-tag.perfect {
+        color: #15803d;
+      }
+      .session-score-tag.good {
+        color: #2563eb;
+      }
+      .session-score-tag.retry {
+        color: #dc2626;
+      }
+      .session-subject-tag {
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 6px;
+        color: white;
+      }
+      .session-time-tag {
+        font-size: 0.8rem;
+        color: #64748b;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .session-meta-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .session-rate-badge {
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 20px;
+      }
+      .session-rate-badge.high {
+        background: #dcfce7;
+        color: #15803d;
+        border: 1px solid #86efac;
+      }
+      .session-rate-badge.mid {
+        background: #eff6ff;
+        color: #1d4ed8;
+        border: 1px solid #bfdbfe;
+      }
+      .session-rate-badge.low {
+        background: #fee2e2;
+        color: #b91c1c;
+        border: 1px solid #fca5a5;
+      }
+      .session-toggle-pill {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #475569;
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        padding: 4px 10px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transition: all 0.2s;
+      }
+      .session-toggle-pill:hover {
+        background: #e2e8f0;
+        color: #1e293b;
+      }
+      .session-del-btn {
+        background: none;
+        border: none;
+        color: #94a3b8;
+        cursor: pointer;
+        font-size: 0.95rem;
+        padding: 4px 8px;
+        border-radius: 6px;
+        transition: all 0.15s;
+      }
+      .session-del-btn:hover {
+        background: #fee2e2;
+        color: #dc2626;
+      }
+      .session-body {
+        border-top: 1px solid #f1f5f9;
+        padding: 20px;
+        background: #f8fafc;
+        display: none;
+      }
+      .session-body.open {
+        display: block;
+        animation: fadeIn 0.25s ease-in-out;
+      }
+      .session-summary-strip {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 0.85rem;
+        color: #475569;
+      }
