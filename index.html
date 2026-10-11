@@ -1,0 +1,3308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>알고리즘 분석 중간고사 완벽 대비 | 개념 정리 & 퀴즈</title>
+  <!-- KaTeX for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --accent: #0284c7;
+      --border: #e2e8f0;
+      --highlight: #eff6ff;
+      --correct: #16a34a;
+      --wrong: #dc2626;
+      --note-bg: #fffbeb;
+      --note-border: #fef3c7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .title-group h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .title-group p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .exam-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #eef2ff;
+      color: #4338ca;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      border: 1px solid #c7d2fe;
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .tab-btn {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      background: #f1f5f9;
+      color: var(--text-main);
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Sub Navigation for Lectures */
+    .sub-nav {
+      display: flex;
+      gap: 8px;
+      margin: 20px 0;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .sub-btn {
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: #f1f5f9;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .sub-btn:hover {
+      background: #e2e8f0;
+      color: var(--text-main);
+    }
+    .sub-btn.active {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    /* Content Area */
+    .view-section {
+      display: none;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+    .view-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Concept Cards */
+    .concept-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f1f5f9;
+    }
+    .card-title .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .concept-content h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 16px 0 6px;
+      color: #1e293b;
+    }
+    .concept-content p, .concept-content li {
+      font-size: 0.9rem;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+    .concept-content ul {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+    .math-box {
+      background: #f8fafc;
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .highlight-tip {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      margin: 12px 0;
+    }
+    .highlight-warning {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      margin: 12px 0;
+    }
+
+    /* Note Box (필기장) */
+    .note-container {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+    }
+    .note-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .note-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #b45309;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .note-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .note-textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 10px 12px;
+      border: 1px solid #fde68a;
+      background: #fffdf5;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #1e293b;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .note-textarea:focus {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+    }
+
+    /* Quiz Styling */
+    .quiz-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+    .quiz-num {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #e0e7ff;
+      color: #3730a3;
+      margin-bottom: 8px;
+    }
+    .quiz-question {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 14px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .quiz-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: background 0.15s;
+    }
+    .quiz-option:hover {
+      background: #f8fafc;
+    }
+    .quiz-option input[type="radio"] {
+      margin-top: 3px;
+    }
+    .quiz-option.correct {
+      background: #dcfce7 !important;
+      border-color: #86efac !important;
+      color: #15803d !important;
+      font-weight: 600;
+    }
+    .quiz-option.wrong {
+      background: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+      color: #b91c1c !important;
+    }
+    .explanation {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: #f8fafc;
+      border-radius: 6px;
+      border-left: 4px solid var(--primary);
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    /* Subjective Fill-in Blank Quiz */
+    .blank-input {
+      display: inline-block;
+      width: 130px;
+      padding: 2px 6px;
+      margin: 0 4px;
+      border: 1px solid #94a3b8;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      text-align: center;
+      outline: none;
+    }
+    .blank-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+    .blank-input.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+      font-weight: 700;
+    }
+    .blank-input.wrong {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+      font-weight: 700;
+    }
+
+    /* Score Banner */
+    .score-banner {
+      background: #ffffff;
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: none;
+      text-align: center;
+    }
+    .score-banner.show {
+      display: block;
+    }
+    .score-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .score-detail {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Controls Bar */
+    .quiz-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 24px 0;
+      padding: 16px;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.85rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    /* Print & Export */
+    @media print {
+      header, .sub-nav, .quiz-controls, .tab-btn { display: none !important; }
+      .view-section { display: block !important; }
+      .concept-card { page-break-inside: avoid; border: 1px solid #ccc; }
+    }
+
+    /* Global Subject Navigation Bar */
+    .global-subject-bar {
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .subject-nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .subject-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+    }
+    .subject-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #94a3b8;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .subject-tab-btn:hover {
+      color: #f8fafc;
+      background: #334155;
+    }
+    .subject-tab-btn.active {
+      color: #ffffff;
+      background: #2563eb;
+      border-color: #3b82f6;
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+    }
+    .subject-panel {
+      display: none;
+    }
+    .subject-panel.active {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Global Top Subject Navigation -->
+  <div class="global-subject-bar">
+    <div class="container subject-nav-container">
+            <div class="subject-tabs">
+        <button class="subject-tab-btn active" onclick="switchSubject('algorithms')">
+          <span>📘</span> 알고리즘 분석 (Lec 2~6)
+        </button>
+        <button class="subject-tab-btn" onclick="switchSubject('it')">
+          <span>💾</span> 정보처리기술 (1·5·6·7·8장)
+        </button>
+        <button class="subject-tab-btn" onclick="switchSubject('os')">
+          <span>⚙️</span> 운영체제론 (W1~W4)
+        </button>
+        <button class="subject-tab-btn" onclick="switchSubject('db')">
+          <span>🗄️</span> 데이터베이스 (Chap 1~3)
+        </button>
+      </div>
+      <div style="font-size: 0.82rem; color: #94a3b8; font-weight: 500;">
+        📌 수강 과목 선택
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- SUBJECT 1: 알고리즘 분석                                   -->
+  <!-- ======================================================== -->
+  <div id="subject-algorithms" class="subject-panel active">
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-top">
+        <div class="title-group">
+          <h1>알고리즘 분석 (Analysis of Algorithms)</h1>
+          <p>2026 중간고사 완벽 대비 서머리노트 & 실전 모의테스트 (Lec 2 ~ Lec 6)</p>
+        </div>
+        <div class="exam-badge">
+          <span>🎯 중간고사 (25%) : 객관식 20문항 (오답 -4점) + 주관식 빈칸 2문항 (20빈칸)</span>
+        </div>
+      </div>
+      <!-- Main Tabs -->
+      <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="switchMainTab('concepts')">📖 핵심 개념 & 필기장</button>
+        <button class="tab-btn" onclick="switchMainTab('quiz-choice')">📝 객관식 20문항 (실전)</button>
+        <button class="tab-btn" onclick="switchMainTab('quiz-blank')">✍️ 주관식 빈칸 20제 (실전)</button>
+        <button class="tab-btn" onclick="switchMainTab('notes')">📋 내 필기 전체 모아보기</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ========================================== -->
+    <!-- 1. 핵심 개념 및 강의별 필기장 VIEW         -->
+    <!-- ========================================== -->
+    <section id="view-concepts" class="view-section active">
+      <!-- Lecture Sub-navigation -->
+      <div class="sub-nav">
+        <button class="sub-btn active" onclick="switchLecture('lec2')">Lec 2. 선형회귀 · 퍼셉트론 · MLP</button>
+        <button class="sub-btn" onclick="switchLecture('lec3')">Lec 3. 활성화함수 · 경사하강법</button>
+        <button class="sub-btn" onclick="switchLecture('lec4')">Lec 4. 역전파 · CNN</button>
+        <button class="sub-btn" onclick="switchLecture('lec5')">Lec 5. RNN · 크로스 엔트로피</button>
+        <button class="sub-btn" onclick="switchLecture('lec6')">Lec 6. LSTM · 확률적 경사하강법(SGD)</button>
+      </div>
+
+            <!-- LECTURE 2 CONTENT -->
+      <div id="lec-content-lec2" class="lecture-block">
+        <div class="concept-card">
+          <div class="card-title">
+            <span>1. 선형 회귀 (Linear Regression) & 비용 함수 (Cost Function)</span>
+            <span class="badge">기초 최적화</span>
+          </div>
+          <div class="concept-content">
+            <p><strong>선형 회귀의 목표:</strong> 입력 변수(독립 변수 $x$)와 타깃 변수(종속 변수 $y$) 사이의 선형 관계 $y = wx + b$ (또는 $y = mx + b$)를 가장 잘 설명하는 최적의 가중치(기울기 $w$)와 편향(절편 $b$)을 찾는 것.</p>
+            <div class="math-box">
+              $$MSE(Mean\ Squared\ Error) = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \frac{1}{n} \sum_{i=1}^{n} (y_i - (wx_i + b))^2$$
+            </div>
+            <ul>
+              <li><strong>비용 함수(Cost / Loss Function)의 본질:</strong> 실제값 $y$와 예측값 $\hat{y}$의 차이(오차)를 수치화한 척도. 회귀에서는 평균제곱오차(MSE)를 표준으로 사용.</li>
+              <li><strong>오차 제곱의 의미:</strong> 오차의 부호(+/-) 영향을 없애고, 오차가 클수록 제곱에 비례하는 큰 페널티를 부여하여 모델이 큰 오차를 우선적으로 줄이도록 유도.</li>
+              <li><strong>최적화(Optimization):</strong> 손실함수 $C(w, b)$의 곡면에서 바닥(최솟값)에 도달하는 최적의 파라미터 $(w^*, b^*)$를 수치적으로 탐색하는 과정.</li>
+            </ul>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 2 - 선형회귀 & MSE)</span>
+              <span class="note-status" id="status-lec2-p1">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec2-p1" placeholder="선형회귀 수식, MSE 공식, 최적화 목표 관련 필기..."></textarea>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="card-title">
+            <span>2. 퍼셉트론 (Perceptron) & 가중치 학습 규칙</span>
+            <span class="badge">단층 신경망</span>
+          </div>
+          <div class="concept-content">
+            <p><strong>퍼셉트론의 등장 (1957년 프랑크 로젠블랫):</strong> 뇌의 신경 세포(뉴런)가 여러 수상돌기에서 신호를 받아 축삭돌기를 통해 다음 뉴런으로 신호를 전달하는 생물학적 메커니즘을 수학적으로 모델링.</p>
+            <div class="math-box">
+              $$z = \sum_{i=1}^{n} w_i x_i + b, \quad \hat{y} = \begin{cases} 1 & \text{if } z \ge 0 \\ 0 & \text{if } z < 0 \end{cases} \quad (\text{계단 함수 Activation})$$
+              $$w_{new} = w_{old} + \eta \times (y - \hat{y}) \times x \quad (\eta: \text{학습률}, y: \text{실제값}, \hat{y}: \text{예측값})$$
+            </div>
+            <ul>
+              <li><strong>학습 규칙의 핵심 메커니즘:</strong>
+                <br>• 정답을 맞힌 경우 ($y = \hat{y}$): 오차 $(y - \hat{y}) = 0$이므로 가중치가 전혀 변하지 않음.
+                <br>• 실제 1인데 0으로 예측 ($y=1, \hat{y}=0$): 오차 $+1 \rightarrow$ 가중치를 $+\eta x$만큼 증가시켜 다음번에 출력이 커지도록 수정.
+                <br>• 실제 0인데 1로 예측 ($y=0, \hat{y}=1$): 오차 $-1 \rightarrow$ 가중치를 $-\eta x$만큼 감소시켜 다음번에 출력이 작아지도록 수정.
+              </li>
+              <li><strong>입력값($x$)의 영향:</strong> 연결강도(가중치)의 변화량은 <strong>입력값 $x$의 크기에 비례</strong>함. 입력이 0이면 가중치 변화가 없고, 입력이 클수록 가중치 변화 폭이 커짐.</li>
+            </ul>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 2 - 퍼셉트론 학습 규칙)</span>
+              <span class="note-status" id="status-lec2-p2">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec2-p2" placeholder="퍼셉트론 수식, 오차 부호에 따른 가중치 갱신 원리 필기..."></textarea>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="card-title">
+            <span>3. 퍼셉트론의 한계 (XOR 문제) & 다층 퍼셉트론 (MLP)</span>
+            <span class="badge">1차 AI 겨울과 극복</span>
+          </div>
+          <div class="concept-content">
+            <h4>단층 퍼셉트론의 선형 분리 한계</h4>
+            <p>단층 퍼셉트론은 2차원 공간에서 <strong>단 하나의 직선(초평면, Hyperplane)</strong>으로 영역을 양분하는 <strong>선형 분리 가능 문제(Linearly Separable)</strong>만 해결할 수 있음.</p>
+            <table>
+              <thead><tr><th>논리 연산</th><th>입력 (0,0)</th><th>입력 (0,1)</th><th>입력 (1,0)</th><th>입력 (1,1)</th><th>선형 분리 가능 여부</th></tr></thead>
+              <tbody>
+                <tr><td><strong>AND</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>O (직선 1개로 분리 가능)</td></tr>
+                <tr><td><strong>OR</strong></td><td>0</td><td>1</td><td>1</td><td>1</td><td>O (직선 1개로 분리 가능)</td></tr>
+                <tr><td><strong>XOR (배타적 논리합)</strong></td><td>0</td><td>1</td><td>1</td><td>0</td><td><strong>X (단일 직선으로 분리 불가능!)</strong></td></tr>
+              </tbody>
+            </table>
+            <div class="highlight-warning">
+              <strong>⚠️ 1969년 민스키(Marvin Minsky) & 페퍼트(Seymour Papert)의 증명:</strong>
+              <br>단층 퍼셉트론으로는 가장 단순한 비선형 문제인 XOR 게이트조차 구현할 수 없음을 수학적으로 증명 $\rightarrow$ 인공지능 연구의 '제1차 AI 겨울(Dark Age)'을 초래함.
+            </div>
+            <h4>다층 퍼셉트론 (MLP: Multi-Layer Perceptron)의 해결</h4>
+            <ul>
+              <li><strong>은닉층 (Hidden Layer) 도입:</strong> 입력층과 출력층 사이에 하나 이상의 은닉층을 추가하여 <strong>입력 공간을 비선형적으로 왜곡/변환</strong>함으로써 단일 직선이 아닌 곡선 및 복합 경계를 형성 $\rightarrow$ XOR 문제 완벽 해결!</li>
+              <li><strong>새로운 난제:</strong> 은닉층 뉴런에는 '목표 정답($y$)'이 직접 주어지지 않으므로, 은닉층 가중치를 어떻게 학습시킬 것인가? $\rightarrow$ <em>1986년 역전파 알고리즘(Backpropagation)의 등장으로 해결됨.</em></li>
+            </ul>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 2 - XOR 문제 & MLP)</span>
+              <span class="note-status" id="status-lec2-p3">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec2-p3" placeholder="AND/OR vs XOR 진리표, 은닉층의 역할 필기..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- LECTURE 3 CONTENT -->
+      <div id="lec-content-lec3" class="lecture-block" style="display:none;">
+        <div class="concept-card">
+          <div class="card-title">
+            <span>1. 활성화 함수 (Activation Function) 의 필요성과 5대 종류 비교</span>
+            <span class="badge">비선형성 도입</span>
+          </div>
+          <div class="concept-content">
+            <p><strong>왜 비선형 활성화 함수를 반드시 써야 하는가?</strong><br>
+            선형 함수($f(x) = cx$)를 층층이 쌓으면 $f(f(f(x))) = c_3(c_2(c_1 x)) = C x$가 되어 아무리 은닉층을 100층 쌓아도 결국 **단일 선형 회귀와 수학적으로 완전히 동일**해짐. 복잡한 현실의 비선형 문제를 풀려면 뉴런 출력에 반드시 **비선형 활성화 함수(Non-linear Activation Function)**를 통과시켜야 함.</p>
+            
+            <table>
+              <thead><tr><th>함수명</th><th>수식</th><th>출력 범위</th><th>미분 공식 및 특징</th><th>치명적 한계 / 단점</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>계단 함수<br>(Step)</strong></td>
+                  <td>$f(x) = \begin{cases} 1 & (x \ge 0) \\ 0 & (x < 0) \end{cases}$</td>
+                  <td>$\{0, 1\}$</td>
+                  <td>$f'(x) = 0$ (대부분의 구간)</td>
+                  <td>미분값이 0이므로 경사하강법 및 역전파 학습이 불가능함</td>
+                </tr>
+                <tr>
+                  <td><strong>시그모이드<br>(Sigmoid)</strong></td>
+                  <td>$\sigma(x) = \frac{1}{1 + e^{-x}}$</td>
+                  <td>$(0, 1)$</td>
+                  <td>$\sigma'(x) = \sigma(x)(1 - \sigma(x))$<br><strong>최대 미분값 = 0.25</strong> ($x=0$일 때)</td>
+                  <td><strong>1) 기울기 소실(Vanishing Gradient):</strong> $|x|$가 클 때 미분값이 0에 수렴하여 층이 깊어지면 앞단 가중치 학습 중단.<br><strong>2) 원점 비대칭(Not Zero-centered):</strong> 출력이 항상 양수여서 가중치 갱신 시 지그재그(Zig-zag) 비효율 발생.</td>
+                </tr>
+                <tr>
+                  <td><strong>하이퍼볼릭 탄젠트<br>(Tanh)</strong></td>
+                  <td>$\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$</td>
+                  <td>$(-1, 1)$</td>
+                  <td>$\tanh'(x) = 1 - \tanh^2(x)$<br><strong>최대 미분값 = 1</strong> ($x=0$일 때)</td>
+                  <td><strong>원점 대칭(Zero-centered)</strong>으로 시그모이드의 지그재그 현상은 해결했으나, 여전히 $|x|$가 커지면 미분값이 0으로 수렴하는 <strong>기울기 소실 잔존</strong>.</td>
+                </tr>
+                <tr>
+                  <td><strong>ReLU<br>(Rectified Linear)</strong></td>
+                  <td>$f(x) = \max(0, x)$</td>
+                  <td>$[0, \infty)$</td>
+                  <td>$f'(x) = \begin{cases} 1 & (x > 0) \\ 0 & (x < 0) \end{cases}$</td>
+                  <td><strong>초고속 연산</strong>(지수함수 불필요), $x>0$에서 기울기 1 유지로 기울기 소실 극복.<br>단, <strong>Dying ReLU 현상:</strong> 음수 입력 시 출력이 0이고 기울기도 0이 되어 뉴런이 영구히 비활성화되는 문제.</td>
+                </tr>
+                <tr>
+                  <td><strong>Leaky ReLU</strong></td>
+                  <td>$f(x) = \max(\alpha x, x)$<br>($\alpha \approx 0.01$)</td>
+                  <td>$(-\infty, \infty)$</td>
+                  <td>$f'(x) = \begin{cases} 1 & (x > 0) \\ \alpha & (x \le 0) \end{cases}$</td>
+                  <td>음수 영역에 아주 미세한 기울기($\alpha$)를 허용하여 Dying ReLU 문제를 완벽히 방지함.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 3 - 활성화 함수 5종 비교)</span>
+              <span class="note-status" id="status-lec3-p1">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec3-p1" placeholder="Sigmoid 미분 최대치 0.25, 원점 대칭성, ReLU와 Dying ReLU, Leaky ReLU 필기..."></textarea>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="card-title">
+            <span>2. 경사하강법 (Gradient Descent) 원리, 학습률 & 로컬 미니마</span>
+            <span class="badge">수치 최적화</span>
+          </div>
+          <div class="concept-content">
+            <h4>경사하강법의 수학적 원리</h4>
+            <p>비용 함수 $C(w)$ 곡면에서 현재 위치의 기울기(미분 계수 $\frac{\partial C}{\partial w}$)를 구한 뒤, <strong>기울기가 가파른 반대 방향($-\nabla C$)</strong>으로 조금씩 가중치를 업데이트하여 최소 손실점에 도달하는 알고리즘.</p>
+            <div class="math-box">
+              $$w_{new} = w_{old} - \alpha \frac{\partial C}{\partial w} \quad (\alpha: \text{학습률 Learning Rate})$$
+            </div>
+            <ul>
+              <li><strong>편미분(Partial Derivative)의 의미:</strong> 다변수 함수 $C(w_1, w_2, \dots, b)$에서 특정 변수 $w_i$ 하나만을 변수로 취급하고 나머지 모든 변수를 상수로 고정한 상태에서 구하는 순간 변화율.</li>
+              <li><strong>기울기 벡터 (Gradient, $\nabla C$):</strong> 모든 가중치에 대한 편미분들을 벡터로 모은 것. 함수값이 가장 가파르게 증가하는 방향을 가리키므로, 최솟값을 찾으려면 정확히 그 반대 방향인 $-\nabla C$로 이동해야 함.</li>
+            </ul>
+
+            <h4>학습률 (Learning Rate, $\alpha$)의 영향</h4>
+            <ul>
+              <li><strong>$\alpha$가 지나치게 큰 경우:</strong> 최솟값을 지나쳐 반대편으로 튀어 오르는 오버슈팅(Overshooting)이 발생하며 손실이 발산함.</li>
+              <li><strong>$\alpha$가 지나치게 작은 경우:</strong> 걸음 폭이 너무 작아 학습 시간이 비정상적으로 오래 걸리고, 주변의 얕은 로컬 미니마에 갇히기 쉬움.</li>
+            </ul>
+
+            <h4>로컬 미니마 (Local Minima) vs 안장점 (Saddle Point)</h4>
+            <ul>
+              <li><strong>로컬 미니마:</strong> 손실함수의 전체 최솟값(Global Minimum)이 아닌 주변부의 국소적 골짜기에 갇혀 기울기가 0이 되어 더 이상 학습이 진행되지 않는 현상.</li>
+              <li><strong>안장점 (Saddle Point):</strong> 어느 한 축 방향으로는 최솟값이지만 다른 축 방향으로는 최댓값이어서 기울기가 0이 되는 지점. 고차원 딥러닝에서는 로컬 미니마보다 안장점 탈출이 더 중요한 이슈임.</li>
+            </ul>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 3 - 경사하강법 & 최적화)</span>
+              <span class="note-status" id="status-lec3-p2">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec3-p2" placeholder="경사하강법 업데이트 공식, 학습률 오버슈팅, 로컬 미니마와 안장점 필기..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- LECTURE 4 CONTENT -->
+      <div id="lec-content-lec4" class="lecture-block" style="display:none;">
+        <div class="concept-card">
+          <div class="card-title">
+            <span>1. 역전파 알고리즘 (Backpropagation) & 체인룰 (Chain Rule) 유도</span>
+            <span class="badge">신경망의 꽃</span>
+          </div>
+          <div class="concept-content">
+            <p><strong>역전파의 본질:</strong> 다층 퍼셉트론에서 출력층의 오차를 뒤에서부터 앞으로 거꾸로 전파해가며, 합성함수의 미분 법칙인 <strong>체인룰(Chain Rule, 연쇄 법칙)</strong>을 적용하여 각 층 가중치의 편미분값($\frac{\partial C}{\partial w}$)을 단계별 곱셈으로 효율적으로 계산하는 알고리즘 (루멜하트, 힌튼, 윌리엄스 1986).</p>
+            
+            <h4>체인룰 유도 과정 (강의 슬라이드 표준 모델)</h4>
+            <div class="math-box">
+              $$\text{출력 가중치 } w_5\text{에 대한 손실 편미분: } \frac{\partial C}{\partial w_5} = \frac{\partial C}{\partial o_1} \cdot \frac{\partial o_1}{\partial z_3} \cdot \frac{\partial z_3}{\partial w_5}$$
+              <ul>
+                <li><strong>1단계 ($\frac{\partial C}{\partial o_1}$):</strong> 비용함수 $C = \frac{1}{2}(y - o_1)^2$를 활성화 출력 $o_1$로 편미분 $\rightarrow (o_1 - y)$</li>
+                <li><strong>2단계 ($\frac{\partial o_1}{\partial z_3}$):</strong> 활성화 함수 시그모이드 $o_1 = \sigma(z_3)$를 가중합 $z_3$로 편미분 $\rightarrow o_1(1 - o_1)$</li>
+                <li><strong>3단계 ($\frac{\partial z_3}{\partial w_5}$):</strong> 선형 가중합 $z_3 = w_5 h_1 + w_6 h_2 + b$를 가중치 $w_5$로 편미분 $\rightarrow h_1$ (이전 은닉층의 출력값)</li>
+              </ul>
+              $$\therefore \frac{\partial C}{\partial w_5} = (o_1 - y) \times o_1(1 - o_1) \times h_1$$
+            </div>
+            <p>은닉층 앞단의 가중치($w_1, w_2, \dots$)도 출력층에서 계산된 오차 항들을 체인룰로 이어받아 동일한 방식으로 곱하여 신속하게 계산할 수 있음.</p>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 4 - 역전파 체인룰 수식 유도)</span>
+              <span class="note-status" id="status-lec4-p1">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec4-p1" placeholder="체인룰 3단계 편미분 유도 과정, 은닉층 오차 역전파 수식 필기..."></textarea>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="card-title">
+            <span>2. 합성곱 신경망 (CNN) 구조 & 핵심 연산</span>
+            <span class="badge">공간 정보 보존</span>
+          </div>
+          <div class="concept-content">
+            <h4>CNN의 등장 배경 (1989년 얀 르쿤 Yann LeCun)</h4>
+            <p>기존 완전연결층(FC Layer)은 2차원 이미지를 1차원 벡터로 강제 평탄화(Flatten)하여 <strong>픽셀 간의 공간적 위상 관계(Spatial Structure)를 파괴</strong>하고, 입력 크기에 비례해 가중치 파라미터가 기하급수적으로 폭증함. CNN은 2차원 형상을 유지한 채 국소 영역의 특징을 추출.</p>
+
+            <h4>CNN의 4대 핵심 구성 요소</h4>
+            <ul>
+              <li><strong>1) 합성곱 층 (Convolutional Layer):</strong> 입력 이미지에 작은 크기의 **필터(커널, Kernel/Filter)**를 겹쳐가며 요소별 곱의 합(Dot Product)을 계산하여 **특성 맵(Feature Map)**을 생성.
+                <br>• <strong>가중치 공유 (Weight Sharing):</strong> 동일한 필터를 전체 이미지에 슬라이딩 적용하므로 파라미터 수가 획기적으로 절감됨.
+                <br>• <strong>계층적 특징 추출:</strong> 앞단 층에서는 점, 선, 모서리 등 저수준 특징 추출 $\rightarrow$ 뒷단 층으로 갈수록 사물, 얼굴 등 고수준 추상화 특징을 추출.
+              </li>
+              <li><strong>2) 스트라이드 (Stride, $S$):</strong> 필터를 이동시키는 보폭 간격. 스트라이드가 커지면 출력 특성 맵의 해상도(크기)가 감소함.</li>
+              <li><strong>3) 패딩 (Padding, $P$):</strong> 이미지 외곽 둘레에 0을 채워 넣는(Zero-padding) 기법. 합성곱 연산으로 인해 출력 크기가 급격히 축소되는 것을 방지하고, 외곽 가장자리 정보를 온전히 보존.</li>
+            </ul>
+            <div class="math-box">
+              $$\text{출력 특성 맵 크기 공식: } O = \left\lfloor \frac{W - F + 2P}{S} \right\rfloor + 1$$
+              $$\text{예시: 입력 } W=7, \text{필터 } F=3, \text{패딩 } P=1, \text{스트라이드 } S=1 \implies O = \frac{7 - 3 + 2(1)}{1} + 1 = 7$$
+            </div>
+            <ul>
+              <li><strong>4) 풀링 층 (Pooling Layer / Subsampling):</strong> 특성 맵을 고정 크기(예: 2x2) 영역으로 나누어 대표값을 추출(Max Pooling, Average Pooling)하여 다운샘플링.
+                <br>• <strong>장점:</strong> 데이터 크기를 줄여 연산량과 메모리를 절약하고, 대상의 위치가 조금 바뀌어도 동일한 특징으로 인식하는 <strong>위치 불변성(Translation Invariance)</strong>을 제공.
+                <br>• <strong>주의:</strong> 풀링 층에는 학습되는 가중치 파라미터가 전혀 없음!
+              </li>
+              <li><strong>5) 완전 연결 층 (Fully Connected Layer):</strong> 최종 단계에서 2차원 특성 맵을 1차원으로 펼쳐 다중 클래스 분류(Softmax)를 수행.</li>
+            </ul>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 4 - CNN 커널, 패딩, 풀링)</span>
+              <span class="note-status" id="status-lec4-p2">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec4-p2" placeholder="가중치 공유의 이점, 출력 크기 계산 공식, 풀링 층의 특징 필기..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- LECTURE 5 CONTENT -->
+      <div id="lec-content-lec5" class="lecture-block" style="display:none;">
+        <div class="concept-card">
+          <div class="card-title">
+            <span>1. 순환 신경망 (RNN: Recurrent Neural Network) & BPTT</span>
+            <span class="badge">시계열 및 순차 데이터</span>
+          </div>
+          <div class="concept-content">
+            <p><strong>등장 배경:</strong> CNN이 공간적(Spatial) 특징을 추출한다면, RNN은 텍스트, 음성, 주가 등 시간 순서가 중요한 <strong>시계열/순차적(Temporal / Sequential) 데이터</strong>의 문맥을 학습. 이전 시점의 정보가 현재 시점의 판단에 지속적으로 영향을 미침.</p>
+            <div class="math-box">
+              $$h_t = \tanh(W_{hh} h_{t-1} + W_{xh} x_t + b_h) \quad (h_t: \text{현재 시점의 은닉 상태})$$
+              $$\hat{y}_t = \text{softmax}(W_{hy} h_t + b_y) \quad (\hat{y}_t: \text{현재 시점의 출력 예측값})$$
+            </div>
+            <ul>
+              <li><strong>은닉 상태 (Hidden State, $h_t$):</strong> 과거부터 현재 시점까지의 문맥 정보(Memory)를 요약하여 담고 있는 내부 벡터.</li>
+              <li><strong>가중치 공유 (Weight Sharing):</strong> 모든 타임스텝($t=1, 2, \dots$)에서 동일한 가중치 행렬($W_{xh}, W_{hh}, W_{hy}$)을 재사용하여 파라미터 수가 시퀀스 길이에 비례해 늘어나지 않음.</li>
+              <li><strong>BPTT (Backpropagation Through Time):</strong> 시간 축을 따라 신경망을 펼쳐놓고(Unrolling) 오차를 역방향으로 전파하는 역전파 기법.</li>
+            </ul>
+            <div class="highlight-warning">
+              <strong>⚠️ RNN의 장기 의존성(Long-term Dependency) 문제와 원인:</strong>
+              <br>타임스텝이 길어지면 수십 스텝 전의 초기 정보가 현재 시점까지 전달되지 못함. BPTT 역전파 시 $\tanh$의 미분값($\le 1$)과 동일한 가중치 행렬 $W_{hh}$가 시간 축을 따라 연속으로 곱해지면서 오차 기울기가 0으로 사라지는 <strong>기울기 소실(Vanishing Gradient)</strong> 또는 값이 비정상적으로 폭증하는 <strong>기울기 폭주(Exploding Gradient)</strong>가 발생하기 때문.
+            </div>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 5 - RNN 구조 & BPTT)</span>
+              <span class="note-status" id="status-lec5-p1">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec5-p1" placeholder="RNN 순전파 수식, BPTT, 장기 의존성 문제의 수학적 이유 필기..."></textarea>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="card-title">
+            <span>2. 크로스 엔트로피 (Cross-Entropy) 손실 함수 & 정보 이론</span>
+            <span class="badge">정보 이론적 유도</span>
+          </div>
+          <div class="concept-content">
+            <h4>정보 이론의 3단계 개념 전개 (강의 슬라이드 핵심)</h4>
+            <ul>
+              <li><strong>1) 정보량 (Information / Surprisal, 놀람):</strong> 
+                <br>사건의 발생 확률이 낮을수록(의외성이 높을수록) 그 사건이 가져다주는 정보량(놀람)은 커짐.
+                <div class="math-box">$$I(x) = \log\left(\frac{1}{P(x)}\right) = -\log(P(x))$$</div>
+              </li>
+              <li><strong>2) 엔트로피 (Entropy, $H(P)$):</strong> 
+                <br>정보량(놀람)의 기댓값(Expectation Value). 확률 시스템 전체의 불확실성/무질서도를 나타냄.
+                <div class="math-box">$$H(P) = \sum_{x} P(x) \log\left(\frac{1}{P(x)}\right) = -\sum_{x} P(x) \log P(x)$$</div>
+              </li>
+              <li><strong>3) 크로스 엔트로피 (Cross-Entropy, $H(P, Q)$):</strong> 
+                <br>실제 현실의 진짜 확률분포 $P$와 모델이 예측한 확률분포 $Q$ 사이의 교차 정보 기댓값.
+                <div class="math-box">$$H(P, Q) = \sum_{x} P(x) \log\left(\frac{1}{Q(x)}\right) = -\sum_{x} P(x) \log Q(x)$$</div>
+              </li>
+            </ul>
+
+            <h4>왜 분류 문제에서 MSE 대신 Cross-Entropy를 써야 하는가?</h4>
+            <div class="highlight-tip">
+              <strong>수학적 비교 핵심:</strong>
+              <br>• <strong>MSE + 시그모이드 사용 시:</strong> 모델의 예측이 완전히 틀려 오차가 매우 클 때도, 시그모이드 함수의 양 극단 기울기가 0에 수렴하기 때문에 역전파 시 오차 기울기가 거의 0이 되어 <strong>학습이 멈추거나 극도로 지체</strong>됨.
+              <br>• <strong>Cross-Entropy + 시그모이드/소프트맥스 사용 시:</strong> 손실함수를 가중치로 편미분하면 시그모이드의 분모 항이 깔끔하게 상쇄되어 <strong>기울기가 $(\hat{y} - y)$ 형태로 오차 크기에 정비례</strong>하게 됨! 오차가 크면 강력한 기울기로 가중치를 대폭 수정하고, 오차가 작으면 부드럽게 수렴하여 손실을 압도적으로 빠르고 효율적으로 최소화함.
+            </div>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 5 - 크로스 엔트로피 & MSE 비교)</span>
+              <span class="note-status" id="status-lec5-p2">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec5-p2" placeholder="정보량, 엔트로피, 크로스엔트로피 수식, 분류에서 Cross-Entropy가 우수한 이유 필기..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- LECTURE 6 CONTENT -->
+      <div id="lec-content-lec6" class="lecture-block" style="display:none;">
+        <div class="concept-card">
+          <div class="card-title">
+            <span>1. LSTM (Long Short-Term Memory) 의 핵심 구조 & 3대 게이트</span>
+            <span class="badge">장기 기억 보존</span>
+          </div>
+          <div class="concept-content">
+            <p><strong>등장 배경 (1997년 호크라이터 Hochreiter & 슈미트후버 Schmidhuber):</strong> 기존 RNN의 치명적인 기울기 소실로 인한 장기 의존성 문제를 해결하기 위해 고안됨.</p>
+            <p><strong>핵심 아이디어: 셀 상태 (Cell State, $C_t$)</strong>라는 정보 전달의 "고속도로(컨베이어 벨트)"를 도입. 과거의 정보를 곱셈의 반복이 아닌 **선형적인 덧셈($+$)**을 통해 미래 시점까지 온전하게 흘려보냄!</p>
+
+            <h4>LSTM의 3대 게이트 연산 메커니즘</h4>
+            <table>
+              <thead><tr><th>게이트</th><th>역할 및 의미</th><th>핵심 수식</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>망각 게이트<br>(Forget Gate, $f_t$)</strong></td>
+                  <td>과거 셀 상태($C_{t-1}$)에서 어떤 정보를 <strong>버릴지(0) 유지할지(1)</strong> 결정</td>
+                  <td>$$f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)$$</td>
+                </tr>
+                <tr>
+                  <td><strong>입력 게이트<br>(Input Gate, $i_t, \tilde{C}_t$)</strong></td>
+                  <td>현재 시점의 새 정보 중 <strong>어떤 것을 얼마나 셀 상태에 저장할지</strong> 결정</td>
+                  <td>$$i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)$$<br>$$\tilde{C}_t = \tanh(W_c \cdot [h_{t-1}, x_t] + b_c)$$</td>
+                </tr>
+                <tr>
+                  <td><strong>셀 상태 갱신<br>(Cell State, $C_t$)</strong></td>
+                  <td>과거 정보 망각($f_t \odot C_{t-1}$) + 새로운 후보 정보 주입($i_t \odot \tilde{C}_t$)</td>
+                  <td>$$C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t \quad (\text{덧셈으로 기울기 소실 방지!})$$</td>
+                </tr>
+                <tr>
+                  <td><strong>출력 게이트<br>(Output Gate, $o_t, h_t$)</strong></td>
+                  <td>갱신된 셀 상태를 바탕으로 <strong>다음 은닉 상태($h_t$)로 무엇을 내보낼지</strong> 결정</td>
+                  <td>$$o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)$$<br>$$h_t = o_t \odot \tanh(C_t)$$</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="highlight-tip">
+              <strong>게이트 활성화 함수의 역할 분담:</strong>
+              <br>• 정보를 얼마나 통과시킬지 비율(0~1)을 결정할 때는 $\rightarrow$ <strong>시그모이드($\sigma$)</strong> 사용.
+              <br>• 새로운 정보의 방향과 크기(-1~1)를 나타낼 때는 $\rightarrow$ <strong>탄젠트($\tanh$)</strong> 사용.
+            </div>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 6 - LSTM 게이트 수식)</span>
+              <span class="note-status" id="status-lec6-p1">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec6-p1" placeholder="망각/입력/출력 게이트 공식, 셀 상태 덧셈 업데이트 메커니즘 필기..."></textarea>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="card-title">
+            <span>2. 경사하강법 3대 유형 비교 (BGD vs SGD vs Mini-batch) & 로컬 미니마 극복</span>
+            <span class="badge">학습 데이터 스케줄링</span>
+          </div>
+          <div class="concept-content">
+            <h4>경사하강법 3대 유형 상세 비교</h4>
+            <table>
+              <thead><tr><th>구분</th><th>배치 경사하강법 (BGD)</th><th>확률적 경사하강법 (SGD)</th><th>미니-배치 경사하강법 (Mini-batch)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>1회 가중치 갱신당 데이터</strong></td><td><strong>전체 훈련 데이터 전부</strong></td><td><strong>무작위 데이터 단 1개</strong></td><td><strong>일정 크기의 묶음 (예: 32, 64, 128개)</strong></td></tr>
+                <tr><td><strong>계산 속도 및 효율</strong></td><td>데이터가 크면 속도 매우 느리고 메모리 소모 극심</td><td>가중치 갱신 속도 극도로 빠르고 효율적</td><td>GPU 병렬 연산 활용으로 고속 처리</td></tr>
+                <tr><td><strong>수렴 궤적</strong></td><td>손실함수 표면을 따라 매우 부드럽고 안정적으로 수렴</td><td>개별 데이터 노이즈로 요동(진동)이 매우 심함</td><td>적절히 부드러우면서도 유연하게 수렴</td></tr>
+                <tr><td><strong>강의 슬라이드 핵심 관점</strong></td><td>"모든 데이터를 고려하여 안정적이며, SGD에 비해 로컬 미니마를 벗어날 확률도 높음"</td><td>"데이터 하나하나로 즉시 갱신하여 효율적이나 로컬 미니마에 빠질 확률이 높음"</td><td><strong>"SGD의 효율성과 BGD의 안정성을 골고루 갖춘 최적의 대안 (실무 표준)"</strong></td></tr>
+              </tbody>
+            </table>
+
+            <h4>로컬 미니마(Local Minima) 극복을 위한 3대 전략 (슬라이드 명시)</h4>
+            <ul>
+              <li><strong>1) 초기값 설정:</strong> Xavier(Glorot) 초기화, He 초기화 등을 통해 가중치가 특정 값에 치우치지 않고 고르게 분포하도록 초기화.</li>
+              <li><strong>2) 학습률 조정 (적응형 옵티마이저):</strong> 이전 기울기들을 누적하여 파라미터별로 학습률을 동적으로 조절하는 AdaGrad, RMSprop, Adam 등 활용.</li>
+              <li><strong>3) 학습 데이터 스케줄링:</strong> 확률적 경사하강법(SGD) 및 미니-배치 경사하강법을 통한 데이터 순서 셔플 및 배치 분할 학습.</li>
+            </ul>
+          </div>
+          <div class="note-container">
+            <div class="note-header">
+              <span class="note-label">📝 나만의 필기 (Lec 6 - 경사하강법 3대 유형 & 최적화)</span>
+              <span class="note-status" id="status-lec6-p2">자동 저장됨</span>
+            </div>
+            <textarea class="note-textarea" id="note-lec6-p2" placeholder="BGD vs SGD vs Mini-batch 장단점, 로컬 미니마 개선 3대 전략 필기..."></textarea>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 2. 객관식 20문항 VIEW (실전 모의고사)       -->
+    <!-- ========================================== -->
+    <section id="view-quiz-choice" class="view-section">
+      <div class="quiz-controls">
+        <div>
+          <h2 style="font-size:1.15rem; font-weight:700;">실전 객관식 모의고사 20문항</h2>
+          <p style="font-size:0.85rem; color:var(--text-muted);">중간고사 규정: 문항당 4점 (총 80점). 오답 시 감점 4점 규정 적용 여부를 선택할 수 있습니다.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <label style="font-size:0.85rem; cursor:pointer;">
+            <input type="checkbox" id="penalty-mode" checked> 오답 감점(-4점) 적용
+          </label>
+          <button class="btn btn-primary" onclick="gradeChoiceQuiz()">정답 제출 & 채점</button>
+          <button class="btn btn-secondary" onclick="resetChoiceQuiz()">다시 풀기</button>
+        </div>
+      </div>
+
+      <!-- Choice Score Banner -->
+      <div id="choice-score-banner" class="score-banner">
+        <div>객관식 점수 결과</div>
+        <div class="score-num" id="choice-score-display">0 / 80점</div>
+        <div class="score-detail" id="choice-score-detail"></div>
+      </div>
+
+      <div id="choice-quiz-list">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. 주관식 빈칸 20제 VIEW (실전 2문항)       -->
+    <!-- ========================================== -->
+    <section id="view-quiz-blank" class="view-section">
+      <div class="quiz-controls">
+        <div>
+          <h2 style="font-size:1.15rem; font-weight:700;">실전 주관식 빈칸 채우기 2문항 (20빈칸)</h2>
+          <p style="font-size:0.85rem; color:var(--text-muted);">중간고사 규정: 총 2문항 (각 문항당 10점, 빈칸 10개씩 각 1점, 총 20점 만점).</p>
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="gradeBlankQuiz()">주관식 채점</button>
+          <button class="btn btn-secondary" onclick="resetBlankQuiz()">다시 풀기</button>
+        </div>
+      </div>
+
+      <!-- Blank Score Banner -->
+      <div id="blank-score-banner" class="score-banner">
+        <div>주관식 점수 결과</div>
+        <div class="score-num" id="blank-score-display">0 / 20점</div>
+        <div class="score-detail" id="blank-score-detail"></div>
+      </div>
+
+      <!-- Blank Question 1 -->
+      <div class="quiz-card">
+        <span class="quiz-num">주관식 1번 (10점 - 빈칸 10개)</span>
+        <div class="quiz-question">다음은 퍼셉트론의 한계, 역전파, 그리고 CNN의 핵심 원리에 관한 강의 요약문입니다. 빈칸에 가장 알맞은 단어를 넣으시오.</div>
+        <div style="line-height: 2.2; font-size: 0.92rem;">
+          로젠블랫의 단층 퍼셉트론은 AND나 OR 게이트는 분리할 수 있으나, 단일 직선으로 분리가 불가능한 <input type="text" class="blank-input" data-ans="XOR" data-alt="xor,배타적논리합"> 문제를 해결하지 못했다. 이를 해결하기 위해 입력층과 출력층 사이에 <input type="text" class="blank-input" data-ans="은닉층" data-alt="은닉 레이어,히든레이어,hidden layer">을 배치한 다층 퍼셉트론(MLP)이 고안되었다.
+          다층 퍼셉트론의 학습을 위해 출력층에서 발생한 오차를 거꾸로 전파하는 <input type="text" class="blank-input" data-ans="역전파" data-alt="역전파 알고리즘,backpropagation"> 알고리즘이 도입되었으며, 이때 각 층의 편미분을 단계별로 연결하여 계산하는 핵심 수학 법칙은 <input type="text" class="blank-input" data-ans="체인룰" data-alt="연쇄법칙,chain rule">이다.
+          한편 시그모이드 활성화 함수는 양 끝단에서 미분값이 0으로 수렴하여 층이 깊어질수록 학습이 멈추는 <input type="text" class="blank-input" data-ans="기울기 소실" data-alt="경사 소실,vanishing gradient"> 문제가 발생한다.
+          이미지와 같은 2차원 데이터를 다루기 위해 등장한 CNN은 공간적 구조를 보존하며, 입력 데이터 위를 이동하며 특성 맵을 생성하는 작은 행렬을 <input type="text" class="blank-input" data-ans="필터" data-alt="커널,kernel,filter">라 한다.
+          이 필터가 이동하는 보폭의 크기를 <input type="text" class="blank-input" data-ans="스트라이드" data-alt="stride,보폭">라 부르고, 가장자리의 정보 손실을 막기 위해 0을 채우는 기법을 <input type="text" class="blank-input" data-ans="패딩" data-alt="padding,제로패딩,zero padding">이라 한다.
+          또한 특성 맵의 크기를 줄이고 위치 불변성을 제공하기 위해 사용되는 층은 <input type="text" class="blank-input" data-ans="풀링" data-alt="풀링층,pooling,pooling layer"> 층이며, 이 층에는 학습되는 <input type="text" class="blank-input" data-ans="가중치" data-alt="파라미터,parameter,가중치 파라미터">가 존재하지 않는다.
+        </div>
+        <div id="blank-explain-1" class="explanation">
+          <strong>정답 해설:</strong> 1. XOR | 2. 은닉층 | 3. 역전파 | 4. 체인룰(연쇄법칙) | 5. 기울기 소실 | 6. 필터(커널) | 7. 스트라이드 | 8. 패딩 | 9. 풀링(풀링층) | 10. 가중치(파라미터)
+        </div>
+      </div>
+
+      <!-- Blank Question 2 -->
+      <div class="quiz-card">
+        <span class="quiz-num">주관식 2번 (10점 - 빈칸 10개)</span>
+        <div class="quiz-question">다음은 순환신경망(RNN), 크로스 엔트로피, LSTM, 그리고 경사하강법 스케줄링에 관한 설명입니다. 빈칸에 알맞은 단어를 넣으시오.</div>
+        <div style="line-height: 2.2; font-size: 0.92rem;">
+          시계열 데이터를 다루는 순환신경망(RNN)은 과거 시점의 정보를 보존하기 위해 <input type="text" class="blank-input" data-ans="은닉 상태" data-alt="hidden state,은닉상태">를 자기 자신에게 되먹이는 구조를 갖는다.
+          그러나 시퀀스가 길어지면 먼 과거의 정보를 기억하지 못하는 <input type="text" class="blank-input" data-ans="장기 의존성" data-alt="장기의존성,long-term dependency"> 문제가 발생한다.
+          이를 극복하기 위해 제안된 LSTM은 정보를 온전히 전달하는 고속도로 역할을 하는 <input type="text" class="blank-input" data-ans="셀 상태" data-alt="cell state,셀상태">를 핵심 구조로 가진다.
+          LSTM에는 과거의 불필요한 정보를 버리는 <input type="text" class="blank-input" data-ans="망각 게이트" data-alt="forget gate,망각게이트">, 새로운 정보를 저장하는 입력 게이트, 그리고 출력을 결정하는 출력 게이트가 있다.
+          정보 이론에서 사건이 일어날 확률이 낮을수록 커지는 의외성의 척도를 <input type="text" class="blank-input" data-ans="정보량" data-alt="놀람,surprisal,information">이라 하며, 이 정보량의 기댓값을 <input type="text" class="blank-input" data-ans="엔트로피" data-alt="entropy">라 부른다.
+          분류 문제에서 MSE 대신 <input type="text" class="blank-input" data-ans="크로스 엔트로피" data-alt="cross entropy,교차 엔트로피,크로스엔트로피"> 손실함수를 사용하면, 예측이 크게 빗나갔을 때도 큰 기울기를 유지하여 가중치를 신속히 갱신할 수 있다.
+          한편 경사하강법에서 전체 데이터를 모두 사용하여 가중치를 한 번 업데이트하는 방식을 <input type="text" class="blank-input" data-ans="배치" data-alt="배치 경사하강법,BGD,batch"> 경사하강법이라 하고,
+          무작위 데이터 1개만을 이용하여 즉시 업데이트하는 방식을 <input type="text" class="blank-input" data-ans="확률적" data-alt="확률적 경사하강법,SGD,stochastic"> 경사하강법이라 한다.
+          마지막으로 이 둘의 장점을 고루 결합하여 일정 크기의 데이터 묶음을 사용하는 방식을 <input type="text" class="blank-input" data-ans="미니배치" data-alt="미니-배치,mini-batch,미니 배치"> 경사하강법이라 부른다.
+        </div>
+        <div id="blank-explain-2" class="explanation">
+          <strong>정답 해설:</strong> 1. 은닉 상태 | 2. 장기 의존성 | 3. 셀 상태(Cell State) | 4. 망각 게이트(Forget Gate) | 5. 정보량(놀람) | 6. 엔트로피 | 7. 크로스 엔트로피 | 8. 배치(배치 경사하강법) | 9. 확률적(확률적 경사하강법) | 10. 미니배치(미니-배치 경사하강법)
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. 내 필기 전체 모아보기 VIEW               -->
+    <!-- ========================================== -->
+    <section id="view-notes" class="view-section">
+      <div class="quiz-controls">
+        <div>
+          <h2 style="font-size:1.15rem; font-weight:700;">내 필기장 전체 모아보기 & 내보내기</h2>
+          <p style="font-size:0.85rem; color:var(--text-muted);">작성하신 모든 필기는 브라우저에 안전하게 보관됩니다. 시험 직전 요약본으로 복사하거나 인쇄할 수 있습니다.</p>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-secondary" onclick="window.print()">🖨️ 필기 인쇄하기</button>
+          <button class="btn btn-primary" onclick="copyAllNotes()">📋 텍스트 전체 복사</button>
+        </div>
+      </div>
+
+      <div id="all-notes-display">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+  </main>
+  </div><!-- end #subject-algorithms -->
+
+  <!-- ======================================================== -->
+  <!-- SUBJECT 2: 정보처리기술 (1장, 5장, 6장, 7장, 8장 요약)          -->
+  <!-- ======================================================== -->
+  <div id="subject-it" class="subject-panel" style="display:none;">
+    <!-- IT Subject Header -->
+    <header>
+      <div class="container">
+        <div class="header-top">
+          <div class="title-group">
+            <h1>정보처리기술 (Information Processing Technology)</h1>
+            <p>중간고사 핵심 요약 & 실전 주관식 10문항 (1장 · 5장 · 6장 · 7장 · 8장)</p>
+          </div>
+          <div class="exam-badge" style="background:#f0fdf4; color:#15803d; border-color:#bbf7d0;">
+            <span>🎯 시험 범위: 1장, 5장, 6장, 7장, 8장 요약 (주관식 10문항)</span>
+          </div>
+        </div>
+        <!-- IT Main Tabs -->
+        <nav class="nav-tabs">
+          <button class="tab-btn active" onclick="switchItMainTab('concepts')">📖 핵심 개념 & 필기장</button>
+          <button class="tab-btn" onclick="switchItMainTab('quiz-subjective')">✍️ 실전 주관식 10문항 (채점)</button>
+          <button class="tab-btn" onclick="switchItMainTab('notes')">📋 정보처리기술 필기 모아보기</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- IT Concepts View -->
+      <section id="it-view-concepts" class="view-section active">
+        <!-- IT Chapter Sub-navigation -->
+        <div class="sub-nav">
+          <button class="sub-btn active" onclick="switchItChapter('ch1')">1장. 컴퓨터의 발전과 정보화사회</button>
+          <button class="sub-btn" onclick="switchItChapter('ch5')">5장. 정보통신과 컴퓨터 네트워크</button>
+          <button class="sub-btn" onclick="switchItChapter('ch6')">6장. 인터넷과 웹 / 클라우드</button>
+          <button class="sub-btn" onclick="switchItChapter('ch7')">7장. 멀티미디어 기술과 활용</button>
+          <button class="sub-btn" onclick="switchItChapter('ch8')">8장. 모바일 컴퓨팅과 스마트 혁명</button>
+        </div>
+
+                <!-- 1장 내용 -->
+        <div id="it-content-ch1" class="it-chapter-block">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. IT기술의 발전과 디지털 혁명 (이론가 & 3대 법칙)</span>
+              <span class="badge">1장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>디지털 혁명의 사상적 배경과 주요 학자</h4>
+              <ul>
+                <li><strong>다니엘 벨 (Daniel Bell, 1973):</strong> 제조업 중심의 산업사회가 막을 내리고 정보와 지식이 새로운 부의 원천이 되는 **'탈산업사회(Post-Industrial Society, 후기 산업사회/지식기반사회)'**의 도래를 예견.</li>
+                <li><strong>마샬 맥루한 (Marshall McLuhan, 1962):</strong> 전자 통신 매체의 발전으로 시공간의 물리적 한계가 허물어져 전 인류가 마치 한 마을의 이웃처럼 실시간으로 소통하는 **'지구촌 (Global Village)'** 개념을 세계 최초로 제시.</li>
+                <li><strong>엘빈 토플러 (Alvin Toffler) 의 '제3의 물결':</strong>
+                  <br>• <strong>제1의 물결:</strong> 농업혁명 (수천 년간 이어진 식량 중심의 농경 사회)
+                  <br>• <strong>제2의 물결:</strong> 산업혁명 (증기기관, 공장제 기계공업, 대량생산·대량소비의 산업 사회)
+                  <br>• <strong>제3의 물결: 정보혁명 (Information Revolution)</strong> — 컴퓨터와 통신의 결합으로 지식과 정보가 사회의 주도적 자원이 되는 탈산업 지식 정보화 사회.
+                </li>
+              </ul>
+
+              <h4>IT 발전을 견인한 3대 법칙 (강의 슬라이드 핵심)</h4>
+              <table>
+                <thead><tr><th>법칙명</th><th>제안자</th><th>핵심 내용 및 의미</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><strong>무어의 법칙<br>(Moore's Law)</strong></td>
+                    <td>고든 무어<br>(인텔 창립자)</td>
+                    <td>마이크로칩의 저장 용량과 트랜지스터 집적도는 <strong>18개월~24개월마다 2배씩 증가</strong>한다는 하드웨어 발전의 기본 법칙.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>길더의 법칙<br>(Gilder's Law)</strong></td>
+                    <td>조지 길더</td>
+                    <td>광섬유 대역폭(통신 속도)은 <strong>12개월마다 3배씩 증가</strong>한다는 통신 네트워크 인프라 발전 법칙.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>멧칼프의 법칙<br>(Metcalfe's Law)</strong></td>
+                    <td>로버트 멧칼프<br>(이더넷 창시자)</td>
+                    <td>네트워크의 가치는 <strong>참여자 수의 제곱($n^2$)에 비례</strong>하여 폭발적으로 증가한다는 네트워크 효과 법칙.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (1장 - 디지털 혁명 & IT 3대 법칙)</span>
+                <span class="note-status" id="status-it-ch1-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch1-p1" placeholder="엘빈 토플러 3대 물결, 무어/길더/멧칼프 법칙 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. 정보화사회의 특징과 역기능 (유비쿼터스 & 정보 격차)</span>
+              <span class="badge">1장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>유비쿼터스 (Ubiquitous) 컴퓨팅</h4>
+              <p>라틴어로 '언제 어디서나 존재하는'이라는 뜻으로, 마크 와이저(Mark Weiser)가 창안. 컴퓨터가 눈에 보이지 않게 일상 환경의 사물 곳곳에 내장되어 네트워크로 연결되는 미래형 컴퓨팅 환경.</p>
+              <ul>
+                <li><strong>5대 핵심 키워드:</strong> Anytime (언제나), Anywhere (어디서나), Any-network (어떤 망이든), Any-device (어떤 기기든), Any-service (원하는 서비스를).</li>
+              </ul>
+
+              <h4>정보화사회의 주요 역기능</h4>
+              <ul>
+                <li><strong>정보 격차 (Digital Divide):</strong> 경제적 소득, 사회적 계층, 연령(노령층 vs 청년층), 지역에 따라 디지털 기기 접근성 및 활용 능력에 큰 불평등이 발생하는 현상. (사회적 양극화 심화의 원인).</li>
+                <li><strong>사생활 침해와 감시 사회:</strong> 빅데이터 분석, 스마트폰 위치 추적, CCTV, 쿠키 정보 등을 통해 개인의 일거수일투족이 노출되는 '전자 판옵티콘' 위험.</li>
+                <li><strong>인터넷·스마트폰 과의존 및 사이버 범죄:</strong> 스미싱, 피싱, 악성코드, 랜섬웨어 등.</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (1장 - 유비쿼터스 & 정보 격차)</span>
+                <span class="note-status" id="status-it-ch1-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch1-p2" placeholder="유비쿼터스 5대 Any, 정보 격차(Digital Divide)와 역기능 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5장 내용 -->
+        <div id="it-content-ch5" class="it-chapter-block" style="display:none;">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. 정보통신 기초 & 전송 방식과 네트워크 토폴로지</span>
+              <span class="badge">5장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>정보통신 데이터 전송 방식 3가지</h4>
+              <ul>
+                <li><strong>1) 단방향 통신 (Simplex):</strong> 송신 측과 수신 측이 고정되어 한쪽 방향으로만 데이터가 흐르는 방식. (예: TV 방송, 라디오, 호출기).</li>
+                <li><strong>2) 반이중 통신 (Half-Duplex):</strong> 양방향 전송이 모두 가능하지만, 동시에 송수신할 수는 없고 한 번에 한쪽씩 교대로 통신하는 방식. (예: 무전기, 모뎀 통신).</li>
+                <li><strong>3) 전이중 통신 (Full-Duplex):</strong> 송신선과 수신선이 독립되어 양방향에서 동시에 데이터를 송수신할 수 있는 방식. (예: 일반 전화 통화, 스마트폰, 전용회선).</li>
+              </ul>
+
+              <h4>네트워크 토폴로지 (형태) 장단점 비교</h4>
+              <table>
+                <thead><tr><th>토폴로지</th><th>구조적 특징</th><th>장점</th><th>단점</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><strong>성형 (Star, 스타형)</strong></td>
+                    <td>중앙 집중식 허브/스위치에 모든 단말기가 1:1 포인트 투 포인트로 연결</td>
+                    <td>구조가 간단하고 단말기 증설/유지보수가 쉬움</td>
+                    <td>중앙 허브 고장 시 전체 네트워크가 마비됨</td>
+                  </tr>
+                  <tr>
+                    <td><strong>버스형 (Bus)</strong></td>
+                    <td>하나의 공통 통신 회선(백본)에 여러 단말기가 연결</td>
+                    <td>배선 비용이 매우 저렴하고 설치가 단순함</td>
+                    <td>회선 고장 시 전체 통신 두절, 트래픽 증가 시 충돌 잦음</td>
+                  </tr>
+                  <tr>
+                    <td><strong>링형 (Ring)</strong></td>
+                    <td>인접한 노드들이 원형 루프를 형성하여 단방향 전송</td>
+                    <td>토큰 패싱으로 충돌이 없음</td>
+                    <td>루프의 한 노드만 단선되어도 전체 네트워크 중단</td>
+                  </tr>
+                  <tr>
+                    <td><strong>망형 (Mesh, 그물형)</strong></td>
+                    <td>모든 노드가 서로 직접 1:1로 그물망처럼 연결</td>
+                    <td>우회 경로가 많아 <strong>신뢰성과 가용성이 최고</strong></td>
+                    <td>설치 및 회선 구축 비용이 가장 비쌈</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (5장 - 전송방식 & 토폴로지)</span>
+                <span class="note-status" id="status-it-ch5-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch5-p1" placeholder="단방향/반이중/전이중 예시, 토폴로지 4종 장단점 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. OSI 7계층, 네트워크 장비 & 정보보안 3대 요소(CIA)</span>
+              <span class="badge">5장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>OSI 7계층 참조 모델 & 계층별 네트워크 장비</h4>
+              <table>
+                <thead><tr><th>계층</th><th>명칭</th><th>전송 단위</th><th>주요 역할 & 프로토콜</th><th>해당 계층 장비</th></tr></thead>
+                <tbody>
+                  <tr><td>7계층</td><td>응용 (Application)</td><td>Message / Data</td><td>사용자 인터페이스 (HTTP, FTP, SMTP, DNS)</td><td rowspan="3"><strong>게이트웨이 (Gateway)</strong><br>(서로 다른 프로토콜 변환)</td></tr>
+                  <tr><td>6계층</td><td>표현 (Presentation)</td><td>Data</td><td>데이터 암호화, 압축, 코드 변환 (ASCII, JPEG)</td></tr>
+                  <tr><td>5계층</td><td>세션 (Session)</td><td>Data</td><td>통신 세션 연결 설정 및 동기화</td></tr>
+                  <tr><td>4계층</td><td>전송 (Transport)</td><td>Segment</td><td>종단 간(End-to-End) 신뢰성 있는 전송 (TCP, UDP)</td><td>L4 스위치</td></tr>
+                  <tr><td>3계층</td><td>네트워크 (Network)</td><td>Packet</td><td>패킷 주소 지정(IP) 및 최적 경로 배정(Routing)</td><td><strong>라우터 (Router)</strong>, L3 스위치</td></tr>
+                  <tr><td>2계층</td><td>데이터링크 (Data Link)</td><td>Frame</td><td>인접 노드 간 오류 제어 및 흐름 제어, MAC 주소</td><td><strong>브리지 (Bridge)</strong>, 스위칭 허브</td></tr>
+                  <tr><td>1계층</td><td>물리 (Physical)</td><td>Bit</td><td>전기적·기계적 신호 전송 (케이블, 커넥터)</td><td><strong>리피터 (신호 증폭)</strong>, 더미 허브</td></tr>
+                </tbody>
+              </table>
+
+              <h4>정보보안의 3대 핵심 목표 (CIA Triad)</h4>
+              <div class="highlight-tip">
+                • <strong>기밀성 (Confidentiality):</strong> 인가(승인)된 정당한 사용자만이 정보에 접근할 수 있도록 보장. (암호화, 접근 통제, 방화벽).<br>
+                • <strong>무결성 (Integrity):</strong> 인가되지 않은 대상에 의해 정보가 위조, 변조, 삭제되지 않고 원본의 정확성과 완전성이 유지됨을 보장. (해시 함수, 전자서명).<br>
+                • <strong>가용성 (Availability):</strong> 인가된 사용자가 원하는 시점에 언제든지 지체 없이 정상적으로 시스템과 정보를 이용할 수 있음을 보장. (DDoS 방어, 서버 이중화, 백업 시스템).
+              </div>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (5장 - OSI 7계층 & 보안 3요소)</span>
+                <span class="note-status" id="status-it-ch5-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch5-p2" placeholder="라우터 vs 게이트웨이 차이점, CIA(기밀성, 무결성, 가용성) 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6장 내용 -->
+        <div id="it-content-ch6" class="it-chapter-block" style="display:none;">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. 인터넷의 기원과 TCP/IP, IP 주소 체계 (IPv4 vs IPv6)</span>
+              <span class="badge">6장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>인터넷의 탄생 배경 (ARPANET)</h4>
+              <p>1969년 미국 국방성 고등연구계획국(DARPA)에서 냉전 시대에 핵공격으로 일부 통신망이 파괴되어도 전체 통신이 두절되지 않도록, 중앙 집중 회선망 대신 데이터를 작은 단위로 쪼개어 전달하는 **분산 패킷 교환(Packet Switching)** 방식의 통신망 구축 $\rightarrow$ 이것이 오늘날 전 세계 인터넷의 기원.</p>
+
+              <h4>TCP/IP 프로토콜의 역할 분담</h4>
+              <ul>
+                <li><strong>TCP (Transmission Control Protocol):</strong> 전송 계층 프로토콜. 가상 회선 기반의 **연결 지향형(Connection-oriented)** 서비스로, 패킷의 순서 번호 부여, 오류 검출 및 재전송, 흐름 제어를 통해 **100% 신뢰성 있는 전송**을 보장.</li>
+                <li><strong>IP (Internet Protocol):</strong> 네트워크 계층 프로토콜. 패킷의 헤더에 출발지와 목적지 IP 주소를 붙여 최적의 경로를 찾아 전달하는 **비연결형(Connectionless)** 서비스. (단편화, 패킷 손실 시 재전송 책임 없음).</li>
+              </ul>
+
+              <h4>IP 주소 체계 상세 비교: IPv4 vs IPv6</h4>
+              <table>
+                <thead><tr><th>구분</th><th>IPv4</th><th>IPv6</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>주소 길이</strong></td><td><strong>32비트</strong> (약 43억 개)</td><td><strong>128비트</strong> (사실상 무한대, $2^{128}$개)</td></tr>
+                  <tr><td><strong>표기법</strong></td><td>8비트씩 4마디, <strong>10진수</strong> 표기 (마침표 <code>.</code>로 구분)<br>예: <code>192.168.0.1</code></td><td>16비트씩 8마디, <strong>16진수</strong> 표기 (콜론 <code>:</code>으로 구분)<br>예: <code>2001:0db8:85a3::8a2e:0370:7334</code></td></tr>
+                  <tr><td><strong>주소 고갈 문제</strong></td><td>전 세계적인 인터넷 보급으로 고갈 심각 (NAT 등으로 연명)</td><td>모든 IoT 사물에 고유 IP 부여 가능할 정도로 광활함</td></tr>
+                  <tr><td><strong>보안성 (Security)</strong></td><td>보안 프로토콜(IPsec)을 선택적으로 추가</td><td><strong>IPsec 보안 기능이 기본 내장</strong>되어 도청/변조 방지</td></tr>
+                </tbody>
+              </table>
+
+              <h4>DNS (Domain Name System)</h4>
+              <p>기계가 이해하는 숫자로 된 IP 주소(예: <code>223.130.195.200</code>)를 사람이 기억하기 쉬운 문자 형태의 '도메인 이름(예: <code>www.naver.com</code>)'으로 상호 변환해주는 분산 데이터베이스 시스템.</p>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (6장 - ARPANET & IP 체계)</span>
+                <span class="note-status" id="status-it-ch6-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch6-p1" placeholder="TCP vs IP 역할, IPv4와 IPv6 스펙 비교표, DNS 역할 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. 웹 2.0과 클라우드 컴퓨팅 (서비스 & 배포 모델)</span>
+              <span class="badge">6장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>웹 2.0 (Web 2.0) 의 핵심 원리</h4>
+              <p>운영자가 제공하는 정적 정보를 일방적으로 읽기만 하던 웹 1.0(단방향)과 달리, 사용자가 직접 정보를 생산하고 수정하며 쌍방향으로 소통하는 인터넷 환경.</p>
+              <ul>
+                <li><strong>4대 철학:</strong> 참여 (Participation), 공유 (Sharing), 개방 (Openness), 집단지성 (Collective Intelligence).</li>
+                <li><strong>주요 기술:</strong> 블로그, SNS, 위키피디아, 오픈 API, RSS, 사용자가 직접 콘텐츠를 분류하는 태그(Tagging/Folksonomy).</li>
+              </ul>
+
+              <h4>클라우드 컴퓨팅의 3대 서비스 모델</h4>
+              <ul>
+                <li><strong>1) IaaS (Infrastructure as a Service):</strong> 서버 가상화, 대용량 스토리지, 가상 네트워크 등 순수 하드웨어 인프라 자원을 필요한 만큼 임대 제공. (예: AWS EC2, MS Azure Virtual Machines).</li>
+                <li><strong>2) PaaS (Platform as a Service):</strong> 개발자가 인프라 구축 고민 없이 앱 개발에만 집중할 수 있도록 OS, 런타임, DB, 개발 프레임워크 환경을 제공. (예: Google App Engine, Heroku).</li>
+                <li><strong>3) SaaS (Software as a Service):</strong> 클라우드 서버에 구동되는 완성된 응용 소프트웨어를 웹 브라우저를 통해 구독 형태로 빌려 쓰는 모델. (예: Google Docs, Google Drive, MS Office 365, Dropbox).</li>
+              </ul>
+
+              <h4>클라우드 컴퓨팅의 3대 배포 모델</h4>
+              <ul>
+                <li><strong>사설 클라우드 (Private Cloud):</strong> 특정 단일 기업/기관만을 위해 전용으로 구축된 클라우드로, 보안성과 통제력이 가장 뛰어남.</li>
+                <li><strong>공용 클라우드 (Public Cloud):</strong> 전문 클라우드 서비스 기업이 불특정 다수의 일반 대중 및 기업 고객에게 인터넷을 통해 공유 제공하는 방식.</li>
+                <li><strong>하이브리드 클라우드 (Hybrid Cloud):</strong> 핵심 기밀 데이터는 사설 클라우드에 보관하고, 대외 서비스 및 연산 급증 처리는 공용 클라우드를 혼용하는 최적화 모델.</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (6장 - 웹 2.0 & 클라우드 모델)</span>
+                <span class="note-status" id="status-it-ch6-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch6-p2" placeholder="웹 2.0 특성, IaaS/PaaS/SaaS 차이점 및 클라우드 배포 모델 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7장 내용 -->
+        <div id="it-content-ch7" class="it-chapter-block" style="display:none;">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. 멀티미디어의 특성과 이미지 표현 (비트맵 vs 벡터)</span>
+              <span class="badge">7장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>멀티미디어(Multimedia)의 4대 필수 특성</h4>
+              <ul>
+                <li><strong>1) 디지털화 (Digitalization):</strong> 텍스트, 음성, 영상 등 모든 아날로그 매체가 0과 1의 디지털 비트로 변환되어 컴퓨터에서 동일한 방식으로 처리, 복사, 저장됨.</li>
+                <li><strong>2) 상호작용성 (Interactivity):</strong> TV처럼 일방적으로 시청하는 것이 아니라, 사용자가 원하는 정보를 직접 선택하고 제어하는 양방향 대화형 환경.</li>
+                <li><strong>3) 다중 매체성 (Multi-medium):</strong> 텍스트, 사운드, 그래픽, 애니메이션, 비디오 중 둘 이상의 매체 정보가 동시에 통합되어 제공됨.</li>
+                <li><strong>4) 컴퓨터 제어 (Computer-controlled):</strong> 컴퓨터 시스템과 소프트웨어에 의해 전체 미디어 콘텐츠가 유기적으로 제어되고 재생됨.</li>
+              </ul>
+
+              <h4>디지털 이미지 표현: 비트맵 vs 벡터 비교</h4>
+              <table>
+                <thead><tr><th>비교 항목</th><th>비트맵 (래스터, Raster Graphics)</th><th>벡터 (Vector Graphics)</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>표현 원리</strong></td><td>픽셀(Pixel, 화소)이라는 사각 점들의 2차원 격자 배열</td><td>수학적 함수 공식 (시작점, 끝점, 곡률, 두께, 면 색상)</td></tr>
+                  <tr><td><strong>확대 시 품질</strong></td><td>이미지가 깨지고 거칠어지는 <strong>계단 현상(Aliasing)</strong> 발생</td><td>아무리 수천 배 확대해도 깨짐 없이 매끄러운 윤곽선 유지</td></tr>
+                  <tr><td><strong>용량 특성</strong></td><td>해상도(가로x세로 픽셀 수)와 색상 깊이에 비례하여 용량 큼</td><td>수식 데이터만 저장하므로 일반적으로 용량이 매우 작음</td></tr>
+                  <tr><td><strong>주요 활용처</strong></td><td>복잡한 명암과 색조를 가진 실사 사진, 디지털 페인팅</td><td>기업 로고, 심볼, 폰트(글꼴), CAD 설계도면, 캐릭터</td></tr>
+                  <tr><td><strong>대표 파일 형식</strong></td><td>BMP, GIF, JPEG, PNG, TIFF</td><td>SVG, AI, EPS, WMF</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (7장 - 멀티미디어 특성 & 비트맵/벡터)</span>
+                <span class="note-status" id="status-it-ch7-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch7-p1" placeholder="멀티미디어 4대 특성, 비트맵 vs 벡터 상세 비교표 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. 데이터 압축 기법과 동영상 압축 표준 (MPEG 시리즈)</span>
+              <span class="badge">7장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>무손실 압축 vs 손실 압축</h4>
+              <ul>
+                <li><strong>무손실 압축 (Lossless Compression):</strong> 압축 후 해제했을 때 원본 데이터와 1비트의 오차도 없이 100% 동일하게 복원되는 기법.
+                  <br>• 적용 분야: <strong>의료용 영상(X-레이, CT, MRI)</strong>, 법률/금융 문서, 컴퓨터 실행 파일(.exe), ZIP, PNG 등.
+                </li>
+                <li><strong>손실 압축 (Lossy Compression):</strong> 인간의 시각·청각 기관이 민감하게 감지하지 못하는 미세한 색상 차이나 고주파 성분을 과감히 버림으로써 높은 압축률(10:1 ~ 50:1)을 얻는 기법.
+                  <br>• 적용 분야: 일반 디지털 사진(JPEG), 오디오(MP3), 동영상(MPEG).
+                </li>
+              </ul>
+
+              <h4>MPEG (Moving Picture Experts Group) 국제표준 발전사</h4>
+              <table>
+                <thead><tr><th>표준 규격</th><th>제정 연도</th><th>개발 목적 및 핵심 특징</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>MPEG-1</strong></td><td>1991년</td><td>CD-ROM 매체에 비디오테이프(VHS) 수준 화질 저장 목적 (MP3 오디오 압축 기술 포함).</td></tr>
+                  <tr><td><strong>MPEG-2</strong></td><td>1995년</td><td><strong>디지털 TV 방송, 위성방송, DVD</strong> 수준의 고화질 동영상 압축 표준.</td></tr>
+                  <tr><td><strong>MPEG-4</strong></td><td>1998년</td><td>인터넷 및 이동통신 무선망에서 화상회의, 스트리밍을 위한 객체 기반 고효율 압축 표준.</td></tr>
+                  <tr><td><strong>MPEG-7</strong></td><td>2001년</td><td>동영상 압축이 아닌, 멀티미디어 내용 정보(메타데이터)를 표현하여 <strong>동영상 내용 기반 검색</strong> 표준.</td></tr>
+                  <tr><td><strong>MPEG-21</strong></td><td>2001년~</td><td>멀티미디어 콘텐츠의 제작, 유통, 보안, 전자상거래(DRM) 전 과정을 관리하는 멀티미디어 프레임워크.</td></tr>
+                </tbody>
+              </table>
+
+              <h4>비디오 스트리밍 (Video Streaming) 기술</h4>
+              <p>대용량 멀티미디어 데이터를 클라이언트가 전체 다운로드할 때까지 기다리지 않고, 네트워크를 통해 전송받으면서 **수신과 동시에 실시간으로 재생**하는 기술. (버퍼링을 통해 일시적 네트워크 끊김 완화).</p>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (7장 - 무손실/손실 압축 & MPEG 표준)</span>
+                <span class="note-status" id="status-it-ch7-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch7-p2" placeholder="무손실 압축 적용분야, MPEG-1/2/4/7/21 발전사, 스트리밍 원리 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8장 내용 -->
+        <div id="it-content-ch8" class="it-chapter-block" style="display:none;">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. 모바일 앱 3대 개발 방식 (네이티브 vs 웹 vs 하이브리드 앱)</span>
+              <span class="badge">8장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>모바일 애플리케이션 3대 개발 방식 완벽 비교</h4>
+              <table>
+                <thead><tr><th>구분</th><th>네이티브 앱 (Native App)</th><th>모바일 웹 (Mobile Web)</th><th>하이브리드 앱 (Hybrid App)</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><strong>개발 언어</strong></td>
+                    <td>OS 전용 네이티브 언어<br>(iOS: Swift/Obj-C, Android: Kotlin/Java)</td>
+                    <td>표준 웹 프론트엔드 언어<br>(HTML5, CSS3, JavaScript)</td>
+                    <td>웹 기술로 화면 개발 후 네이티브 컨테이너(웹뷰)로 패키징</td>
+                  </tr>
+                  <tr>
+                    <td><strong>실행 성능</strong></td>
+                    <td><strong>최고 수준 (가장 빠르고 부드러움)</strong></td>
+                    <td>상대적으로 느림 (브라우저 해석 구동)</td>
+                    <td>중간 (네이티브보다 느리고 모바일 웹보다 빠름)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>하드웨어 제어</strong></td>
+                    <td>카메라, GPS, 자이로센서, 블루투스 등 <strong>단말기 기능을 100% 완벽 제어</strong></td>
+                    <td>단말기 하드웨어 접근이 극히 제한적</td>
+                    <td>플러그인(Cordova, Capacitor)을 통해 단말기 하드웨어 제어 가능</td>
+                  </tr>
+                  <tr>
+                    <td><strong>배포 및 업데이트</strong></td>
+                    <td>반드시 앱스토어 심사를 거쳐야 하며, 사용자 업데이트 다운로드 필수</td>
+                    <td>앱스토어 심사 불필요, 웹서버 수정 즉시 모든 사용자에게 실시간 반영</td>
+                    <td>앱 껍데기는 앱스토어 배포, 내부 웹 콘텐츠는 실시간 업데이트 가능</td>
+                  </tr>
+                  <tr>
+                    <td><strong>개발 비용</strong></td>
+                    <td>iOS와 안드로이드를 각각 따로 개발해야 하므로 비용과 시간 최대</td>
+                    <td>단 한 번의 웹 개발로 모든 기기 대응 가능하여 비용 최소</td>
+                    <td>단일 웹 소스코드로 양대 플랫폼 앱스토어 동시 출시 가능 (높은 생산성)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (8장 - 모바일 앱 3대 개발 방식)</span>
+                <span class="note-status" id="status-it-ch8-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch8-p1" placeholder="네이티브 앱, 모바일 웹, 하이브리드 앱 5대 항목 비교 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. 핵심 모바일 서비스: LBS, 증강현실(AR) vs 가상현실(VR), 스마트워크</span>
+              <span class="badge">8장 심층 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>위치기반 서비스 (LBS: Location Based Service)</h4>
+              <p>스마트폰의 GPS 칩, 이동통신 기지국, Wi-Fi 신호 등을 결합하여 사용자의 현재 정확한 위치를 파악하고, 주변 지리정보(GIS)와 연계하여 다양한 생활 편의 서비스를 제공하는 기술. (예: 내비게이션 길안내, 주변 맛집 추천, 긴급 구조 위치 추적, 반경 타깃 모바일 광고).</p>
+
+              <h4>증강현실 (AR) vs 가상현실 (VR)</h4>
+              <ul>
+                <li><strong>증강현실 (AR: Augmented Reality):</strong> 사용자가 바라보는 <strong>실제 현실 세계의 배경 위에 3차원 가상 객체(문자, 그래픽, 영상)를 실시간으로 합성</strong>하여 부가 정보를 증강하여 보여주는 기술. (예: 포켓몬 고 게임, 스마트 안경 헤드업 디스플레이, 가구 배치 시뮬레이션).</li>
+                <li><strong>가상현실 (VR: Virtual Reality):</strong> 현실 세계를 완전히 차단하고 특수 HMD(헤드마운트 디스플레이)를 착용하여 컴퓨터가 <strong>100% 인공적으로 구축한 가상 공간</strong> 속에 몰입하여 체험하는 기술.</li>
+              </ul>
+
+              <h4>스마트 워크 (Smart Work)</h4>
+              <ul>
+                <li><strong>개념:</strong> 시간과 장소의 물리적 제약에 얽매이지 않고 첨단 IT 기기와 클라우드 네트워크를 활용하여 편리하고 유연하게 일하는 선진 근무 환경.</li>
+                <li><strong>근무 형태:</strong> 자택에서 일하는 **재택근무**, 출장·이동 중에 일하는 **모바일 오피스(이동근무)**, 자신의 거주지와 가까운 거점 오피스에 출근하여 원격 근무하는 **스마트워크센터(Smart Work Center)**.</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (8장 - LBS, AR vs VR, 스마트워크)</span>
+                <span class="note-status" id="status-it-ch8-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-it-ch8-p2" placeholder="LBS 원리, AR과 VR의 근본적 차이, 스마트워크센터 개념 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- IT Subjective Quiz View (주관식 10문항) -->
+      <section id="it-view-quiz-subjective" class="view-section">
+        <div class="quiz-controls">
+          <div>
+            <h2 style="font-size:1.15rem; font-weight:700;">정보처리기술 실전 주관식 10문항</h2>
+            <p style="font-size:0.85rem; color:var(--text-muted);">중간고사 핵심 출제 포인트 10문항입니다. 정확한 용어를 입력하고 채점하세요 (문항당 10점, 총 100점).</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" onclick="gradeItSubjectiveQuiz()">주관식 정답 제출 & 채점</button>
+            <button class="btn btn-secondary" onclick="resetItSubjectiveQuiz()">다시 풀기</button>
+          </div>
+        </div>
+
+        <div id="it-subjective-score-banner" class="score-banner">
+          <div>주관식 시험 결과</div>
+          <div class="score-num" id="it-subjective-score-display">0 / 100점</div>
+          <div class="score-detail" id="it-subjective-score-detail"></div>
+        </div>
+
+        <!-- Question 1 (1장) -->
+        <div class="quiz-card" id="it-qcard-1">
+          <span class="quiz-num">1장 | 주관식 1번 (10점)</span>
+          <div class="quiz-question">미래학자 엘빈 토플러(Alvin Toffler)가 제1의 물결(농업혁명), 제2의 물결(산업혁명)에 이어 컴퓨터와 통신의 결합으로 정보와 지식이 부의 원천이 되는 새로운 사회 대변혁을 지칭한 용어는 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="정보혁명" data-alt="제3의물결,제3의 물결,정보 혁명">
+          </div>
+          <div class="explanation" id="it-explain-1">
+            <strong>정답: 정보혁명 (또는 제3의 물결)</strong><br>
+            해설: 엘빈 토플러는 저서 '제3의 물결'에서 농업혁명, 산업혁명에 이은 제3의 물결로서 컴퓨터와 IT 기술에 의한 '정보혁명'을 제시하였습니다.
+          </div>
+        </div>
+
+        <!-- Question 2 (5장) -->
+        <div class="quiz-card" id="it-qcard-2">
+          <span class="quiz-num">5장 | 주관식 2번 (10점)</span>
+          <div class="quiz-question">네트워크 상호연결 장비 중, 프로토콜 구조가 서로 전혀 다른 이종 통신망 간에 데이터를 주고받을 수 있도록 프로토콜 변환을 수행하는 관문 장비는 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="게이트웨이" data-alt="gateway,게이트 웨이">
+          </div>
+          <div class="explanation" id="it-explain-2">
+            <strong>정답: 게이트웨이 (Gateway)</strong><br>
+            해설: 라우터가 서로 다른 IP 네트워크 간의 최적 경로를 설정한다면, 게이트웨이는 프로토콜 체계 자체가 다른 통신망 간의 프로토콜 변환을 담당합니다.
+          </div>
+        </div>
+
+        <!-- Question 3 (5장) -->
+        <div class="quiz-card" id="it-qcard-3">
+          <span class="quiz-num">5장 | 주관식 3번 (10점)</span>
+          <div class="quiz-question">정보보안의 3대 핵심 요소(CIA) 중, 인가(승인)된 정당한 사용자나 권한을 가진 주체만이 정보에 접근할 수 있도록 보장하는 보안 특성은 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="기밀성" data-alt="confidentiality">
+          </div>
+          <div class="explanation" id="it-explain-3">
+            <strong>정답: 기밀성 (Confidentiality)</strong><br>
+            해설: 정보보안의 3대 요소는 기밀성(인가된 자만 접근), 무결성(비인가자의 변조 방지), 가용성(필요 시 정상 사용 보장)입니다.
+          </div>
+        </div>
+
+        <!-- Question 4 (6장) -->
+        <div class="quiz-card" id="it-qcard-4">
+          <span class="quiz-num">6장 | 주관식 4번 (10점)</span>
+          <div class="quiz-question">1969년 미 국방성 고등연구계획국에서 핵공격에도 통신망이 마비되지 않도록 분산 패킷 교환 방식으로 구축한 오늘날 인터넷의 시초가 된 통신망의 명칭은 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="ARPANET" data-alt="arpanet,아르파넷">
+          </div>
+          <div class="explanation" id="it-explain-4">
+            <strong>정답: ARPANET (아르파넷)</strong><br>
+            해설: 1969년 4개 대학 컴퓨터를 연결하여 패킷 교환 방식으로 최초 구축된 통신망으로, 현대 전 세계 인터넷의 기원이 되었습니다.
+          </div>
+        </div>
+
+        <!-- Question 5 (6장) -->
+        <div class="quiz-card" id="it-qcard-5">
+          <span class="quiz-num">6장 | 주관식 5번 (10점)</span>
+          <div class="quiz-question">사람이 기억하고 이해하기 쉬운 문자 형태의 도메인 이름(예: www.naver.com)을 컴퓨터가 인식하는 숫자로 된 IP 주소로 상호 변환해주는 시스템의 명칭(영문 약칭)은 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="DNS" data-alt="dns,도메인네임시스템,domain name system">
+          </div>
+          <div class="explanation" id="it-explain-5">
+            <strong>정답: DNS (Domain Name System)</strong><br>
+            해설: DNS는 전 세계의 도메인 이름과 매핑되는 IP 주소 정보를 계층적으로 관리하고 변환해주는 분산 데이터베이스 서비스입니다.
+          </div>
+        </div>
+
+        <!-- Question 6 (6장) -->
+        <div class="quiz-card" id="it-qcard-6">
+          <span class="quiz-num">6장 | 주관식 6번 (10점)</span>
+          <div class="quiz-question">클라우드 컴퓨팅 서비스 모델(IaaS, PaaS, SaaS) 중, 이용자가 별도의 소프트웨어를 설치하지 않고 웹 브라우저를 통해 클라우드 서버의 완성된 응용 소프트웨어를 빌려 쓰는 모델(예: 구글 닥스, 웹 메일)은 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="SaaS" data-alt="saas,software as a service">
+          </div>
+          <div class="explanation" id="it-explain-6">
+            <strong>정답: SaaS (Software as a Service)</strong><br>
+            해설: IaaS는 하드웨어 인프라, PaaS는 소프트웨어 개발 플랫폼, SaaS는 최종 사용자용 소프트웨어 자체를 웹을 통해 서비스로 제공하는 모델입니다.
+          </div>
+        </div>
+
+        <!-- Question 7 (7장) -->
+        <div class="quiz-card" id="it-qcard-7">
+          <span class="quiz-num">7장 | 주관식 7번 (10점)</span>
+          <div class="quiz-question">멀티미디어 데이터 압축 기법 중, 압축을 해제했을 때 원본 데이터가 100% 온전하게 복원되며, X-레이나 CT와 같은 의료용 영상에 필수적으로 적용되는 압축 방식은 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="무손실 압축" data-alt="무손실압축,lossless,무손실">
+          </div>
+          <div class="explanation" id="it-explain-7">
+            <strong>정답: 무손실 압축 (Lossless Compression)</strong><br>
+            해설: 원본 데이터의 미세한 왜곡도 오진을 부를 수 있는 의료 영상이나 실행 파일, 문서 등에는 원본 손실이 전혀 없는 무손실 압축이 사용됩니다.
+          </div>
+        </div>
+
+        <!-- Question 8 (7장) -->
+        <div class="quiz-card" id="it-qcard-8">
+          <span class="quiz-num">7장 | 주관식 8번 (10점)</span>
+          <div class="quiz-question">동영상 압축의 국제표준인 MPEG 시리즈 중, 디지털 TV 방송, 위성방송 및 DVD 수준의 고화질 비디오를 목적으로 1995년에 제정된 표준 규격은 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="MPEG-2" data-alt="mpeg2,mpeg-2,엠펙2,엠펙-2">
+          </div>
+          <div class="explanation" id="it-explain-8">
+            <strong>정답: MPEG-2</strong><br>
+            해설: MPEG-1은 CD-ROM/VHS 화질, MPEG-2는 디지털 TV 방송 및 DVD용 고화질 규격, MPEG-4는 인터넷 및 이동통신 스트리밍용 규격입니다.
+          </div>
+        </div>
+
+        <!-- Question 9 (8장) -->
+        <div class="quiz-card" id="it-qcard-9">
+          <span class="quiz-num">8장 | 주관식 9번 (10점)</span>
+          <div class="quiz-question">HTML5, CSS, 자바스크립트 등 웹 기술로 화면을 개발한 뒤 네이티브 컨테이너로 감싸서, 웹의 배포 편의성과 네이티브 앱의 단말기 하드웨어 제어 기능을 모두 통합한 모바일 앱 개발 방식은 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="하이브리드 앱" data-alt="하이브리드앱,hybrid app,하이브리드">
+          </div>
+          <div class="explanation" id="it-explain-9">
+            <strong>정답: 하이브리드 앱 (Hybrid App)</strong><br>
+            해설: 하이브리드 앱은 웹 기술의 생산성과 네이티브 앱의 앱스토어 배포 및 하드웨어 연동 장점을 결합한 방식입니다.
+          </div>
+        </div>
+
+        <!-- Question 10 (8장) -->
+        <div class="quiz-card" id="it-qcard-10">
+          <span class="quiz-num">8장 | 주관식 10번 (10점)</span>
+          <div class="quiz-question">사용자가 눈으로 바라보는 실제 현실 세계의 배경에 컴퓨터 그래픽 등 가상의 정보나 사물을 실시간으로 겹쳐서 보여주는 기술의 명칭(또는 영문 약칭)은 무엇인가?</div>
+          <div style="margin-top:10px;">
+            답안: <input type="text" class="blank-input it-subjective-input" style="width:220px;" data-ans="증강현실" data-alt="AR,ar,augmented reality,증강 현실">
+          </div>
+          <div class="explanation" id="it-explain-10">
+            <strong>정답: 증강현실 (AR: Augmented Reality)</strong><br>
+            해설: 현실 세계를 완전히 차단하고 가상 공간만 보여주는 가상현실(VR)과 달리, 증강현실(AR)은 현실 배경 위에 가상의 정보를 중첩하여 표시합니다.
+          </div>
+        </div>
+      </section>
+
+      <!-- IT Notes View -->
+      <section id="it-view-notes" class="view-section">
+        <div class="quiz-controls">
+          <div>
+            <h2 style="font-size:1.15rem; font-weight:700;">정보처리기술 필기 모아보기</h2>
+            <p style="font-size:0.85rem; color:var(--text-muted);">정보처리기술 과목에서 작성된 1, 5, 6, 7, 8장의 모든 필기입니다.</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-secondary" onclick="window.print()">🖨️ 필기 인쇄</button>
+            <button class="btn btn-primary" onclick="copyItNotes()">📋 필기 전체 복사</button>
+          </div>
+        </div>
+        <div id="it-all-notes-display"></div>
+      </section>
+    </main>
+  </div><!-- end #subject-it -->
+
+  <!-- ======================================================== -->
+  <!-- SUBJECT 3: 운영체제론 (W1 ~ W4)                              -->
+  <!-- ======================================================== -->
+  <div id="subject-os" class="subject-panel" style="display:none;">
+    <header>
+      <div class="container">
+        <div class="header-top">
+          <div class="title-group">
+            <h1>운영체제론 (Operating Systems)</h1>
+            <p>2026 가을학기 중간고사 완벽 대비 서머리노트 & 실전 퀴즈 (Week 1 ~ Week 4)</p>
+          </div>
+          <div class="exam-badge" style="background:#fef3c7; color:#92400e; border-color:#fde68a;">
+            <span>🎯 시험 범위: W1 개요 · W2 시스템 구조/이중모드/시스템콜 · W3 메모리 계층/페이징 · W4 ELF/가상메모리</span>
+          </div>
+        </div>
+        <nav class="nav-tabs">
+          <button class="tab-btn active" onclick="switchOsMainTab('concepts')">📖 핵심 개념 & 필기장</button>
+          <button class="tab-btn" onclick="switchOsMainTab('quiz')">✍️ 실전 모의 퀴즈 (10문항)</button>
+          <button class="tab-btn" onclick="switchOsMainTab('notes')">📋 운영체제 필기 모아보기</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- OS Concepts View -->
+      <section id="os-view-concepts" class="view-section active">
+        <div class="sub-nav">
+          <button class="sub-btn active" onclick="switchOsChapter('w1w2')">W1~W2. 컴퓨터 구조, 이중 모드 & 시스템 콜</button>
+          <button class="sub-btn" onclick="switchOsChapter('w3')">W3. 메모리 계층 구조 & 페이징/단편화</button>
+          <button class="sub-btn" onclick="switchOsChapter('w4')">W4. ELF 파일 구조 & 가상 메모리 관리</button>
+        </div>
+
+        <!-- W1 & W2 Content -->
+        <div id="os-content-w1w2" class="os-chapter-block">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. 컴퓨터 시스템 구조와 인터럽트(Interrupt)</span>
+              <span class="badge">W1 · W2 요약</span>
+            </div>
+            <div class="concept-content">
+              <p><strong>운영체제의 핵심 역할:</strong> 하드웨어(CPU, 메모리, I/O) 자원을 공정하고 효율적으로 관리하고, 응용 프로그램과 사용자에게 안전하고 편리한 추상화 인터페이스를 제공하는 소프트웨어.</p>
+              <ul>
+                <li><strong>시스템 버스 (System Bus):</strong> 제어 버스, 주소 버스, 데이터 버스로 구성되어 CPU, 메모리, 입출력 장치 간의 데이터와 신호를 전송.</li>
+                <li><strong>인터럽트 (Interrupt) vs 폴링 (Polling):</strong>
+                  <br>• <em>폴링:</em> CPU가 입출력 장치의 상태를 주기적으로 직접 확인하는 방식 (CPU 낭비 심함).
+                  <br>• <em>인터럽트:</em> 장치가 작업을 마치거나 예외가 발생했을 때 CPU에 신호를 보내 알려주는 하드웨어적 통지 방식 (CPU 효율 극대화).
+                </li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (OS - 시스템 구조 & 인터럽트)</span>
+                <span class="note-status" id="status-os-w2-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-os-w2-p1" placeholder="인터럽트 처리 과정, 시스템 버스 특징 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. 이중 모드(Dual-mode) & 시스템 호출(System Call)</span>
+              <span class="badge">W2 핵심</span>
+            </div>
+            <div class="concept-content">
+              <h4>이중 모드 (Dual-mode Operation)</h4>
+              <p>시스템을 악의적이거나 결함이 있는 사용자 프로그램으로부터 보호하기 위해 CPU 하드웨어가 지원하는 작동 모드 분리.</p>
+              <ul>
+                <li><strong>사용자 모드 (User Mode):</strong> 일반 응용 프로그램이 실행되는 모드. 특권 명령 실행 불가, 접근 가능한 메모리 공간 제한.</li>
+                <li><strong>커널 모드 (Kernel / Supervisor Mode):</strong> 운영체제 커널 코드가 실행되는 모드. 모든 기계어 명령어와 전체 메모리/하드웨어에 접근 가능.</li>
+                <li><strong>특권 명령 (Privileged Instructions):</strong> I/O 장치 접근, 인터럽트 비활성화, 메모리 보호 테이블 수정 등 치명적인 명령어로, <strong>오직 커널 모드에서만 실행 가능</strong>함.</li>
+              </ul>
+
+              <h4>시스템 호출 (System Call) vs 함수 호출 (Function Call)</h4>
+              <div class="highlight-tip">
+                • <strong>일반 함수 호출:</strong> 사용자 공간 내에서 다른 함수로 분기 (모드 전환 없음).<br>
+                • <strong>시스템 호출 (System Call):</strong> 사용자 공간 프로그램이 하드웨어 I/O나 커널 서비스를 받기 위해 <strong>소프트웨어 인터럽트(트랩, Trap)</strong>를 발생시켜 CPU 모드를 <strong>사용자 모드 $
+ightarrow$ 커널 모드로 전환</strong>하여 커널 함수를 호출하는 공식 통로.
+              </div>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (OS - 이중모드, 특권명령, 시스템콜)</span>
+                <span class="note-status" id="status-os-w2-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-os-w2-p2" placeholder="사용자 모드 vs 커널 모드 차이, 트랩(Trap)과 시스템콜 흐름 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- W3 Content -->
+        <div id="os-content-w3" class="os-chapter-block" style="display:none;">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. 메모리 계층 구조와 주소 변환(MMU)</span>
+              <span class="badge">W3 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>메모리 계층 구조 (Memory Hierarchy)</h4>
+              <p><strong>속도/비용 vs 용량 트레이드오프:</strong> 레지스터 (최고속, 최소용량, 최고비용) $
+ightarrow$ 캐시 메모리 (L1/L2/L3) $
+ightarrow$ 메인 메모리 (DRAM) $
+ightarrow$ 보조기억장치 (SSD/HDD, 대용량, 최저비용).</p>
+              
+              <h4>논리 주소 vs 물리 주소</h4>
+              <ul>
+                <li><strong>논리/가상 주소 (Logical / Virtual Address):</strong> CPU가 프로그램을 실행하며 생성하고 바라보는 주소.</li>
+                <li><strong>물리 주소 (Physical Address):</strong> 실제 메인 메모리(DRAM) 하드웨어 칩에 위치한 주소.</li>
+                <li><strong>MMU (Memory Management Unit):</strong> CPU와 메모리 사이에 위치하여 논리 주소를 물리 주소로 실시간 하드웨어 변환을 수행하는 장치 (베이스 레지스터, 리미트 레지스터 등 활용).</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (OS - 메모리 계층 & MMU)</span>
+                <span class="note-status" id="status-os-w3-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-os-w3-p1" placeholder="메모리 계층 구조, MMU의 역할과 주소 바인딩 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. 메모리 단편화 & 페이징(Paging) 기법</span>
+              <span class="badge">W3 핵심</span>
+            </div>
+            <div class="concept-content">
+              <h4>메모리 단편화 (Fragmentation)</h4>
+              <table>
+                <thead><tr><th>구분</th><th>발생 원인</th><th>특징 및 결과</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><strong>내부 단편화 (Internal)</strong></td>
+                    <td>고정 분할 또는 페이징에서 할당된 블록 크기가 프로세스가 요구한 크기보다 클 때 발생</td>
+                    <td>블록 내부의 남는 공간이 낭비됨</td>
+                  </tr>
+                  <tr>
+                    <td><strong>외부 단편화 (External)</strong></td>
+                    <td>가변 분할에서 프로세스들의 생성/소멸로 메모리 사이사이에 작은 빈 공간 조각들이 흩어져 발생</td>
+                    <td>총 빈 공간의 합은 충분하지만 연속되지 않아 프로세스를 적재하지 못함</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>페이징 (Paging) 시스템</h4>
+              <ul>
+                <li><strong>페이지 (Page):</strong> 프로세스의 논리 주소 공간을 일정한 고정 크기로 나눈 블록.</li>
+                <li><strong>프레임 (Frame):</strong> 물리 메모리를 페이지와 동일한 고정 크기로 나눈 블록.</li>
+                <li><strong>장점:</strong> 물리 메모리의 비연속적인 프레임에 페이지들을 적재할 수 있으므로 <strong>외부 단편화가 완전히 해결</strong>됨.</li>
+                <li><strong>단점:</strong> 마지막 페이지에서 크기가 딱 맞지 않아 <strong>내부 단편화</strong>가 발생할 수 있음, 페이지 테이블 저장 오버헤드.</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (OS - 단편화 & 페이징)</span>
+                <span class="note-status" id="status-os-w3-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-os-w3-p2" placeholder="내부 단편화 vs 외부 단편화, 페이징 테이블 주소 변환 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- W4 Content -->
+        <div id="os-content-w4" class="os-chapter-block" style="display:none;">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. 컴파일과 ELF 파일 메모리 구조</span>
+              <span class="badge">W4 요약</span>
+            </div>
+            <div class="concept-content">
+              <p><strong>ELF (Executable and Linkable Format):</strong> 리눅스/유닉스 계열 운영체제의 표준 실행 및 링크 파일 형식.</p>
+              <h4>프로세스 메모리 주소 공간의 4대 영역</h4>
+              <ul>
+                <li><strong>텍스트/코드 영역 (.text):</strong> 실행할 기계어 명령어가 저장되는 읽기 전용(Read-Only) 영역.</li>
+                <li><strong>데이터 영역 (.data / .bss):</strong> 전역 변수(Global)와 정적 변수(Static)가 저장되는 영역.
+                  <br>• <code>.data</code>: 초기화된 전역 변수
+                  <br>• <code>.bss</code>: 초기화되지 않은 전역 변수 (메모리 절약을 위해 실행 시 0으로 초기화)
+                </li>
+                <li><strong>힙 영역 (Heap):</strong> 프로그램 실행 중 동적으로 할당되는 메모리 영역 (예: C언어의 <code>malloc()</code>/<code>free()</code>, C++의 <code>new</code>/<code>delete</code>). 낮은 주소에서 높은 주소 방향으로 증가.</li>
+                <li><strong>스택 영역 (Stack):</strong> 함수 호출 시의 지역 변수, 매개변수, 반환 주소가 임시 저장되는 영역. 높은 주소에서 낮은 주소 방향으로 증가.</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (OS - ELF 파일 & 메모리 4대 영역)</span>
+                <span class="note-status" id="status-os-w4-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-os-w4-p1" placeholder="Code, Data, BSS, Heap, Stack의 증가 방향 및 특징 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. 가상 메모리(Virtual Memory)와 요구 페이징</span>
+              <span class="badge">W4 핵심</span>
+            </div>
+            <div class="concept-content">
+              <h4>요구 페이징 (Demand Paging) & 페이지 폴트 (Page Fault)</h4>
+              <ul>
+                <li><strong>요구 페이징:</strong> 프로세스 실행에 필요한 페이지만을 실제로 참조될 때 물리 메모리에 올리는 기법 (메모리 절약, 다중 프로그래밍 정도 향상).</li>
+                <li><strong>유효/무효 비트 (Valid-Invalid Bit):</strong> 페이지 테이블에 해당 페이지가 현재 물리 메모리에 적재되어 있는지(Valid) 여부를 표시.</li>
+                <li><strong>페이지 폴트 (Page Fault):</strong> CPU가 참조하려는 페이지가 현재 물리 메모리에 없는 경우(Invalid) 발생하는 <strong>하드웨어 트랩(예외)</strong>.
+                  <br><em>처리 순서:</em> OS가 CPU 제어권 획득 $
+ightarrow$ 보조기억장치에서 해당 페이지 검색 $
+ightarrow$ 빈 프레임에 적재(빈 프레임 없으면 페이지 교체 알고리즘 수행) $
+ightarrow$ 페이지 테이블 Valid로 갱신 $
+ightarrow$ 중단되었던 명령어 재실행.
+                </li>
+                <li><strong>스래싱 (Thrashing):</strong> 페이지 교체(I/O) 시간이 실제 프로세스 실행 시간보다 많아져 시스템의 CPU 이용률이 급격히 곤두박질치는 심각한 성능 저하 현상.</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (OS - 요구페이징, 페이지폴트, 스래싱)</span>
+                <span class="note-status" id="status-os-w4-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-os-w4-p2" placeholder="Page Fault 발생 시 단계별 처리 과정, Thrashing 원인 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OS Quiz View (10문항) -->
+      <section id="os-view-quiz" class="view-section">
+        <div class="quiz-controls">
+          <div>
+            <h2 style="font-size:1.15rem; font-weight:700;">운영체제론 실전 모의 퀴즈 (10문항)</h2>
+            <p style="font-size:0.85rem; color:var(--text-muted);">중간고사 핵심 키워드 주관식/단답식 10문항입니다 (문항당 10점, 100점 만점).</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" onclick="gradeOsQuiz()">정답 제출 & 채점</button>
+            <button class="btn btn-secondary" onclick="resetOsQuiz()">다시 풀기</button>
+          </div>
+        </div>
+
+        <div id="os-score-banner" class="score-banner">
+          <div>운영체제론 시험 결과</div>
+          <div class="score-num" id="os-score-display">0 / 100점</div>
+          <div class="score-detail" id="os-score-detail"></div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-1">
+          <span class="quiz-num">W2 | 1번 (10점)</span>
+          <div class="quiz-question">CPU가 입출력 장치의 상태를 주기적으로 계속 확인하는 비효율적인 방식인 '폴링'과 달리, 하드웨어 장치가 작업 완료를 CPU에 직접 신호로 알려 처리하는 방식을 무엇이라 하는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="인터럽트" data-alt="interrupt,인터럽트 방식"></div>
+          <div class="explanation" id="os-explain-1"><strong>정답: 인터럽트 (Interrupt)</strong><br>해설: 인터럽트는 비동기적으로 CPU에 신호를 전달하여 폴링의 자원 낭비를 방지하는 필수 하드웨어 메커니즘입니다.</div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-2">
+          <span class="quiz-num">W2 | 2번 (10점)</span>
+          <div class="quiz-question">입출력 장치 제어, 메모리 보호 테이블 수정 등 컴퓨터 시스템에 치명적인 영향을 줄 수 있어 오직 '커널 모드'에서만 실행이 허용되는 기계어 명령어를 무엇이라 부르는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="특권 명령" data-alt="특권명령,privileged instruction,특권명령어"></div>
+          <div class="explanation" id="os-explain-2"><strong>정답: 특권 명령 (Privileged Instruction)</strong><br>해설: 사용자 모드에서 특권 명령을 실행하려고 시도하면 하드웨어가 트랩(예외)을 발생시켜 명령 실행을 차단합니다.</div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-3">
+          <span class="quiz-num">W2 | 3번 (10점)</span>
+          <div class="quiz-question">사용자 모드에서 실행 중인 응용 프로그램이 운영체제의 하드웨어 접근이나 커널 서비스를 요청하기 위해 소프트웨어 인터럽트(트랩)를 발생시켜 커널 모드로 진입하는 공식 통로를 무엇이라 하는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="시스템 호출" data-alt="시스템 콜,system call,시스템호출,시스템콜"></div>
+          <div class="explanation" id="os-explain-3"><strong>정답: 시스템 호출 (System Call)</strong><br>해설: 일반 함수 호출과 달리 시스템 호출은 사용자 모드에서 커널 모드로의 안전한 모드 전환(Mode Switch)을 수반합니다.</div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-4">
+          <span class="quiz-num">W3 | 4번 (10점)</span>
+          <div class="quiz-question">CPU가 실행 중에 바라보는 '논리/가상 주소'를 메인 메모리의 실제 '물리 주소'로 실시간 변환해주는 하드웨어 장치의 영문 약칭은 무엇인가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="MMU" data-alt="mmu,Memory Management Unit,메모리관리장치"></div>
+          <div class="explanation" id="os-explain-4"><strong>정답: MMU (Memory Management Unit)</strong><br>해설: MMU는 베이스 레지스터, 페이지 테이블 등을 참조하여 논리 주소를 물리 주소로 고속 변환합니다.</div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-5">
+          <span class="quiz-num">W3 | 5번 (10점)</span>
+          <div class="quiz-question">메모리 할당 기법 중, 할당된 고정 블록 크기보다 프로세스가 실제로 요구한 크기가 작아서 블록 내부의 남는 공간이 낭비되는 현상을 무엇이라 하는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="내부 단편화" data-alt="내부단편화,internal fragmentation,내부 단편화 현상"></div>
+          <div class="explanation" id="os-explain-5"><strong>정답: 내부 단편화 (Internal Fragmentation)</strong><br>해설: 페이징 기법에서는 외부 단편화는 완전히 사라지지만, 프로세스의 마지막 페이지 등에서 내부 단편화가 발생할 수 있습니다.</div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-6">
+          <span class="quiz-num">W3 | 6번 (10점)</span>
+          <div class="quiz-question">페이징(Paging) 기법에서 프로세스의 논리 주소 공간을 나눈 고정 크기 블록을 '페이지(Page)'라고 할 때, 메인 메모리(물리 메모리)를 동일한 크기로 나눈 블록을 무엇이라 하는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="프레임" data-alt="frame,페이지 프레임,페이지프레임"></div>
+          <div class="explanation" id="os-explain-6"><strong>정답: 프레임 (Frame / Page Frame)</strong><br>해설: 페이지는 논리적 단위, 프레임은 물리적 단위이며 둘의 크기는 완전히 동일합니다.</div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-7">
+          <span class="quiz-num">W4 | 7번 (10점)</span>
+          <div class="quiz-question">프로세스 메모리 주소 공간에서 C언어의 malloc()이나 C++의 new 연산자처럼 프로그램 실행 중에 동적으로 메모리를 할당받는 영역의 명칭은 무엇인가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="힙" data-alt="heap,힙 영역,힙영역"></div>
+          <div class="explanation" id="os-explain-7"><strong>정답: 힙 (Heap)</strong><br>해설: 동적 할당 공간인 힙은 낮은 주소에서 높은 주소 방향으로 자라나며, 함수 지역 변수를 담는 스택(Stack)과 반대 방향으로 확장됩니다.</div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-8">
+          <span class="quiz-num">W4 | 8번 (10점)</span>
+          <div class="quiz-question">프로세스가 참조하려는 페이지가 현재 물리 메모리에 적재되어 있지 않을 때(무효 비트), 하드웨어가 운영체제에 발생시키는 트랩(예외) 현상을 무엇이라 하는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="페이지 폴트" data-alt="페이지 부재,page fault,페이지폴트,페이지부재"></div>
+          <div class="explanation" id="os-explain-8"><strong>정답: 페이지 폴트 (Page Fault, 페이지 부재)</strong><br>해설: 페이지 폴트가 발생하면 운영체제는 해당 페이지를 보조기억장치에서 메모리로 읽어와 적재한 뒤 명령을 재개합니다.</div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-9">
+          <span class="quiz-num">W4 | 9번 (10점)</span>
+          <div class="quiz-question">가상 메모리 시스템에서 페이지 부재율이 너무 높아져 프로세스들이 CPU 실행보다 페이지 교체(디스크 I/O)에 대부분의 시간을 쓰게 됨으로써 시스템 성능이 급격히 저하되는 현상은?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="스래싱" data-alt="thrashing,쓰레싱"></div>
+          <div class="explanation" id="os-explain-9"><strong>정답: 스래싱 (Thrashing)</strong><br>해설: 다중 프로그래밍 정도가 너무 높아 각 프로세스에 할당된 프레임 수가 부족할 때 스래싱이 발생합니다.</div>
+        </div>
+
+        <div class="quiz-card" id="os-qcard-10">
+          <span class="quiz-num">W4 | 10번 (10점)</span>
+          <div class="quiz-question">리눅스 및 유닉스 계열 운영체제에서 컴파일된 실행 파일 및 오브젝트 파일의 표준 파일 포맷을 일컫는 영문 약칭(4글자)은 무엇인가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input os-quiz-input" style="width:220px;" data-ans="ELF" data-alt="elf,Executable and Linkable Format"></div>
+          <div class="explanation" id="os-explain-10"><strong>정답: ELF (Executable and Linkable Format)</strong><br>해설: ELF는 코드(.text), 데이터(.data), 심볼 테이블, 섹션 헤더 등을 체계적으로 정의한 실행 파일 형식입니다.</div>
+        </div>
+      </section>
+
+      <!-- OS Notes View -->
+      <section id="os-view-notes" class="view-section">
+        <div class="quiz-controls">
+          <div>
+            <h2 style="font-size:1.15rem; font-weight:700;">운영체제론 필기 모아보기</h2>
+            <p style="font-size:0.85rem; color:var(--text-muted);">운영체제론 과목에서 작성된 모든 강의 필기 목록입니다.</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-secondary" onclick="window.print()">🖨️ 필기 인쇄</button>
+            <button class="btn btn-primary" onclick="copyOsNotes()">📋 필기 전체 복사</button>
+          </div>
+        </div>
+        <div id="os-all-notes-display"></div>
+      </section>
+    </main>
+  </div><!-- end #subject-os -->
+
+
+  <!-- ======================================================== -->
+  <!-- SUBJECT 4: 데이터베이스 (Chap 1 ~ Chap 3 및 보충)             -->
+  <!-- ======================================================== -->
+  <div id="subject-db" class="subject-panel" style="display:none;">
+    <header>
+      <div class="container">
+        <div class="header-top">
+          <div class="title-group">
+            <h1>데이터베이스 (Database Systems)</h1>
+            <p>2026 중간고사 핵심 대비 서머리노트 & 실전 퀴즈 (Chap 1 ~ Chap 3 & ER Mapping/Key/IC)</p>
+          </div>
+          <div class="exam-badge" style="background:#e0f2fe; color:#0369a1; border-color:#bae6fd;">
+            <span>🎯 시험 범위: Chap 1 개요/3단계스키마 · Chap 2 ERD · Chap 3 관계모델 · Key종류 · 무결성(IC) · ER Mapping</span>
+          </div>
+        </div>
+        <nav class="nav-tabs">
+          <button class="tab-btn active" onclick="switchDbMainTab('concepts')">📖 핵심 개념 & 필기장</button>
+          <button class="tab-btn" onclick="switchDbMainTab('quiz')">✍️ 실전 모의 퀴즈 (10문항)</button>
+          <button class="tab-btn" onclick="switchDbMainTab('notes')">📋 데이터베이스 필기 모아보기</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- DB Concepts View -->
+      <section id="db-view-concepts" class="view-section active">
+        <div class="sub-nav">
+          <button class="sub-btn active" onclick="switchDbChapter('ch1')">Chap 1. DBMS 개요 & 3단계 스키마</button>
+          <button class="sub-btn" onclick="switchDbChapter('ch2')">Chap 2. ER 모델 & 제약조건</button>
+          <button class="sub-btn" onclick="switchDbChapter('ch3')">Chap 3. 관계 모델, Key의 종류 & 무결성(IC)</button>
+          <button class="sub-btn" onclick="switchDbChapter('ch3mapping')">Chap 3-1. ER-to-Relational Mapping (사상)</button>
+        </div>
+
+        <!-- Chap 1 Content -->
+        <div id="db-content-ch1" class="db-chapter-block">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. DBMS의 필요성과 3단계 데이터베이스 스키마</span>
+              <span class="badge">Chap 1 요약</span>
+            </div>
+            <div class="concept-content">
+              <h4>파일 처리 시스템(File System)의 한계와 DBMS 등장 이유</h4>
+              <ul>
+                <li><strong>데이터 중복성 (Data Redundancy):</strong> 동일한 데이터가 여러 파일에 중복 저장되어 저장 공간 낭비.</li>
+                <li><strong>데이터 불일치성 (Inconsistency):</strong> 중복된 데이터 중 일부만 수정되어 데이터 간 모순 발생.</li>
+                <li><strong>데이터 종속성 (Dependency):</strong> 데이터 파일의 구조가 바뀌면 응용 프로그램도 함께 수정해야 함.</li>
+              </ul>
+
+              <h4>3단계 데이터베이스 구조 (3-Level Architecture) & 데이터 독립성</h4>
+              <ul>
+                <li><strong>1) 외부 스키마 (External Schema):</strong> 각 사용자 또는 응용 프로그램 관점에서의 데이터베이스 정의 (사용자 뷰).</li>
+                <li><strong>2) 개념 스키마 (Conceptual Schema):</strong> 조직 전체 관점에서의 데이터베이스 전체 논리적 구조 정의 (통합 뷰, 엔티티, 관계, 제약조건).</li>
+                <li><strong>3) 내부 스키마 (Internal Schema):</strong> 물리적 저장 장치 관점에서의 데이터 저장 구조 및 접근 경로(인덱스) 정의 (물리 뷰).</li>
+                <li><strong>논리적 데이터 독립성:</strong> 개념 스키마가 변경되어도 외부 스키마가 영향을 받지 않음.</li>
+                <li><strong>물리적 데이터 독립성:</strong> 내부 스키마(저장 장치)가 변경되어도 개념 스키마가 영향을 받지 않음.</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (DB - DBMS 개요 & 3단계 스키마)</span>
+                <span class="note-status" id="status-db-ch1-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-db-ch1-p1" placeholder="파일 시스템의 문제점, 외부/개념/내부 스키마와 데이터 독립성 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chap 2 Content -->
+        <div id="db-content-ch2" class="db-chapter-block" style="display:none;">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. 개체-관계 (E-R) 모델의 핵심 요소</span>
+              <span class="badge">Chap 2 요약</span>
+            </div>
+            <div class="concept-content">
+              <ul>
+                <li><strong>엔티티 (Entity):</strong> 실세계에서 독립적으로 식별 가능한 객체나 개념 (사각형으로 표기).</li>
+                <li><strong>애트리뷰트 (Attribute, 속성):</strong> 엔티티의 특성이나 성질 (타원으로 표기).
+                  <br>• <em>단일값 vs 다중값 속성:</em> 다중값 속성은 여러 개의 값을 가질 수 있음 (이중 타원, 예: {전화번호}, {위치}).
+                  <br>• <em>복합 속성:</em> 독립적인 의미를 갖는 더 작은 속성으로 분해 가능 (예: 주소 $
+ightarrow$ 시, 구, 동).
+                  <br>• <em>유도 속성:</em> 다른 속성으로부터 계산되어 결정되는 속성 (점선 타원, 예: 나이).
+                </li>
+                <li><strong>관계 (Relationship):</strong> 둘 이상의 엔티티들 간의 연관성 (마름모로 표기).
+                  <br>• <em>카디널리티 비율 (Cardinality Ratio):</em> 1:1, 1:N, N:M
+                  <br>• <em>참여 제약조건 (Participation Constraints):</em> 
+                  <strong>전체 참여(Total, 이중선)</strong>는 모든 엔티티가 관계에 반드시 참여해야 함, <strong>부분 참여(Partial, 단일선)</strong>는 일부 엔티티만 참여.
+                </li>
+                <li><strong>약한 엔티티 타입 (Weak Entity Type):</strong> 자신의 키 애트리뷰트가 없어 독자적으로 식별할 수 없는 엔티티 (이중 사각형). 
+                  <br>소유자 엔티티(Owner Entity)의 기본키와 자신의 <strong>부분키(Partial Key, 점선 밑줄)</strong>를 결합하여 식별됨 (식별 관계는 이중 마름모).</li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (DB - ERD 구성 요소 & 약한 엔티티)</span>
+                <span class="note-status" id="status-db-ch2-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-db-ch2-p1" placeholder="ERD 심볼, Total/Partial 참여 제약, 약한 엔티티와 식별관계 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chap 3 Content -->
+        <div id="db-content-ch3" class="db-chapter-block" style="display:none;">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. 관계 모델의 구조와 Key의 종류</span>
+              <span class="badge">Chap 3 · 3-2 핵심</span>
+            </div>
+            <div class="concept-content">
+              <h4>관계 모델 용어 정리</h4>
+              <ul>
+                <li><strong>릴레이션 (Relation):</strong> 2차원의 테이블 구조.</li>
+                <li><strong>튜플 (Tuple):</strong> 테이블의 각 행(Row). 튜플의 총 개수를 **카디널리티(Cardinality)**라 함.</li>
+                <li><strong>애트리뷰트 (Attribute):</strong> 테이블의 열(Column). 애트리뷰트의 총 개수를 **차수(Degree)**라 함.</li>
+                <li><strong>도메인 (Domain):</strong> 하나의 애트리뷰트가 가질 수 있는 원자값들의 집합.</li>
+              </ul>
+
+              <h4>Key의 5가지 종류 (완벽 비교)</h4>
+              <table>
+                <thead><tr><th>키의 종류</th><th>유일성 (Uniqueness)</th><th>최소성 (Minimality)</th><th>특징 및 설명</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>슈퍼키 (Super Key)</strong></td><td>O (만족)</td><td>X (불필요)</td><td>튜플을 고유하게 식별할 수 있는 애트리뷰트(들의 집합)</td></tr>
+                  <tr><td><strong>후보키 (Candidate Key)</strong></td><td><strong>O (만족)</strong></td><td><strong>O (만족)</strong></td><td>유일성과 최소성을 모두 만족하는 키</td></tr>
+                  <tr><td><strong>기본키 (Primary Key, PK)</strong></td><td><strong>O (만족)</strong></td><td><strong>O (만족)</strong></td><td>후보키 중 릴레이션의 대표 식별자로 선택된 키 (NULL 불가)</td></tr>
+                  <tr><td><strong>대체키 (Alternate Key)</strong></td><td>O (만족)</td><td>O (만족)</td><td>후보키 중 기본키로 선택되지 않은 나머지 키</td></tr>
+                  <tr><td><strong>외래키 (Foreign Key, FK)</strong></td><td>-</td><td>-</td><td>다른 릴레이션의 기본키(PK)를 참조하는 애트리뷰트</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (DB - Key의 종류 완벽 정리)</span>
+                <span class="note-status" id="status-db-ch3-p1">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-db-ch3-p1" placeholder="슈퍼키, 후보키(유일성+최소성), 기본키, 외래키 차이점 필기..."></textarea>
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="card-title">
+              <span>2. 무결성 제약조건 (Integrity Constraints: IC)</span>
+              <span class="badge">Chap 3-3 핵심</span>
+            </div>
+            <div class="concept-content">
+              <p><strong>무결성 제약조건:</strong> 데이터베이스에 저장된 데이터의 정확성과 유효성을 보장하기 위해 정의하는 규칙.</p>
+              <ul>
+                <li><strong>1) 개체 무결성 제약조건 (Entity Integrity):</strong>
+                  <br>기본키(Primary Key)를 구성하는 어떤 애트리뷰트도 <strong>NULL 값을 가질 수 없으며, 중복될 수 없다</strong>.
+                </li>
+                <li><strong>2) 참조 무결성 제약조건 (Referential Integrity):</strong>
+                  <br>외래키(Foreign Key) 값은 반드시 참조하는 릴레이션의 <strong>기본키(PK) 값과 일치하거나, 또는 NULL 값</strong>이어야 한다.
+                </li>
+                <li><strong>3) 도메인 무결성 제약조건 (Domain Integrity):</strong>
+                  <br>모든 애트리뷰트의 값은 정의된 도메인에 속한 원자값(Atomic Value)이어야 한다.
+                </li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (DB - 무결성 제약조건 IC)</span>
+                <span class="note-status" id="status-db-ch3-p2">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-db-ch3-p2" placeholder="개체 무결성(PK Not Null)과 참조 무결성(FK 규칙) 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chap 3-1 Mapping Content -->
+        <div id="db-content-ch3mapping" class="db-chapter-block" style="display:none;">
+          <div class="concept-card">
+            <div class="card-title">
+              <span>1. ERD에서 관계형 모델로의 사상 (ER Mapping 규칙)</span>
+              <span class="badge">Chap 3-1 핵심</span>
+            </div>
+            <div class="concept-content">
+              <h4>관계의 사상 (Mapping) 원칙</h4>
+              <ul>
+                <li><strong>1 : N 관계 사상:</strong>
+                  <br>• 원칙: <strong>'N' 쪽의 릴레이션</strong>에 '1' 쪽 릴레이션의 <strong>기본키(PK)를 외래키(FK)로 내장(Embed)</strong>시킨다.
+                  <br>• (예: 부서 1 : 사원 N $
+ightarrow$ 사원 릴레이션에 <code>부서명(FK)</code> 추가).
+                </li>
+                <li><strong>M : N 관계 사상:</strong>
+                  <br>• 원칙: 관계 자체를 위한 <strong>별도의 새로운 릴레이션(교차 릴레이션)을 생성</strong>한다.
+                  <br>• 양쪽 릴레이션의 PK를 가져와 외래키(FK)로 내장하고, 이들을 묶어 복합 기본키(PK)로 설정한다. (관계의 자체 속성도 포함).
+                  <br>• (예: 사원 M : 프로젝트 N 수행 관계 $
+ightarrow$ <code>수행(사원번호(FK), 프로젝트번호(FK), 시간수)</code>).
+                </li>
+                <li><strong>1 : 1 관계 사상:</strong>
+                  <br>• 한쪽 릴레이션의 PK를 다른 쪽에 FK로 내장 (보통 전체 참여하는 쪽에 내장하여 NULL 방지).
+                </li>
+                <li><strong>다중값 속성 사상:</strong>
+                  <br>• 관계 모델은 원자값만 허용하므로, <strong>다중값 속성을 위한 별도의 릴레이션을 생성</strong>하고 [원래 릴레이션의 PK + 해당 속성]을 묶어 PK로 설정.
+                </li>
+                <li><strong>약한 엔티티 사상:</strong>
+                  <br>• 약한 엔티티 릴레이션에 <strong>소유자(Owner)의 PK를 FK로 내장</strong>시키고, [소유자 PK + 부분키]를 묶어 복합 기본키로 지정.
+                </li>
+              </ul>
+            </div>
+            <div class="note-container">
+              <div class="note-header">
+                <span class="note-label">📝 나만의 필기 (DB - ER Mapping 규칙)</span>
+                <span class="note-status" id="status-db-ch3-p3">자동 저장됨</span>
+              </div>
+              <textarea class="note-textarea" id="note-db-ch3-p3" placeholder="1:N 사상(N쪽에 FK), M:N 사상(새 테이블 생성), 다중값/약한엔티티 사상 필기..."></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DB Quiz View (10문항) -->
+      <section id="db-view-quiz" class="view-section">
+        <div class="quiz-controls">
+          <div>
+            <h2 style="font-size:1.15rem; font-weight:700;">데이터베이스 실전 모의 퀴즈 (10문항)</h2>
+            <p style="font-size:0.85rem; color:var(--text-muted);">중간고사 핵심 키워드 주관식/단답식 10문항입니다 (문항당 10점, 100점 만점).</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" onclick="gradeDbQuiz()">정답 제출 & 채점</button>
+            <button class="btn btn-secondary" onclick="resetDbQuiz()">다시 풀기</button>
+          </div>
+        </div>
+
+        <div id="db-score-banner" class="score-banner">
+          <div>데이터베이스 시험 결과</div>
+          <div class="score-num" id="db-score-display">0 / 100점</div>
+          <div class="score-detail" id="db-score-detail"></div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-1">
+          <span class="quiz-num">Chap 1 | 1번 (10점)</span>
+          <div class="quiz-question">3단계 데이터베이스 스키마 구조 중, 개별 사용자나 응용 프로그램의 관점에서 데이터베이스의 필요한 부분만을 정의한 '사용자 뷰' 스키마는 무엇인가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="외부 스키마" data-alt="외부스키마,external schema"></div>
+          <div class="explanation" id="db-explain-1"><strong>정답: 외부 스키마 (External Schema)</strong><br>해설: 3단계 스키마는 사용자 관점의 '외부 스키마', 조직 전체 통합 관점의 '개념 스키마', 물리적 저장 관점의 '내부 스키마'로 구성됩니다.</div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-2">
+          <span class="quiz-num">Chap 2 | 2번 (10점)</span>
+          <div class="quiz-question">E-R 모델에서 전화번호나 위치처럼 하나의 엔티티에 대해 둘 이상의 속성값을 가질 수 있어 ERD에서 이중 타원으로 표현하는 속성의 명칭은 무엇인가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="다중값 속성" data-alt="다중값속성,multivalued attribute,다치 속성,다치속성"></div>
+          <div class="explanation" id="db-explain-2"><strong>정답: 다중값 속성 (Multivalued Attribute)</strong><br>해설: 관계 데이터 모델은 다중값 속성을 허용하지 않으므로 사상(Mapping) 시 별도의 독립 릴레이션으로 분리해야 합니다.</div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-3">
+          <span class="quiz-num">Chap 2 | 3번 (10점)</span>
+          <div class="quiz-question">자신의 속성만으로는 독자적인 키를 형성할 수 없어 상위 소유자 엔티티의 기본키와 자신의 부분키를 결합해야만 식별되는 엔티티 타입을 무엇이라 부르는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="약한 엔티티" data-alt="약한 엔티티 타입,약한엔티티,weak entity,약한 개체"></div>
+          <div class="explanation" id="db-explain-3"><strong>정답: 약한 엔티티 타입 (Weak Entity Type)</strong><br>해설: ERD에서 이중 사각형으로 표기하며, 소유자와의 관계는 이중 마름모(식별 관계)로 표현됩니다. (예: 사원-부양가족).</div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-4">
+          <span class="quiz-num">Chap 3 | 4번 (10점)</span>
+          <div class="quiz-question">관계 데이터 모델에서 릴레이션이 포함하고 있는 튜플(행, Row)들의 총 개수를 일컫는 데이터베이스 용어는 무엇인가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="카디널리티" data-alt="cardinality,카디낼리티"></div>
+          <div class="explanation" id="db-explain-4"><strong>정답: 카디널리티 (Cardinality)</strong><br>해설: 튜플의 총 개수는 '카디널리티'이고, 애트리뷰트(열, Column)의 총 개수는 '차수(Degree)'라고 부릅니다.</div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-5">
+          <span class="quiz-num">Chap 3-2 | 5번 (10점)</span>
+          <div class="quiz-question">릴레이션의 튜플들을 고유하게 구별할 수 있는 키 중에서 '유일성(Uniqueness)'과 '최소성(Minimality)'을 모두 만족하는 키를 무엇이라 부르는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="후보키" data-alt="candidate key,후보 키"></div>
+          <div class="explanation" id="db-explain-5"><strong>정답: 후보키 (Candidate Key)</strong><br>해설: 슈퍼키는 유일성만 만족하면 되지만, 후보키는 유일성과 최소성을 모두 만족해야 하며 후보키 중 하나가 기본키(PK)로 선정됩니다.</div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-6">
+          <span class="quiz-num">Chap 3-2 | 6번 (10점)</span>
+          <div class="quiz-question">한 릴레이션의 애트리뷰트 중에서 다른 릴레이션의 기본키(Primary Key)를 참조하는 속성을 무엇이라 하는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="외래키" data-alt="foreign key,외래 키,FK"></div>
+          <div class="explanation" id="db-explain-6"><strong>정답: 외래키 (Foreign Key)</strong><br>해설: 외래키는 릴레이션 간의 연관 관계를 맺어주고 참조 무결성을 유지하는 데 사용됩니다.</div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-7">
+          <span class="quiz-num">Chap 3-3 | 7번 (10점)</span>
+          <div class="quiz-question">기본키(Primary Key)를 구성하는 어떠한 애트리뷰트도 NULL 값을 가질 수 없으며 중복되어서는 안 된다는 무결성 제약조건의 명칭은 무엇인가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="개체 무결성" data-alt="개체 무결성 제약조건,개체무결성,entity integrity"></div>
+          <div class="explanation" id="db-explain-7"><strong>정답: 개체 무결성 제약조건 (Entity Integrity Constraint)</strong><br>해설: 기본키는 튜플을 고유하게 식별하는 유일한 기준이므로 어떠한 경우에도 NULL이 될 수 없습니다.</div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-8">
+          <span class="quiz-num">Chap 3-3 | 8번 (10점)</span>
+          <div class="quiz-question">외래키(Foreign Key) 값은 반드시 참조하는 대상 릴레이션의 기본키 값과 일치하거나, 또는 NULL 값이어야 한다는 무결성 제약조건은 무엇인가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="참조 무결성" data-alt="참조 무결성 제약조건,참조무결성,referential integrity"></div>
+          <div class="explanation" id="db-explain-8"><strong>정답: 참조 무결성 제약조건 (Referential Integrity Constraint)</strong><br>해설: 참조할 수 없는 엉뚱한 값을 외래키로 저장하여 데이터 관계가 깨지는 것을 방지합니다.</div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-9">
+          <span class="quiz-num">Chap 3-1 | 9번 (10점)</span>
+          <div class="quiz-question">ERD에서 '1 : N' 이진 관계를 관계형 모델로 사상(Mapping)할 때, 일반적으로 1-side와 n-side 중 어느 쪽 릴레이션에 상대방의 기본키를 외래키(FK)로 내장(Embed)시키는가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="N" data-alt="n,N-side,n-side,N쪽,n쪽"></div>
+          <div class="explanation" id="db-explain-9"><strong>정답: N (또는 N-side)</strong><br>해설: 1쪽에 외래키를 넣으면 다중값(Multivalued) 속성이 되거나 중복이 발생하므로, 항상 'N' 쪽 릴레이션에 1쪽의 PK를 외래키로 추가해야 합니다.</div>
+        </div>
+
+        <div class="quiz-card" id="db-qcard-10">
+          <span class="quiz-num">Chap 3-1 | 10번 (10점)</span>
+          <div class="quiz-question">ERD에서 'M : N' 다대다 관계를 관계형 모델로 사상할 때, 기존 두 엔티티 릴레이션 외에 추가로 관계 자체를 나타내기 위해 생성해야 하는 것은 무엇인가?</div>
+          <div style="margin-top:10px;">답안: <input type="text" class="blank-input db-quiz-input" style="width:220px;" data-ans="새로운 릴레이션" data-alt="새로운 relation,별도 릴레이션,교차 릴레이션,연결 릴레이션,새로운 테이블"></div>
+          <div class="explanation" id="db-explain-10"><strong>정답: 새로운 릴레이션 (별도 테이블/교차 릴레이션)</strong><br>해설: M:N 관계는 어느 한쪽에 외래키를 넣을 수 없으므로, 관계를 위한 독립된 새로운 릴레이션을 생성하여 양쪽의 PK를 외래키이자 복합 기본키로 구성합니다.</div>
+        </div>
+      </section>
+
+      <!-- DB Notes View -->
+      <section id="db-view-notes" class="view-section">
+        <div class="quiz-controls">
+          <div>
+            <h2 style="font-size:1.15rem; font-weight:700;">데이터베이스 필기 모아보기</h2>
+            <p style="font-size:0.85rem; color:var(--text-muted);">데이터베이스 과목에서 작성된 모든 강의 필기 목록입니다.</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-secondary" onclick="window.print()">🖨️ 필기 인쇄</button>
+            <button class="btn btn-primary" onclick="copyDbNotes()">📋 필기 전체 복사</button>
+          </div>
+        </div>
+        <div id="db-all-notes-display"></div>
+      </section>
+    </main>
+  </div><!-- end #subject-db -->
+
+
+
+  <script>
+    /* ========================================================
+       DATA: 객관식 20문항 (중간고사 범위 Lec2~Lec6 엄선)
+       ======================================================== */
+    const choiceQuizData = [
+      {
+        id: 1,
+        lec: "Lec 2",
+        q: "선형 회귀(Linear Regression)에서 비용 함수로 주로 사용되는 평균제곱오차(MSE)의 설명으로 가장 올바르지 않은 것은?",
+        options: [
+          "실제값과 모델의 예측값 사이의 차이를 제곱하여 평균을 낸 것이다.",
+          "오차를 제곱하기 때문에 오차가 클수록 비용 값에 부여되는 페널티가 기하급수적으로 커진다.",
+          "비용 함수의 값이 0에 가까울수록 모델의 예측이 완벽함을 의미한다.",
+          "MSE는 분류 문제에서 시그모이드 함수와 결합할 때 항상 빠른 수렴 속도를 보장한다."
+        ],
+        answer: 3,
+        explain: "정답 ④. MSE는 회귀에는 적합하지만, 분류 문제에서 시그모이드 함수와 결합하면 오차가 클 때도 기울기 소실이 발생하여 수렴 속도가 매우 느려집니다. 따라서 분류에는 크로스 엔트로피를 사용합니다."
+      },
+      {
+        id: 2,
+        lec: "Lec 2",
+        q: "로젠블랫의 단층 퍼셉트론(Perceptron)에 대한 설명 중 옳은 것은?",
+        options: [
+          "활성화 함수로 반드시 시그모이드나 ReLU 함수를 사용해야만 동작한다.",
+          "입력 벡터와 가중치의 선형 결합 결과에 계단 함수(Step Function)를 적용하여 이진 분류를 수행한다.",
+          "단 하나의 퍼셉트론으로 AND, OR, XOR 문제를 모두 완벽하게 분류할 수 있다.",
+          "예측이 정답과 일치하더라도 매 스텝마다 가중치가 일정 비율로 갱신된다."
+        ],
+        answer: 1,
+        explain: "정답 ②. 전통적인 로젠블랫 퍼셉트론은 선형 결합 후 임계값을 넘는지 판단하는 계단 함수를 활성화 함수로 사용하며, 정답을 맞힌 경우에는 오차가 0이므로 가중치가 갱신되지 않습니다."
+      },
+      {
+        id: 3,
+        lec: "Lec 2",
+        q: "단층 퍼셉트론이 해결하지 못한 'XOR 문제'의 근본적인 원인은 무엇인가?",
+        options: [
+          "가중치의 초기값이 0으로 설정되었기 때문에",
+          "XOR 논리 연산의 진리표 데이터는 2차원 평면상에서 단 하나의 직선으로 선형 분리(Linearly Separable)가 불가능하기 때문에",
+          "입력 데이터의 개수가 너무 많아서 오버피팅이 발생하기 때문에",
+          "학습률(Learning Rate)이 너무 크게 설정되었기 때문에"
+        ],
+        answer: 1,
+        explain: "정답 ②. XOR는 (0,0)->0, (0,1)->1, (1,0)->1, (1,1)->0 형태로, 2차원 평면상에서 하나의 직선으로는 두 클래스를 나눌 수 없는 '비선형 분리' 문제입니다. 이는 은닉층을 갖는 다층 퍼셉트론(MLP)을 통해 해결되었습니다."
+      },
+      {
+        id: 4,
+        lec: "Lec 3",
+        q: "신경망에서 선형 함수 대신 비선형 활성화 함수(Activation Function)를 반드시 사용해야 하는 이유는?",
+        options: [
+          "선형 활성화 함수를 쓰면 계산 복잡도가 기하급수적으로 늘어나기 때문이다.",
+          "선형 함수만을 여러 층 중첩하면 결국 단일 선형 변환과 수학적으로 동일해져 은닉층을 깊게 쌓는 의미가 사라지기 때문이다.",
+          "선형 함수는 역전파 시 미분 자체가 불가능하기 때문이다.",
+          "선형 함수를 사용하면 항상 오버피팅(과적합)이 발생하기 때문이다."
+        ],
+        answer: 1,
+        explain: "정답 ②. 선형 변환 W2(W1*x + b1) + b2는 W'x + b'라는 하나의 선형 변환으로 축약됩니다. 따라서 층을 깊게 쌓아 복잡한 비선형 패턴을 학습하려면 비선형 활성화 함수가 필수입니다."
+      },
+      {
+        id: 5,
+        lec: "Lec 3",
+        q: "시그모이드(Sigmoid) 함수의 단점으로 올바른 것만을 모두 고른 것은?",
+        options: [
+          "입력의 절댓값이 커질수록 미분값이 0에 수렴하여 심각한 기울기 소실(Vanishing Gradient)을 유발한다.",
+          "함수의 출력이 항상 양수(0~1)여서 원점 대칭이 아니므로 가중치 업데이트 시 지그재그(Zig-zag) 현상이 발생한다.",
+          "최대 미분값이 0.25에 불과하여 층이 깊어질수록 오차 신호가 급격히 약화된다.",
+          "위의 모든 항목이 시그모이드의 단점이다."
+        ],
+        answer: 3,
+        explain: "정답 ④. 시그모이드는 기울기 소실(양 끝단 미분 0), 최대 미분값 0.25, 원점 비대칭(항상 양수)이라는 대표적인 단점들을 모두 갖고 있습니다."
+      },
+      {
+        id: 6,
+        lec: "Lec 3",
+        q: "ReLU(Rectified Linear Unit) 함수와 Leaky ReLU 함수에 대한 설명으로 옳지 않은 것은?",
+        options: [
+          "ReLU는 x > 0인 구간에서 미분값이 1이므로 시그모이드에 비해 기울기 소실 문제를 크게 완화한다.",
+          "ReLU는 단순 임계값 비교 연산이므로 지수함수를 계산하는 시그모이드보다 연산 속도가 매우 빠르다.",
+          "ReLU는 음수 입력 영역에서 출력이 0이고 기울기도 0이 되어 뉴런이 죽는 'Dying ReLU' 현상이 발생할 수 있다.",
+          "Leaky ReLU는 x < 0인 영역의 출력을 무조건 0으로 만들어 노이즈를 완벽히 제거하는 함수이다."
+        ],
+        answer: 3,
+        explain: "정답 ④. Leaky ReLU는 음수 영역(x < 0)에서도 max(0.01x, x)처럼 아주 작은 기울기를 허용함으로써 뉴런이 영구히 비활성화되는 Dying ReLU 문제를 해결하기 위해 고안된 함수입니다."
+      },
+      {
+        id: 7,
+        lec: "Lec 3",
+        q: "경사하강법(Gradient Descent)에서 학습률(Learning Rate)을 부적절하게 설정했을 때 발생하는 현상으로 가장 올바른 설명은?",
+        options: [
+          "학습률이 지나치게 크면 최솟값을 지나쳐 손실이 발산(Overshooting)할 수 있다.",
+          "학습률이 지나치게 작으면 손실이 음수로 떨어지는 언더플로우 현상이 일어난다.",
+          "학습률이 크면 항상 로컬 미니마(Local Minima)에 갇히게 된다.",
+          "학습률의 크기는 가중치 갱신의 보폭과는 아무런 관련이 없다."
+        ],
+        answer: 0,
+        explain: "정답 ①. 학습률이 너무 크면 최적점을 지나쳐 진동하거나 발산(Overshooting)하며, 너무 작으면 학습 속도가 지나치게 느려집니다."
+      },
+      {
+        id: 8,
+        lec: "Lec 4",
+        q: "역전파(Backpropagation) 알고리즘의 핵심 수학적 원리는 무엇인가?",
+        options: [
+          "테일러 급수 (Taylor Series)",
+          "연쇄 법칙 (Chain Rule)",
+          "라그랑주 승수법 (Lagrange Multiplier)",
+          "몬테카를로 적분 (Monte Carlo Integration)"
+        ],
+        answer: 1,
+        explain: "정답 ②. 역전파는 합성함수의 미분법인 연쇄 법칙(체인룰, Chain Rule)을 활용하여 출력층에서 계산된 오차를 뒤에서부터 각 은닉층 가중치까지의 편미분값들로 곱해나가며 계산합니다."
+      },
+      {
+        id: 9,
+        lec: "Lec 4",
+        q: "이미지 처리를 위해 완전연결층(FC Layer) 대신 CNN(합성곱 신경망)을 사용하는 주요 이유로 가장 적절한 것은?",
+        options: [
+          "FC Layer는 이미지를 1차원으로 펼치면서 2차원 공간적 구조(인접 픽셀 관계) 정보를 상실하기 때문이다.",
+          "FC Layer는 활성화 함수를 전혀 사용할 수 없기 때문이다.",
+          "CNN은 이미지의 모든 픽셀마다 완전히 독립된 별도의 가중치를 배정하기 때문이다.",
+          "FC Layer는 기울기 역전파를 수행할 수 없기 때문이다."
+        ],
+        answer: 0,
+        explain: "정답 ①. FC Layer는 2차원 이미지를 1차원 벡터로 평탄화하여 공간적 정보(위상, 인접성)가 파괴되고 파라미터가 급증합니다. CNN은 합성곱 연산을 통해 공간적 특성을 보존하고 가중치를 공유합니다."
+      },
+      {
+        id: 10,
+        lec: "Lec 4",
+        q: "CNN의 입력 이미지 크기가 7x7, 필터(커널) 크기가 3x3, 패딩(Padding)이 1, 스트라이드(Stride)가 1일 때, 출력 특성 맵(Feature Map)의 가로 크기는 얼마인가?",
+        options: [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        answer: 2,
+        explain: "정답 ③. 출력 크기 공식 O = (W - F + 2P)/S + 1 = (7 - 3 + 2*1)/1 + 1 = (6)/1 + 1 = 7. 즉 입력 크기와 동일한 7x7이 됩니다."
+      },
+      {
+        id: 11,
+        lec: "Lec 4",
+        q: "CNN의 풀링 층(Pooling Layer, 예: Max Pooling)에 대한 설명 중 가장 옳지 않은 것은?",
+        options: [
+          "특성 맵의 공간적 크기를 줄여(다운샘플링) 연산량과 메모리 소모를 줄인다.",
+          "미세한 위치 변화나 왜곡에 덜 민감하게 만드는 위치 불변성(Translation Invariance)을 부여한다.",
+          "풀링 층은 경사하강법을 통해 역전파로 학습되는 가중치 파라미터를 많이 가지고 있다.",
+          "Max Pooling은 해당 영역에서 가장 강한 특징 신호(최댓값)만을 보존한다."
+        ],
+        answer: 2,
+        explain: "정답 ③. 풀링 층은 단순한 고정 연산(최댓값이나 평균값 추출)만을 수행하므로 역전파로 학습해야 하는 가중치(파라미터)가 전혀 존재하지 않습니다."
+      },
+      {
+        id: 12,
+        lec: "Lec 5",
+        q: "RNN(순환 신경망)의 기본 구조와 특징에 대한 설명으로 옳은 것은?",
+        options: [
+          "이전 시점의 은닉 상태(Hidden State)를 현재 시점의 입력과 함께 전달받아 순환적으로 계산한다.",
+          "각 타임스텝마다 서로 완전히 다른 가중치 행렬을 사용하여 독립적으로 학습한다.",
+          "시계열 데이터에서 시간 순서와 상관없이 임의로 셔플하여 입력해야 성능이 높다.",
+          "공간적 특징만을 추출하므로 이미지 회전 변환에 특화된 모델이다."
+        ],
+        answer: 0,
+        explain: "정답 ①. RNN은 시계열 데이터의 과거 정보를 보존하는 은닉 상태(Hidden State)를 다음 타임스텝으로 넘겨주는 되먹임 구조를 갖습니다. 모든 타임스텝에서 가중치를 공유합니다."
+      },
+      {
+        id: 13,
+        lec: "Lec 5",
+        q: "기본 RNN에서 시퀀스 길이가 길어질 때 발생하는 '장기 의존성(Long-term Dependency)' 문제의 주요 원인은?",
+        options: [
+          "시퀀스가 길어질수록 파라미터 개수가 비례해서 폭증하기 때문",
+          "시간 축을 따라 펼쳐진 BPTT 역전파 과정에서 tanh 미분값(<=1)과 가중치가 연속 곱해지며 기울기가 0으로 수렴(기울기 소실)하기 때문",
+          "입력 데이터에 패딩(Padding)을 적용할 수 없기 때문",
+          "은닉 상태의 차원이 시간 순서에 따라 자동으로 축소되기 때문"
+        ],
+        answer: 1,
+        explain: "정답 ②. 시간 축을 거슬러 올라가며 미분을 누적 곱하는 BPTT 과정에서 미분값이 1 이하인 함수와 가중치가 연속 곱해져 초반 시점까지 오차 신호가 도달하지 못하는 기울기 소실(Vanishing Gradient)이 발생합니다."
+      },
+      {
+        id: 14,
+        lec: "Lec 5",
+        q: "정보 이론(Information Theory)에서 정보량(Information / Surprisal)에 대한 설명으로 옳은 것은?",
+        options: [
+          "발생 확률이 매우 높은 당연한 사건일수록 정보량이 크다.",
+          "사건 x의 발생 확률이 P(x)일 때 정보량은 I(x) = log(1 / P(x)) = -log(P(x))로 정의된다.",
+          "정보량은 항상 음수의 값을 갖는다.",
+          "정보량은 두 확률분포 사이의 유클리드 거리를 의미한다."
+        ],
+        answer: 1,
+        explain: "정답 ②. 정보량은 '의외성/놀람'의 크기이므로 확률 P(x)가 낮을수록 커지며, I(x) = log(1/P(x)) = -log(P(x))로 계산됩니다."
+      },
+      {
+        id: 15,
+        lec: "Lec 5",
+        q: "다중 클래스 분류 문제에서 손실 함수로 MSE 대신 크로스 엔트로피(Cross-Entropy)를 사용하는 가장 결정적인 이유는?",
+        options: [
+          "크로스 엔트로피는 계산 시 미분이 전혀 필요 없기 때문이다.",
+          "MSE는 오차가 매우 클 때도 시그모이드/소프트맥스 미분항 때문에 기울기가 0에 가까워져 학습이 지체되지만, 크로스 엔트로피는 오차에 비례하는 강력한 기울기를 제공하여 손실을 신속히 최소화하기 때문이다.",
+          "크로스 엔트로피는 항상 파라미터 수를 절반으로 줄여주기 때문이다.",
+          "MSE는 수학적으로 볼록 함수(Convex)이지만 크로스 엔트로피는 비볼록 함수이기 때문이다."
+        ],
+        answer: 1,
+        explain: "정답 ②. 시그모이드와 MSE를 함께 쓰면 예측이 완전히 틀려 오차가 클 때도 시그모이드 미분이 0에 가까워져 학습이 지체됩니다. 크로스 엔트로피는 활성화 함수의 분모와 상쇄되어 기울기가 (예측값 - 실제값) 형태가 되므로 오차가 클수록 빠르게 학습합니다."
+      },
+      {
+        id: 16,
+        lec: "Lec 6",
+        q: "LSTM(Long Short-Term Memory)이 RNN의 장기 의존성 문제를 극복할 수 있었던 핵심 구조적 차이는?",
+        options: [
+          "은닉 상태를 완전히 제거하고 출력층만 유지했기 때문",
+          "정보가 선형적인 덧셈(+) 연산으로 손실 없이 장기간 보존되는 '셀 상태(Cell State, Ct)' 고속도로를 도입했기 때문",
+          "모든 활성화 함수를 계단 함수로 교체했기 때문",
+          "타임스텝마다 서로 다른 신경망 모델을 개별적으로 학습시키기 때문"
+        ],
+        answer: 1,
+        explain: "정답 ②. LSTM은 곱셈의 반복으로 기울기가 사라지는 것을 방지하기 위해 컨베이어 벨트처럼 정보를 덧셈으로 온전히 전달하는 '셀 상태(Cell State)'를 도입했습니다."
+      },
+      {
+        id: 17,
+        lec: "Lec 6",
+        q: "LSTM의 세 가지 게이트(Gate)와 그 역할의 연결로 가장 올바른 것은?",
+        options: [
+          "망각 게이트(ft): 과거 셀 상태(Ct-1)에서 어떤 정보를 버릴지(0) 유지할지(1) 결정한다.",
+          "입력 게이트(it): 이전 시점의 출력을 외부로 내보낼지 여부만 결정한다.",
+          "출력 게이트(ot): 새로운 후보 값의 크기를 결정하며 항상 음수만을 출력한다.",
+          "망각 게이트(ft): 새로운 입력 xt를 강제로 0으로 초기화하는 역할을 한다."
+        ],
+        answer: 0,
+        explain: "정답 ①. 망각 게이트(Forget Gate)는 시그모이드를 통과하여 0(완전 삭제)~1(온전 보존) 사이의 값을 과거 셀 상태에 곱해 어떤 정보를 버릴지 결정합니다."
+      },
+      {
+        id: 18,
+        lec: "Lec 6",
+        q: "배치 경사하강법(Batch Gradient Descent: BGD)의 특징으로 가장 적절한 것은?",
+        options: [
+          "가중치를 한 번 업데이트할 때 무작위 데이터 단 1개만을 사용한다.",
+          "전체 데이터셋을 모두 사용하여 가중치를 업데이트하므로 매우 안정적이고 손실함수 기울기를 정확하게 따른다.",
+          "데이터가 아무리 많아도 메모리와 연산량 부담이 가장 적다.",
+          "매 스텝마다 노이즈가 매우 심해 진동 폭이 극단적으로 크다."
+        ],
+        answer: 1,
+        explain: "정답 ②. 배치 경사하강법(BGD)은 1회 업데이트에 전체 데이터를 모두 사용하므로 안정적이고 정확하지만, 데이터가 클 때 연산 비용이 크다는 단점이 있습니다."
+      },
+      {
+        id: 19,
+        lec: "Lec 6",
+        q: "확률적 경사하강법(Stochastic Gradient Descent: SGD)과 미니배치 경사하강법의 비교 설명 중 옳지 않은 것은?",
+        options: [
+          "SGD는 매 스텝마다 데이터 1개만을 랜덤으로 추출해 가중치를 업데이트하므로 계산 속도가 극도로 빠르다.",
+          "SGD는 개별 데이터 하나의 오차에 민감하게 반응하여 가중치 갱신 시 요동(진동)이 심하다.",
+          "미니배치 경사하강법은 SGD의 효율성과 배치 경사하강법의 안정성을 골고루 갖춘 현대 딥러닝의 표준 기법이다.",
+          "미니배치 경사하강법은 데이터 1개만 쓰는 SGD에 비해 항상 로컬 미니마에 갇혀 절대로 빠져나올 수 없다."
+        ],
+        answer: 3,
+        explain: "정답 ④. 미니배치 경사하강법은 적절한 노이즈와 안정성을 동시에 제공하여 로컬 미니마나 안장점을 효과적으로 탈출하면서도 효율적으로 최적화합니다."
+      },
+      {
+        id: 20,
+        lec: "Lec 6",
+        q: "강의자료에서 소개된 신경망의 '로컬 미니마(Local Minima)' 문제를 개선하기 위한 주요 해결 방안으로 언급되지 않은 것은?",
+        options: [
+          "초기값 설정 (Xavier 초기화, He 초기화 등)",
+          "학습률 조정 알고리즘 (AdaGrad, Adam 등)",
+          "학습데이터 스케줄링 (확률적 경사하강법, 미니배치 경사하강법)",
+          "모든 은닉층의 활성화 함수를 제거하고 항등 함수로 통일하기"
+        ],
+        answer: 3,
+        explain: "정답 ④. 강의 슬라이드(Lec 6 p.355)에서는 로컬 미니마 개선책으로 1) 초기값 설정(Xavier, He), 2) 학습률 조정(AdaGrad, Adam), 3) 학습데이터 스케줄링(SGD, 미니배치)을 명시하고 있습니다. 활성화 함수를 제거하면 비선형 모델 표현력을 상실합니다."
+      }
+    ];
+
+    /* ========================================================
+       CORE APP LOGIC
+       ======================================================== */
+    // Main Tab Switching
+    function switchMainTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+
+      event.target.classList.add('active');
+      document.getElementById('view-' + tabId).classList.add('active');
+
+      if (tabId === 'notes') {
+        renderAllNotes();
+      }
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body);
+      }
+    }
+
+    // Lecture Subtab Switching
+    function switchLecture(lecKey) {
+      document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.lecture-block').forEach(b => b.style.display = 'none');
+
+      event.target.classList.add('active');
+      document.getElementById('lec-content-' + lecKey).style.display = 'block';
+
+      if (window.renderMathInElement) {
+        renderMathInElement(document.getElementById('lec-content-' + lecKey));
+      }
+    }
+
+    // Render Choice Quiz
+    function renderChoiceQuiz() {
+      const container = document.getElementById('choice-quiz-list');
+      container.innerHTML = choiceQuizData.map((item, idx) => `
+        <div class="quiz-card" id="qcard-${item.id}">
+          <span class="quiz-num">${item.lec} | 문항 ${idx + 1} (4점)</span>
+          <div class="quiz-question">${item.q}</div>
+          <div class="quiz-options">
+            ${item.options.map((opt, optIdx) => `
+              <label class="quiz-option" id="opt-label-${item.id}-${optIdx}">
+                <input type="radio" name="choice-q-${item.id}" value="${optIdx}">
+                <span><strong>(${optIdx + 1})</strong> ${opt}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div class="explanation" id="explain-${item.id}">
+            ${item.explain}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Grade Choice Quiz
+    function gradeChoiceQuiz() {
+      const applyPenalty = document.getElementById('penalty-mode').checked;
+      let score = 0;
+      let correctCount = 0;
+      let wrongCount = 0;
+      let unansCount = 0;
+
+      choiceQuizData.forEach(item => {
+        const selected = document.querySelector(`input[name="choice-q-${item.id}"]:checked`);
+        const explainBox = document.getElementById(`explain-${item.id}`);
+        explainBox.style.display = 'block';
+
+        // Clear previous styles
+        for (let i = 0; i < 4; i++) {
+          const lbl = document.getElementById(`opt-label-${item.id}-${i}`);
+          if (lbl) {
+            lbl.classList.remove('correct', 'wrong');
+          }
+        }
+
+        // Highlight correct option
+        const correctLabel = document.getElementById(`opt-label-${item.id}-${item.answer}`);
+        if (correctLabel) correctLabel.classList.add('correct');
+
+        if (!selected) {
+          unansCount++;
+        } else {
+          const userVal = parseInt(selected.value);
+          if (userVal === item.answer) {
+            correctCount++;
+            score += 4;
+          } else {
+            wrongCount++;
+            const wrongLabel = document.getElementById(`opt-label-${item.id}-${userVal}`);
+            if (wrongLabel) wrongLabel.classList.add('wrong');
+            if (applyPenalty) {
+              score -= 4;
+            }
+          }
+        }
+      });
+
+      const banner = document.getElementById('choice-score-banner');
+      banner.classList.add('show');
+      document.getElementById('choice-score-display').textContent = `${score} / 80점`;
+      document.getElementById('choice-score-detail').textContent = 
+        `정답: ${correctCount}개 (+${correctCount * 4}점) | 오답: ${wrongCount}개 (${applyPenalty ? `감점 -${wrongCount * 4}점` : '감점 미적용'}) | 미응답: ${unansCount}개`;
+
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (window.renderMathInElement) renderMathInElement(document.getElementById('choice-quiz-list'));
+    }
+
+    function resetChoiceQuiz() {
+      document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+      document.querySelectorAll('.quiz-option').forEach(l => l.classList.remove('correct', 'wrong'));
+      document.querySelectorAll('.explanation').forEach(e => e.style.display = 'none');
+      document.getElementById('choice-score-banner').classList.remove('show');
+    }
+
+    // Grade Subjective Blank Quiz
+    function gradeBlankQuiz() {
+      const inputs = document.querySelectorAll('.blank-input');
+      let correctCount = 0;
+      let totalCount = inputs.length;
+
+      inputs.forEach(inp => {
+        const userVal = inp.value.trim().toLowerCase().replace(/\s+/g, '');
+        const targetAns = inp.getAttribute('data-ans').trim().toLowerCase().replace(/\s+/g, '');
+        const altAnswers = (inp.getAttribute('data-alt') || '').toLowerCase().split(',').map(s => s.trim().replace(/\s+/g, ''));
+
+        inp.classList.remove('correct', 'wrong');
+        if (userVal === targetAns || altAnswers.includes(userVal)) {
+          correctCount++;
+          inp.classList.add('correct');
+        } else {
+          inp.classList.add('wrong');
+        }
+      });
+
+      document.getElementById('blank-explain-1').style.display = 'block';
+      document.getElementById('blank-explain-2').style.display = 'block';
+
+      const score = correctCount; // 1점씩 20빈칸 = 20점
+      const banner = document.getElementById('blank-score-banner');
+      banner.classList.add('show');
+      document.getElementById('blank-score-display').textContent = `${score} / 20점`;
+      document.getElementById('blank-score-detail').textContent = 
+        `총 20개 빈칸 중 ${correctCount}개 정답 (오답/공란: ${totalCount - correctCount}개)`;
+
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetBlankQuiz() {
+      document.querySelectorAll('.blank-input').forEach(inp => {
+        inp.value = '';
+        inp.classList.remove('correct', 'wrong');
+      });
+      document.getElementById('blank-explain-1').style.display = 'none';
+      document.getElementById('blank-explain-2').style.display = 'none';
+      document.getElementById('blank-score-banner').classList.remove('show');
+    }
+
+    // Local Storage Note Management
+    const noteKeys = [
+      'note-lec2-p1', 'note-lec2-p2', 'note-lec2-p3',
+      'note-lec3-p1', 'note-lec3-p2',
+      'note-lec4-p1', 'note-lec4-p2',
+      'note-lec5-p1', 'note-lec5-p2',
+      'note-lec6-p1', 'note-lec6-p2'
+    ];
+
+    function initNotes() {
+      noteKeys.forEach(id => {
+        const textarea = document.getElementById(id);
+        if (!textarea) return;
+        const saved = localStorage.getItem('aoa_exam_' + id);
+        if (saved) textarea.value = saved;
+
+        textarea.addEventListener('input', () => {
+          localStorage.setItem('aoa_exam_' + id, textarea.value);
+          const status = document.getElementById(id.replace('note-', 'status-'));
+          if (status) {
+            status.textContent = '방금 저장됨';
+            setTimeout(() => { status.textContent = '자동 저장됨'; }, 2000);
+          }
+        });
+      });
+    }
+
+    // Render All Notes View
+    function renderAllNotes() {
+      const display = document.getElementById('all-notes-display');
+      const noteTitles = {
+        'note-lec2-p1': 'Lec 2: 선형 회귀 & MSE 비용함수',
+        'note-lec2-p2': 'Lec 2: 퍼셉트론 원리 & 가중치 학습 규칙',
+        'note-lec2-p3': 'Lec 2: 퍼셉트론의 XOR 한계 & 다층 퍼셉트론(MLP)',
+        'note-lec3-p1': 'Lec 3: 활성화 함수 비교 (Sigmoid, Tanh, ReLU, Leaky ReLU)',
+        'note-lec3-p2': 'Lec 3: 경사하강법 원리, 편미분, 학습률, 로컬 미니마',
+        'note-lec4-p1': 'Lec 4: 역전파 알고리즘 & 연쇄 법칙(체인룰)',
+        'note-lec4-p2': 'Lec 4: 합성곱 신경망(CNN) 커널, 스트라이드, 패딩, 풀링',
+        'note-lec5-p1': 'Lec 5: 순환 신경망(RNN) 은닉상태 & BPTT 장기의존성',
+        'note-lec5-p2': 'Lec 5: 크로스 엔트로피 정보이론 유도 & MSE와의 비교',
+        'note-lec6-p1': 'Lec 6: LSTM 셀 상태 & 3대 게이트(망각/입력/출력)',
+        'note-lec6-p2': 'Lec 6: 경사하강법 3대 유형 (BGD vs SGD vs Mini-batch)'
+      };
+
+      let html = '';
+      let hasNote = false;
+
+      noteKeys.forEach(key => {
+        const text = localStorage.getItem('aoa_exam_' + key) || '';
+        if (text.trim()) hasNote = true;
+        html += `
+          <div class="concept-card" style="margin-bottom:16px;">
+            <div class="card-title">
+              <span>📌 ${noteTitles[key]}</span>
+            </div>
+            <div style="background:#fffdf5; border:1px solid #fde68a; border-radius:8px; padding:12px; font-size:0.9rem; white-space:pre-wrap; min-height:48px;">${text.trim() ? escapeHtml(text) : '<span style="color:#94a3b8; font-style:italic;">작성된 필기 내용이 없습니다. 개념 정리 탭에서 필기를 남겨보세요.</span>'}</div>
+          </div>
+        `;
+      });
+
+      display.innerHTML = html;
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function copyAllNotes() {
+      let combined = '=== 알고리즘 분석 중간고사 대비 내 필기 요약 ===\n\n';
+      noteKeys.forEach(key => {
+        const text = localStorage.getItem('aoa_exam_' + key) || '';
+        if (text.trim()) {
+          const el = document.getElementById(key);
+          const title = el ? el.previousElementSibling.querySelector('.note-label').textContent : key;
+          combined += `[${title}]\n${text}\n\n`;
+        }
+      });
+      navigator.clipboard.writeText(combined).then(() => {
+        alert('모든 필기 내용이 클립보드에 복사되었습니다!');
+      });
+    }
+
+
+    /* ========================================================
+       SUBJECT SWITCHING LOGIC
+       ======================================================== */
+    function switchSubject(subjectId) {
+      document.querySelectorAll('.subject-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.subject-panel').forEach(panel => {
+        panel.classList.remove('active');
+        panel.style.display = 'none';
+      });
+
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+      }
+      const targetPanel = document.getElementById('subject-' + subjectId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+        targetPanel.style.display = 'block';
+      }
+
+      if (window.renderMathInElement) {
+        renderMathInElement(targetPanel || document.body);
+      }
+    }
+
+    
+    /* ========================================================
+       IT SUBJECT (정보처리기술) JAVASCRIPT LOGIC
+       ======================================================== */
+    function switchItMainTab(tabId) {
+      const panel = document.getElementById('subject-it');
+      panel.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      panel.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+
+      if (event && event.target) {
+        event.target.classList.add('active');
+      }
+      document.getElementById('it-view-' + tabId).classList.add('active');
+
+      if (tabId === 'notes') {
+        renderItNotes();
+      }
+      if (window.renderMathInElement) {
+        renderMathInElement(document.getElementById('it-view-' + tabId));
+      }
+    }
+
+    function switchItChapter(chKey) {
+      document.querySelectorAll('#subject-it .sub-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.it-chapter-block').forEach(b => b.style.display = 'none');
+
+      if (event && event.target) {
+        event.target.classList.add('active');
+      }
+      document.getElementById('it-content-' + chKey).style.display = 'block';
+
+      if (window.renderMathInElement) {
+        renderMathInElement(document.getElementById('it-content-' + chKey));
+      }
+    }
+
+    /* IT Subjective Quiz Logic (10 Questions) */
+    function gradeItSubjectiveQuiz() {
+      const inputs = document.querySelectorAll('.it-subjective-input');
+      let score = 0;
+      let correct = 0;
+
+      inputs.forEach((inp, idx) => {
+        const userVal = inp.value.trim().toLowerCase().replace(/\s+/g, '');
+        const target = inp.getAttribute('data-ans').trim().toLowerCase().replace(/\s+/g, '');
+        const altAnswers = (inp.getAttribute('data-alt') || '').toLowerCase().split(',').map(s => s.trim().replace(/\s+/g, ''));
+
+        const explain = document.getElementById(`it-explain-${idx + 1}`);
+        if (explain) explain.style.display = 'block';
+
+        inp.classList.remove('correct', 'wrong');
+        if (userVal === target || altAnswers.includes(userVal)) {
+          score += 10;
+          correct++;
+          inp.classList.add('correct');
+        } else {
+          inp.classList.add('wrong');
+        }
+      });
+
+      const banner = document.getElementById('it-subjective-score-banner');
+      banner.classList.add('show');
+      document.getElementById('it-subjective-score-display').textContent = `${score} / 100점`;
+      document.getElementById('it-subjective-score-detail').textContent = 
+        `총 10문항 중 ${correct}문항 정답 (+${score}점) | 오답: ${10 - correct}문항`;
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetItSubjectiveQuiz() {
+      document.querySelectorAll('.it-subjective-input').forEach(inp => {
+        inp.value = '';
+        inp.classList.remove('correct', 'wrong');
+      });
+      for (let i = 1; i <= 10; i++) {
+        const exp = document.getElementById(`it-explain-${i}`);
+        if (exp) exp.style.display = 'none';
+      }
+      document.getElementById('it-subjective-score-banner').classList.remove('show');
+    }
+
+    /* IT Notes Management */
+    const itNoteKeys = [
+      'note-it-ch1-p1', 'note-it-ch1-p2',
+      'note-it-ch5-p1', 'note-it-ch5-p2',
+      'note-it-ch6-p1', 'note-it-ch6-p2',
+      'note-it-ch7-p1', 'note-it-ch7-p2',
+      'note-it-ch8-p1', 'note-it-ch8-p2'
+    ];
+
+    function initItNotes() {
+      itNoteKeys.forEach(id => {
+        const textarea = document.getElementById(id);
+        if (!textarea) return;
+        const saved = localStorage.getItem('it_exam_' + id);
+        if (saved) textarea.value = saved;
+
+        textarea.addEventListener('input', () => {
+          localStorage.setItem('it_exam_' + id, textarea.value);
+          const status = document.getElementById(id.replace('note-', 'status-'));
+          if (status) {
+            status.textContent = '방금 저장됨';
+            setTimeout(() => { status.textContent = '자동 저장됨'; }, 2000);
+          }
+        });
+      });
+    }
+
+    function renderItNotes() {
+      const display = document.getElementById('it-all-notes-display');
+      const noteTitles = {
+        'note-it-ch1-p1': '1장: IT기술 발전과 디지털 혁명 (엘빈 토플러, 마샬 맥루한)',
+        'note-it-ch1-p2': '1장: 정보화사회의 역기능 (정보 격차, 유비쿼터스)',
+        'note-it-ch5-p1': '5장: 정보통신 전송 방식 & 네트워크 토폴로지',
+        'note-it-ch5-p2': '5장: 네트워크 장비(게이트웨이/라우터) & 보안 3요소(기밀성/무결성/가용성)',
+        'note-it-ch6-p1': '6장: 인터넷 기원(ARPANET), TCP/IP 프로토콜, DNS',
+        'note-it-ch6-p2': '6장: 웹 2.0 & 클라우드 컴퓨팅 3대 모델(IaaS, PaaS, SaaS)',
+        'note-it-ch7-p1': '7장: 멀티미디어 4대 특성 & 비트맵 vs 벡터',
+        'note-it-ch7-p2': '7장: 무손실 vs 손실 압축 & MPEG 표준(MPEG-2, MPEG-4, 스트리밍)',
+        'note-it-ch8-p1': '8장: 모바일 앱 3대 개발 방식 (네이티브, 웹, 하이브리드 앱)',
+        'note-it-ch8-p2': '8장: 모바일 서비스 (LBS, 증강현실 AR vs VR, 스마트워크)'
+      };
+
+      let html = '';
+      itNoteKeys.forEach(key => {
+        const text = localStorage.getItem('it_exam_' + key) || '';
+        html += `
+          <div class="concept-card" style="margin-bottom:16px;">
+            <div class="card-title">
+              <span>📌 ${noteTitles[key]}</span>
+            </div>
+            <div style="background:#fffdf5; border:1px solid #fde68a; border-radius:8px; padding:12px; font-size:0.9rem; white-space:pre-wrap; min-height:48px;">${text.trim() ? escapeHtml(text) : '<span style="color:#94a3b8; font-style:italic;">작성된 필기 내용이 없습니다. 개념 정리 탭에서 필기를 남겨보세요.</span>'}</div>
+          </div>
+        `;
+      });
+      display.innerHTML = html;
+    }
+
+    function copyItNotes() {
+      let combined = '=== 정보처리기술 중간고사 대비 내 필기 요약 ===\\n\\n';
+      itNoteKeys.forEach(key => {
+        const text = localStorage.getItem('it_exam_' + key) || '';
+        if (text.trim()) {
+          const el = document.getElementById(key);
+          const title = el ? el.previousElementSibling.querySelector('.note-label').textContent : key;
+          combined += `[${title}]\\n${text}\\n\\n`;
+        }
+      });
+      navigator.clipboard.writeText(combined).then(() => {
+        alert('정보처리기술 필기 내용이 클립보드에 복사되었습니다!');
+      });
+    }
+
+
+    /* ========================================================
+       OS SUBJECT (운영체제론) JAVASCRIPT LOGIC
+       ======================================================== */
+    function switchOsMainTab(tabId) {
+      const panel = document.getElementById('subject-os');
+      panel.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      panel.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+
+      if (event && event.target) event.target.classList.add('active');
+      document.getElementById('os-view-' + tabId).classList.add('active');
+
+      if (tabId === 'notes') renderOsNotes();
+      if (window.renderMathInElement) renderMathInElement(document.getElementById('os-view-' + tabId));
+    }
+
+    function switchOsChapter(chKey) {
+      document.querySelectorAll('#subject-os .sub-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.os-chapter-block').forEach(b => b.style.display = 'none');
+
+      if (event && event.target) event.target.classList.add('active');
+      document.getElementById('os-content-' + chKey).style.display = 'block';
+
+      if (window.renderMathInElement) renderMathInElement(document.getElementById('os-content-' + chKey));
+    }
+
+    function gradeOsQuiz() {
+      const inputs = document.querySelectorAll('.os-quiz-input');
+      let score = 0, correct = 0;
+      inputs.forEach((inp, idx) => {
+        const userVal = inp.value.trim().toLowerCase().replace(/\s+/g, '');
+        const target = inp.getAttribute('data-ans').trim().toLowerCase().replace(/\s+/g, '');
+        const altAnswers = (inp.getAttribute('data-alt') || '').toLowerCase().split(',').map(s => s.trim().replace(/\s+/g, ''));
+        const explain = document.getElementById(`os-explain-${idx + 1}`);
+        if (explain) explain.style.display = 'block';
+
+        inp.classList.remove('correct', 'wrong');
+        if (userVal === target || altAnswers.includes(userVal)) {
+          score += 10; correct++; inp.classList.add('correct');
+        } else {
+          inp.classList.add('wrong');
+        }
+      });
+      const banner = document.getElementById('os-score-banner');
+      banner.classList.add('show');
+      document.getElementById('os-score-display').textContent = `${score} / 100점`;
+      document.getElementById('os-score-detail').textContent = `총 10문항 중 ${correct}문항 정답 (+${score}점) | 오답: ${10 - correct}문항`;
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetOsQuiz() {
+      document.querySelectorAll('.os-quiz-input').forEach(inp => {
+        inp.value = ''; inp.classList.remove('correct', 'wrong');
+      });
+      for (let i = 1; i <= 10; i++) {
+        const exp = document.getElementById(`os-explain-${i}`);
+        if (exp) exp.style.display = 'none';
+      }
+      document.getElementById('os-score-banner').classList.remove('show');
+    }
+
+    const osNoteKeys = [
+      'note-os-w2-p1', 'note-os-w2-p2',
+      'note-os-w3-p1', 'note-os-w3-p2',
+      'note-os-w4-p1', 'note-os-w4-p2'
+    ];
+
+    function initOsNotes() {
+      osNoteKeys.forEach(id => {
+        const textarea = document.getElementById(id);
+        if (!textarea) return;
+        const saved = localStorage.getItem('os_exam_' + id);
+        if (saved) textarea.value = saved;
+        textarea.addEventListener('input', () => {
+          localStorage.setItem('os_exam_' + id, textarea.value);
+          const status = document.getElementById(id.replace('note-', 'status-'));
+          if (status) {
+            status.textContent = '방금 저장됨';
+            setTimeout(() => { status.textContent = '자동 저장됨'; }, 2000);
+          }
+        });
+      });
+    }
+
+    function renderOsNotes() {
+      const display = document.getElementById('os-all-notes-display');
+      const noteTitles = {
+        'note-os-w2-p1': 'W1~W2: 시스템 구조와 인터럽트(Interrupt) 처리',
+        'note-os-w2-p2': 'W2: 이중 모드(Dual-mode), 특권 명령, 시스템 호출(System Call)',
+        'note-os-w3-p1': 'W3: 메모리 계층 구조 & 주소 변환(MMU)',
+        'note-os-w3-p2': 'W3: 메모리 단편화(내부/외부) & 페이징(Paging) 기법',
+        'note-os-w4-p1': 'W4: ELF 파일 구조와 프로세스 4대 메모리 영역(Text, Data, BSS, Heap, Stack)',
+        'note-os-w4-p2': 'W4: 가상 메모리 관리, 요구 페이징(Demand Paging), 페이지 폴트, 스래싱'
+      };
+      let html = '';
+      osNoteKeys.forEach(key => {
+        const text = localStorage.getItem('os_exam_' + key) || '';
+        html += `
+          <div class="concept-card" style="margin-bottom:16px;">
+            <div class="card-title"><span>📌 ${noteTitles[key]}</span></div>
+            <div style="background:#fffdf5; border:1px solid #fde68a; border-radius:8px; padding:12px; font-size:0.9rem; white-space:pre-wrap; min-height:48px;">${text.trim() ? escapeHtml(text) : '<span style="color:#94a3b8; font-style:italic;">작성된 필기 내용이 없습니다. 개념 정리 탭에서 필기를 남겨보세요.</span>'}</div>
+          </div>
+        `;
+      });
+      display.innerHTML = html;
+    }
+
+    function copyOsNotes() {
+      let combined = '=== 운영체제론 중간고사 대비 내 필기 요약 ===\\n\\n';
+      osNoteKeys.forEach(key => {
+        const text = localStorage.getItem('os_exam_' + key) || '';
+        if (text.trim()) {
+          const el = document.getElementById(key);
+          const title = el ? el.previousElementSibling.querySelector('.note-label').textContent : key;
+          combined += `[${title}]\\n${text}\\n\\n`;
+        }
+      });
+      navigator.clipboard.writeText(combined).then(() => {
+        alert('운영체제론 필기 내용이 클립보드에 복사되었습니다!');
+      });
+    }
+
+    /* ========================================================
+       DB SUBJECT (데이터베이스) JAVASCRIPT LOGIC
+       ======================================================== */
+    function switchDbMainTab(tabId) {
+      const panel = document.getElementById('subject-db');
+      panel.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      panel.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+
+      if (event && event.target) event.target.classList.add('active');
+      document.getElementById('db-view-' + tabId).classList.add('active');
+
+      if (tabId === 'notes') renderDbNotes();
+      if (window.renderMathInElement) renderMathInElement(document.getElementById('db-view-' + tabId));
+    }
+
+    function switchDbChapter(chKey) {
+      document.querySelectorAll('#subject-db .sub-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.db-chapter-block').forEach(b => b.style.display = 'none');
+
+      if (event && event.target) event.target.classList.add('active');
+      document.getElementById('db-content-' + chKey).style.display = 'block';
+
+      if (window.renderMathInElement) renderMathInElement(document.getElementById('db-content-' + chKey));
+    }
+
+    function gradeDbQuiz() {
+      const inputs = document.querySelectorAll('.db-quiz-input');
+      let score = 0, correct = 0;
+      inputs.forEach((inp, idx) => {
+        const userVal = inp.value.trim().toLowerCase().replace(/\s+/g, '');
+        const target = inp.getAttribute('data-ans').trim().toLowerCase().replace(/\s+/g, '');
+        const altAnswers = (inp.getAttribute('data-alt') || '').toLowerCase().split(',').map(s => s.trim().replace(/\s+/g, ''));
+        const explain = document.getElementById(`db-explain-${idx + 1}`);
+        if (explain) explain.style.display = 'block';
+
+        inp.classList.remove('correct', 'wrong');
+        if (userVal === target || altAnswers.includes(userVal)) {
+          score += 10; correct++; inp.classList.add('correct');
+        } else {
+          inp.classList.add('wrong');
+        }
+      });
+      const banner = document.getElementById('db-score-banner');
+      banner.classList.add('show');
+      document.getElementById('db-score-display').textContent = `${score} / 100점`;
+      document.getElementById('db-score-detail').textContent = `총 10문항 중 ${correct}문항 정답 (+${score}점) | 오답: ${10 - correct}문항`;
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetDbQuiz() {
+      document.querySelectorAll('.db-quiz-input').forEach(inp => {
+        inp.value = ''; inp.classList.remove('correct', 'wrong');
+      });
+      for (let i = 1; i <= 10; i++) {
+        const exp = document.getElementById(`db-explain-${i}`);
+        if (exp) exp.style.display = 'none';
+      }
+      document.getElementById('db-score-banner').classList.remove('show');
+    }
+
+    const dbNoteKeys = [
+      'note-db-ch1-p1', 'note-db-ch2-p1',
+      'note-db-ch3-p1', 'note-db-ch3-p2', 'note-db-ch3-p3'
+    ];
+
+    function initDbNotes() {
+      dbNoteKeys.forEach(id => {
+        const textarea = document.getElementById(id);
+        if (!textarea) return;
+        const saved = localStorage.getItem('db_exam_' + id);
+        if (saved) textarea.value = saved;
+        textarea.addEventListener('input', () => {
+          localStorage.setItem('db_exam_' + id, textarea.value);
+          const status = document.getElementById(id.replace('note-', 'status-'));
+          if (status) {
+            status.textContent = '방금 저장됨';
+            setTimeout(() => { status.textContent = '자동 저장됨'; }, 2000);
+          }
+        });
+      });
+    }
+
+    function renderDbNotes() {
+      const display = document.getElementById('db-all-notes-display');
+      const noteTitles = {
+        'note-db-ch1-p1': 'Chap 1: DBMS 개요, 3단계 스키마(외부/개념/내부), 데이터 독립성',
+        'note-db-ch2-p1': 'Chap 2: ERD 구성 요소(엔티티, 관계, 다중값 속성, 약한 엔티티)',
+        'note-db-ch3-p1': 'Chap 3: 관계 모델과 Key의 종류(슈퍼키, 후보키, 기본키, 외래키)',
+        'note-db-ch3-p2': 'Chap 3: 무결성 제약조건 IC(개체 무결성, 참조 무결성, 도메인 무결성)',
+        'note-db-ch3-p3': 'Chap 3-1: ER-to-Relational Mapping (1:N 사상, M:N 사상, 약한엔티티 사상)'
+      };
+      let html = '';
+      dbNoteKeys.forEach(key => {
+        const text = localStorage.getItem('db_exam_' + key) || '';
+        html += `
+          <div class="concept-card" style="margin-bottom:16px;">
+            <div class="card-title"><span>📌 ${noteTitles[key]}</span></div>
+            <div style="background:#fffdf5; border:1px solid #fde68a; border-radius:8px; padding:12px; font-size:0.9rem; white-space:pre-wrap; min-height:48px;">${text.trim() ? escapeHtml(text) : '<span style="color:#94a3b8; font-style:italic;">작성된 필기 내용이 없습니다. 개념 정리 탭에서 필기를 남겨보세요.</span>'}</div>
+          </div>
+        `;
+      });
+      display.innerHTML = html;
+    }
+
+    function copyDbNotes() {
+      let combined = '=== 데이터베이스 중간고사 대비 내 필기 요약 ===\\n\\n';
+      dbNoteKeys.forEach(key => {
+        const text = localStorage.getItem('db_exam_' + key) || '';
+        if (text.trim()) {
+          const el = document.getElementById(key);
+          const title = el ? el.previousElementSibling.querySelector('.note-label').textContent : key;
+          combined += `[${title}]\\n${text}\\n\\n`;
+        }
+      });
+      navigator.clipboard.writeText(combined).then(() => {
+        alert('데이터베이스 필기 내용이 클립보드에 복사되었습니다!');
+      });
+    }
+
+    // Init
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderChoiceQuiz();
+      initNotes();
+      initItNotes();
+      initOsNotes();
+      initDbNotes();
+    });
+  </script>
+</body>
+</html>
+

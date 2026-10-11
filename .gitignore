@@ -1,0 +1,9 @@
+# 수업자료 폴더 및 PDF 파일 제외 (HTML 및 문서만 포함)
+알고리즘분석/
+Analysis of Algorithms/
+정보처리기술/
+운영체제론/
+데이터베이스/
+*.pdf
+*.txt
+*.py
