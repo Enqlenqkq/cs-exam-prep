@@ -40,10 +40,21 @@
    - `Chap 3`: 관계 데이터 모델(E.F. Codd), 릴레이션 4대 특성, 차수와 카디널리티, Key의 5대 유형(슈퍼키, 후보키, 기본키, 대체키, 외래키), 무결성 제약조건 3대 원칙(개체, 참조, 도메인) 및 위반 시 조치(CASCADE, RESTRICT, SET NULL)
    - `Chap 3-1 보충`: ER-to-Relational Mapping (사상 기법) 7대 규칙 전수 정리
 
-## 📂 파일 구조
-- `index.html`: 단일 페이지 웹 애플리케이션 본체 (반응형 UI, KaTeX 수식, 실시간 채점 및 필기/히스토리 뷰)
-- `data/quiz_algorithms.json`: 알고리즘 분석 100문항 데이터셋
-- `data/quiz_it.json`: 정보처리기술 100문항 데이터셋
-- `data/quiz_os.json`: 운영체제론 100문항 데이터셋
-- `data/quiz_db.json`: 데이터베이스 100문항 데이터셋
-- `data/quiz_bank.js`: 브라우저 및 GitHub Pages 배포용 통합 퀴즈 뱅크 스크립트 (CORS 문제 없는 로컬 구동 보장)
+## 📂 모듈화된 프로젝트 구조
+```text
+├── index.html                   # 시맨틱 마크업 본체 (스타일/스크립트 외부 분리)
+├── css/
+│   └── style.css                # 반응형 디자인, 카드 레이아웃, 대시보드 스타일 전체
+├── js/
+│   ├── navigation.js            # 과목/탭/단원 전환 네비게이션 제어 모듈
+│   ├── notes.js                 # 실시간 필기장, localStorage 자동 저장 및 모아보기
+│   ├── quiz.js                  # 퀴즈 뱅크 랜덤 추출, 셔플, 렌더링, 채점 및 빈칸 퀴즈
+│   ├── history.js               # 풀이 히스토리, 통계 대시보드, 필터링 및 오답 재시험
+│   └── app.js                   # 메인 애플리케이션 진입점 및 KaTeX 자동 렌더링 초기화
+└── data/
+    ├── quiz_algorithms.json     # 알고리즘 분석 100문항 데이터셋
+    ├── quiz_it.json             # 정보처리기술 100문항 데이터셋
+    ├── quiz_os.json             # 운영체제론 100문항 데이터셋
+    ├── quiz_db.json             # 데이터베이스 100문항 데이터셋
+    └── quiz_bank.js             # 통합 퀴즈 뱅크 스크립트 (오프라인/로컬 CORS 없는 구동 보장)
+```
